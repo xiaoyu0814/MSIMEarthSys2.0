@@ -24,3 +24,10 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./SituationAwarenessAnalysisEdit2.0 # 确认和你打包输出目录一致！
+          publish_branch: gh-pages

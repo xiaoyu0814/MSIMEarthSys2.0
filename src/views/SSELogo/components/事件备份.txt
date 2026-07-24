@@ -1,0 +1,124 @@
+  /**
+   * 默认事件初始化
+   */
+  sse.addEventListener('PA', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('state', function (json) {
+    debugger
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('Comment', function (json) {
+    //各种事件
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('PD', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('LogInfo', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('Voice', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('StartingFalse', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('StartingFalseInfo', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('AT', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('Pausing', function (json) {
+    msg = JSON.parse(json.data)
+  })
+
+  sse.addEventListener('red_distribution_seat_message', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('blue_distribution_seat_message', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('Resuming', function (json) {
+    // 场景继续
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('echartsInfo', function (json) {
+    // 毁伤评估数据
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('timeOverview', function (json) {
+    // 底部阶段性描述数据
+    msg = JSON.parse(json.data)
+  })
+  // sse.addEventListener('Starting', function (json) {  // 场景数据解析信息
+
+  // })
+  sse.addEventListener('PA_Simulator', function (json) {
+    // 模拟器接入   PA 消息 开机只发个一次（暂时注释）
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('atmosphereArea', function (json) {
+    // 天气区域干扰飞机感知半径
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('operationalArea', function (json) {
+    // 作战区域 提示信息
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('operationalAreaFile', function (json) {
+    //作战区域 geoJson 文件、天气区域文件
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('Command', function (json) {
+    //接收后台发送的操作web端指令,数据格式：{Cmd:"radarEcho",Type:"loadData"}
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('AreaFile', function (json) {
+    // 接收后台发送的操作web端指令,数据格式：{"fileName":"16.json"}
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('ControlRes', function (json) {
+    //接收afSim 指令回执信息数据  暂时不显示
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('weatherUrl', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener(
+    'Start',
+    function (json) {
+      console.log('场景开始', json)
+      msg = JSON.parse(json.data)
+    },
+    false
+  )
+  sse.addEventListener('heartbeat', function (json) {
+    //接收afSim 指令回执信息数据
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('UE_LockInfo', function (json) {
+    //接收UE消息 锁定目标
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('InterferenceRange', function (json) {
+    // 创建雷达遮罩
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('Comprehensive', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  sse.addEventListener('simTaskInfo', function (json) {
+    //red_zhkz、red_qb接收场景切换的提示消息
+    msg = JSON.parse(json.data)
+  })
+  // 获取基于AI机制获取的消息
+  sse.addEventListener('AI_INFO', function (json) {
+    msg = JSON.parse(json.data)
+  })
+  // 模型选中调用场景消息
+  sse.addEventListener('message', function (json) {
+    //各种事件
+    msg = JSON.parse(json.data)
+  })

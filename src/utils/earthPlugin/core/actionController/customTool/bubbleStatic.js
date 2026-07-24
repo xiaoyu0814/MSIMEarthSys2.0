@@ -1,0 +1,536 @@
+/**
+ * @param {Viewer} val.viewer
+ * @param {String}
+ * @param {String} val.id
+ * @return {*}
+ */
+
+import { createVNode, render, ref, reactive, toRefs } from 'vue' // 1. 从Vue 3中导入所需的函数
+import Label1 from '../../../ThirdParty/vuePanelForPop/bubblePanel1.vue'
+import Label2 from '../../../ThirdParty/vuePanelForPop/BubblePanel2.vue'
+import store from '@/store'
+
+//将经纬度转成度分秒格式  返回数组 [度,分,秒]  [36°23′45″]
+const formatDegree = (value) => {
+  let value2 = Math.abs(value)
+  let v1 = Math.floor(value) //度
+  let v2 = Math.floor((value - v1) * 60) //分
+  let v3 = Math.round(((value - v1) * 3600) % 60) //秒
+  if (v3 == 60) {
+    v3 = 0
+    v2 += 1
+  }
+  if (v2 == 60) {
+    v2 = 0
+    v1 += 1
+  }
+  // return [v1, v2, v3];
+  let arrData = [v1, v2, v3]
+  return arrData[0] + '°' + arrData[1] + '′' + arrData[2] + '″'
+}
+export default class BubbleStatic {
+  constructor(val) {
+    if (window['curDivPoint' + val.id]) {
+      return
+    }
+    this.number = 0
+    this.position = val.position
+    this.speedData = 0 //速度
+    this.lastCartesian = null //上一个位置
+    this.lastTime = null //上一个时间
+    this.content = val.content
+    this.viewer = val.viewer
+    this.id = val.id
+    this.Cesium = val.Cesium
+    this.datasource = val.name
+    this.title = val.title
+    this.isCloseClick = val.isCloseClick
+    this.offsetY = val.offsetY ? val.offsetY : 0
+    this.offsetX = val.offsetX
+    this.rgb = val.rgb ? val.rgb : [255, 255, 255]
+    this.fontColorRgb = val.fontColorRgb
+      ? val.fontColorRgb
+      : val.rgb
+      ? val.rgb
+      : [255, 255, 255]
+    this.nearDistance =
+      val.distanceDisplayCondition[0] == undefined
+        ? 0
+        : val.distanceDisplayCondition[0]
+    this.farDistance =
+      val.distanceDisplayCondition[1] == undefined
+        ? 50000000
+        : val.distanceDisplayCondition[1]
+    if (val.div == 'style') {
+      this.vmInstance = createVNode(
+        Label1,
+        toRefs({
+          id: ref(this.id),
+          title: ref(this.title),
+          content: reactive(this.content)
+        })
+        //   {
+        //   id: this.id,
+        //   title: this.title,
+        //   content: this.content
+        // }
+      ) // 3. 使用createApp来挂载组件
+    } else if (val.div == 'planDetail') {
+      this.vmInstance = createVNode(
+        Label2,
+        toRefs({
+          id: ref(this.id),
+          title: ref(this.title),
+          content: reactive(this.content),
+          rgb: ref(this.rgb),
+          fontColorRgb: ref(this.fontColorRgb),
+          isCloseClick: ref(this.isCloseClick)
+        })
+      )
+    }
+
+    this.mountNode = document.createElement('div')
+    render(this.vmInstance, this.mountNode)
+    // this.mountNode.config.globalProperties.Cesium = this.Cesium
+    // this.mountNode.config.globalProperties.viewer = this.viewer
+    // this.mountNode.config.globalProperties.windowClose = () => {
+    //   this.windowClose()
+    // }
+    // this.vmInstance.mount(document.createElement('div')) // 将组件挂载到一个元素上
+
+    this.viewer.cesiumWidget.container.appendChild(this.mountNode)
+    console.log('当前关闭的id', 'curDivPoint' + this.id)
+    window['curDivPoint' + this.id] = this.mountNode
+    window['curDivPoint' + this.id].closeEvent = (e) => {
+      this.windowClose(val.viewer)
+    }
+    this.move = false
+    this.netColor = `rgb(${this.rgb[0]},${this.rgb[1]},${this.rgb[2]}`
+    let canvasobj = this.createCanvas()
+    this.canvas = canvasobj.canvas
+    this.canvasDom = canvasobj.canvasDom
+    this.postRenderUpdate()
+    this.addPostRender()
+    this.mousedownPublic(this.mountNode)
+  }
+  //添加场景事件
+  addPostRender() {
+    // 如果是实时计算用下面的方法
+    this.viewer.scene.postRender.addEventListener(this.postRenderUpdate, this)
+  }
+
+  //场景渲染事件 实时更新窗口的位置 使其与笛卡尔坐标一致
+  postRenderUpdate() {
+    if (this.move) return
+    if (!this.mountNode || !this.mountNode.style) return
+    this.mountNode.style.position = 'absolute'
+
+    this.mountNode.style.display = 'block'
+    this.canvasDom.style.display = 'block'
+
+    // 设置标牌div的位置
+    const canvasHeight = this.viewer.scene.canvas.height
+    const windowPosition = new this.Cesium.Cartesian2()
+    // this.position = window.MSIMEarth.Cartesian3.fromDegrees(
+    //   115.887,
+    //   26.9153,
+    //   100
+    // )
+    if (!this.position) {
+      return
+    }
+    this.Cesium.SceneTransforms.wgs84ToWindowCoordinates(
+      this.viewer.scene,
+      this.position,
+      windowPosition
+    )
+    this.mountNode.style.top = windowPosition.y + this.offsetY + 'px'
+    this.mountNode.style.left = windowPosition.x + this.offsetX + 'px'
+    let eltop = windowPosition.y + this.offsetY
+    let elleft = windowPosition.x + this.offsetX
+    if (this.canvas) {
+      //标盘和目标连接线绘制方法
+      //TODO:获取动态标盘元素框高的dom容器获得方法 如兼容多个模板 可以变为传值获取
+      const divheight =
+        this.vmInstance.el.getElementsByClassName('box-wrap1')[0].clientHeight
+      const divWidth =
+        this.vmInstance.el.getElementsByClassName('box-wrap1')[0].clientWidth
+      this.canvas.height = this.viewer.canvas.clientHeight
+      this.canvas.width = this.viewer.canvas.clientWidth
+      let context = this.canvas.getContext('2d')
+      context.beginPath()
+      context.moveTo(windowPosition.x, windowPosition.y)
+      context.lineTo(elleft + divWidth / 2, eltop + divheight + 2)
+      context.strokeStyle = this.netColor
+      context.lineWidth = 1
+      context.stroke()
+    }
+
+    let camerPosition = this.viewer.camera.position
+    let pitch = this.viewer.camera.pitch
+    let camePosition = this.cartToGraphic(camerPosition)
+    if (!this.Cesium.defined(camePosition)) return
+    if (!this.Cesium.defined(camePosition.alt)) return
+    if (camePosition.alt < 0) {
+      const lngDegree = this.Cesium.Math.toDegrees(
+        this.viewer.camera.positionCartographic.longitude
+      )
+      const latDegree = this.Cesium.Math.toDegrees(
+        this.viewer.camera.positionCartographic.latitude
+      )
+      const curHeight = this.viewer.camera.positionCartographic.height
+      camerPosition = this.Cesium.Cartesian3.fromDegrees(
+        lngDegree,
+        latDegree,
+        curHeight
+      )
+    }
+    let height =
+      this.viewer.scene.globe.ellipsoid.cartesianToCartographic(
+        camerPosition
+      ).height
+    height += this.viewer.scene.globe.ellipsoid.maximumRadius
+
+    if (
+      !(
+        this.Cesium.Cartesian3.distance(camerPosition, this.position) > height
+      ) &&
+      (this.viewer.camera.positionCartographic.height > this.farDistance ||
+        this.viewer.camera.positionCartographic.height < this.nearDistance)
+    ) {
+      this.mountNode.style.display = 'none'
+      this.canvasDom.style.display = 'none'
+    }
+  }
+
+  // 关闭
+  windowClose() {
+    const elementContains = (parent, child) =>
+      parent !== child && parent.contains(child)
+    // 事例
+    if (window['curDivPoint' + this.id]) {
+      //this.mountNode.remove();
+      //this.mountNode.$destroy();
+      //let boolean = elementContains(document.querySelector('body'), document.querySelector('box-wrap'));
+      //if (boolean) {
+      this.viewer.cesiumWidget.container.removeChild(
+        window['curDivPoint' + this.id]
+      )
+      window['curDivPoint' + this.id] = null
+      this.mountNode = null
+      //}
+    }
+    this.viewer.scene.postRender.removeEventListener(this.postRenderUpdate)
+    this.viewer.cesiumWidget.container.children[0].removeChild(this.canvasDom)
+  }
+
+  showControl() {
+    // if (!this.vmInstance.$el || !this.vmInstance.$el.style) return;
+    if (this.vmInstance) {
+      this.vmInstance.remove()
+      this.vmInstance.$destroy()
+    }
+    this.viewer.scene.postRender.removeEventListener(
+      this.postRenderUpdate,
+      this
+    ) //移除事件监听
+  }
+
+  coordinateConvert(cartesian3) {
+    // 世界坐标转经纬度
+    let ellipsoid = this.viewer.scene.globe.ellipsoid
+    let cartographic = ellipsoid.cartesianToCartographic(cartesian3)
+    let lat = this.Cesium.Math.toDegrees(cartographic.latitude)
+    let lng = this.Cesium.Math.toDegrees(cartographic.longitude)
+    let alt = cartographic.height
+    let cartographic2 = this.Cesium.Cartographic.fromDegrees(
+      lng,
+      lat,
+      agetValuelt
+    )
+    let newCartesian3 = ellipsoid.cartographicToCartesian(cartographic2)
+    return newCartesian3
+  }
+
+  cartToGraphic(cartesian3) {
+    if (!this.Cesium.defined(cartesian3)) return
+    if (typeof cartesian3.x == 'undefined' || !cartesian3.x) return
+    if (typeof cartesian3.y == 'undefined' || !cartesian3.y) return
+    if (typeof cartesian3.z == 'undefined' || !cartesian3.z) return
+    let ellipsoid = this.viewer.scene.globe.ellipsoid
+    let cartographic = ellipsoid.cartesianToCartographic(cartesian3)
+    let lat = this.Cesium.Math.toDegrees(cartographic.latitude)
+    if (typeof lat == 'undefined') return
+    let lng = this.Cesium.Math.toDegrees(cartographic.longitude)
+    if (typeof lng == 'undefined') return
+    let alt = cartographic.height
+    if (typeof alt == 'undefined') return
+    return { lng: lng, lat: lat, alt: alt }
+  }
+
+  // 获取实体朝向角
+  getEntityOir(entity) {
+    // 获取偏向角
+    if (!entity.orientation) {
+      return {
+        heading: 0,
+        pitch: 0,
+        roll: 0
+      }
+    }
+    let ori = entity.orientation.getValue(this.viewer.clock.currentTime)
+    // 获取位置
+    let center = entity.position.getValue(this.viewer.clock.currentTime)
+    if (ori && center) {
+      // 1、由四元数计算三维旋转矩阵
+      var mtx3 = this.Cesium.Matrix3.fromQuaternion(ori)
+      // 2、计算四维转换矩阵：
+      var mtx4 = this.Cesium.Matrix4.fromRotationTranslation(mtx3, center)
+      // 3、计算角度：
+      var hpr = this.Cesium.Transforms.fixedFrameToHeadingPitchRoll(mtx4)
+      // 获取角度（弧度）
+      const headingTemp = hpr.heading
+      const pitchTemp = hpr.pitch
+      const rollTemp = hpr.roll
+      return {
+        heading: this.Cesium.Math.toDegrees(headingTemp),
+        pitch: this.Cesium.Math.toDegrees(pitchTemp),
+        roll: this.Cesium.Math.toDegrees(rollTemp)
+      }
+    } else {
+      return 'undefined'
+    }
+  }
+
+  /**
+   * canvas画布创建连接线容器
+   * @returns {Object} - 两个操作数的和
+   * @returns {canvas} canvas- canvas对象
+   * @returns {dom} canvasDom - canvasDom对象
+   */
+  createCanvas() {
+    let canvas = document.createElement('canvas')
+    // canvas.setAttribute('id', 'canvaslines');
+    canvas.height = this.viewer.canvas.clientHeight
+    canvas.width = this.viewer.canvas.clientWidth
+    canvas.style = 'position: absolute;left: 0px;top: 0px;pointer-events: none;'
+    let canvasDom =
+      this.viewer.cesiumWidget.container.children[0].appendChild(canvas)
+    return {
+      canvas: canvas,
+      canvasDom: canvasDom
+    }
+  }
+
+  /**
+   * 详标签拖拽拖拽事件
+   * @param {dom} -selectElement  需要拖拽的dom元素
+   */
+  mousedownPublic(selectElement) {
+    let that = this
+    const divheight =
+      selectElement.getElementsByClassName('box-wrap1')[0].clientHeight
+    const divWidth =
+      selectElement.getElementsByClassName('box-wrap1')[0].clientWidth
+    selectElement.onmousedown = (e) => {
+      that.move = true
+      let distanceX = e.clientX - selectElement.offsetLeft
+      let distanceY = e.clientY - selectElement.offsetTop
+      document.onmousemove = function (ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        selectElement.style.cursor = 'move'
+        let oevent = ev
+        selectElement.style.left = oevent.clientX - distanceX + 'px'
+        selectElement.style.top = oevent.clientY - distanceY + 'px'
+        let upperLeft = new that.Cesium.Cartesian2(
+          oevent.clientX - distanceX,
+          oevent.clientY - distanceY
+        )
+        let ysposition = that.Cesium.SceneTransforms.wgs84ToWindowCoordinates(
+          that.viewer.scene,
+          that.position
+        )
+        //计算偏移量
+        that.offsetX = upperLeft.x - ysposition.x
+        that.offsetY = upperLeft.y - ysposition.y
+        if (that.canvas) {
+          that.canvas.height = that.viewer.canvas.clientHeight
+          that.canvas.width = that.viewer.canvas.clientWidth
+          let context = that.canvas.getContext('2d')
+          context.beginPath()
+          if (ysposition.x && ysposition.y) {
+            context.moveTo(ysposition.x, ysposition.y)
+            context.lineTo(upperLeft.x + divWidth / 2, upperLeft.y + divheight)
+            context.strokeStyle = that.netColor
+            context.lineWidth = 1
+            context.stroke()
+          }
+        }
+      }
+
+      document.onmouseup = function (e) {
+        console.log('onmouseup')
+        that.move = false
+        document.onmousemove = null
+        document.onmouseup = null
+      }
+    }
+    // selectElement.ondblclick = e => {
+    //     this.windowClose();
+    // };
+  }
+
+  //设置要显示字段
+  setLabel(curPositionGraphic, entity) {
+    let contentArr = this.vmInstance.props.content.value
+    for (let x = 0; x < contentArr.length; x++) {
+      if (contentArr[x].name == '经度') {
+        let lng = Number(curPositionGraphic.lng.toFixed(3))
+        // 切换度分秒
+        if (store.state.sceneModule.systemConfig.isSwitchDegMinsSconds) {
+          if (lng >= 0) {
+            lng = formatDegree(lng) + 'E'
+          } else {
+            lng = formatDegree(lng) + 'W'
+          }
+        } else {
+          if (lng >= 0) {
+            lng = lng + '°E'
+          } else {
+            lng = lng + '°W'
+          }
+        }
+        contentArr[x].value = lng
+      } else if (contentArr[x].name == '纬度') {
+        let lat = Number(curPositionGraphic.lat.toFixed(3))
+        // 切换度分秒
+        if (store.state.sceneModule.systemConfig.isSwitchDegMinsSconds) {
+          if (lat >= 0) {
+            lat = formatDegree(lat) + 'E'
+          } else {
+            lat = formatDegree(lat) + 'W'
+          }
+        } else {
+          if (lat >= 0) {
+            lat = lat + '°N'
+          } else {
+            lat = lat + '°S'
+          }
+        }
+        contentArr[x].value = lat
+      } else if (contentArr[x].name == '高度') {
+        contentArr[x].value = Math.floor(curPositionGraphic.alt) + '米'
+      } else if (contentArr[x].name == '航向角') {
+        let headingAir = 0
+        if (
+          entity.properties?.airplaneAction?._value &&
+          entity.properties?.airplaneAction?._value.heading &&
+          typeof entity.properties?.airplaneAction?._value.heading !=
+            'undefined'
+        ) {
+          headingAir = entity.properties?.airplaneAction?._value.heading
+          if (headingAir < 0) headingAir = 360 + Number(headingAir) //航向角0-360，后台推送的是正负180，前端做处理显示0-360
+        }
+        contentArr[x].value = Math.floor(headingAir) + '°'
+      } else if (contentArr[x].name == '俯仰角') {
+        let pitchAir = 0
+        if (
+          entity.properties?.airplaneAction?._value &&
+          entity.properties?.airplaneAction?._value.pitch &&
+          typeof entity.properties?.airplaneAction?._value.pitch != 'undefined'
+        ) {
+          pitchAir = entity.properties?.airplaneAction?._value.pitch
+        }
+        contentArr[x].value = Math.floor(pitchAir) + '°'
+      } else if (contentArr[x].name == '滚转角') {
+        let rollAir = 0
+        if (
+          entity.properties?.airplaneAction?._value &&
+          entity.properties?.airplaneAction?._value.roll &&
+          typeof entity.properties?.airplaneAction?._value.roll != 'undefined'
+        ) {
+          // rollAir = entity.properties?.airplaneAction?._value.roll.toFixed(3)
+          rollAir = entity.properties?.airplaneAction?._value.roll
+        }
+        contentArr[x].value = rollAir + '°'
+      } else if (contentArr[x].name == '速度') {
+        let typeAir = entity.properties?.airplaneAction?._value.type
+        // 速度 m/s 换算为 km/h
+        let speedKm = 0
+        if (
+          entity.properties?.airplaneAction?._value?.speed &&
+          typeof entity.properties?.airplaneAction?._value.speed != 'undefined'
+        ) {
+          speedKm =
+            Number(entity.properties?.airplaneAction?._value?.speed) * 3.6
+          // speedKm = speedKm.toFixed(3)
+        }
+
+        if (store.state.sceneModule.isReplayType) {
+          //复盘功能下根据两点计算出的速度
+          contentArr[x].value = (this.speedData ? this.speedData : 0) + 'km/h'
+        } else {
+          contentArr[x].value = Math.floor(speedKm) + 'km/h'
+        }
+      }
+    }
+  }
+  //根据两点计算速度
+  getSpeedByTwoPoint(curPositionGraphic) {
+    // 计算速度和方向
+    if (this.lastCartesian && this.lastTime) {
+      let currentTime = this.viewer.clock.currentTime
+      // 计算速度
+      let lastPositionGraphic = this.cartToGraphic(this.lastCartesian)
+      let lastLng = lastPositionGraphic.lng
+      let lastLat = lastPositionGraphic.lat
+      let curLng = curPositionGraphic.lng
+      let curLat = curPositionGraphic.lat
+      let seconds =
+        (this.Cesium.JulianDate.toDate(currentTime).getTime() -
+          this.Cesium.JulianDate.toDate(this.lastTime).getTime()) /
+        1000
+      let distance = this.getDistance(lastLat, lastLng, curLat, curLng)
+      let speed = distance / seconds
+      if (!window.MSIMEarth.defined(speed) || typeof speed == 'undefined')
+        return
+      this.speedData = (speed * 3.6).toFixed(3)
+    }
+  }
+  // 计算两点间的距离(单位: m)
+  getDistance(lat1, lng1, lat2, lng2) {
+    let EARTH_RADIUS = 6378137.0
+    let PI = Math.PI
+
+    function getRad(d) {
+      return (d * PI) / 180.0
+    }
+    let f = getRad((lat1 + lat2) / 2)
+    let g = getRad((lat1 - lat2) / 2)
+    let l = getRad((lng1 - lng2) / 2)
+
+    let sg = Math.sin(g)
+    let sl = Math.sin(l)
+    let sf = Math.sin(f)
+
+    let s, c, w, r, d, h1, h2
+    let a = EARTH_RADIUS
+    let fl = 1 / 298.257
+
+    sg = sg * sg
+    sl = sl * sl
+    sf = sf * sf
+
+    s = sg * (1 - sl) + (1 - sf) * sl
+    c = (1 - sg) * (1 - sl) + sf * sl
+
+    w = Math.atan(Math.sqrt(s / c))
+    r = Math.sqrt(s * c) / w
+    d = 2 * w * a
+    h1 = (3 * r - 1) / 2 / c
+    h2 = (3 * r + 1) / 2 / s
+
+    return d * (1 + fl * (h1 * sf * (1 - sg) - h2 * (1 - sf) * sg))
+  }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <title>气象告警扩展数据结构设计文档</title>
+  <style>
+    body{font-family:Microsoft YaHei, Arial; margin:30px; line-height:1.6}
+    h1,h2,h3{color:#2c3e50}
+    pre{background:#f7f8fa;padding:15px;border-radius:8px;overflow-x:auto}
+    .section{margin-bottom:40px}
+    .code-title{font-weight:bold;color:#2980b9}
+    .enum-box{background:#e8f4fd;padding:10px 15px;border-radius:6px}
+  </style>
+</head>
+<body>
+<h1>气象告警扩展数据结构设计文档（前端渲染专用）</h1>
+
+<div class="section">
+  <h2>1. 设计目标</h2>
+  <ul>
+    <li>后端直接下发提示信息，前端不再硬编码匹配 action_type</li>
+    <li>通过 weather_type 缩写判断前端渲染方法</li>
+    <li>支持气象空间范围（经纬度高度盒）</li>
+    <li>支持消息级别，用于前端不同可视化样式</li>
+    <li>支持气象资源地址追溯</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>2. 气象类型枚举（英文缩写）</h2>
+  <div class="enum-box">
+    <strong>weather_type 可选值：</strong>
+    <ul>
+      <li>ICE   = 积冰</li>
+      <li>TURB  = 颠簸</li>
+      <li>WS    = 风切变</li>
+      <li>VIS   = 可见光</li>
+      <li>IR    = 红外</li>
+      <li>AD    = 大气波导</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h2>3. 消息级别枚举</h2>
+  <div class="enum-box">
+    <ul>
+      <li>INFO  = 提示</li>
+      <li>WARN  = 警告</li>
+      <li>ALARM = 告警</li>
+      <li>CRIT  = 严重告警</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h2>4. 最终标准数据结构（英文缩写版）</h2>
+  <p class="code-title">完整 JSON：</p>
+  <pre>{
+  "Data": {
+    "motion_analysis": {
+      "action_type": "LEFT",
+      "pred_hdg_deg": 73,
+      "pitch_deg": 31,
+      "h_dist_m": 4331,
+      "v_dist_m": 540,
+      "pred_time_s": 43,
+      "pred_path": [
+        { "lat": 25.208709, "lon": 121.817667, "alt": 1000 },
+        { "lat": 25.210709, "lon": 121.819667, "alt": 1500 },
+        { "lat": 25.212709, "lon": 121.821667, "alt": 2000 }
+      ],
+      "eta": "2026-05-13T00:02:01Z",
+      "fuel": "85%",
+      "waypoints": [
+        { "lat": 25.208709, "lon": 121.817667, "alt": 1000, "name": "WP1" },
+        { "lat": 25.212709, "lon": 121.821667, "alt": 2000, "name": "WP2" }
+      ],
+      "start_pos": { "lat": 25.208709, "lon": 121.817667, "alt": 1000 },
+      "end_pos": { "lat": 25.212709, "lon": 121.821667, "alt": 2000 },
+      "weapon_stat": [],
+      "sensor_stat": [],
+      "weather": {
+        "type": "TURB",
+        "region": {
+          "min_lat": 25.205,
+          "max_lat": 25.215,
+          "min_lon": 121.815,
+          "max_lon": 121.825,
+          "min_alt": 500,
+          "max_alt": 3000
+        },
+        "res_url": "http://data.sim.com/weather/TURB/20260513"
+      }
+    }
+  },
+  "warn_detail": " you are passing through strong turbulence zone",
+  "msg": {
+    "level": "WARN",
+    "content": "Detected severe turbulence ahead, recommend LEFT turn to avoid"
+  }
+}</pre>
+</div>
+
+<div class="section">
+  <h2>5. 前端渲染逻辑（根据 weather_type 调用对应方法）</h2>
+  <pre>// 前端渲染判断逻辑
+const weatherType = data.Data.motion_analysis.weather.type;
+
+switch (weatherType) {
+  case "ICE":
+    renderIceRegion();    // 积冰
+    break;
+  case "TURB":
+    renderTurbRegion();   // 颠簸
+    break;
+  case "WS":
+    renderWindShear();    // 风切变
+    break;
+  case "VIS":
+    renderVisibleImg();   // 可见光
+    break;
+  case "IR":
+    renderInfraredImg();  // 红外
+    break;
+  case "AD":
+    renderAtmDuct();      // 大气波导
+    break;
+  default:
+    console.log("Unknown weather type");
+}</pre>
+</div>
+
+<div class="section">
+  <h2>6. 前端展示规则</h2>
+  <ul>
+    <li>提示文字：msg.content</li>
+    <li>可视化样式：msg.level</li>
+    <li>气象区域：weather.region 下的经纬度高度范围</li>
+    <li>渲染方式：由 weather.type 唯一决定</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>7. 设计亮点</h2>
+  <ul>
+    <li>全英文缩写，适合前端项目</li>
+    <li>无破坏性扩展，兼容老结构</li>
+    <li>渲染路由完全由后端控制</li>
+    <li>支持空间气象区域绘制</li>
+    <li>支持告警消息、级别、资源追溯</li>
+  </ul>
+</div>
+</body>
+</html>

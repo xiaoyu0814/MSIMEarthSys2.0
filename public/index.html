@@ -1,0 +1,82 @@
+<!--
+ * @Author: 谢小宇 xiexiaoyu@piesat.cn
+ * @Date: 2024-01-10 14:09:31
+ * @LastEditors: 谢小宇 xiexiaoyu@piesat.cn
+ * @LastEditTime: 2026-07-16 09:17:38
+ * @FilePath: \MSIMEarthSysN\public\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <!-- <link rel="stylesheet" type="text/css" href="./static/css/style.css"> -->
+  <link rel="stylesheet" type="text/css" href="/Build/CesiumUnminified/Widgets/widgets.css">
+  <title>XXXXXX</title>
+  <!-- 概念创新运用 -->
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+  <!-- 核心配置文件 - 同步加载 -->
+   <script src="/Build/CesiumUnminified/Cesium.js"></script>
+  <script src="./static/config/path/earthConfig.js"></script>
+  <script src="./static/config/path/production/mapConfig.js"></script>
+  <script src="./static/js/systemURL.js"></script>
+
+  <!-- 引擎核心文件 - 同步加载 -->
+  <!-- <script src="./PIE-SIM.js"></script>
+  <script src="./PIE-SIM1.js"></script> -->
+
+  <!-- 其他脚本 - 延迟加载 -->
+  <!-- 识别相关 -->
+  <script src="./static/config/seed/TweenMax.min.js" defer></script>
+  <script src="./static/config/seed/TimelineMax.min.js" defer></script>
+  <script src="./static/config/seed/EasePack.min.js" defer></script>
+  <script src="./static/config/seed/SplitText.min2.js" defer></script>
+  <script src="./static/config/seed/EaselPlugin.min.js" defer></script>
+  <script src="./static/config/seed/TextPlugin.min.js" defer></script>
+  <script src="./static/config/seed/three.min.js" defer></script>
+  <script src="./static/config/seed/identify.js" defer></script>
+
+  <!-- 识别目标 -->
+  <script src="./static/config/identifyTargets/jquery.min.js" defer></script>
+  <script src="./static/config/identifyTargets/snap.svg-min.js" defer></script>
+
+  <!-- 标绘 -->
+  <!-- <script type="text/javascript" src="./APIPlotPureC.js" defer></script>
+  <script type="text/javascript" src="./PIEMap.js" defer></script> -->
+
+  <!-- 其他库 -->
+  <script src="./turf.min.js" defer></script>
+  <script src="./static/js/tinymce/tinymce.min.js" defer></script>
+  <script src="./static/js/reconnecting-websocket.js" defer></script>
+
+  <!-- web加载ue端依赖 -->
+  <script src="./static/js/webToUE/webRtcPlayer.js" defer></script>
+  <script src="./static/js/webToUE/uePlayerStream.js" defer></script>
+
+  <!-- 热力图 -->
+  <script src="./static/js/heatmap.js" defer></script>
+
+  <!-- 统计信息面板资源 -->
+  <script src="./static/js/infomationStatistics/dataScoll.js" defer></script>
+  <script src="./static/js/infomationStatistics/digitalScroll.js" defer></script>
+  <script src="./static/js/infomationStatistics/jcarousellite.js" defer></script>
+  <script src="./static/js/infomationStatistics/particles.min.js" defer></script>
+
+  <!-- AI聊天 -->
+  <!-- <script src="http://192.168.1.110/embed.min.js" id="LKXMg13AbeEZxd7z" defer> -->
+  </script>
+</body>
+
+</html>
