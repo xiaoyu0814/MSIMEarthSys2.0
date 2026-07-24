@@ -1,0 +1,26 @@
+{
+    "Modes": [
+        {
+            "Beams": [
+                {
+                    "AzimuthMax": 3.141592653589793,
+                    "AzimuthMin": -3.141592653589793,
+                    "ElevationMax": 0.17453292519943295,
+                    "ElevationMin": -1.5707963267948966,
+                    "FOVAzimuthMax": 0.0973893722612836,
+                    "FOVAzimuthMin": -0.0973893722612836,
+                    "FOVElevationMax": 0.0973893722612836,
+                    "FOVElevationMin": -0.0973893722612836,
+                    "RangeMax": 30000,
+                    "RangeMin": 0
+                }
+            ],
+            "Name": "default"
+        }
+    ],
+    "Name": "EnvelopePaintSensor",
+    "Pitch": 0,
+    "Roll": 0,
+    "Tilt": 0,
+    "Yaw": 0
+}

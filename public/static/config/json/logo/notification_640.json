@@ -1,0 +1,52 @@
+{
+  "message_type": "streaming_recognition",
+  "trigger": "streaming_recognition",
+  "timestamp": "2026-01-14 16:20:16",
+  "priority": 75,
+  "data": {
+    "formation_relationship": null,
+    "mission_style": null,
+    "tactical_intent": [
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.7787091666666667,
+        "quality_score": 0.7435458333333334,
+        "atomic_actions": [
+          "None"
+        ],
+        "atomic_sequence": [
+          "None",
+          "None"
+        ],
+        "recognition_method": "streaming_quick_enhanced",
+        "data_frames": 2,
+        "quality_checks": {
+          "data_valid": true,
+          "no_nan_inf": true,
+          "consistency_ok": true,
+          "quality_threshold_passed": true
+        },
+        "is_streaming": true
+      }
+    ],
+    "threat_assessment": [],
+    "streaming_info": {
+      "total_latency_ms": 0.42039999971166253,
+      "recognition_latency_ms": 0.05419999797595665,
+      "data_frames": 2,
+      "recognition_method": "streaming_quick_enhanced",
+      "quality_score": 0.7435458333333334,
+      "quality_level": "中等质量",
+      "note": "流式识别结果（2ms快速识别，初步结果，质量评分: 0.74，质量等级: 中等质量）"
+    },
+    "trigger_detail": {
+      "streaming_recognition": true,
+      "recognition_method": "streaming_quick",
+      "note": "流式识别结果（2ms快速识别，初步结果）"
+    }
+  },
+  "push_time": "2026-01-14 16:20:16",
+  "message_id": 2
+}

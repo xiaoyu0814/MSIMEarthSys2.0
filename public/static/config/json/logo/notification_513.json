@@ -1,0 +1,167 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2026-01-09 21:45:40",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LeadTrail",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.9338321685791016,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 0.999,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 99.9%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.930832028388977,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.9366484880447388,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "threat_level": "Medium",
+        "threat_score": 48.31205119255952,
+        "intent_score": 50.0,
+        "capability_score": 45.79296449924338,
+        "opportunity_score": 51.43657588117109,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.8分（权重: 35%） | 机会评估: 51.4分→威胁: 48.6分（权重: 15%） | 综合威胁评分: 48.3分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Medium",
+        "threat_score": 48.18488288934887,
+        "intent_score": 50.0,
+        "capability_score": 50.12177974717628,
+        "opportunity_score": 62.38493348108552,
+        "confidence": 0.9654160141944885,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 50.1分（权重: 35%） | 机会评估: 62.4分→威胁: 37.6分（权重: 15%） | 综合威胁评分: 48.2分 | 评估置信度: 96.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Medium",
+        "threat_score": 47.03047238705054,
+        "intent_score": 50.0,
+        "capability_score": 46.916230918469765,
+        "opportunity_score": 62.60138956275921,
+        "confidence": 0.9683242440223694,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 46.9分（权重: 35%） | 机会评估: 62.6分→威胁: 37.4分（权重: 15%） | 综合威胁评分: 47.0分 | 评估置信度: 96.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Medium",
+        "threat_score": 46.94181531826582,
+        "intent_score": 50.0,
+        "capability_score": 46.530360870095514,
+        "opportunity_score": 62.29207324178407,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 46.5分（权重: 35%） | 机会评估: 62.3分→威胁: 37.7分（权重: 15%） | 综合威胁评分: 46.9分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Medium",
+        "threat_score": 48.824824833812485,
+        "intent_score": 50.0,
+        "capability_score": 48.34990879192959,
+        "opportunity_score": 53.98428828908578,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 48.3分（权重: 35%） | 机会评估: 54.0分→威胁: 46.0分（权重: 15%） | 综合威胁评分: 48.8分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Initial",
+        "phase_name": "初始阶段",
+        "confidence": 0.0,
+        "transition_time": "2026-01-09 21:45:40",
+        "indicators": {
+          "phase": "Initial",
+          "mission_type": "AEW",
+          "formation_action": "LeadTrail",
+          "unit_count": 5,
+          "threat_count": 5,
+          "threat_levels": [
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 0
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Initial",
+      "phase_name": "初始阶段",
+      "confidence": 0.0
+    }
+  },
+  "priority": 70,
+  "push_time": "2026-01-09 21:45:40",
+  "message_id": 10
+}

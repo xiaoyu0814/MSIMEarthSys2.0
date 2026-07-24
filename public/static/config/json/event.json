@@ -1,0 +1,62 @@
+[
+  {
+    "flyArr": [
+      {
+        "position": {
+          "x": 121.04,
+          "y": 24.65,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "红方预警机根据侦察情报下达攻击指令，九天无人机投放自杀无人机蜂群",
+        "jd": 1
+      }
+    ],
+    "time": "2025-09-12 10:00:00",
+    "id": "1",
+    "parentId": "13",
+    "group": "九天无人机",
+    "title": "自杀性攻击",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000
+  },
+    {
+    "flyArr": [
+      {
+        "position": {
+          "x": 121.04,
+          "y": 23.65,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "红方预警机根据侦察情报下达攻击指令，九天无人机投放自杀无人机蜂群",
+        "jd": 1
+      }
+    ],
+    "time": "2025-09-12 10:05:00",
+    "id": "2",
+    "parentId": "13",
+    "group": "九天无人机",
+    "title": "自杀性攻击2",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000
+  }
+]

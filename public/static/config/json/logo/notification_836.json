@@ -1,0 +1,140 @@
+{
+  "message_type": "formation_change",
+  "trigger": "formation_change",
+  "timestamp": "2026-01-14 16:55:26",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LineAbreast",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.6009612083435059,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 0.999,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 99.9%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "hvaa1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "hvaa1",
+        "threat_level": "Medium",
+        "threat_score": 60.45284734799654,
+        "intent_score": 50.0,
+        "capability_score": 79.56219135655815,
+        "opportunity_score": 49.292797511992056,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 79.6分（权重: 35%） | 机会评估: 49.3分→威胁: 50.7分（权重: 15%） | 综合威胁评分: 60.5分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Medium",
+        "threat_score": 43.19768146593405,
+        "intent_score": 50.0,
+        "capability_score": 46.84906919936831,
+        "opportunity_score": 87.99661835896569,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 46.8分（权重: 35%） | 机会评估: 88.0分→威胁: 12.0分（权重: 15%） | 综合威胁评分: 43.2分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Medium",
+        "threat_score": 42.52014512152739,
+        "intent_score": 50.0,
+        "capability_score": 44.89032576628786,
+        "opportunity_score": 87.94312597782238,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 44.9分（权重: 35%） | 机会评估: 87.9分→威胁: 12.1分（权重: 15%） | 综合威胁评分: 42.5分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Medium",
+        "threat_score": 42.72057695526179,
+        "intent_score": 50.0,
+        "capability_score": 44.98066354994857,
+        "opportunity_score": 86.81770191480135,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.0分（权重: 35%） | 机会评估: 86.8分→威胁: 13.2分（权重: 15%） | 综合威胁评分: 42.7分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Medium",
+        "threat_score": 42.870472384873906,
+        "intent_score": 50.0,
+        "capability_score": 45.365225935878414,
+        "opportunity_score": 86.71571128455693,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.4分（权重: 35%） | 机会评估: 86.7分→威胁: 13.3分（权重: 15%） | 综合威胁评分: 42.9分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "formation_change": true
+    }
+  },
+  "priority": 60,
+  "push_time": "2026-01-14 16:55:26",
+  "message_id": 84
+}

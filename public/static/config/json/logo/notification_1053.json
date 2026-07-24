@@ -1,0 +1,272 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2026-01-21 17:01:53",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LineAbreast",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.85,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 0.998,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 99.8%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8607349528940164,
+        "atomic_actions": [
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8610751574357516,
+        "atomic_actions": [
+          "None",
+          "TurnToHeading",
+          "TurnToHeading",
+          "AutopilotRollAngle",
+          "None",
+          "TurnToHeading",
+          "None",
+          "AutopilotRollAngle",
+          "TurnToHeading",
+          "TurnToHeading",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "TurnToHeading",
+          "TurnToHeading"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8763814309523308,
+        "atomic_actions": [
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "AutopilotRollAngle",
+          "None",
+          "None",
+          "AutopilotRollAngle",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8753007511856504,
+        "atomic_actions": [
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8921834790614337,
+        "atomic_actions": [
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "threat_level": "Medium",
+        "threat_score": 45.18983242502497,
+        "intent_score": 50.0,
+        "capability_score": 53.052270366557664,
+        "opportunity_score": 89.18974802180139,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 53.1分（权重: 35%） | 机会评估: 89.2分→威胁: 10.8分（权重: 15%） | 综合威胁评分: 45.2分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Medium",
+        "threat_score": 44.64480396279973,
+        "intent_score": 50.0,
+        "capability_score": 51.99850370645501,
+        "opportunity_score": 90.36448222973016,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 52.0分（权重: 35%） | 机会评估: 90.4分→威胁: 9.6分（权重: 15%） | 综合威胁评分: 44.6分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Medium",
+        "threat_score": 44.01228436209035,
+        "intent_score": 50.0,
+        "capability_score": 50.198854640373035,
+        "opportunity_score": 90.38209841360143,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 50.2分（权重: 35%） | 机会评估: 90.4分→威胁: 9.6分（权重: 15%） | 综合威胁评分: 44.0分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Medium",
+        "threat_score": 43.65774356232323,
+        "intent_score": 50.0,
+        "capability_score": 48.99473590202204,
+        "opportunity_score": 89.93609335589655,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 49.0分（权重: 35%） | 机会评估: 89.9分→威胁: 10.1分（权重: 15%） | 综合威胁评分: 43.7分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Medium",
+        "threat_score": 43.427685889609776,
+        "intent_score": 50.0,
+        "capability_score": 48.192838475933094,
+        "opportunity_score": 89.59871717977873,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 48.2分（权重: 35%） | 机会评估: 89.6分→威胁: 10.4分（权重: 15%） | 综合威胁评分: 43.4分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Initial",
+        "phase_name": "初始阶段",
+        "confidence": 0.0,
+        "transition_time": "2026-01-21 17:01:53",
+        "indicators": {
+          "phase": "Initial",
+          "mission_type": "AEW",
+          "formation_action": "LineAbreast",
+          "unit_count": 5,
+          "threat_count": 5,
+          "threat_levels": [
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 0
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Initial",
+      "phase_name": "初始阶段",
+      "confidence": 0.0
+    }
+  },
+  "priority": 70,
+  "push_time": "2026-01-21 17:01:53",
+  "message_id": 10
+}

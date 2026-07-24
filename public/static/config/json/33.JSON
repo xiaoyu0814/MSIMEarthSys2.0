@@ -1,0 +1,388 @@
+{
+    "last_node_id": 159,
+    "last_link_id": 125,
+    "nodes": [
+        {
+            "id": "KJ-500_3",
+            "type": "CGF/CGF",
+            "pos": [
+                475.85052528503434,
+                203.7979343371591
+            ],
+            "size": {
+                "0": 214.14862060546875,
+                "1": 51.587032318115234
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "in",
+                    "type": "audio",
+                    "link": 100,
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "freqs",
+                    "type": "array",
+                    "links": [
+                        102,
+                        103,
+                        104,
+                        105
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力详情"
+                },
+                {
+                    "name": "samples",
+                    "type": "array",
+                    "links": [
+                        101
+                    ],
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "wz-7无人机编组",
+            "properties": {
+                "id": "KJ-500_3",
+                "fftSize": 2048,
+                "minDecibels": -100,
+                "maxDecibels": -10,
+                "smoothingTimeConstant": 0.5
+            }
+        },
+        {
+            "id": "wz-7_1",
+            "type": "CGF/CGF",
+            "pos": [
+                965.2761300793446,
+                194.22374703247164
+            ],
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 103,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-7",
+            "properties": {
+                "id": "wz-7_1",
+                "separator": ","
+            }
+        },
+        {
+            "id": "wz-7_2",
+            "type": "CGF/CGF",
+            "pos": [
+                1252.276130079346,
+                399.2237470324711
+            ],
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 105,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-7",
+            "properties": {
+                "id": "wz-7_2",
+                "separator": ","
+            }
+        },
+        {
+            "id": "wz-7_3",
+            "type": "CGF/CGF",
+            "pos": [
+                793.4915304272449,
+                120.3673243762215
+            ],
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 102,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-7",
+            "properties": {
+                "id": "wz-7_3",
+                "separator": ","
+            }
+        },
+        {
+            "id": 131,
+            "type": "audio/media_source",
+            "pos": [
+                284.4915304272461,
+                203.36732437622177
+            ],
+            "size": {
+                "0": 140,
+                "1": 26
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "gain",
+                    "type": "number",
+                    "link": null,
+                    "label": "想定输入"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "audio",
+                    "links": [
+                        100
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "title": "空军",
+            "properties": {
+                "gain": 0.5
+            }
+        },
+        {
+            "id": 133,
+            "type": "basic/set_array",
+            "pos": [
+                715.491530427245,
+                422.36732437622123
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": null,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": 101,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 4
+            }
+        },
+        {
+            "id": "wz-7_4",
+            "type": "CGF/CGF",
+            "pos": [
+                1114.491530427245,
+                287.3673243762216
+            ],
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 104,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-7",
+            "properties": {
+                "id": "wz-7_4",
+                "separator": ","
+            }
+        }
+    ],
+    "links": [
+        [
+            100,
+            131,
+            0,
+            "KJ-500_3",
+            0,
+            "audio"
+        ],
+        [
+            101,
+            "KJ-500_3",
+            1,
+            133,
+            1,
+            "array"
+        ],
+        [
+            102,
+            "KJ-500_3",
+            0,
+            "wz-7_3",
+            0,
+            "string,array"
+        ],
+        [
+            103,
+            "KJ-500_3",
+            0,
+            "wz-7_1",
+            0,
+            "string,array"
+        ],
+        [
+            104,
+            "KJ-500_3",
+            0,
+            "wz-7_4",
+            0,
+            "string,array"
+        ],
+        [
+            105,
+            "KJ-500_3",
+            0,
+            "wz-7_2",
+            0,
+            "string,array"
+        ]
+    ],
+    "groups": [
+        {
+            "title": "中期压制阶段",
+            "bounding": [
+                244,
+                56,
+                1404,
+                483
+            ],
+            "color": "#8AA",
+            "font_size": 24
+        }
+    ],
+    "config": {},
+    "extra": {},
+    "version": 0.4
+}

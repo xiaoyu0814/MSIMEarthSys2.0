@@ -1,0 +1,272 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2026-01-15 16:46:10",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LineAbreast",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.85,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 0.998,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 99.8%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "hvaa1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.891525453715396,
+        "atomic_actions": [
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8591491755699917,
+        "atomic_actions": [
+          "None",
+          "GoToSpeed",
+          "GoToSpeed",
+          "None",
+          "None",
+          "None",
+          "None",
+          "AutopilotRollAngle",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.895241116183893,
+        "atomic_actions": [
+          "None",
+          "GoToSpeed",
+          "GoToSpeed",
+          "None",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "AutopilotRollAngle",
+          "GoToSpeed",
+          "GoToSpeed",
+          "AutopilotRollAngle",
+          "None",
+          "AutopilotRollAngle",
+          "AutopilotRollAngle",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8905819113376557,
+        "atomic_actions": [
+          "None",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "AutopilotRollAngle",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "None",
+          "TurnToHeading"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8956656850000925,
+        "atomic_actions": [
+          "None",
+          "GoToSpeed",
+          "GoToAltitude",
+          "GoToAltitude",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "GoToAltitude",
+          "GoToAltitude",
+          "GoToAltitude",
+          "GoToAltitude",
+          "GoToAltitude",
+          "AutopilotPitchAngle",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading",
+          "TurnToHeading"
+        ]
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "hvaa1",
+        "threat_level": "Medium",
+        "threat_score": 56.688666940801184,
+        "intent_score": 50.0,
+        "capability_score": 69.91578171088123,
+        "opportunity_score": 51.87904438671494,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 69.9分（权重: 35%） | 机会评估: 51.9分→威胁: 48.1分（权重: 15%） | 综合威胁评分: 56.7分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Medium",
+        "threat_score": 46.615033162889674,
+        "intent_score": 50.0,
+        "capability_score": 45.080905208548565,
+        "opportunity_score": 61.08855773401549,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.1分（权重: 35%） | 机会评估: 61.1分→威胁: 38.9分（权重: 15%） | 综合威胁评分: 46.6分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Medium",
+        "threat_score": 49.15434648276827,
+        "intent_score": 50.0,
+        "capability_score": 52.00740698307847,
+        "opportunity_score": 60.32163974206133,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 52.0分（权重: 35%） | 机会评估: 60.3分→威胁: 39.7分（权重: 15%） | 综合威胁评分: 49.2分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Medium",
+        "threat_score": 60.121800099101776,
+        "intent_score": 50.0,
+        "capability_score": 79.56219135655815,
+        "opportunity_score": 51.49977917129051,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 79.6分（权重: 35%） | 机会评估: 51.5分→威胁: 48.5分（权重: 15%） | 综合威胁评分: 60.1分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Medium",
+        "threat_score": 60.205326598579994,
+        "intent_score": 50.0,
+        "capability_score": 79.56219135655815,
+        "opportunity_score": 50.9429358414357,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 79.6分（权重: 35%） | 机会评估: 50.9分→威胁: 49.1分（权重: 15%） | 综合威胁评分: 60.2分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Initial",
+        "phase_name": "初始阶段",
+        "confidence": 0.0,
+        "transition_time": "2026-01-15 16:46:10",
+        "indicators": {
+          "phase": "Initial",
+          "mission_type": "AEW",
+          "formation_action": "LineAbreast",
+          "unit_count": 5,
+          "threat_count": 5,
+          "threat_levels": [
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 0
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Initial",
+      "phase_name": "初始阶段",
+      "confidence": 0.0
+    }
+  },
+  "priority": 70,
+  "push_time": "2026-01-15 16:46:10",
+  "message_id": 10
+}

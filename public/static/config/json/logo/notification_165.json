@@ -1,0 +1,97 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2025-12-31 15:44:49",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LineAbreast",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.9747965931892395,
+      "participants": [],
+      "unit_count": 2
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 1.0,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 100.0%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.38124001026153564,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8233614563941956,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Low",
+        "threat_score": 45.97209239861634,
+        "intent_score": 50.0,
+        "capability_score": 57.34883542461812,
+        "opportunity_score": 94.0,
+        "confidence": 0.6906200051307678,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 57.3分（权重: 35%） | 机会评估: 94.0分→威胁: 6.0分（权重: 15%） | 综合威胁评分: 46.0分 | 评估置信度: 69.1%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Medium",
+        "threat_score": 45.54130941956361,
+        "intent_score": 50.0,
+        "capability_score": 56.11802691303888,
+        "opportunity_score": 94.0,
+        "confidence": 0.9116807281970978,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 56.1分（权重: 35%） | 机会评估: 94.0分→威胁: 6.0分（权重: 15%） | 综合威胁评分: 45.5分 | 评估置信度: 91.2%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Initial",
+        "phase_name": "初始阶段",
+        "confidence": 0.0,
+        "transition_time": "2025-12-31 15:44:49",
+        "indicators": {
+          "phase": "Initial",
+          "mission_type": "AEW",
+          "formation_action": "LineAbreast",
+          "unit_count": 2,
+          "threat_count": 2,
+          "threat_levels": [
+            "Low",
+            "Medium"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 0
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Initial",
+      "phase_name": "初始阶段",
+      "confidence": 0.0
+    }
+  },
+  "priority": 70,
+  "push_time": "2025-12-31 15:44:49",
+  "message_id": 7
+}

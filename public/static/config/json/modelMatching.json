@@ -1,0 +1,5635 @@
+﻿{
+  "modelBasicConfig": {
+    "MechDog": {
+      "MODEL": {
+        "modelname": "3DModel/jiqigou.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "TransportMechDog": {
+      "MODEL": {
+        "modelname": "3DModel/jiqigou.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AttackMechDog": {
+      "MODEL": {
+        "modelname": "3DModel/jiqigou.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "M142Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "DF_21C_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_26C_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "UnmannedMilitaryVehicle": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "PCL_191Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "S_400_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+
+    "LiZhuaCombatRobot": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "RuiZhuaVU_T1": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Kapa": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "STarget": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "LandingCraft": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "_076_LHA": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Destroyer052D": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Destroyer052C": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "RQ_11_SIXDOF":{
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "WJ_500_SIXDOF":{
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Frigate054B": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "HQ_9B_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      }
+    },
+    "HQ_9B": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      }
+    },
+    "Destroyer055": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "FrigateChenggong": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "CarrierFord": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 30,
+        "scale": 0.1
+      }
+    },
+    "FrigateJiYang": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "LHA075": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Carrier001": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 30,
+        "scale": 0.1
+      }
+    },
+    "DestroyerKeelung": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 30,
+        "scale": 0.1
+      }
+    },
+    "CarrierNimitz": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "LandingHelicopterAssault": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "TiconderogaCruiser": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "BurkeDestroyer": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "LandingShipDock": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      }
+    },
+    "LandingPlatformDock": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      }
+    },
+    "NimitzCarrier": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Burke3Destroyer": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "BASE_SAT": {
+      "MODEL": {
+        "modelname": "wxModel/LD.glb",
+        "scale": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ELECSAT": {
+      "MODEL": {
+        "modelname": "wxModel/电子_WX.gltf",
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "OpticalSatellite": {
+      "MODEL": {
+        "modelname": "wxModel/电子_WX.gltf",
+        "minimumPixelSize": 15,
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "OPTSAT": {
+      "MODEL": {
+        "modelname": "wxModel/KJG.gltf",
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "J_11B": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "scale": 1
+      }
+    },
+    "J_11B_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "scale": 1
+      }
+    },
+    "Y_9": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "scale": 1,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      }
+    },
+    "Y_8": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "scale": 1,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      }
+    },
+    "yun_9": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "scale": 1,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      }
+    },
+    "JL_10": {
+      "MODEL": {
+        "modelname": "3DModel/jiao10.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      }
+    },
+    "JL_10_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/jiao10.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      }
+    },
+    "FLARE": {
+      "MODEL": {
+        "modelname": "3DModel/grd2.glb",
+        "minimumPixelSize": 0.1
+      }
+    },
+    "SIMPLE_MRM": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GenericSAM": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CJ_100_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CJ_10_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "M163":{
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "YJ_63": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FIRES_122MM_ROCKET": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_63B": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SM_6": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_38": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_39": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_5": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_8": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_10": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 17
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_11": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SM_2": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "BGM_109": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_18A":{
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MK_31": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_12": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_21C":{
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_15": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AIM_120A": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 17
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AIM_9X_BASE": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_21B": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HAWK": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "BA_7": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FT_5": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 17
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SAL_AKD_10": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "S_8": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "LARGE_SAM": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RAUAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Orlan_10": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "UAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "TB2_UAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "UCAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FH_97A": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HSU_001_LDUUV": {
+      "MODEL": {
+        "modelname": "3DModel/qianhangqi.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CruiserKirov": {
+      "MODEL": {
+        "modelname": "3DModel/qst.glb",
+        "minimumPixelSize": 20,
+        "scale": 50
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MQ-9": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "MQ-1C": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "WZ_7": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "GJ_11_UAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "UGVKrot": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "SS_UAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "WZ_8": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "WZ_9": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "WZ_8_P6DOF":{
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "WZ_10": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "GJ_2": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "GJ_11": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "CLIENT_SUICIDE_DRONE": {
+      "MODEL": {
+        "modelname": "3DModel/简易无人机.glb",
+        "minimumPixelSize": 20,
+        "scale":0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "J_6W": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 30
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "KV_005H": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 30
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "FengQun_200_1": {
+      "MODEL": {
+        "modelname": "3DModel/简易无人机.glb",
+        "minimumPixelSize": 20,
+        "scale":0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "LEADER_SUICIDE_DRONE": {
+      "MODEL": {
+        "modelname": "3DModel/简易无人机.glb",
+        "minimumPixelSize": 20,
+        "scale":0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "KVD_001": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "_hkmjDestroyer": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "_055_destroyer": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "_071DockLandingShip": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb",
+        "minimumPixelSize": 15,
+        "scale": 0.1
+      }
+    },
+    "_075Destroyer": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb"
+      },
+      "minimumPixelSize": 15,
+      "scale": 0.1
+    },
+    "YZ_9": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      }
+    },
+    "YG_9": {
+      "MODEL": {
+        "modelname": "3DModel/YUNGAN9.glb"
+      }
+    },
+    "YG_8": {
+      "MODEL": {
+        "modelname": "3DModel/YUNGAN9.glb"
+      }
+    },
+    "KJ_500": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "KJ_500H": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "J_20": {
+      "MODEL": {
+        "modelname": "3DModel/J20.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        80e5
+      ]
+    },
+    "H_6K": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        "silhouetteSize": 2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "H_6M": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "H_6": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "H_6H": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "H_6K_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "8888F_35A": {
+      "MODEL": {
+        "modelname": "3DModel/F35.glb"
+      }
+    },
+    "F_22+_": {
+      "MODEL": {
+        "modelname": "3DModel/F22.glb"
+      }
+    },
+    "F22": {
+      "MODEL": {
+        "modelname": "3DModel/F22.glb"
+      }
+    },
+    "BLUE_STRIKER": {
+      "MODEL": {
+        "modelname": "3DModel/F22.glb"
+      }
+    },
+    "F_16V": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "F_16": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "FA_18E_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "F_35A": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "F_15J": {
+      "MODEL": {
+        "modelname": "3DModel/F16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "F_15C": {
+      "MODEL": {
+        "modelname": "3DModel/F16.glb"
+      }
+    },
+    "EF_18G": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "E_2C": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      }
+    },
+    "Tank99": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Tank96": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+
+    "Tank15": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "TANK": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "dis2_3_10": {
+      "MODEL": {
+        "modelname": "3DModel/jiao10.glb"
+      }
+    },
+    "dis2_3_12": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb"
+      }
+    },
+    "dis2_3_13": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb"
+      }
+    },
+    "dis2_3_15": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb"
+      }
+    },
+    "dis2_1_999": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb"
+      }
+    },
+    "BlueFighter": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "RedFighter": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb"
+      }
+    },
+    "quzhujianchuan": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      }
+    },
+    "Mazagon": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      }
+    },
+    "futehao": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb"
+      }
+    },
+    "_003Carrier": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb"
+      }
+    },
+    "kejianguang": {
+      "MODEL": {
+        "modelname": "wxModel/KJG.gltf"
+      }
+    },
+    "IRSAT": {
+      "MODEL": {
+        "modelname": "wxModel/KJG.gltf"
+      }
+    },
+    "Z_10": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb"
+      }
+    },
+    "Z_9D": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb"
+      }
+    },
+    "ZTZ_99": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "GenericArmoredVehicle": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Mirage_2000": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "EP_3": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      }
+    },
+    "DJI_UAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      }
+    },
+
+    "Heron": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      }
+    },
+    "B_2": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb"
+      }
+    },
+    "Mi_28": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb"
+      }
+    },
+    "C_5": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      }
+    },
+    "RF_16": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "E_767": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Ka_52": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "RQ_4": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Sokil_300": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Drone": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Su_35": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "E_3": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "JL_8": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "F_15D": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Z_9": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Y_20": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "EA_18G": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "U_2": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "EC_1": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "EC_130H": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_11BS": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "YG_8A": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "minimumPixelSize": 30
+      }
+    },
+    "J_10B": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Su_27": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "C_17": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "B_52": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "JJ_9": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "F_2": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "IL_76": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "E_2K": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Su_30": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "KC_135": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Y_7": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "B_1B": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_10C": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_10CE": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "JF_17": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "ZDK_03": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "dassaultRafale": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Su_30MKI": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "MIG_29UPG": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "A_50EI": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "HQ_9A_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "PGZ_09": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Stormer_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "IFV_09": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "VU_T10": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+
+    "PCL_191_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "HQ_9A": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "HY_6": {
+      "MODEL": {
+        "modelname": "3DModel/H6K.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "YLG_9": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "YTG_9": {
+      "MODEL": {
+        "modelname": "3DModel/y9.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "IDF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Kj_2000": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "E_2D": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "YS_1IEA": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "RC_135": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_10A": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Kj_200": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "C_130HE": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "RF_5E": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "MiG_29": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "F_22": {
+      "MODEL": {
+        "modelname": "3DModel/F22.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "HYJ_7": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Z_20": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "YY_20A": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "JZ_8F": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_7E": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_7G": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "C_130": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Z_8": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "An_124": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "IL_78": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "JH_7A": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "KJ_500A": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "KJ_600_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "KC_10A": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "J_16": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "WZ_6": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "YZ_8": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "AH_64": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Mi_171": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "danyaoku": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "GenericSAM_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "Aster30_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AAA_95": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "AAA_04A": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "AAA_09_35": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+
+    "JianMoVehicle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "minfang": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "SkyBow_1_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SkyBow_2_Vehicle":  {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_12_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "C_300_2_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "PAC_2_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "PAC_3_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb"
+      }
+    },
+    "CHAFF": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "TianXing_1": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "HF_2E_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Cannon57mmShell": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RED_DESTROYER": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "LEADER": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "RUAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "WSF_PLATFORM": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 25
+      }
+    },
+    "COMSAT": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "COMSATBLUE": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "AWACS": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "FIGHTER_BOMBER": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "RedAWACS": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "TEST_AIR_MOVER": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "RedFIGHTER_BOMBER": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "JAMMER_PLATFORM": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "JAMMER_PLATFORM_fasle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "SHIP": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "SOJ": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "RED_STRIKER_escort": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "RED_STRIKER_flanker": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "Rifle_Type_95Bullet": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 5
+      }
+    },
+    "J_16D": {
+      "MODEL": {
+        "modelname": "3DModel/J16.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 20
+      }
+    },
+    "J_16D_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/J16.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 20
+      }
+    },
+    "H_6N": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 20
+      }
+    },
+    "RED_FIGHTER": {
+      "MODEL": {
+        "modelname": "3DModel/J20.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 20
+      }
+    },
+    "BLUE_FIGHTER": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 20
+      }
+    },
+    "ESCORT": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "scale": 0.1,
+        "minimumPixelSize": 20
+      }
+    },
+    "PAC_3_Radar": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SHORT_RANGE_IR_MISSILE_BASE": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Cannon155mmShell":{
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MEDIUM_RANGE_RADAR_MISSILE": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_15E": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "LD_8A": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FT_3": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "TankM48H":{
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "YJ_91": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_21": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_41_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_17_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_15_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_16": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+
+      "labelDisplayByDistance": [0, 100e5]
+    },
+    "DF_16B": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+
+      "labelDisplayByDistance": [0, 100e5]
+    },
+    "DF_16B_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 15,
+        "scale": 0.2
+      },
+
+      "labelDisplayByDistance": [0, 100e5]
+    },
+    "TankCompany": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "unmanned_stealth_tanker": {
+      "MODEL": {
+        "modelname": "3DModel/J20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "TiconderogaCG": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "JARI_USV": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "DA_20": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "scale": 1
+      }
+    },
+    "DCA": {
+      "MODEL": {
+        "modelname": "3DModel/J11.glb",
+        "scale": 1
+      }
+    },
+    "AA_10": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PLZ_07": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Lancet": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AS_20": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Shaheen": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            0,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "DF_26C_LAUNCHER": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Sea_based_X_band_rader": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+
+    "_055D": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FrigateChiYang": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+
+    "_052D": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerKeeLung": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DS1_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "MQ_9": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "MQ_9B": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Hermes_450": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "WingLoongIIUAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Heron_UAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "TB2": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Skyline": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "BukM3_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Starlink": {
+      "MODEL": {
+        "modelname": "wxModel/电子_WX.gltf",
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "PHL_16_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_21_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PCL_191": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Razpak": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Khibiny": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Daksh": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ElectronicWarfareVehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Uran_9": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AAGun35mmShell":{
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FengQun_200": {
+      "MODEL": {
+        "modelname": "3DModel/简易无人机.glb",
+        "minimumPixelSize": 20,
+        "scale":0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FengQun_200Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "SR_5_With_Feilong_60BVehicle": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FrigateChengKung": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Ironclad": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AA_11": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Feilong_60B": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AA_12": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "BuffaloCargoVehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Truck": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "HaropLauncherTruck": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Shahed_136_LauncherTruck": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+
+    "PCL_171_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "SY_400_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Qimingxing_50": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CH_4B_UAV": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CH_5": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 40
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CH_5_SIXDOF": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb",
+        "minimumPixelSize": 40
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Mohajer_6": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CH_7": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MQ_1C": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Switchblade_300": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+
+    "WingLoongIII": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HALE_UAV_EW": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CommCompany": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "AIM_9X": {
+      "modelname": "3DModel/PL_15E.glb",
+      "minimumPixelSize": 15
+    },
+    "USV_MAGURAV5": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SeaBaby": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MaguraV5": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "_901Ship": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+
+    "MissileBoatIvanovets": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PatrolBoat22160": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "THAAD_LAUNCHER": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_16A_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HAWK_Launcher": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "ZBD_05A": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "RadarSite150km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "IFV_04": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Orca_LDUUV": {
+      "MODEL": {
+        "modelname": "3DModel/qianhangqi.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SuicideUUV": {
+      "MODEL": {
+        "modelname": "3DModel/qianhangqi.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SubmarineColumbia": {
+      "MODEL": {
+        "modelname": "3DModel/qst.glb",
+        "minimumPixelSize": 20,
+        "scale": 50
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SubmarineLosAngeles": {
+      "MODEL": {
+        "modelname": "3DModel/qst.glb",
+        "minimumPixelSize": 20,
+        "scale": 50
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+
+    "HS_880_6000": {
+      "MODEL": {
+        "modelname": "3DModel/qianhangqi.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Submarine093A": {
+      "MODEL": {
+        "modelname": "3DModel/qst.glb",
+        "minimumPixelSize": 20,
+        "scale": 50
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DestroyerBurke": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "LPDSanAntonio": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+
+    "Carrier003": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Carrier002": {
+      "MODEL": {
+        "modelname": "3DModel/hkmj.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CruiserTiconderoga": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Frigate056A": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "LSD071": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "LHA076": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AOE901": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "KJ_600": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "HVAA": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "KJ_200": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+
+    "J_20ISC": {
+      "MODEL": {
+        "modelname": "3DModel/J20.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "J_20A": {
+      "MODEL": {
+        "modelname": "3DModel/J20.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "J_15T": {
+      "MODEL": {
+        "modelname": "3DModel/J16.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YY_20_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "YY_20": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "FA_18E": {
+      "MODEL": {
+        "modelname": "3DModel/JH8F.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "TU22M3": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "TU95MS": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "TU160": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "F_35C": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "Jaguar": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "BZK_005A": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "BZK_005E": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "BZK_007": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Harpy": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "JWS01": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "JWS03": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "XQ_58A": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "E_2D_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "EA_18G_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "F_16V_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "IDF_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "J_15_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17,
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      }
+    },
+    "J_16_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_20_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/J20.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        80e5
+      ]
+    },
+    "Destroyer051C": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerAtago": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerKongo": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerMaya": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerAkitsuki": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerAsahi": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerTakanami": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerMurasame": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerAsagiri": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "DestroyerHatakaze": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "HelicopterDestroyerHyuga": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "HelicopterDestroyerIzumo": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Frigate054A": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "Frigate056": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "SubmarineTaigei": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "SubmarineSoryu": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "SubmarineOyashio": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.1
+      }
+    },
+    "AntiShipUUV": {
+      "MODEL": {
+        "modelname": "3DModel/qianhangqi.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "E_7": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "KJ_500_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1,
+        "minimumPixelSize": 40
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "KJ_2000": {
+      "MODEL": {
+        "modelname": "3DModel/KJ500.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            200
+          ]
+        },
+        "silhouetteSize": 1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "YG_8_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/YUNGAN9.glb"
+      }
+    },
+    "YG_9_P6DOF": {
+      "MODEL": {
+        "modelname": "3DModel/YUNGAN9.glb"
+      }
+    },
+    "F_14": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "F_15E": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "FA_18F": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "F_35B": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "Su_30SM": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "SU35": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "Mirage2000": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "Rafale": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "EF_2000": {
+      "MODEL": {
+        "modelname": "3DModel/f16.glb",
+        "minimumPixelSize": 17
+      }
+    },
+    "J_15": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_15D": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "J_35": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "JJ_7A": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "JL_9": {
+      "MODEL": {
+        "modelname": "3DModel/J10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "KC_46A": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "KC_767": {
+      "MODEL": {
+        "modelname": "3DModel/y20.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "B_52H": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        "silhouetteSize": 2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "B_21": {
+      "MODEL": {
+        "modelname": "3DModel/h6.glb",
+        "silhouetteColor": {
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        "silhouetteSize": 2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "P_8A": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "P_3C": {
+      "MODEL": {
+        "modelname": "3DModel/055quzhujian.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e3
+      ]
+    },
+    "KVD_002": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MQ_25": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RQ_180": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "TargetDrone": {
+      "MODEL": {
+        "modelname": "3DModel/wz7.glb"
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AH_1ZW": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "AH_1Z": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "HH_60G": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Z_18": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Z_19": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "MQ_8B": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "MV_22": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "SH_60K": {
+      "MODEL": {
+        "modelname": "3DModel/zhi10.glb",
+        "minimumPixelSize": 20
+      }
+    },
+    "Infantry": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ZTZ_96": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "ZTQ_15": {
+      "MODEL": {
+        "modelname": "3DModel/tank.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "VE37": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "VE38": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "CoastalArtillery": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "XZ123": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "PGZ_95": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "PGZ_04A": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "M42": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ZBD_04": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "ZBD_09": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "ZTD_05": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "SharpClawVU_T1": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "scale": 0.5,
+        "minimumPixelSize": 10
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Tent": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Building": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "CMDR": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Base": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "OilRefinery": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "OilTank": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "TARGET": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Fortress": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Airport": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "RadarSite50km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RadarSite100km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RadarSite200km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RadarSite300km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RadarSite400km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RadarSite500km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RadarSite600km": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "OTH_RADAR_SITE": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SADYE": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RADAR_SITE": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "EW_RADAR": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_20_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_12A_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_6A_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_11_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_22_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "S_300_2_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "THAAD_BATTALION": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "IronDome_Battalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "IronDome_LAUNCHER": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SkySword_2_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Aster30_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "BukM3_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_6A_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_9A_Site": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_9B_Site": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_11_Site": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_12A_Site": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_16A_Site": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_20_Site": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HQ_22_Site": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "PAC_3_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "S_300_2_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "S_400_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "Stormer_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "SkyBow_1_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "SkySword_2_Site": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "DF_15C_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_15C": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_16_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_19_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "DF_21B_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/DFDDC.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.2
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Feilong_60B_LauncherTruck": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Shahed_136": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "pl_15E": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AIM_120":{
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Harop": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Geranium_2_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10
+      }
+    },
+    "Geranium_2": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 20,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PCL_171": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SY_400Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.5
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_5D": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_16": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "PL_17": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Meteor": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MicaEM": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "MicaIR": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "FIM_92": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HY_6SAM": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "S_300_2": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_22": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_6A": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_16A": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_12A": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HQ_20": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HHQ_9B": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HHQ_10": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "HHQ_16": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "Rif_M": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_83": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_12": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_20": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_22": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_88C": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "YJ_98A": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AKD_20": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "BrahMos": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "CM_400AKG": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AGM_158B": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AGM_158C": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "9M120": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "AG_300": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_5000_LB_PENETRATOR": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_2000_LB_PENETRATOR": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_2000_LB": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_1000_LB_PENETRATOR": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_1000_LB": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_500_LB": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_27": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "GBU_500": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "250_3": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "250_4": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "RPG_7": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "SY_400": {
+      "MODEL": {
+        "modelname": "3DModel/PL_15E.glb",
+        "minimumPixelSize": 15
+      },
+      "labelDisplayByDistance": [
+        0,
+        100e5
+      ]
+    },
+    "BeiDouSatellite": {
+      "MODEL": {
+        "modelname": "wxModel/电子_WX.gltf",
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "CommunicationsSatellite": {
+      "MODEL": {
+        "modelname": "wxModel/电子_WX.gltf",
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "OfeqSatellite": {
+      "MODEL": {
+        "modelname": "wxModel/电子_WX.gltf",
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "StarlinkSatellite": {
+      "MODEL": {
+        "modelname": "wxModel/电子_WX.gltf",
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AirBorneDivision": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "InfantryBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ArmoredBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AviationBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ReserveBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ReserveArmoredBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AirBorneBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "EWBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "GAMBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "HCombinedArmsBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "MCombinedArmsBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "LCombinedArmsBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "RocketArtilleryBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "UAVBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "MarineBrigade": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "EWRegiment": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "UAVRegiment": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AirDefenseBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ReconnaissanceBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ArtilleryBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "AntiArtilleryBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "CombinedArmsBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "SignalBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "CombatSupportBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "EWUAVBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "MissileBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ChemicalDefenceBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "EngineerBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "UnmannedCombatBattalion": {
+      "MODEL": {
+        "modelname": "3DModel/ysc.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ReconnaissanceCompany": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "ArtilleryCompany": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "SignalCompany": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "TankPlatoon": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "MilitaryPoliceCommand": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "SpecialOperationsCommand": {
+      "MODEL": {
+        "modelname": "3DModel/pyramid.glb",
+        "minimumPixelSize": 10,
+        "scale": 0.1
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+
+
+    "labelDisplayByDistance": [
+      0,
+      100e5
+    ]
+  },
+  "modelGeneralConfig": {
+    "minimumPixelSizeScale": 3,
+    "silhouetteSize": 2,
+    "silhouetteColor": {
+      "rgba": [
+        175,
+        175,
+        175,
+        100
+      ]
+    },
+    "colorBlendAmount": 0.7,
+    "colorBlendMode": "MIX",
+    "minimumPixelSize": 30,
+    "distanceDisplayCondition": [
+      0,
+      100e5
+    ],
+    "labelDistanceDisplay": [
+      0,
+      30e3
+    ],
+    "maximumScale": 5000
+  }
+}

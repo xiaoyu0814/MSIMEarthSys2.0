@@ -1,0 +1,35 @@
+{
+  "IR": {
+    "chineseName": "红外探测器"
+  },
+  "ccd": {
+    "chineseName": "光学传感器"
+  },
+  "sar": {
+    "chineseName": "合成孔径雷达"
+  },
+  "rwr": {
+    "chineseName": "雷达告警接收机"
+  },
+  "acq_radar": {
+    "chineseName": "雷达传感器"
+  },
+  "laser_designator": {
+    "chineseName": "激光指示器"
+  },
+  "laser_tracker": {
+    "chineseName": "激光跟踪器"
+  },
+  "ew_radar": {
+    "chineseName": "雷达传感器"
+  },
+  "eyes": {
+    "chineseName": "视觉传感器"
+  },
+  "milds": {
+    "chineseName": "导弹发射检测系统"
+  },
+  "CCD": {
+    "chineseName": "光学传感器"
+  }
+}

@@ -1,0 +1,796 @@
+{
+    "last_node_id": 159,
+    "last_link_id": 138,
+    "nodes": [
+        {
+            "id": "wz-8_1",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 893,
+                "1": 117,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 129,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-8",
+            "properties": {
+                "id": "wz-8_1",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "wz-8_2",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1079,
+                "1": 123,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 130,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-8",
+            "properties": {
+                "id": "wz-8_2",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "wz-8_3",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1255,
+                "1": 128,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 131,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-8",
+            "properties": {
+                "id": "wz-8_3",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "wz-8_4",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1461,
+                "1": 130,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 132,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-8",
+            "properties": {
+                "id": "wz-8_4",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "wz-10_2",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1075,
+                "1": 406,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 135,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-10",
+            "properties": {
+                "id": "wz-10_2",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "wz-10_4",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1475,
+                "1": 409,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 137,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-10",
+            "properties": {
+                "id": "wz-10_4",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "wz-10_1",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 893,
+                "1": 404,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 134,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-10",
+            "properties": {
+                "id": "wz-10_1",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": 122,
+            "type": "basic/set_array",
+            "pos": [
+                839,
+                504
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": 138,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": null,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 4
+            }
+        },
+        {
+            "id": 118,
+            "type": "basic/set_array",
+            "pos": [
+                853,
+                249
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": null,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": 133,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 4
+            }
+        },
+        {
+            "id": "wz-10_3",
+            "type": "CGF/CGF",
+            "pos": [
+                1280,
+                407
+            ],
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 136,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "wz-10",
+            "properties": {
+                "id": "wz-10_3",
+                "separator": ","
+            }
+        },
+        {
+            "id": 114,
+            "type": "audio/media_source",
+            "pos": [
+                333,
+                181
+            ],
+            "size": {
+                "0": 140,
+                "1": 26
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "gain",
+                    "type": "number",
+                    "link": null,
+                    "label": "想定输入"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "audio",
+                    "links": [
+                        127,
+                        128
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "title": "空军",
+            "properties": {
+                "gain": 0.5
+            }
+        },
+        {
+            "id": "KJ-500_1",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 562,
+                "1": 180,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 214.14862060546875,
+                "1": 51.587032318115234
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "in",
+                    "type": "audio",
+                    "link": 127,
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "freqs",
+                    "type": "array",
+                    "links": [
+                        129,
+                        130,
+                        131,
+                        132
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力详情"
+                },
+                {
+                    "name": "samples",
+                    "type": "array",
+                    "links": [
+                        133
+                    ],
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "wz-8高速侦察无人机编组",
+            "properties": {
+                "id": "KJ-500_1",
+                "fftSize": 2048,
+                "minDecibels": -100,
+                "maxDecibels": -10,
+                "smoothingTimeConstant": 0.5
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "KJ-500_2",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 561,
+                "1": 330,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 194.2086181640625,
+                "1": 49.04703140258789
+            },
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "in",
+                    "type": "audio",
+                    "link": 128,
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "freqs",
+                    "type": "array",
+                    "links": [
+                        134,
+                        135,
+                        136,
+                        137
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力详情"
+                },
+                {
+                    "name": "samples",
+                    "type": "array",
+                    "links": [
+                        138
+                    ],
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "wz-10侦察无人机编组",
+            "properties": {
+                "id": "KJ-500_2",
+                "fftSize": 2048,
+                "minDecibels": -100,
+                "maxDecibels": -10,
+                "smoothingTimeConstant": 0.5
+            },
+            "boxcolor": "#222"
+        }
+    ],
+    "links": [
+        [
+            127,
+            114,
+            0,
+            "KJ-500_1",
+            0,
+            "audio"
+        ],
+        [
+            128,
+            114,
+            0,
+            "KJ-500_2",
+            0,
+            "audio"
+        ],
+        [
+            129,
+            "KJ-500_1",
+            0,
+            "wz-8_1",
+            0,
+            "string,array"
+        ],
+        [
+            130,
+            "KJ-500_1",
+            0,
+            "wz-8_2",
+            0,
+            "string,array"
+        ],
+        [
+            131,
+            "KJ-500_1",
+            0,
+            "wz-8_3",
+            0,
+            "string,array"
+        ],
+        [
+            132,
+            "KJ-500_1",
+            0,
+            "wz-8_4",
+            0,
+            "string,array"
+        ],
+        [
+            133,
+            "KJ-500_1",
+            1,
+            118,
+            1,
+            "array"
+        ],
+        [
+            134,
+            "KJ-500_2",
+            0,
+            "wz-10_1",
+            0,
+            "string,array"
+        ],
+        [
+            135,
+            "KJ-500_2",
+            0,
+            "wz-10_2",
+            0,
+            "string,array"
+        ],
+        [
+            136,
+            "KJ-500_2",
+            0,
+            "wz-10_3",
+            0,
+            "string,array"
+        ],
+        [
+            137,
+            "KJ-500_2",
+            0,
+            "wz-10_4",
+            0,
+            "string,array"
+        ],
+        [
+            138,
+            "KJ-500_2",
+            1,
+            122,
+            0,
+            "array"
+        ]
+    ],
+    "groups": [
+        {
+            "title": "掠扫侦察阶段",
+            "bounding": [
+                291,
+                69,
+                1404,
+                529
+            ],
+            "color": "#88A",
+            "font_size": 24
+        }
+    ],
+    "config": {},
+    "extra": {},
+    "version": 0.4
+}

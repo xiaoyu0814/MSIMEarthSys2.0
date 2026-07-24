@@ -1,0 +1,1310 @@
+{
+    "last_node_id": "gj-2_8",
+    "last_link_id": 127,
+    "nodes": [
+        {
+            "id": "gj-11_101",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 811,
+                "1": 87,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 108,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_101",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-11_102",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 985,
+                "1": 88,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 109,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_102",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-11_103",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1163,
+                "1": 87,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 110,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_103",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-11_104",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1353,
+                "1": 92,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 111,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_104",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-11_105",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 995,
+                "1": 221,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 113,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_105",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-11_106",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1178,
+                "1": 220,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 114,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_106",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-11_107",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1368,
+                "1": 225,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 115,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_107",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "KJ-500_4",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 470,
+                "1": 128,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 214.14862060546875,
+                "1": 51.587032318115234
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "in",
+                    "type": "audio",
+                    "link": 107,
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "freqs",
+                    "type": "array",
+                    "links": [
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力详情"
+                },
+                {
+                    "name": "samples",
+                    "type": "array",
+                    "links": [
+                        106
+                    ],
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "攻击-11隐身无人机编组",
+            "properties": {
+                "id": "KJ-500_4",
+                "fftSize": 2048,
+                "minDecibels": -100,
+                "maxDecibels": -10,
+                "smoothingTimeConstant": 0.5
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": 141,
+            "type": "basic/set_array",
+            "pos": [
+                791,
+                329
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": null,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": 106,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 8
+            }
+        },
+        {
+            "id": "gj-11_108",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 807,
+                "1": 223,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 112,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-11隐身无人机",
+            "properties": {
+                "id": "gj-11_108",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": 151,
+            "type": "basic/set_array",
+            "pos": [
+                700,
+                689
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 20,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": null,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": 127,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 8
+            }
+        },
+        {
+            "id": "gj-2_1",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 806,
+                "1": 592,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 16,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 121,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_1",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-2_2",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 991,
+                "1": 593,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 17,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 122,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_2",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-2_3",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1169,
+                "1": 588,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 18,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 123,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " ",
+                    "slot_index": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_3",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-2_4",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1359,
+                "1": 595,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 19,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 124,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_4",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": 139,
+            "type": "audio/media_source",
+            "pos": [
+                213,
+                131
+            ],
+            "size": {
+                "0": 140,
+                "1": 26
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "gain",
+                    "type": "number",
+                    "link": null,
+                    "label": "想定输入"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "audio",
+                    "links": [
+                        107,
+                        116
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "title": "空军",
+            "properties": {
+                "gain": 0.5
+            }
+        },
+        {
+            "id": "gj-2_5",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 805,
+                "1": 467,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 117,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_5",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-2_6",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 997,
+                "1": 469,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 13,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 118,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_6",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-2_7",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1370,
+                "1": 486,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 15,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 120,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_7",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "gj-2_8",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1183,
+                "1": 473,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 14,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 119,
+                    "label": " "
+                },
+                {
+                    "name": "separator",
+                    "type": "string",
+                    "link": null,
+                    "label": " "
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": "下级兵力"
+                }
+            ],
+            "title": "攻击-2隐身无人机",
+            "properties": {
+                "id": "gj-2_8",
+                "separator": ","
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "KJ-500_5",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 449,
+                "1": 480,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 214.14862060546875,
+                "1": 51.587032318115234
+            },
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "in",
+                    "type": "audio",
+                    "link": 116,
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "freqs",
+                    "type": "array",
+                    "links": [
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力详情"
+                },
+                {
+                    "name": "samples",
+                    "type": "array",
+                    "links": [
+                        127
+                    ],
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "攻击-2隐身无人机编组",
+            "properties": {
+                "id": "KJ-500_5",
+                "fftSize": 2048,
+                "minDecibels": -100,
+                "maxDecibels": -10,
+                "smoothingTimeConstant": 0.5
+            },
+            "boxcolor": "#222"
+        }
+    ],
+    "links": [
+        [
+            106,
+            "KJ-500_4",
+            1,
+            141,
+            1,
+            "array"
+        ],
+        [
+            107,
+            139,
+            0,
+            "KJ-500_4",
+            0,
+            "audio"
+        ],
+        [
+            108,
+            "KJ-500_4",
+            0,
+            "gj-11_101",
+            0,
+            "string,array"
+        ],
+        [
+            109,
+            "KJ-500_4",
+            0,
+            "gj-11_102",
+            0,
+            "string,array"
+        ],
+        [
+            110,
+            "KJ-500_4",
+            0,
+            "gj-11_103",
+            0,
+            "string,array"
+        ],
+        [
+            111,
+            "KJ-500_4",
+            0,
+            "gj-11_104",
+            0,
+            "string,array"
+        ],
+        [
+            112,
+            "KJ-500_4",
+            0,
+            "gj-11_108",
+            0,
+            "string,array"
+        ],
+        [
+            113,
+            "KJ-500_4",
+            0,
+            "gj-11_105",
+            0,
+            "string,array"
+        ],
+        [
+            114,
+            "KJ-500_4",
+            0,
+            "gj-11_106",
+            0,
+            "string,array"
+        ],
+        [
+            115,
+            "KJ-500_4",
+            0,
+            "gj-11_107",
+            0,
+            "string,array"
+        ],
+        [
+            116,
+            139,
+            0,
+            "KJ-500_5",
+            0,
+            "audio"
+        ],
+        [
+            117,
+            "KJ-500_5",
+            0,
+            "gj-2_5",
+            0,
+            "string,array"
+        ],
+        [
+            118,
+            "KJ-500_5",
+            0,
+            "gj-2_6",
+            0,
+            "string,array"
+        ],
+        [
+            119,
+            "KJ-500_5",
+            0,
+            "gj-2_8",
+            0,
+            "string,array"
+        ],
+        [
+            120,
+            "KJ-500_5",
+            0,
+            "gj-2_7",
+            0,
+            "string,array"
+        ],
+        [
+            121,
+            "KJ-500_5",
+            0,
+            "gj-2_1",
+            0,
+            "string,array"
+        ],
+        [
+            122,
+            "KJ-500_5",
+            0,
+            "gj-2_2",
+            0,
+            "string,array"
+        ],
+        [
+            123,
+            "KJ-500_5",
+            0,
+            "gj-2_3",
+            0,
+            "string,array"
+        ],
+        [
+            124,
+            "KJ-500_5",
+            0,
+            "gj-2_4",
+            0,
+            "string,array"
+        ],
+        [
+            127,
+            "KJ-500_5",
+            1,
+            151,
+            1,
+            "array"
+        ]
+    ],
+    "groups": [
+        {
+            "title": "防空摧毁阶段",
+            "bounding": [
+                195,
+                33,
+                1411,
+                769
+            ],
+            "color": "#3f789e",
+            "font_size": 24
+        }
+    ],
+    "config": {},
+    "extra": {},
+    "version": 0.4
+}

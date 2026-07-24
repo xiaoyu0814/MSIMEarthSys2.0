@@ -1,0 +1,54 @@
+{
+  "message_type": "full_recognition",
+  "trigger": "full_recognition",
+  "timestamp": "2026-01-14 16:51:54",
+  "priority": 85,
+  "data": {
+    "formation_relationship": null,
+    "mission_style": null,
+    "tactical_intent": [
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "initial_intent": "Orbit",
+        "initial_confidence": 0.85,
+        "atomic_actions": [],
+        "atomic_details": {
+          "predicted_tactical_action": "Orbit",
+          "confidence": 0.85,
+          "atomic_names": [],
+          "prediction_method": "Error"
+        },
+        "recognition_method": "full_recognition",
+        "data_frames": 20,
+        "is_streaming": false,
+        "is_final": true,
+        "had_streaming_result": true,
+        "streaming_intent": "Orbit",
+        "intent_changed": false
+      }
+    ],
+    "threat_assessment": [],
+    "full_recognition_info": {
+      "recognition_method": "full_recognition",
+      "data_frames": 20,
+      "accuracy": "high",
+      "had_streaming_result": true,
+      "streaming_intent": "Orbit",
+      "intent_changed": false,
+      "confidence_improvement": 0.0,
+      "note": "完整识别结果（20帧数据，最终结果，高精度95%+）"
+    },
+    "trigger_detail": {
+      "full_recognition": true,
+      "recognition_method": "full_recognition",
+      "had_streaming_result": true,
+      "intent_changed": false,
+      "note": "完整识别结果（20帧数据，最终结果，高精度）"
+    }
+  },
+  "push_time": "2026-01-14 16:51:54",
+  "message_id": 46
+}

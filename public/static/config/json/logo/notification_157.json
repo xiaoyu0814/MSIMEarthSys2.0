@@ -1,0 +1,35 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2025-12-31 15:40:59",
+  "data": {
+    "formation_relationship": null,
+    "mission_style": null,
+    "tactical_intent": [],
+    "threat_assessment": [],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Initial",
+        "phase_name": "初始阶段",
+        "confidence": 0.5,
+        "transition_time": "2025-12-31 15:40:59",
+        "indicators": {
+          "phase": "Initial",
+          "mission_type": null,
+          "formation_action": null,
+          "unit_count": 0,
+          "threat_count": 0
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Initial",
+      "phase_name": "初始阶段",
+      "confidence": 0.5
+    }
+  },
+  "priority": 70,
+  "push_time": "2025-12-31 15:40:59",
+  "message_id": 5
+}

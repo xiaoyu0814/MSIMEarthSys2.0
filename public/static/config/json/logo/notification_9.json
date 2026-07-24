@@ -1,0 +1,52 @@
+{
+  "message_type": "formation_change",
+  "trigger": "formation_change",
+  "timestamp": "2025-12-26 10:12:31",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "Staggered",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.8924766778945923,
+      "participants": [],
+      "unit_count": 1
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 1.0,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 100.0%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "20",
+        "unit_name": "blue_3_aim120_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.20019087195396423,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "20",
+        "unit_name": "blue_3_aim120_3",
+        "threat_level": "Medium",
+        "threat_score": 48.27801697479535,
+        "intent_score": 50.0,
+        "capability_score": 63.937191356558145,
+        "opportunity_score": 94.0,
+        "confidence": 0.6000954359769821,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 63.9分（权重: 35%） | 机会评估: 94.0分→威胁: 6.0分（权重: 15%） | 综合威胁评分: 48.3分 | 评估置信度: 60.0%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "formation_change": true
+    }
+  },
+  "priority": 60,
+  "push_time": "2025-12-26 10:12:31",
+  "message_id": 1
+}

@@ -1,0 +1,136 @@
+{
+  "message_type": "formation_change",
+  "trigger": "formation_change",
+  "timestamp": "2025-12-26 10:31:59",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "Staggered",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.895175576210022,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 1.0,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 100.0%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.20517446100711823,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.19162043929100037,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.21405233442783356,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.20325449109077454,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Orbit",
+        "confidence": 0.20948758721351624,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "threat_level": "Low",
+        "threat_score": 47.88075380222216,
+        "intent_score": 50.0,
+        "capability_score": 62.80215372063475,
+        "opportunity_score": 94.0,
+        "confidence": 0.6025872305035591,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 62.8分（权重: 35%） | 机会评估: 94.0分→威胁: 6.0分（权重: 15%） | 综合威胁评分: 47.9分 | 评估置信度: 60.3%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Medium",
+        "threat_score": 53.57514585673947,
+        "intent_score": 50.0,
+        "capability_score": 77.07951269241195,
+        "opportunity_score": 89.3512239040314,
+        "confidence": 0.5958102196455002,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 77.1分（权重: 35%） | 机会评估: 89.4分→威胁: 10.6分（权重: 15%） | 综合威胁评分: 53.6分 | 评估置信度: 59.6%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Low",
+        "threat_score": 42.348190493779136,
+        "intent_score": 50.0,
+        "capability_score": 44.68911638036052,
+        "opportunity_score": 88.62000159564698,
+        "confidence": 0.6070261672139168,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 44.7分（权重: 35%） | 机会评估: 88.6分→威胁: 11.4分（权重: 15%） | 综合威胁评分: 42.3分 | 评估置信度: 60.7%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Low",
+        "threat_score": 42.01446404880614,
+        "intent_score": 50.0,
+        "capability_score": 44.870526560005985,
+        "opportunity_score": 91.26813498130633,
+        "confidence": 0.6016272455453873,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 44.9分（权重: 35%） | 机会评估: 91.3分→威胁: 8.7分（权重: 15%） | 综合威胁评分: 42.0分 | 评估置信度: 60.2%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Low",
+        "threat_score": 41.82274603470428,
+        "intent_score": 50.0,
+        "capability_score": 44.96177194248887,
+        "opportunity_score": 92.75916096777884,
+        "confidence": 0.6047437936067581,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.0分（权重: 35%） | 机会评估: 92.8分→威胁: 7.2分（权重: 15%） | 综合威胁评分: 41.8分 | 评估置信度: 60.5%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "formation_change": true
+    }
+  },
+  "priority": 60,
+  "push_time": "2025-12-26 10:31:59",
+  "message_id": 3
+}

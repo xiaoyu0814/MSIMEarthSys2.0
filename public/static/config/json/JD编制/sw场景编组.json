@@ -1,0 +1,885 @@
+[
+  {
+    "code": "relationImg",
+    "name": "海军编组",
+    "disabled": true,
+    "clickable": false,
+    "childList": [
+      {
+        "side": "red",
+        "name": "red_071_LandingBoat",
+        "type": "fleet",
+        "groupType": 1,
+        "lat": "24:04:30.00n",
+        "long": "120:28:15.00e",
+        "heading": 90,
+        "altitude": 25,
+        "task": "抢滩登陆",
+        "route": [
+          {
+            "lat": "24:04:30.00n",
+            "long": "120:28:15.00e",
+            "altitude": 25,
+            "heading": 90,
+            "speed": 15
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:30.00e",
+            "altitude": 45,
+            "heading": 90,
+            "speed": 15
+          }
+        ],
+        "childList": [
+          {
+            "chineseName": "071__1",
+            "type": "ship",
+            "childs": [
+              {
+                "name": "071__1",
+                "type": "ship",
+                "childs": []
+              }
+            ],
+            "id": "071__1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "chineseName": "071__2",
+            "type": "ship",
+            "childs": [
+              {
+                "name": "071__2",
+                "type": "ship",
+                "childs": []
+              }
+            ],
+            "id": "071__2",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "chineseName": "071__3",
+            "type": "ship",
+            "childs": [
+              {
+                "name": "071__3",
+                "type": "ship",
+                "childs": []
+              }
+            ],
+            "id": "071__3",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "chineseName": "071__4",
+            "type": "ship",
+            "childs": [
+              {
+                "name": "071__4",
+                "type": "ship",
+                "childs": []
+              }
+            ],
+            "id": "071__4",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "weapons": null,
+        "chineseName": "071登陆艇编队",
+        "code": "landScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_076_amphibious_assault_ship",
+        "type": "fleet",
+        "groupType": 1,
+        "lat": "24:04:30.00n",
+        "long": "120:28:15.00e",
+        "heading": 90,
+        "altitude": 25,
+        "task": "两栖登陆",
+        "route": [
+          {
+            "lat": "24:04:30.00n",
+            "long": "120:28:15.00e",
+            "altitude": 25,
+            "heading": 90,
+            "speed": 15
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:30.00e",
+            "altitude": 45,
+            "heading": 90,
+            "speed": 15
+          }
+        ],
+        "childList": [
+          {
+            "chineseName": "076lha__1",
+            "type": "ship",
+            "childs": [
+              {
+                "name": "076lha__1",
+                "type": "ship",
+                "childs": []
+              }
+            ],
+            "id": "076lha__1",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "weapons": null,
+        "chineseName": "076型两栖攻击舰",
+        "code": "landScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_003_aircraft_carrier",
+        "type": "fleet",
+        "groupType": 1,
+        "lat": "24:04:30.00n",
+        "long": "120:28:15.00e",
+        "heading": 90,
+        "altitude": 25,
+        "task": "区域拒止",
+        "route": [
+          {
+            "lat": "24:04:30.00n",
+            "long": "120:28:15.00e",
+            "altitude": 25,
+            "heading": 90,
+            "speed": 15
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:30.00e",
+            "altitude": 45,
+            "heading": 90,
+            "speed": 15
+          }
+        ],
+        "childList": [
+          {
+            "chineseName": "003__1",
+            "type": "ship",
+            "childs": [
+              {
+                "name": "003__1",
+                "type": "ship",
+                "childs": []
+              }
+            ],
+            "id": "003__1",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "weapons": null,
+        "chineseName": "003航空母舰编队",
+        "code": "landScoutTaskundefined"
+      }
+    ]
+  },
+  {
+    "code": "relationImg",
+    "name": "陆军编组",
+    "disabled": true,
+    "clickable": false,
+    "childList": [
+      {
+        "side": "red",
+        "name": "red_armor_battalion_fujian",
+        "type": "artillerybattalion",
+        "groupType": 1,
+        "lat": "24:04:30.00n",
+        "long": "120:28:15.00e",
+        "heading": 90,
+        "altitude": 25,
+        "task": "火力支援与打击",
+        "route": [
+          {
+            "lat": "24:04:30.00n",
+            "long": "120:28:15.00e",
+            "altitude": 25,
+            "heading": 90,
+            "speed": 15
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:30.00e",
+            "altitude": 45,
+            "heading": 90,
+            "speed": 15
+          }
+        ],
+        "childList": [
+          {
+            "chineseName": "指挥部",
+            "type": "tankCompany",
+            "childs": [
+              {
+                "name": "red_armor_battalion_changhua_Company_1_TankCompany_1",
+                "type": "TankCompany",
+                "childs": []
+              }
+            ],
+            "id": "red_armor_battalion_changhua_Company_1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "chineseName": "情报连1",
+            "type": "tankCompany",
+            "childs": [
+              {
+                "name": "red_armor_battalion_changhua_Company_2_TankCompany_1",
+                "type": "TankCompany",
+                "childs": []
+              }
+            ],
+            "id": "red_armor_battalion_changhua_Company_2",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "chineseName": "情报连2",
+            "type": "tankCompany",
+            "childs": [
+              {
+                "name": "red_armor_battalion_changhua_Company_2_TankCompany_1",
+                "type": "TankCompany",
+                "childs": []
+              }
+            ],
+            "id": "red_armor_battalion_changhua_Company_2",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "chineseName": "火炮连1",
+            "type": "tankCompany",
+            "childs": [
+              {
+                "name": "red_armor_battalion_changhua_Company_2_TankCompany_1",
+                "type": "TankCompany",
+                "childs": []
+              }
+            ],
+            "id": "red_armor_battalion_changhua_Company_2",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "chineseName": "火炮连2",
+            "type": "tankCompany",
+            "childs": [
+              {
+                "name": "red_armor_battalion_changhua_Company_3_TankCompany_1",
+                "type": "TankCompany",
+                "childs": []
+              }
+            ],
+            "id": "red_armor_battalion_changhua_Company_3",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "weapons": null,
+        "chineseName": "炮兵营",
+        "code": "landScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_radar_erlin",
+        "type": "radar",
+        "groupType": 1,
+        "lat": "23:42:20.00n",
+        "long": "120:26:45.00e",
+        "heading": 45,
+        "altitude": 35,
+        "task": null,
+        "route": [],
+        "weapons": null,
+        "childList": [
+          {
+            "type": "EoirRadarSite",
+            "childs": [
+              {
+                "name": "red_radar_erlin_1",
+                "type": "EoirRadarSite",
+                "childs": []
+              }
+            ],
+            "id": "red_radar_erlin_1",
+            "chineseName": "雷达站_1",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": "雷达站",
+        "code": "landScoutTaskundefined"
+      }
+    ]
+  },
+  {
+    "code": "relationImg",
+    "name": "空军编组",
+    "disabled": true,
+    "clickable": false,
+    "childList": [
+      {
+        "side": "red",
+        "name": "red_h6k_strike_formation",
+        "type": "h-6kformation",
+        "groupType": 2,
+        "lat": "24:15:30.00n",
+        "long": "120:38:45.00e",
+        "heading": 270,
+        "altitude": 8000,
+        "number": 6,
+        "task": null,
+        "route": [
+          {
+            "lat": "24:15:30.00n",
+            "long": "120:38:45.00e",
+            "altitude": 8000,
+            "heading": 270,
+            "speed": 250
+          },
+          {
+            "lat": "24:10:00.00n",
+            "long": "120:30:00.00e",
+            "altitude": 7500,
+            "heading": 240,
+            "speed": 220
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:25:00.00e",
+            "altitude": 8500,
+            "heading": 240,
+            "speed": 250
+          }
+        ],
+        "weapons": [
+          {
+            "type": "250-3",
+            "quantity": 2
+          }
+        ],
+        "childList": [
+          {
+            "type": "H-6K",
+            "childs": [
+              {
+                "name": "h-6n_1",
+                "type": "H-6K",
+                "childs": []
+              }
+            ],
+            "id": "h-6n_1",
+            "chineseName": "h-6n_1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "H-6K",
+            "childs": [
+              {
+                "name": "h-6n_2",
+                "type": "H-6K",
+                "childs": []
+              }
+            ],
+            "id": "h-6n_2",
+            "chineseName": "h-6n_2",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": "h-6k轰炸机编队",
+        "code": "skyScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_z10_squadron",
+        "type": "z-10bformation",
+        "groupType": 2,
+        "lat": "24:15:00.00n",
+        "long": "120:38:00.00e",
+        "heading": 270,
+        "altitude": 9000,
+        "number": 4,
+        "task": {
+          "type": "escort",
+          "target": "red_h6k_strike_formation"
+        },
+        "route": [
+          {
+            "lat": "24:15:00.00n",
+            "long": "120:38:00.00e",
+            "altitude": 9000,
+            "heading": 270,
+            "speed": 400
+          },
+          {
+            "lat": "24:10:00.00n",
+            "long": "120:32:00.00e",
+            "altitude": 9500,
+            "heading": 270,
+            "speed": 420
+          }
+        ],
+        "weapons": [
+          {
+            "type": "pl-10",
+            "quantity": 2
+          },
+          {
+            "type": "pl-12",
+            "quantity": 2
+          }
+        ],
+        "childList": [
+          {
+            "type": "z-10",
+            "childs": [
+              {
+                "name": "z-10_1",
+                "type": "z-10",
+                "childs": []
+              }
+            ],
+            "id": "z-10_1",
+            "chineseName": "z-10_1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "z-10",
+            "childs": [
+              {
+                "name": "z-10_2",
+                "type": "J-10B",
+                "childs": []
+              }
+            ],
+            "id": "z-10_2",
+            "chineseName": "z-10_2",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "z-10",
+            "childs": [
+              {
+                "name": "z-10_3",
+                "type": "z-10",
+                "childs": []
+              }
+            ],
+            "id": "z-10_3",
+            "chineseName": "z-10_3",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "z-10",
+            "childs": [
+              {
+                "name": "z-10_4",
+                "type": "z-10",
+                "childs": []
+              }
+            ],
+            "id": "z-10_4",
+            "chineseName": "Z-10武直编队4",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": " Z-10",
+        "code": "skyScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "wz-7_squadron",
+        "type": "wz-7formation",
+        "groupType": 2,
+        "lat": "24:04:00.00n",
+        "long": "120:28:00.00e",
+        "heading": 270,
+        "altitude": 9500,
+        "number": 4,
+        "task": "目标区域持续侦察",
+        "route": [
+          {
+            "lat": "24:04:00.00n",
+            "long": "120:28:00.00e",
+            "altitude": 9500,
+            "heading": 270,
+            "speed": 410
+          },
+          {
+            "lat": "24:08:00.00n",
+            "long": "120:35:00.00e",
+            "altitude": 10000,
+            "heading": 270,
+            "speed": 430
+          }
+        ],
+        "weapons": [
+          {
+            "type": "pl-10",
+            "quantity": 2
+          },
+          {
+            "type": "pl-12",
+            "quantity": 2
+          }
+        ],
+        "childList": [
+          {
+            "type": "wz-7",
+            "childs": [
+              {
+                "name": "wz-7_1",
+                "type": "wz-7",
+                "childs": []
+              }
+            ],
+            "id": "wz-7_1",
+            "chineseName": "wz-7_1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "wz-7",
+            "childs": [
+              {
+                "name": "wz-7_2",
+                "type": "wz-7",
+                "childs": []
+              }
+            ],
+            "id": "wz-7_2",
+            "chineseName": "wz-7_2",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": "wz-7",
+        "code": "skyScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_wz8_recon_group",
+        "type": "wz-8formation",
+        "groupType": 2,
+        "lat": "23:42:00.00n",
+        "long": "120:26:00.00e",
+        "heading": 270,
+        "altitude": 12000,
+        "number": 2,
+        "task": "超音速无人侦察机",
+        "route": [
+          {
+            "lat": "23:42:00.00n",
+            "long": "120:26:00.00e",
+            "altitude": 12000,
+            "heading": 270,
+            "speed": 350
+          },
+          {
+            "lat": "24:09:00.00n",
+            "long": "120:40:00.00e",
+            "altitude": 12000,
+            "heading": 270,
+            "speed": 350
+          }
+        ],
+        "weapons": null,
+        "childList": [
+          {
+            "type": "WZ-8",
+            "childs": [
+              {
+                "name": "wz-8__101",
+                "type": "WZ-8",
+                "childs": []
+              }
+            ],
+            "id": "wz-8__101",
+            "chineseName": "wz-8__101",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "WZ-8",
+            "childs": [
+              {
+                "name": "wz-8__102",
+                "type": "WZ-8",
+                "childs": []
+              }
+            ],
+            "id": "wz-8__102",
+            "chineseName": "wz-8__102",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "WZ-8",
+            "childs": [
+              {
+                "name": "wz-8__201",
+                "type": "WZ-8",
+                "childs": []
+              }
+            ],
+            "id": "wz-8__201",
+            "chineseName": "wz-8__201",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "WZ-8",
+            "childs": [
+              {
+                "name": "wz-8__202",
+                "type": "WZ-8",
+                "childs": []
+              }
+            ],
+            "id": "wz-8__202",
+            "chineseName": "wz-8__202",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": "wz-8无人侦察机编队",
+        "code": "skyScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_j16_attack_group",
+        "type": "z-10formation",
+        "groupType": 2,
+        "lat": "23:57:00.00n",
+        "long": "120:24:00.00e",
+        "heading": 90,
+        "altitude": 300,
+        "number": 2,
+        "task": "干扰敌方雷达并削弱其防空系统",
+        "route": [
+          {
+            "lat": "23:57:00.00n",
+            "long": "120:24:00.00e",
+            "altitude": 300,
+            "heading": 90,
+            "speed": 220
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:00.00e",
+            "altitude": 300,
+            "heading": 90,
+            "speed": 220
+          }
+        ],
+        "weapons": null,
+        "childList": [
+          {
+            "type": "j-16D",
+            "childs": [
+              {
+                "name": "j-16d_1",
+                "type": "j-16D",
+                "childs": []
+              }
+            ],
+            "id": "j-16d_1",
+            "chineseName": "j-16d_1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "j-16D",
+            "childs": [
+              {
+                "name": "j-16d_2",
+                "type": "j-16D",
+                "childs": []
+              }
+            ],
+            "id": "j-16d_2",
+            "chineseName": "j-16d_2",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": "J16D编队",
+        "code": "skyScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_gj2_attack_group",
+        "type": "z-10formation",
+        "groupType": 2,
+        "lat": "23:57:00.00n",
+        "long": "120:24:00.00e",
+        "heading": 90,
+        "altitude": 300,
+        "number": 2,
+        "task": "侦察、监视和对地打击",
+        "route": [
+          {
+            "lat": "23:57:00.00n",
+            "long": "120:24:00.00e",
+            "altitude": 300,
+            "heading": 90,
+            "speed": 220
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:00.00e",
+            "altitude": 300,
+            "heading": 90,
+            "speed": 220
+          }
+        ],
+        "weapons": null,
+        "childList": [
+          {
+            "type": "gj-2",
+            "childs": [
+              {
+                "name": "gj-2_1",
+                "type": "gj-2",
+                "childs": []
+              }
+            ],
+            "id": "gj-2_1",
+            "chineseName": "gj-2_1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "gj-2",
+            "childs": [
+              {
+                "name": "gj-2_2",
+                "type": "gj-2",
+                "childs": []
+              }
+            ],
+            "id": "gj-2_2",
+            "chineseName": "gj-2_2",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": "gj-2编队",
+        "code": "skyScoutTaskundefined"
+      },
+      {
+        "side": "red",
+        "name": "red_gj11_attack_group",
+        "type": "z-10formation",
+        "groupType": 2,
+        "lat": "23:57:00.00n",
+        "long": "120:24:00.00e",
+        "heading": 90,
+        "altitude": 300,
+        "number": 2,
+        "task": "夺取制空权、空中支援、战术轰炸",
+        "route": [
+          {
+            "lat": "23:57:00.00n",
+            "long": "120:24:00.00e",
+            "altitude": 300,
+            "heading": 90,
+            "speed": 220
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:00.00e",
+            "altitude": 300,
+            "heading": 90,
+            "speed": 220
+          }
+        ],
+        "weapons": null,
+        "childList": [
+          {
+            "type": "gj-11",
+            "childs": [
+              {
+                "name": "gj-11_1",
+                "type": "gj-11",
+                "childs": []
+              }
+            ],
+            "id": "gj-11_1",
+            "chineseName": "gj-11_1",
+            "code": "taskEntiy-undefined"
+          },
+          {
+            "type": "gj-11",
+            "childs": [
+              {
+                "name": "gj-11_2",
+                "type": "gj-11",
+                "childs": []
+              }
+            ],
+            "id": "gj-11_1",
+            "chineseName": "gj-11_2",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "chineseName": "gj-11编队",
+        "code": "skyScoutTaskundefined"
+      }
+    ]
+  },
+  {
+    "code": "relationImg",
+    "name": "天军编组",
+    "disabled": true,
+    "clickable": false,
+    "childList": [
+      {
+        "side": "red",
+        "name": "red_yaogan",
+        "type": "artillerybattalion",
+        "groupType": 1,
+        "lat": "24:04:30.00n",
+        "long": "120:28:15.00e",
+        "heading": 90,
+        "altitude": 25,
+        "task": "区域扫描侦察",
+        "route": [
+          {
+            "lat": "24:04:30.00n",
+            "long": "120:28:15.00e",
+            "altitude": 25,
+            "heading": 90,
+            "speed": 15
+          },
+          {
+            "lat": "24:05:00.00n",
+            "long": "120:35:30.00e",
+            "altitude": 45,
+            "heading": 90,
+            "speed": 15
+          }
+        ],
+        "childList": [
+          {
+            "chineseName": "遥感卫星",
+            "type": "tankCompany",
+            "childs": [
+              {
+                "name": "YAOGAN",
+                "type": "TankCompany",
+                "childs": []
+              }
+            ],
+            "id": "YAOGAN",
+            "code": "taskEntiy-undefined"
+          }
+        ],
+        "weapons": null,
+        "chineseName": "遥感卫星",
+        "code": "landScoutTaskundefined"
+      }
+    ]
+  },
+  {
+    "code": "relationImg",
+    "name": "其他编组",
+    "disabled": true,
+    "clickable": false,
+    "childList": []
+  }
+]

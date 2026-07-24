@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+message MU
+{
+	 string MessageType = 1;
+	 double T = 2;
+	 string disID = 3;
+	 string Name = 4;
+	 string Type = 5;
+	 string Side = 6;
+	 double Lon = 7;
+	 double Lat = 8;
+	 double Alt = 9;
+	 double HDG = 10;
+	 double Pitch = 11;
+	 double Roll = 12;
+	 double SpeedNED0 = 13;
+	 double SpeedNED1 = 14;
+	 double SpeedNED2 = 15;
+	 double FuelQ = 16;
+	 double FuelCRate = 17;
+};

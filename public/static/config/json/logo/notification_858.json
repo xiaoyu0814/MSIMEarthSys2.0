@@ -1,0 +1,167 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2026-01-15 15:52:43",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "HotColdSwitch",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.9081653356552124,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 0.999,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 99.9%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "hvaa1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.8546358346939087,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Recommit",
+        "confidence": 0.921775221824646,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Recommit",
+        "confidence": 0.9829810857772827,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Recommit",
+        "confidence": 0.85,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "hvaa1",
+        "threat_level": "Medium",
+        "threat_score": 60.7065307457817,
+        "intent_score": 50.0,
+        "capability_score": 69.52749411415667,
+        "opportunity_score": 24.18728129448754,
+        "confidence": 0.9273179173469543,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 69.5分（权重: 35%） | 机会评估: 24.2分→威胁: 75.8分（权重: 15%） | 综合威胁评分: 60.7分 | 评估置信度: 92.7%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "High",
+        "threat_score": 69.25132378284457,
+        "intent_score": 87.95976996421814,
+        "capability_score": 44.5686513133199,
+        "opportunity_score": 35.517261059509806,
+        "confidence": 0.960887610912323,
+        "reasoning": "战术意图: Recommit（评分: 88.0，权重: 50%） | 能力评估: 44.6分（权重: 35%） | 机会评估: 35.5分→威胁: 64.5分（权重: 15%） | 综合威胁评分: 69.3分 | 评估置信度: 96.1%",
+        "recommendations": [
+          "加强监控，准备应对措施",
+          "调整战术部署，优先分配资源"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "High",
+        "threat_score": 74.03517212717475,
+        "intent_score": 93.46829771995544,
+        "capability_score": 50.19485543728563,
+        "opportunity_score": 35.11450757235295,
+        "confidence": 0.9914905428886414,
+        "reasoning": "战术意图: Recommit（评分: 93.5，权重: 50%） | 能力评估: 50.2分（权重: 35%） | 机会评估: 35.1分→威胁: 64.9分（权重: 15%） | 综合威胁评分: 74.0分 | 评估置信度: 99.1%",
+        "recommendations": [
+          "加强监控，准备应对措施",
+          "调整战术部署，优先分配资源"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Medium",
+        "threat_score": 56.94888332714888,
+        "intent_score": 50.0,
+        "capability_score": 61.33718884001752,
+        "opportunity_score": 30.127551779048357,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 61.3分（权重: 35%） | 机会评估: 30.1分→威胁: 69.9分（权重: 15%） | 综合威胁评分: 56.9分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "High",
+        "threat_score": 68.89253664379497,
+        "intent_score": 81.5,
+        "capability_score": 51.46667592081682,
+        "opportunity_score": 32.47199952327274,
+        "confidence": 0.925,
+        "reasoning": "战术意图: Recommit（评分: 81.5，权重: 50%） | 能力评估: 51.5分（权重: 35%） | 机会评估: 32.5分→威胁: 67.5分（权重: 15%） | 综合威胁评分: 68.9分 | 评估置信度: 92.5%",
+        "recommendations": [
+          "加强监控，准备应对措施",
+          "调整战术部署，优先分配资源"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Approach",
+        "phase_name": "接近阶段",
+        "confidence": 0.5,
+        "transition_time": "2026-01-15 15:52:43",
+        "indicators": {
+          "phase": "Approach",
+          "mission_type": "AEW",
+          "formation_action": "HotColdSwitch",
+          "unit_count": 5,
+          "threat_count": 5,
+          "threat_levels": [
+            "Medium",
+            "High",
+            "High",
+            "Medium",
+            "High"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 3
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Approach",
+      "phase_name": "接近阶段",
+      "confidence": 0.5
+    }
+  },
+  "priority": 70,
+  "push_time": "2026-01-15 15:52:43",
+  "message_id": 10
+}

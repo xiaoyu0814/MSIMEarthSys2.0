@@ -1,0 +1,167 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2026-01-21 01:17:12",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LineAbreast",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.8915526403005293,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 0.998,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 99.8%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "tactical_intent": "Recommit",
+        "confidence": 0.9802905726164426,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Recommit",
+        "confidence": 0.9505481436378133,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Recommit",
+        "confidence": 0.998,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Recommit",
+        "confidence": 0.9973076756818935,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Recommit",
+        "confidence": 0.9858022080296567,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "threat_level": "High",
+        "threat_score": 69.08315676380917,
+        "intent_score": 93.22615153547983,
+        "capability_score": 53.24277955754259,
+        "opportunity_score": 74.43261232713758,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Recommit（评分: 93.2，权重: 50%） | 能力评估: 53.2分（权重: 35%） | 机会评估: 74.4分→威胁: 25.6分（权重: 15%） | 综合威胁评分: 69.1分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "加强监控，准备应对措施",
+          "调整战术部署，优先分配资源"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Medium",
+        "threat_score": 64.466770320137,
+        "intent_score": 90.54933292740319,
+        "capability_score": 45.068574919349444,
+        "opportunity_score": 77.21264910224592,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Recommit（评分: 90.5，权重: 50%） | 能力评估: 45.1分（权重: 35%） | 机会评估: 77.2分→威胁: 22.8分（权重: 15%） | 综合威胁评分: 64.5分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "High",
+        "threat_score": 67.69081336508853,
+        "intent_score": 94.82,
+        "capability_score": 48.056942100964385,
+        "opportunity_score": 76.92744246832667,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Recommit（评分: 94.8，权重: 50%） | 能力评估: 48.1分（权重: 35%） | 机会评估: 76.9分→威胁: 23.1分（权重: 15%） | 综合威胁评分: 67.7分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "加强监控，准备应对措施",
+          "调整战术部署，优先分配资源"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "High",
+        "threat_score": 72.86927240434689,
+        "intent_score": 94.75769081137042,
+        "capability_score": 62.6285110305692,
+        "opportunity_score": 76.19701241358361,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Recommit（评分: 94.8，权重: 50%） | 能力评估: 62.6分（权重: 35%） | 机会评估: 76.2分→威胁: 23.8分（权重: 15%） | 综合威胁评分: 72.9分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "加强监控，准备应对措施",
+          "调整战术部署，优先分配资源"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "High",
+        "threat_score": 72.48476782808895,
+        "intent_score": 93.7221987226691,
+        "capability_score": 62.75364843347204,
+        "opportunity_score": 75.60072323307219,
+        "confidence": 0.998,
+        "reasoning": "战术意图: Recommit（评分: 93.7，权重: 50%） | 能力评估: 62.8分（权重: 35%） | 机会评估: 75.6分→威胁: 24.4分（权重: 15%） | 综合威胁评分: 72.5分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "加强监控，准备应对措施",
+          "调整战术部署，优先分配资源"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Approach",
+        "phase_name": "接近阶段",
+        "confidence": 0.5,
+        "transition_time": "2026-01-21 01:17:12",
+        "indicators": {
+          "phase": "Approach",
+          "mission_type": "AEW",
+          "formation_action": "LineAbreast",
+          "unit_count": 5,
+          "threat_count": 5,
+          "threat_levels": [
+            "High",
+            "Medium",
+            "High",
+            "High",
+            "High"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 4
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Approach",
+      "phase_name": "接近阶段",
+      "confidence": 0.5
+    }
+  },
+  "priority": 70,
+  "push_time": "2026-01-21 01:17:12",
+  "message_id": 10
+}

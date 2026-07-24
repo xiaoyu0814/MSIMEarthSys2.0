@@ -1,0 +1,172 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2025-12-26 09:47:27",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LineAbreast",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.8715700507164001,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 1.0,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 100.0%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "tactical_intent": "Lag Pursuit",
+        "confidence": 0.9957467913627625,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Lag Pursuit",
+        "confidence": 0.9957476258277893,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Lag Pursuit",
+        "confidence": 0.9957499504089355,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Lag Pursuit",
+        "confidence": 0.9888331890106201,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Lag Pursuit",
+        "confidence": 0.9888373613357544,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "threat_level": "Medium",
+        "threat_score": 58.47321182360047,
+        "intent_score": 74.78733956813812,
+        "capability_score": 56.49897209469895,
+        "opportunity_score": 91.30065462408814,
+        "confidence": 0.9978733956813812,
+        "reasoning": "战术意图: Lag Pursuit（评分: 74.8，权重: 50%） | 能力评估: 56.5分（权重: 35%） | 机会评估: 91.3分→威胁: 8.7分（权重: 15%） | 综合威胁评分: 58.5分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案",
+          "检测到进攻性意图，加强防御准备"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Medium",
+        "threat_score": 54.51082605045756,
+        "intent_score": 74.78738129138947,
+        "capability_score": 45.17942411468804,
+        "opportunity_score": 91.30442023585323,
+        "confidence": 0.9978738129138947,
+        "reasoning": "战术意图: Lag Pursuit（评分: 74.8，权重: 50%） | 能力评估: 45.2分（权重: 35%） | 机会评估: 91.3分→威胁: 8.7分（权重: 15%） | 综合威胁评分: 54.5分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案",
+          "检测到进攻性意图，加强防御准备"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Medium",
+        "threat_score": 55.535976808858514,
+        "intent_score": 74.78749752044678,
+        "capability_score": 48.10819992284633,
+        "opportunity_score": 91.30427949574059,
+        "confidence": 0.9978749752044678,
+        "reasoning": "战术意图: Lag Pursuit（评分: 74.8，权重: 50%） | 能力评估: 48.1分（权重: 35%） | 机会评估: 91.3分→威胁: 8.7分（权重: 15%） | 综合威胁评分: 55.5分 | 评估置信度: 99.8%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案",
+          "检测到进攻性意图，加强防御准备"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Medium",
+        "threat_score": 60.512339548256286,
+        "intent_score": 74.441659450531,
+        "capability_score": 62.819502474826486,
+        "opportunity_score": 91.30210695465652,
+        "confidence": 0.9944165945053101,
+        "reasoning": "战术意图: Lag Pursuit（评分: 74.4，权重: 50%） | 能力评估: 62.8分（权重: 35%） | 机会评估: 91.3分→威胁: 8.7分（权重: 15%） | 综合威胁评分: 60.5分 | 评估置信度: 99.4%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案",
+          "检测到进攻性意图，加强防御准备"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Medium",
+        "threat_score": 60.500546341965205,
+        "intent_score": 74.44186806678772,
+        "capability_score": 62.780848058819515,
+        "opportunity_score": 91.2912300801032,
+        "confidence": 0.9944186806678772,
+        "reasoning": "战术意图: Lag Pursuit（评分: 74.4，权重: 50%） | 能力评估: 62.8分（权重: 35%） | 机会评估: 91.3分→威胁: 8.7分（权重: 15%） | 综合威胁评分: 60.5分 | 评估置信度: 99.4%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案",
+          "检测到进攻性意图，加强防御准备"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Initial",
+        "phase_name": "初始阶段",
+        "confidence": 0.0,
+        "transition_time": "2025-12-26 09:47:27",
+        "indicators": {
+          "phase": "Initial",
+          "mission_type": "AEW",
+          "formation_action": "LineAbreast",
+          "unit_count": 5,
+          "threat_count": 5,
+          "threat_levels": [
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium",
+            "Medium"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 0
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Initial",
+      "phase_name": "初始阶段",
+      "confidence": 0.0
+    }
+  },
+  "priority": 70,
+  "push_time": "2025-12-26 09:47:27",
+  "message_id": 0
+}

@@ -1,0 +1,1046 @@
+{
+  "15": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3988512.2711926647,
+          "y": 7154964.368865551,
+          "z": 2820126.23336271
+        },
+        "duration": 2,
+        "orientation": {
+          "heading": 0.025082752943152542,
+          "pitch": -1.3160234488933868,
+          "roll": 0.000014032089539206538
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方可见光卫星开机扫描蓝方机场、港口和雷达等地面目标,获取目标情报信息，为己方作战提供情报态势支持",
+        "jd": 1,
+        "UEId": "YAOGAN"
+      },
+      {
+        "position": {
+          "x": -3181129.2996460153,
+          "y": 5407060.359232321,
+          "z": 2378436.555514748
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.186936288454911,
+          "pitch": -0.7206465742740198,
+          "roll": 0.00004523001181411246
+        },
+        "flyInterval": 1000
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "30": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3042676.6640433795,
+          "y": 5540673.2782650115,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "红方预警机根据侦察情报下达攻击指令，九天无人机投放自杀无人机蜂群",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "34": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3020283.7648520595,
+          "y": 4998782.725209525,
+          "z": 2725937.918565827
+        },
+        "duration": 2,
+        "orientation": {
+          "heading": 0.07847547323247639,
+          "pitch": -1.5706702334003562,
+          "roll": 0
+        },
+        "flyInterval": 5000,
+        "UEId": "ss-uav_2_client_suicide_drone_34"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "40": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3011400.7280989205,
+          "y": 4964972.24751228,
+          "z": 2699206.5736475224
+        },
+        "duration": 2,
+        "orientation": {
+          "heading": 0.07847547319460446,
+          "pitch": -1.570674112133542,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "蓝方地面受诱导开机并探测到红方自杀无人机蜂群"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "46": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -2987038.204849552,
+          "y": 4965495.999056891,
+          "z": 2659926.631032823
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 0.231404952605482,
+          "pitch": -0.020163847205911578,
+          "roll": 6.283162559572769
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "蓝方霍克导弹车接到指令对红方目标予以打击",
+        "jd": 0,
+        "UEId": "Hawk3_hawk_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "60": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3010695.9958347064,
+          "y": 4959495.457568949,
+          "z": 2697346.7586708902
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 1.8067258983265013,
+          "pitch": -1.5706981898955505,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "当前展示的是蓝方地面指挥系统指挥通信链路",
+        "jd": 0,
+        "UEId": "Hawk3_hawk_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "73": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3009850.795791894,
+          "y": 4981508.3854829855,
+          "z": 2708615.323573933
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.4611897766151207,
+          "pitch": -1.4954213002830827,
+          "roll": 6.282808420486568
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方采用多批次自杀式蜂群无人机可短时间内确保蓝方防御能力达到饱和",
+        "jd": 2,
+        "UEId": "ss-uav_2_client_suicide_drone_34"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "90": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3020283.8455076795,
+          "y": 5006524.855491649,
+          "z": 2721071.411017873
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.2719441447979527,
+          "pitch": -1.559132104110358,
+          "roll": 0
+        },
+        "flyInterval": 2000,
+        "identifyInfo": "自杀无人机蜂群突破蓝方防御后，对其重要静态目标集中实施自杀式攻击",
+        "jd": 2,
+        "UEId": "ss-uav_2_client_suicide_drone_34"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "102": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3002299.8278646017,
+          "y": 4961200.255311057,
+          "z": 2693545.458685248
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.4611790617444846,
+          "pitch": -1.4954223000663274,
+          "roll": 6.282819165866634
+        },
+        "flyInterval": 2000,
+        "identifyInfo": "红方自杀无人机群快速抵近蓝方地面指挥所",
+        "jd": 1,
+        "UEId": "ss-uav_2_client_suicide_drone_34"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "118": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3011953.953028377,
+          "y": 4937851.461469842,
+          "z": 2700471.9812136516
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497168056394,
+          "pitch": -1.5707204585120045,
+          "roll": 0
+        },
+        "flyInterval": 2000,
+        "identifyInfo": "红方071登陆舰群携带登陆艇接近蓝方台北港岸滩，准备实施登陆作战",
+        "jd": 1,
+        "UEId": "071__1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "127": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3072873.5655869027,
+          "y": 4959728.714856421,
+          "z": 2573320.9377208124
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497111483866,
+          "pitch": -1.5706309886643504,
+          "roll": 0
+        },
+        "flyInterval": 2000,
+        "identifyInfo": "台岛东侧，红方大型无人潜艇潜航至该侧海域，布放智能水雷封锁港口",
+        "jd": 1
+      },
+      {
+        "position": {
+          "x": -3079203.6942415307,
+          "y": 4991693.765437655,
+          "z": 2588544.7771599493
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.617249709218651,
+          "pitch": -1.5706117564050084,
+          "roll": 0
+        },
+        "flyInterval": 2000,
+        "jd": 1
+      },
+      {
+        "position": {
+          "x": -3079203.6942415307,
+          "y": 4991693.765437655,
+          "z": 2588544.7771599493
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.617249709218651,
+          "pitch": -1.5706117564050084,
+          "roll": 0
+        },
+        "flyInterval": 2000,
+        "jd": 1
+      },
+      {
+        "position": {
+          "x": -3318318.068772411,
+          "y": 5557447.047041175,
+          "z": 2820365.637996189
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497074259473,
+          "pitch": -1.5705954939999218,
+          "roll": 0
+        },
+        "flyInterval": 2000,
+        "jd": 1,
+        "method": "台湾海运线"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "160": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3002870.424421107,
+          "y": 4957979.350645229,
+          "z": 2691704.3096893937
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.617249716587949,
+          "pitch": -1.5707156880090407,
+          "roll": 0
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方自杀无人机群1完成对蓝方重要目标打击任务，蓝方地面指挥所被摧毁",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "170": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3007072.080659039,
+          "y": 4965554.194506236,
+          "z": 2707948.6633240795
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.60571520056243,
+          "pitch": -1.4256715551404682,
+          "roll": 6.282939362865626
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方自杀无人机群2持续逼近蓝方电子战雷达",
+        "jd": 1
+      },
+      {
+        "position": {
+          "x": -3007602.1753157456,
+          "y": 4955277.881766361,
+          "z": 2700118.1004168782
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.605721010253209,
+          "pitch": -1.4256701252773087,
+          "roll": 6.282933491453182
+        },
+        "flyInterval": 6000,
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "207": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3005638.8200935,
+          "y": 4945317.057415905,
+          "z": 2693838.725091292
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497166125535,
+          "pitch": -1.5707162167941298,
+          "roll": 0
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "蓝方地面电子战雷达被摧毁,红方自杀无人机蜂群完成对蓝方重要静态目标的打击任务",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "260": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3014804.7453790787,
+          "y": 4944279.183207615,
+          "z": 2702294.5529791485
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.617249716700968,
+          "pitch": -1.5707181405171102,
+          "roll": 0
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方登陆艇持续抵近蓝方台北港",
+        "jd": 1
+      },
+      {
+        "position": {
+          "x": -3011562.9419299755,
+          "y": 4933529.3740401,
+          "z": 2697554.374606132
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497166927,
+          "pitch": -1.570717957928831,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "红方登陆艇持续抵近蓝方台北港",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "295": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3013156.551447451,
+          "y": 4935091.126989662,
+          "z": 2696934.7387153776
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497166716546,
+          "pitch": -1.5707174623137363,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "蓝方岸防炮打击红方位于台北港登陆目标",
+        "jd": 0
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "350": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3018370.628783009,
+          "y": 4943424.757427919,
+          "z": 2702375.30109807
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.1721169794259847,
+          "pitch": -1.5707429673283277,
+          "roll": 0
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方登陆艇通过快速机动实现立登陆，并迅速释放无人车和机器狗等无人装备",
+        "UEId": "071__2_landingCraft_3",
+        "jd": 1
+      },
+      {
+        "position": {
+          "x": -3010704.779651143,
+          "y": 4929966.228778692,
+          "z": 2695969.038351064
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.617249716784302,
+          "pitch": -1.5707199763101314,
+          "roll": 0
+        },
+        "flyInterval": 6000,
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "340": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3012236.82777575,
+          "y": 4934286.5206617685,
+          "z": 2696629.317934747
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497166228994,
+          "pitch": -1.5707164308399375,
+          "roll": 0
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "蓝方岸防炮群持续对红方登陆艇进行打击，阻止红方登陆艇登陆",
+        "jd": 0
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "420": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3011851.2759009954,
+          "y": 4933952.084675794,
+          "z": 2696010.925936033
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.617249716618297,
+          "pitch": -1.5707163314032875,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "蓝方岸防炮与红方无人装备激烈交火",
+        "jd": 0
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒\"联合新闻网\"报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "450": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3010977.7297220076,
+          "y": 4931723.393720888,
+          "z": 2695179.6253906633
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.6172497166223536,
+          "pitch": -1.5707164191182494,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "红方无人装备予以还击",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒\"联合新闻网\"报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "470": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3009635.270219193,
+          "y": 4934871.437088696,
+          "z": 2702747.887632042
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.540484131755239,
+          "pitch": -0.8892146307967801,
+          "roll": 6.283074906904446
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "在自杀式饱和攻击阶段后，红方计划进一步掌握蓝方要点目标信息",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "490": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3003974.38086495,
+          "y": 4963509.60069598,
+          "z": 2747580.1011333102
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.4535538184045222,
+          "pitch": -0.8948565477601189,
+          "roll": 6.282769386047685
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方派遣无人侦察机抵近侦察，掌握蓝方地面兵力部署，阵地编程及战场环境等信息",
+        "jd": 1,
+        "UEId": "ss-wz-7_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "537": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -2973284.9998641936,
+          "y": 4956407.414603942,
+          "z": 2736728.4948438457
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.8146914749601573,
+          "pitch": -0.413744977012777,
+          "roll": 6.282746894747887
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "红方电子干扰机选准时机对蓝方雷达、防空及指挥节点等进行干扰阻塞，确保敌在要点区域数据无法传输",
+        "jd": 1,
+        "UEId": "j-16d_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "560": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -2978752.005652775,
+          "y": 4998270.703232896,
+          "z": 2799135.11943074
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.890959473577965,
+          "pitch": -0.9063001780192677,
+          "roll": 6.2827507501499955
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "防空摧毁阶段，红方攻击11无人机挂载飞腾5精确制导炸弹，定位并摧毁蓝方雷达站",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "580": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3035490.7372329105,
+          "y": 5067141.084916762,
+          "z": 2750942.3142792657
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.40699732860098,
+          "pitch": -1.5609909358305205,
+          "roll": 0
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "攻击2无人机挂蓝剑7反坦克导弹，打击蓝方地面机动防空设备",
+        "jd": 1,
+        "UEId": "gj-2_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "620": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -2969456.450468268,
+          "y": 5033309.755341344,
+          "z": 2796922.1644421215
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.359250026324596,
+          "pitch": -0.9638884360550541,
+          "roll": 6.281980366506486
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "攻击11无人机锁定台中港地面目标并进行打击",
+        "jd": 1,
+        "UEId": "gj-11_1"
+      },
+      {
+        "position": {
+          "x": -2964604.0275142128,
+          "y": 4974559.722619902,
+          "z": 2752050.9641960966
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.4108316942891515,
+          "pitch": -0.6625688622490595,
+          "roll": 6.281964922209485
+        },
+        "flyInterval": 6000,
+        "jd": 1,
+        "UEId": "j-gj-11_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "680": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -2976672.633127691,
+          "y": 4961213.847499374,
+          "z": 2727827.17195913
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.1779459802206933,
+          "pitch": -0.5891786864728155,
+          "roll": 6.281967710675905
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "攻击11无人机锁定台北港地面目标并进行打击",
+        "jd": 1,
+        "UEId": "gj-11_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "710": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -2981534.820181174,
+          "y": 4956369.599100964,
+          "z": 2723842.1830950547
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.1953252321380985,
+          "pitch": -0.5717271179114576,
+          "roll": 6.281966531599938
+        },
+        "flyInterval": 6000,
+        "jd": 1,
+        "UEId": "j-gj-11_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "780": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3008358.4230688307,
+          "y": 4956987.805263206,
+          "z": 2706292.8148400737
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.8227313391433837,
+          "pitch": -1.4413456238232176,
+          "roll": 6.28286769342924
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "攻击2无人机锁定台中港地面目标并进行打击",
+        "jd": 1,
+        "UEId": "gj-2_2"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "820": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3006478.1625803635,
+          "y": 4950586.211054963,
+          "z": 2699127.8850883157
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.822734354417028,
+          "pitch": -1.441344434798559,
+          "roll": 6.282864652713545
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "蓝方台北港地面目标持续损毁",
+        "jd": 0,
+        "UEId": "j-gj-11_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "840": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3015429.372252354,
+          "y": 4942198.6567683695,
+          "z": 2702214.41940215
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.491770926918014,
+          "pitch": -1.4624282886246398,
+          "roll": 6.281448077110956
+        },
+        "flyInterval": 6000,
+        "identifyInfo": "蓝方台中港地面目标遭受持续打击，不断损毁",
+        "jd": 0,
+        "UEId": "j-gj-11_1"
+      },
+      {
+        "position": {
+          "x": -3026776.3492044406,
+          "y": 4979762.984174163,
+          "z": 2722741.6855801074
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.4917735515964736,
+          "pitch": -1.4624279128613762,
+          "roll": 6.281445436945039
+        },
+        "flyInterval": 6000,
+        "jd": 0,
+        "UEId": "j-gj-11_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "900": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3007980.6814575884,
+          "y": 4969396.096541427,
+          "z": 2715035.9337124866
+        },
+        "duration": 4,
+        "orientation": {
+          "heading": 2.289471593996439,
+          "pitch": -1.1903644842287333,
+          "roll": 0.0000807860335685362
+        },
+        "flyInterval": 6000,
+        "jd": 2,
+        "UEId": "j-gj-11_1"
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "据台媒“联合新闻网”报道，台湾高雄兴达电厂9日晚新2号燃气复循环机组在测试时突发爆炸，现场火光冲天。所幸此次事故未造成人员伤亡。",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  }
+}

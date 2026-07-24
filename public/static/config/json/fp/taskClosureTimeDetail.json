@@ -1,0 +1,398 @@
+{
+  "code": 200,
+  "message": "OK",
+  "data": [
+    {
+      "id": "0526001",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "卫星侦察任务",
+      "taskType": "explore",
+      "taskId": "1",
+      "factorName": "无环境影响",
+      "factorKey": "NoEnvironmentalImpact",
+      "factorId": "001",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:00:00",
+      "taskEndTime": "2030-05-30 09:02:00",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526002",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "卫星侦察任务",
+      "taskType": "explore",
+      "taskId": "1",
+      "factorName": "云量影响模型",
+      "factorKey": "CloudCover",
+      "factorId": "002",
+      "assessExplain": "受云层遮挡影响，第一颗可见光卫星未能探测到目标，第二颗可见光卫星成功完成侦察，受装备多次尝试观测影响，本次任务整体耗时有所增加。",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:00:00",
+      "taskEndTime": "2030-05-30 09:05:30",
+      "effectStartTime": "2030-05-30 09:01:30",
+      "effectEndTime": "2030-05-30 09:03:30",
+      "effectPlatformNum": "1 / 2",
+      "platformList": [
+        {
+          "id": 1,
+          "side": "red",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/2070301.png",
+          "platformName": "可见光卫星1",
+          "platform": "OpticalSatellite-1",
+          "platformTypeName": "光学卫星",
+          "platformTypeId": "OpticalSatellite",
+          "platformTask": "",
+          "effect_type": [
+            "云量影响，探测效能锐减"
+          ],
+          "effect_explain": "",
+          "effect_time": "",
+          "effect_duration": "",
+          "factorParams": {
+            "AtmosphericVisibility": "25%"
+          },
+          "factorDataUrl": ""
+        },
+        {
+          "id": 2,
+          "side": "red",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/2070301.png",
+          "platformName": "可见光卫星2",
+          "platform": "OpticalSatellite-2",
+          "platformTypeName": "光学卫星",
+          "platformTypeId": "OpticalSatellite",
+          "platformTask": "",
+          "effect_type": [
+            "无明显影响"
+          ],
+          "effect_explain": "",
+          "effect_time": "",
+          "effect_duration": "",
+          "factorParams": {
+            "AtmosphericVisibility": "25%"
+          },
+          "factorDataUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "0526003",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "卫星侦察任务",
+      "taskType": "explore",
+      "taskId": "1",
+      "factorName": "风切变影响模型",
+      "factorKey": "WindChange",
+      "factorId": "003",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:00:00",
+      "taskEndTime": "2030-05-30 09:02:00",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526004",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "卫星侦察任务",
+      "taskType": "explore",
+      "taskId": "1",
+      "factorName": "大气能见度影响模型",
+      "factorKey": "AtmosphericVisibility",
+      "factorId": "004",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:00:00",
+      "taskEndTime": "2030-05-30 09:02:00",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526005",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "卫星侦察任务",
+      "taskType": "explore",
+      "taskId": "1",
+      "factorName": "大气湿度影响模型",
+      "factorKey": "AtmosphericWaveguide",
+      "factorId": "005",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:00:00",
+      "taskEndTime": "2030-05-30 09:02:00",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526007",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "打击海马斯任务",
+      "taskType": "hit",
+      "taskId": "1",
+      "factorName": "无环境影响",
+      "factorKey": "NoEnvironmentalImpact",
+      "factorId": "001",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:02:25",
+      "taskEndTime": "2030-05-30 09:08:20",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526008",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "打击海马斯任务",
+      "taskType": "hit",
+      "taskId": "1",
+      "factorName": "云量影响模型",
+      "factorKey": "CloudCover",
+      "factorId": "002",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:05:50",
+      "taskEndTime": "2030-05-30 09:12:40",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526009",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "打击海马斯任务",
+      "taskType": "hit",
+      "taskId": "1",
+      "factorName": "风切变影响模型",
+      "factorKey": "WindChange",
+      "factorId": "003",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:02:25",
+      "taskEndTime": "2030-05-30 09:08:20",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526010",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "打击海马斯任务",
+      "taskType": "hit",
+      "taskId": "1",
+      "factorName": "大气能见度影响模型",
+      "factorKey": "AtmosphericVisibility",
+      "factorId": "004",
+      "assessExplain": "",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:02:25",
+      "taskEndTime": "2030-05-30 09:08:20",
+      "effectStartTime": "",
+      "effectEndTime": "",
+      "effectPlatformNum": "",
+      "platformList": []
+    },
+    {
+      "id": "0526011",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "打击海马斯任务",
+      "taskType": "hit",
+      "taskId": "1",
+      "factorName": "大气湿度影响模型",
+      "factorKey": "AtmosphericWaveguide",
+      "factorId": "005",
+      "assessExplain": "大气湿度连续变化，水汽增加吸收目标的长波红外，造成其红外特性降低；大气湿度导致DF-15C红外导引头探测不到目标，打击位置偏离",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:05:00",
+      "taskEndTime": "2030-05-30 09:12:40",
+      "effectStartTime": "2030-05-30 09:06:00",
+      "effectEndTime": "2030-05-30 09:07:20",
+      "effectPlatformNum": "2 / 2",
+      "platformList": [
+        {
+          "id": 1,
+          "side": "red",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/20301.png",
+          "platformName": "DF-15C",
+          "platform": "DF-15C_Vehicle_DF-15C_1",
+          "platformTypeName": "导弹",
+          "platformTypeId": "DF-15C",
+          "platformTask": "",
+          "effect_type": [
+            "红外导引头探测不到目标，打击位置偏离"
+          ],
+          "effect_explain": "",
+          "effect_time": "",
+          "effect_duration": "",
+          "factorParams": {
+            "AtmosphericVisibility": "25%"
+          },
+          "factorDataUrl": ""
+        },
+        {
+          "id": 2,
+          "side": "blue",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/21101.png",
+          "platformName": "霍克雷达",
+          "platform": "Hawk_Radar",
+          "platformTypeName": "雷达",
+          "platformTypeId": "Hawk_Radar",
+          "platformTask": "",
+          "effect_type": [
+            "大气湿度影响，目标特性减弱"
+          ],
+          "effect_explain": "",
+          "effect_time": "",
+          "effect_duration": "",
+          "factorParams": {
+            "AtmosphericVisibility": "25%"
+          },
+          "factorDataUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "0526016",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "无人机侦察任务",
+      "taskType": "explore",
+      "taskId": "2",
+      "factorName": "大气能见度影响模型",
+      "factorKey": "AtmosphericVisibility",
+      "factorId": "004",
+      "assessExplain": "受大气能见度影响，两架无人机探测能力明显下降，仅间歇性捕获目标，侦察任务整体耗时增加。",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:05:00",
+      "taskEndTime": "2030-05-30 09:17:00",
+      "effectStartTime": "2030-05-30 09:08:00",
+      "effectEndTime": "2030-05-30 09:17:00",
+      "effectPlatformNum": "2 / 2",
+      "platformList": [
+        {
+          "id": 1,
+          "side": "red",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/无人机.png",
+          "platformName": "彩虹-5无人机2",
+          "platform": "CH-5-2",
+          "platformTypeName": "侦察无人机",
+          "platformTypeId": "CH-5",
+          "platformTask": "",
+          "effect_type": [
+            "大气能见度影响，探测效能锐减"
+          ],
+          "effect_explain": "",
+          "effect_time": "",
+          "effect_duration": "",
+          "factorParams": {
+            "IceAccumulation": "25%"
+          },
+          "factorDataUrl": ""
+        },
+        {
+          "id": 2,
+          "side": "red",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/无人机.png",
+          "platformName": "无侦-7-2",
+          "platform": "WZ-7-2",
+          "platformTypeName": "侦察无人机",
+          "platformTypeId": "WZ-7",
+          "platformTask": "",
+          "effect_type": [
+            "大气能见度影响，探测明显受限"
+          ],
+          "effect_explain": "",
+          "effect_time": "",
+          "effect_duration": "",
+          "factorParams": {
+            "AtmosphericVisibility": "25%"
+          },
+          "factorDataUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "0526021",
+      "scenarioId": "2054572744208547840",
+      "scenarioName": "打击任务环境影响分析",
+      "taskName": "打击霍克雷达任务",
+      "taskType": "hit",
+      "taskId": "2",
+      "factorName": "风切变影响模型",
+      "factorKey": "WindChange",
+      "factorId": "002",
+      "assessExplain": "受风切变环境影响：首架无人机途径大风区域，因剧烈颠簸被迫返航；第二架无人机穿过大风区域，执行打击任务。",
+      "taskCompletionRate": "92%",
+      "taskStartTime": "2030-05-30 09:09:00",
+      "taskEndTime": "2030-05-30 09:13:10",
+      "effectStartTime": "2030-05-30 09:09:00",
+      "effectEndTime": "2030-05-30 09:13:10",
+      "effectPlatformNum": "2 / 2",
+      "platformList": [
+        {
+          "id": 1,
+          "side": "red",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/无人机.png",
+          "platformName": "彩虹-5无人机1",
+          "platform": "CH-5-1",
+          "platformTypeName": "察打一体无人机",
+          "platformTypeId": "CH-5",
+          "platformTask": "",
+          "effect_type": [
+            "大风致使颠簸、飞行姿态异常失控坠毁"
+          ],
+          "effect_explain": "风速增大导致航迹偏移约2km，通信距离稳定，探测距离下降约25%。",
+          "effect_time": "2026-05-13 00:31:00 ~ 2026-05-13 00:33:30",
+          "effect_duration": "3分30秒",
+          "factorParams": {
+            "AtmosphericVisibility": "25%"
+          },
+          "factorDataUrl": ""
+        },
+        {
+          "id": 2,
+          "side": "red",
+          "imgUrl": "http://34.15.87.10:4041/scenario/img/无人机.png",
+          "platformName": "攻击-11",
+          "platform": "GJ-11",
+          "platformTypeName": "攻击无人机",
+          "platformTypeId": "GJ-11",
+          "platformTask": "",
+          "effect_type": [
+            "穿过风切变区域，执行打击任务"
+          ],
+          "effect_explain": "风速增大导致航迹偏移约2km，通信距离稳定，探测距离下降约25%。",
+          "effect_time": "2026-05-13 00:31:00 ~ 2026-05-13 00:33:30",
+          "effect_duration": "3分30秒",
+          "factorParams": {
+            "AtmosphericVisibility": "25%"
+          },
+          "factorDataUrl": ""
+        }
+      ]
+    }
+  ]
+}

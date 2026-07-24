@@ -1,0 +1,1120 @@
+{
+  "code": 200,
+  "message": "OK",
+  "data":[
+  {
+      "name": "red_armor_battalion_changhua",
+      "chineseName": "\u7b2c1\u88c5\u7532\u8425",
+      "type": "mTankBattalion",
+      "childs": [
+          {
+              "name2": "adfadfasfas",
+              "name": "red_armor_battalion_changhua_Componey_1",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_1_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_1_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_1_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_1_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_1_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_1_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "red_armor_battalion_changhua_Componey_2",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_2_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_2_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_2_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_2_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_2_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_2_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "red_armor_battalion_changhua_Componey_3",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_3_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_3_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_3_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_3_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_3_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_3_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "red_armor_battalion_changhua_Componey_4",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_4_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_4_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_4_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "red_armor_battalion_changhua_Componey_4_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_4_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "red_armor_battalion_changhua_Componey_4_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "red_armor_battalion_changhua_1",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "red_armor_battalion_changhua_2",
+              "type": "TANK",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "red_tank_platoon_erlin",
+      "chineseName": "\u7b2c3\u5766\u514b\u6392",
+      "type": "mTankPlatoon",
+      "childs": [
+          {
+              "name": "red_tank_platoon_erlin_1",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "red_tank_platoon_erlin_2",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "red_tank_platoon_erlin_3",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "red_tank_platoon_erlin_4",
+              "type": "TANK",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "red_h6k_strike_formation",
+      "chineseName": "h-6k\u8f70\u70b8\u673a\u7f16\u961f",
+      "type": "h-6kformation",
+      "childs": [
+          {
+              "name": "red_h6k_strike_formation_1",
+              "type": "H-6K",
+              "childs": []
+          },
+          {
+              "name": "red_h6k_strike_formation_2",
+              "type": "H-6K",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "red_j10b_squadron",
+      "chineseName": "j-10b\u6218\u6597\u673a\u7f16\u961f",
+      "type": "j-10bformation",
+      "childs": [
+          {
+              "name": "red_j10b_squadron_1",
+              "type": "J-10B",
+              "childs": []
+          },
+          {
+              "name": "red_j10b_squadron_2",
+              "type": "J-10B",
+              "childs": []
+          },
+          {
+              "name": "red_j10b_squadron_3",
+              "type": "J-10B",
+              "childs": []
+          },
+          {
+              "name": "red_j10b_squadron_4",
+              "type": "J-10B",
+              "childs": []
+          },
+          {
+              "name": "red_j10b_squadron_5",
+              "type": "J-10B",
+              "childs": []
+          },
+          {
+              "name": "red_j10b_squadron_6",
+              "type": "J-10B",
+              "childs": []
+          },
+          {
+              "name": "red_j10b_squadron_7",
+              "type": "J-10B",
+              "childs": []
+          },
+          {
+              "name": "red_j10b_squadron_8",
+              "type": "J-10B",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "red_j11b_squadron",
+      "chineseName": "j-11b\u6218\u6597\u673a\u7f16\u961f",
+      "type": "j-11bformation",
+      "childs": [
+          {
+              "name": "red_j11b_squadron_1",
+              "type": "J-11B",
+              "childs": []
+          },
+          {
+              "name": "red_j11b_squadron_2",
+              "type": "J-11B",
+              "childs": []
+          },
+          {
+              "name": "red_j11b_squadron_3",
+              "type": "J-11B",
+              "childs": []
+          },
+          {
+              "name": "red_j11b_squadron_4",
+              "type": "J-11B",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "red_wz7_recon_group",
+      "chineseName": "wz-7\u65e0\u4eba\u4fa6\u5bdf\u673a\u7f16\u961f",
+      "type": "wz-7formation",
+      "childs": [
+          {
+              "name": "red_wz7_recon_group_1",
+              "type": "WZ-7",
+              "childs": []
+          },
+          {
+              "name": "red_wz7_recon_group_2",
+              "type": "WZ-7",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "red_z10_attack_group",
+      "chineseName": "z-10\u6b66\u88c5\u76f4\u5347\u673a\u7f16\u961f",
+      "type": "z-10formation",
+      "childs": [
+          {
+              "name": "red_z10_attack_group_1",
+              "type": "Z-10",
+              "childs": []
+          },
+          {
+              "name": "red_z10_attack_group_2",
+              "type": "Z-10",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "blue_armor_battalion_nantun",
+      "chineseName": "\u7b2c6\u88c5\u7532\u8425",
+      "type": "mTankBattalion",
+      "childs": [
+          {
+              "name": "blue_armor_battalion_nantun_Componey_1",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_1_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_1_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_1_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_1_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_1_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_1_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "blue_armor_battalion_nantun_Componey_2",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_2_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_2_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_2_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_2_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_2_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_2_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "blue_armor_battalion_nantun_Componey_3",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_3_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_3_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_3_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_3_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_3_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_3_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "blue_armor_battalion_nantun_Componey_4",
+              "chineseName": null,
+              "type": "mTankComponey",
+              "childs": [
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_4_Platoon_1",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_1_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_1_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_1_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_1_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_4_Platoon_2",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_2_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_2_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_2_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_2_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_4_Platoon_3",
+                      "chineseName": null,
+                      "type": "mTankPlatoon",
+                      "childs": [
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_3_1",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_3_2",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_3_3",
+                              "type": "TANK",
+                              "childs": []
+                          },
+                          {
+                              "name": "blue_armor_battalion_nantun_Componey_4_Platoon_3_4",
+                              "type": "TANK",
+                              "childs": []
+                          }
+                      ]
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_4_1",
+                      "type": "TANK",
+                      "childs": []
+                  },
+                  {
+                      "name": "blue_armor_battalion_nantun_Componey_4_2",
+                      "type": "TANK",
+                      "childs": []
+                  }
+              ]
+          },
+          {
+              "name": "blue_armor_battalion_nantun_1",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "blue_armor_battalion_nantun_2",
+              "type": "TANK",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "blue_tank_platoon_douliu",
+      "chineseName": "\u7b2c12\u5766\u514b\u6392",
+      "type": "mTankPlatoon",
+      "childs": [
+          {
+              "name": "blue_tank_platoon_douliu_1",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "blue_tank_platoon_douliu_2",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "blue_tank_platoon_douliu_3",
+              "type": "TANK",
+              "childs": []
+          },
+          {
+              "name": "blue_tank_platoon_douliu_4",
+              "type": "TANK",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "blue_air_defense_taichung",
+      "chineseName": "\u7b2c3\u9632\u7a7a\u65c5",
+      "type": "adBrigade",
+      "childs": [
+          {
+              "name": "blue_air_defense_taichung_iads_cmdr",
+              "type": "IADS_CMDR",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_iads_cmdr",
+              "type": "IADS_CMD",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_radar_company",
+              "type": "RED_RADAR_COMPANY",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_2_ew_radar",
+              "type": "EW_RADAR",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_3_ew_radar",
+              "type": "EW_RADAR",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_1_large_sam_battalion",
+              "type": "LARGE_SAM_BATTALION",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_1_acq_radar",
+              "type": "ACQ_RADAR",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_1_large_sam_ttr",
+              "type": "LARGE_SAM_TTR",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_1_large_sam_launcher",
+              "type": "LARGE_SAM_LAUNCHER",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_2_large_sam_launcher",
+              "type": "LARGE_SAM_LAUNCHER",
+              "childs": []
+          },
+          {
+              "name": "blue_air_defense_taichung_3_large_sam_launcher",
+              "type": "LARGE_SAM_LAUNCHER",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "blue_f16v_squadron",
+      "chineseName": "f-16v\u6218\u6597\u673a\u7f16\u961f",
+      "type": "f-16vformation",
+      "childs": [
+          {
+              "name": "blue_f16v_squadron_1",
+              "type": "F-16V",
+              "childs": []
+          },
+          {
+              "name": "blue_f16v_squadron_2",
+              "type": "F-16V",
+              "childs": []
+          },
+          {
+              "name": "blue_f16v_squadron_3",
+              "type": "F-16V",
+              "childs": []
+          },
+          {
+              "name": "blue_f16v_squadron_4",
+              "type": "F-16V",
+              "childs": []
+          }
+      ]
+  },
+  {
+      "name": "blue_f15j_squadron",
+      "chineseName": "f-15j\u6218\u6597\u673a\u7f16\u961f",
+      "type": "f-15jformation",
+      "childs": [
+          {
+              "name": "blue_f15j_squadron_1",
+              "type": "F-15J",
+              "childs": []
+          },
+          {
+              "name": "blue_f15j_squadron_2",
+              "type": "F-15J",
+              "childs": []
+          },
+          {
+              "name": "blue_f15j_squadron_3",
+              "type": "F-15J",
+              "childs": []
+          },
+          {
+              "name": "blue_f15j_squadron_4",
+              "type": "F-15J",
+              "childs": []
+          }
+      ]
+  }
+  ]
+}

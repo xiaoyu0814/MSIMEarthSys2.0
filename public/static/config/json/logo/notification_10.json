@@ -1,0 +1,162 @@
+{
+  "message_type": "phase_change",
+  "trigger": "phase_change",
+  "timestamp": "2025-12-26 10:16:19",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LeadTrail",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.85,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 1.0,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 100.0%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.19821910560131073,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.16699275374412537,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.1516396552324295,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.14657562971115112,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Orbit",
+        "confidence": 0.1474906951189041,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "threat_level": "Low",
+        "threat_score": 43.55233245353818,
+        "intent_score": 50.0,
+        "capability_score": 30.338037211158394,
+        "opportunity_score": 47.10653713578171,
+        "confidence": 0.5991095528006554,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 30.3分（权重: 35%） | 机会评估: 47.1分→威胁: 52.9分（权重: 15%） | 综合威胁评分: 43.6分 | 评估置信度: 59.9%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Low",
+        "threat_score": 45.41642311478761,
+        "intent_score": 50.0,
+        "capability_score": 36.741927523696816,
+        "opportunity_score": 49.62167679004182,
+        "confidence": 0.5834963768720627,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 36.7分（权重: 35%） | 机会评估: 49.6分→威胁: 50.4分（权重: 15%） | 综合威胁评分: 45.4分 | 评估置信度: 58.3%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Low",
+        "threat_score": 43.53381798110416,
+        "intent_score": 50.0,
+        "capability_score": 31.400562668569055,
+        "opportunity_score": 49.709193019300095,
+        "confidence": 0.5758198276162148,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 31.4分（权重: 35%） | 机会评估: 49.7分→威胁: 50.3分（权重: 15%） | 综合威胁评分: 43.5分 | 评估置信度: 57.6%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Low",
+        "threat_score": 45.66437530103782,
+        "intent_score": 50.0,
+        "capability_score": 37.2503118335702,
+        "opportunity_score": 49.154892271411654,
+        "confidence": 0.5732878148555756,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 37.3分（权重: 35%） | 机会评估: 49.2分→威胁: 50.8分（权重: 15%） | 综合威胁评分: 45.7分 | 评估置信度: 57.3%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Low",
+        "threat_score": 45.98542247746646,
+        "intent_score": 50.0,
+        "capability_score": 37.978164619786504,
+        "opportunity_score": 48.71290092972545,
+        "confidence": 0.5737453475594521,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 38.0分（权重: 35%） | 机会评估: 48.7分→威胁: 51.3分（权重: 15%） | 综合威胁评分: 46.0分 | 评估置信度: 57.4%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "phase_change": true,
+      "phase_info": {
+        "phase": "Initial",
+        "phase_name": "初始阶段",
+        "confidence": 0.0,
+        "transition_time": "2025-12-26 10:16:19",
+        "indicators": {
+          "phase": "Initial",
+          "mission_type": "AEW",
+          "formation_action": "LeadTrail",
+          "unit_count": 5,
+          "threat_count": 5,
+          "threat_levels": [
+            "Low",
+            "Low",
+            "Low",
+            "Low",
+            "Low"
+          ],
+          "critical_threat_count": 0,
+          "high_threat_count": 0
+        }
+      }
+    },
+    "current_phase": {
+      "phase": "Initial",
+      "phase_name": "初始阶段",
+      "confidence": 0.0
+    }
+  },
+  "priority": 70,
+  "push_time": "2025-12-26 10:16:19",
+  "message_id": 0
+}

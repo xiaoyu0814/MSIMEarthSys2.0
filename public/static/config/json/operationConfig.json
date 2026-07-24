@@ -1,0 +1,39 @@
+{
+  "explanation":[
+    {"operation":"作战行动"},
+    {"method":"行动方法"},
+    {"phase":"作战阶段"}
+  ],
+  "operation":{
+    "stealth approach, cross-domain maneuver":"潜行抵近跨域机动",
+    "cloud system support real-time perception":"云系支撑即时感知",
+    "deception jamming, paralyzing network, break chain":"诱扰结合瘫网断链",
+    "low-cost saturation attrition":"低端廉价饱和耗能",
+    "manned/unmanned cooperative combat":"有人/无人协同作战"
+  },
+  "method":{
+    "joint reconnaissance, precision planning":"综合侦察、精密筹划",
+    "target subdivision, rational planning":"细分目标、合理规划",
+    "external deployment, rapid maneuvers":"区外投放、快速机动",
+    "at all costs, area-specific strong perception":"不计损失，定域强势感知",
+    "close surveillance, secretly following perception":"紧盯目标，秘密跟随感知",
+    "optimal timing, paralyzing network":"选准时机，瘫痪网络",
+    "multi-domain integration, electronic chain breaking":"多域结合，电子断链",
+    "optimal targets, firepower destruction":"优选目标，火力毁体",
+    "close-in attrition, suicide attack":"抵近耗能，自杀性攻击",
+    "precise attrition, proactive attack":"精准耗能，主动性攻击",
+    "suicide and proactive attack":"自杀性与主动性混合攻击",
+    "cluster as primary, breakthrough and key point seizure":"集群为主，突前夺要",
+    "cluster as auxiliary, close escort":"集群为辅，伴随护卫",
+    "cooperative seizure":"不分主次，协同夺控"
+  },
+  "phase":{
+    "approach":"抵近",
+    "attrition":"耗能",
+    "suicide attack":"自杀式攻击",
+	  "unmanned reconnaissance":"无人化侦察",
+	  "unmanned jamming":"无人化干扰",
+	  "unmanned attack, seize key points":"无人化攻击，夺占要点",
+	  "manned/unmanned cooperative clear and hold":"有人/无人协同, 围剿剩余力量，控制要点"
+  }
+}

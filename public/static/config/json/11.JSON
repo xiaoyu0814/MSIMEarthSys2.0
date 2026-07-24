@@ -1,0 +1,588 @@
+{
+    "last_node_id": 159,
+    "last_link_id": 135,
+    "nodes": [
+        {
+            "id": 108,
+            "type": "basic/set_array",
+            "pos": [
+                1434.717663909739,
+                171.94820197568018
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": null,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": 131,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 50
+            }
+        },
+        {
+            "id": 100,
+            "type": "basic/set_array",
+            "pos": [
+                814.3369503962708,
+                503.8210076654052
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": null,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": 130,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 102
+            }
+        },
+        {
+            "id": "ss-uav_1_client_suicide_drone_2",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 842,
+                "1": 177,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 26
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 126,
+                    "label": "接收"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [
+                        74,
+                        128
+                    ],
+                    "slot_index": 0,
+                    "label": "发送"
+                }
+            ],
+            "title": "九天无人机1",
+            "properties": {
+                "id": "ss-uav_1_client_suicide_drone_2"
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "ss-uav_2_leader_suicide_drone_1",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 829,
+                "1": 320,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 26
+            },
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 127,
+                    "label": "接收"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [
+                        68,
+                        129
+                    ],
+                    "label": "发送",
+                    "slot_index": 0
+                }
+            ],
+            "title": "九天无人机2",
+            "properties": {
+                "id": "ss-uav_2_leader_suicide_drone_1"
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "KJ-500",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 530,
+                "1": 244,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 46
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "in",
+                    "type": "string,array",
+                    "link": 135,
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "freqs",
+                    "type": "array",
+                    "links": [
+                        31,
+                        44,
+                        126,
+                        127
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力详情"
+                },
+                {
+                    "name": "samples",
+                    "type": "array",
+                    "links": [
+                        88,
+                        130
+                    ],
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "KJ-500",
+            "properties": {
+                "id": "KJ-500"
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "ZSWRJ2",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1155,
+                "1": 347,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 26
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 129,
+                    "label": "接收"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [
+                        78,
+                        133
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "蜂群自杀式无人机",
+            "properties": {
+                "id": "ZSWRJ2"
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": 107,
+            "type": "basic/set_array",
+            "pos": [
+                1420.717663909739,
+                422.9482019756808
+            ],
+            "size": {
+                "0": 210,
+                "1": 78
+            },
+            "flags": {},
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "link": null,
+                    "label": " "
+                },
+                {
+                    "name": "value",
+                    "type": 0,
+                    "link": 133,
+                    "slot_index": 1,
+                    "label": "兵力总数"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "arr",
+                    "type": "array",
+                    "links": [],
+                    "slot_index": 0,
+                    "label": " "
+                }
+            ],
+            "title": "兵力总数",
+            "properties": {
+                "index": 50
+            }
+        },
+        {
+            "id": "scene",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 337,
+                "1": 229,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 36.59203338623047
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "gain",
+                    "type": "number",
+                    "link": null,
+                    "label": "想定输入"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [
+                        30,
+                        135
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力"
+                }
+            ],
+            "title": "空军",
+            "properties": {
+                "id": "scene"
+            },
+            "boxcolor": "#222"
+        },
+        {
+            "id": "ZSWRJ1",
+            "type": "CGF/CGF",
+            "pos": {
+                "0": 1168,
+                "1": 191,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 140,
+                "1": 26
+            },
+            "flags": {
+                "collapsed": false
+            },
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "str",
+                    "type": "string,array",
+                    "link": 128,
+                    "label": "接收"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "out",
+                    "type": "array",
+                    "links": [
+                        77,
+                        131
+                    ],
+                    "slot_index": 0,
+                    "label": "兵力总数"
+                }
+            ],
+            "title": "蜂群自杀式无人机",
+            "properties": {
+                "id": "ZSWRJ1"
+            },
+            "boxcolor": "#222"
+        }
+    ],
+    "links": [
+        [
+            30,
+            77,
+            0,
+            64,
+            0,
+            "audio"
+        ],
+        [
+            31,
+            64,
+            0,
+            78,
+            0,
+            "string,array"
+        ],
+        [
+            44,
+            64,
+            0,
+            81,
+            0,
+            "string,array"
+        ],
+        [
+            68,
+            81,
+            0,
+            101,
+            0,
+            "string,array"
+        ],
+        [
+            74,
+            78,
+            0,
+            104,
+            0,
+            "string,array"
+        ],
+        [
+            77,
+            104,
+            0,
+            108,
+            1,
+            "array"
+        ],
+        [
+            78,
+            101,
+            0,
+            107,
+            1,
+            "array"
+        ],
+        [
+            88,
+            64,
+            1,
+            100,
+            1,
+            "array"
+        ],
+        [
+            126,
+            "KJ-500",
+            0,
+            "ss-uav_1_client_suicide_drone_2",
+            0,
+            "string,array"
+        ],
+        [
+            127,
+            "KJ-500",
+            0,
+            "ss-uav_2_leader_suicide_drone_1",
+            0,
+            "string,array"
+        ],
+        [
+            128,
+            "ss-uav_1_client_suicide_drone_2",
+            0,
+            "ZSWRJ1",
+            0,
+            "string,array"
+        ],
+        [
+            129,
+            "ss-uav_2_leader_suicide_drone_1",
+            0,
+            "ZSWRJ2",
+            0,
+            "string,array"
+        ],
+        [
+            130,
+            "KJ-500",
+            1,
+            100,
+            1,
+            "array"
+        ],
+        [
+            131,
+            "ZSWRJ1",
+            0,
+            108,
+            1,
+            "array"
+        ],
+        [
+            133,
+            "ZSWRJ2",
+            0,
+            107,
+            1,
+            "array"
+        ],
+        [
+            135,
+            "scene",
+            0,
+            "KJ-500",
+            0,
+            "string,array"
+        ]
+    ],
+    "groups": [
+        {
+            "title": "先期压制阶段",
+            "bounding": [
+                283,
+                53,
+                1407,
+                601
+            ],
+            "color": "#8A8",
+            "font_size": 24
+        }
+    ],
+    "config": {},
+    "extra": {},
+    "version": 0.4
+}

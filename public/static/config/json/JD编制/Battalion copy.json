@@ -1,0 +1,484 @@
+{
+  "code": 200,
+  "message": "OK",
+  "data": [
+      {
+          "side": "red",
+          "name": "red_armor_battalion_changhua",
+          "type": "mtankbattalion",
+          "groupType":1,
+          "lat": "24:04:30.00n",
+          "long": "120:28:15.00e",
+          "heading": 90,
+          "altitude": 25,
+          "task": null,
+          "route": [
+              {
+                  "lat": "24:04:30.00n",
+                  "long": "120:28:15.00e",
+                  "altitude": 25,
+                  "heading": 90,
+                  "speed": 15
+              },
+              {
+                  "lat": "24:05:00.00n",
+                  "long": "120:35:30.00e",
+                  "altitude": 45,
+                  "heading": 90,
+                  "speed": 15
+              }
+          ],
+          "childList": [
+            {
+                "id": "ss-uav_1",
+                "side": "red",
+                "code": 520,
+                "name": "九天无人机_1",
+                "entityName": "九天无人机_1",
+                "labelName": "九天无人机_1",
+                "type": "九天无人机",
+                "labelType": null,
+                "groupType": "air",
+                "optArea": "东部战区",
+                "forceType": "航空兵",
+                "role":0
+            },
+            {
+              "id": "ss-uav_2",
+              "side": "red",
+                "code": 521,
+                "name": "九天无人机_2",
+                "entityName": "九天无人机_2",
+                "labelName": "九天无人机_2",
+                "type": "九天无人机",
+                "labelType": null,
+                "groupType": "air",
+                "optArea": "东部战区",
+                "forceType": "航空兵",
+                "role":1
+            }
+        ],
+          "weapons": null
+      },
+      {
+        "side": "red",
+        "name": "red_radar_erlin",
+        "type": "radar",
+        "groupType":1,
+        "lat": "23:42:20.00n",
+        "long": "120:26:45.00e",
+        "heading": 45,
+        "altitude": 35,
+        "task": null,
+        "route": [
+        ],
+        "weapons": null
+    },
+      {
+          "side": "red",
+          "name": "red_tank_company_huwei",
+          "type": "mtankcomponey",
+          "groupType":1,
+          "lat": "23:42:20.00n",
+          "long": "120:26:45.00e",
+          "heading": 45,
+          "altitude": 35,
+          "task": null,
+          "route": [
+              {
+                  "lat": "23:42:20.00n",
+                  "long": "120:26:45.00e",
+                  "altitude": 35,
+                  "heading": 45,
+                  "speed": 12
+              },
+              {
+                  "lat": "23:44:30.00n",
+                  "long": "120:29:15.00e",
+                  "altitude": 40,
+                  "heading": 45,
+                  "speed": 12
+              }
+          ],
+          "weapons": null
+      },
+      {
+          "side": "red",
+          "name": "red_tank_platoon_erlin",
+          "type": "mtankplatoon",
+          "groupType":1,
+          "lat": "23:57:45.00n",
+          "long": "120:24:20.00e",
+          "heading": 60,
+          "altitude": 20,
+          "task": null,
+          "route": [
+              {
+                  "lat": "23:57:45.00n",
+                  "long": "120:24:20.00e",
+                  "altitude": 20,
+                  "heading": 60,
+                  "speed": 10
+              },
+              {
+                  "lat": "23:59:15.00n",
+                  "long": "120:27:30.00e",
+                  "altitude": 25,
+                  "heading": 60,
+                  "speed": 10
+              }
+          ],
+          "weapons": null
+      },
+      {
+          "side": "red",
+          "name": "red_h6k_strike_formation",
+          "type": "h-6kformation",
+          "groupType":2,
+          "lat": "24:15:30.00n",
+          "long": "120:38:45.00e",
+          "heading": 270,
+          "altitude": 8000,
+          "number": 6,
+          "task": null,
+          "route": [
+              {
+                  "lat": "24:15:30.00n",
+                  "long": "120:38:45.00e",
+                  "altitude": 8000,
+                  "heading": 270,
+                  "speed": 250
+              },
+              {
+                  "lat": "24:10:00.00n",
+                  "long": "120:30:00.00e",
+                  "altitude": 7500,
+                  "heading": 240,
+                  "speed": 220
+              },
+              {
+                  "lat": "24:05:00.00n",
+                  "long": "120:25:00.00e",
+                  "altitude": 8500,
+                  "heading": 240,
+                  "speed": 250
+              }
+          ],
+          "weapons": [
+              {
+                  "type": "250-3",
+                  "quantity": 2
+              }
+          ]
+      },
+      {
+          "side": "red",
+          "name": "red_j10b_squadron",
+          "type": "j-10bformation",
+          "groupType":2,
+          "lat": "24:15:00.00n",
+          "long": "120:38:00.00e",
+          "heading": 270,
+          "altitude": 9000,
+          "number": 4,
+          "task": {
+              "type": "escort",
+              "target": "red_h6k_strike_formation"
+          },
+          "route": [
+              {
+                  "lat": "24:15:00.00n",
+                  "long": "120:38:00.00e",
+                  "altitude": 9000,
+                  "heading": 270,
+                  "speed": 400
+              },
+              {
+                  "lat": "24:10:00.00n",
+                  "long": "120:32:00.00e",
+                  "altitude": 9500,
+                  "heading": 270,
+                  "speed": 420
+              }
+          ],
+          "weapons": [
+              {
+                  "type": "pl-10",
+                  "quantity": 2
+              },
+              {
+                  "type": "pl-12",
+                  "quantity": 2
+              }
+          ]
+      },
+      {
+          "side": "red",
+          "name": "red_j11b_squadron",
+          "type": "j-11bformation",
+          "groupType":2,
+          "lat": "24:04:00.00n",
+          "long": "120:28:00.00e",
+          "heading": 270,
+          "altitude": 9500,
+          "number": 4,
+          "task": null,
+          "route": [
+              {
+                  "lat": "24:04:00.00n",
+                  "long": "120:28:00.00e",
+                  "altitude": 9500,
+                  "heading": 270,
+                  "speed": 410
+              },
+              {
+                  "lat": "24:08:00.00n",
+                  "long": "120:35:00.00e",
+                  "altitude": 10000,
+                  "heading": 270,
+                  "speed": 430
+              }
+          ],
+          "weapons": [
+              {
+                  "type": "pl-10",
+                  "quantity": 2
+              },
+              {
+                  "type": "pl-12",
+                  "quantity": 2
+              }
+          ]
+      },
+      {
+          "side": "red",
+          "name": "red_wz7_recon_group",
+          "type": "wz-7formation",
+          "groupType":2,
+          "lat": "23:42:00.00n",
+          "long": "120:26:00.00e",
+          "heading": 270,
+          "altitude": 12000,
+          "number": 2,
+          "task": null,
+          "route": [
+              {
+                  "lat": "23:42:00.00n",
+                  "long": "120:26:00.00e",
+                  "altitude": 12000,
+                  "heading": 270,
+                  "speed": 350
+              },
+              {
+                  "lat": "24:09:00.00n",
+                  "long": "120:40:00.00e",
+                  "altitude": 12000,
+                  "heading": 270,
+                  "speed": 350
+              }
+          ],
+          "weapons": null
+      },
+      {
+          "side": "red",
+          "name": "red_z10_attack_group",
+          "type": "z-10formation",
+          "groupType":2,
+          "lat": "23:57:00.00n",
+          "long": "120:24:00.00e",
+          "heading": 90,
+          "altitude": 300,
+          "number": 2,
+          "task": null,
+          "route": [
+              {
+                  "lat": "23:57:00.00n",
+                  "long": "120:24:00.00e",
+                  "altitude": 300,
+                  "heading": 90,
+                  "speed": 220
+              },
+              {
+                  "lat": "24:05:00.00n",
+                  "long": "120:35:00.00e",
+                  "altitude": 300,
+                  "heading": 90,
+                  "speed": 220
+              }
+          ],
+          "weapons": null
+      },
+      {
+          "side": "blue",
+          "name": "blue_armor_battalion_nantun",
+          "type": "mtankbattalion",
+          "groupType":1,
+          "lat": "24:08:15.00n",
+          "long": "120:37:30.00e",
+          "heading": 270,
+          "altitude": 85,
+          "task": null,
+          "route": [
+              {
+                  "lat": "24:08:15.00n",
+                  "long": "120:37:30.00e",
+                  "altitude": 85,
+                  "heading": 270,
+                  "speed": 18
+              },
+              {
+                  "lat": "24:06:30.00n",
+                  "long": "120:32:00.00e",
+                  "altitude": 65,
+                  "heading": 270,
+                  "speed": 18
+              }
+          ],
+          "weapons": null
+      },
+      {
+          "side": "blue",
+          "name": "blue_tank_company_yuanlin",
+          "type": "mtankcomponey",
+          "groupType":1,
+          "lat": "23:57:30.00n",
+          "long": "120:34:15.00e",
+          "heading": 270,
+          "altitude": 55,
+          "task": null,
+          "route": [
+              {
+                  "lat": "23:57:30.00n",
+                  "long": "120:34:15.00e",
+                  "altitude": 55,
+                  "heading": 270,
+                  "speed": 15
+              },
+              {
+                  "lat": "23:56:00.00n",
+                  "long": "120:28:45.00e",
+                  "altitude": 35,
+                  "heading": 270,
+                  "speed": 15
+              }
+          ],
+          "weapons": null
+      },
+      {
+          "side": "blue",
+          "name": "blue_tank_platoon_douliu",
+          "type": "mtankplatoon",
+          "groupType":1,
+          "lat": "23:42:45.00n",
+          "long": "120:32:30.00e",
+          "heading": 0,
+          "altitude": 45,
+          "task": null,
+          "route": [
+              {
+                  "lat": "23:42:45.00n",
+                  "long": "120:32:30.00e",
+                  "altitude": 45,
+                  "heading": 0,
+                  "speed": 12
+              },
+              {
+                  "lat": "23:46:00.00n",
+                  "long": "120:32:00.00e",
+                  "altitude": 40,
+                  "heading": 0,
+                  "speed": 12
+              }
+          ],
+          "weapons": null
+      },
+      {
+          "side": "blue",
+          "name": "blue_air_defense_taichung",
+          "type": "hawk",
+          "groupType":1,
+          "lat": "24:09:12.00n",
+          "long": "120:40:25.00e",
+          "heading": 0,
+          "altitude": 0,
+          "task": null,
+          "weapons": null
+      },
+      {
+          "side": "blue",
+          "name": "blue_f16v_squadron",
+          "type": "f-16vformation",
+          "groupType":2,
+          "lat": "24:15:00.00n",
+          "long": "120:38:00.00e",
+          "heading": 90,
+          "altitude": 9500,
+          "number": 4,
+          "task": null,
+          "route": [
+              {
+                  "lat": "24:15:00.00n",
+                  "long": "120:38:00.00e",
+                  "altitude": 9500,
+                  "heading": 90,
+                  "speed": 420
+              },
+              {
+                  "lat": "24:10:00.00n",
+                  "long": "120:32:00.00e",
+                  "altitude": 10000,
+                  "heading": 90,
+                  "speed": 440
+              }
+          ],
+          "weapons": [
+              {
+                  "type": "pl-10",
+                  "quantity": 2
+              },
+              {
+                  "type": "pl-12",
+                  "quantity": 2
+              }
+          ]
+      },
+      {
+          "side": "blue",
+          "name": "blue_f15j_squadron",
+          "type": "f-15jformation",
+          "groupType":2,
+          "lat": "23:57:00.00n",
+          "long": "120:34:00.00e",
+          "heading": 270,
+          "altitude": 10000,
+          "number": 4,
+          "task": null,
+          "route": [
+              {
+                  "lat": "23:57:00.00n",
+                  "long": "120:34:00.00e",
+                  "altitude": 10000,
+                  "heading": 270,
+                  "speed": 430
+              },
+              {
+                  "lat": "24:05:00.00n",
+                  "long": "120:35:00.00e",
+                  "altitude": 10500,
+                  "heading": 270,
+                  "speed": 450
+              }
+          ],
+          "weapons": [
+              {
+                  "type": "pl-10",
+                  "quantity": 2
+              },
+              {
+                  "type": "pl-12",
+                  "quantity": 2
+              }
+          ]
+      }
+  ]
+}

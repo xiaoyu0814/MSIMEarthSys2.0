@@ -1,0 +1,142 @@
+{
+  "20": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3042676.6640433795,
+          "y": 5540673.2782650115,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "蓝方率先发起攻击，从本国境内各空军基地起飞多组战机，欲对红方境内高价值军事目标进行打击",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "30": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3042676.6640433795,
+          "y": 5540673.2782650115,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "红方迅速做出反应，空军紧急出动战机，在己方北部、中部、南部与蓝方战机缠斗",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "50": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3042676.6640433795,
+          "y": 5540673.2782650115,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "蓝方增派战斗机与红方空中力量进行颤抖，但各机型雷达与通信系统互不兼容，无法形成有效编队。而红方依靠全链路中式体系作战，实现超视距空战。",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "150": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3042676.6640433795,
+          "y": 5540673.2782650115,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "红方战斗机对蓝方战斗机进行超视距打击，击毁目标",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  },
+  "200": {
+    "flyArr": [
+      {
+        "position": {
+          "x": -3042676.6640433795,
+          "y": 5540673.2782650115,
+          "z": 2984966.527075187
+        },
+        "duration": 3,
+        "orientation": {
+          "heading": 6.244915000911805,
+          "pitch": -1.5622721162169553,
+          "roll": 0
+        },
+        "flyInterval": 3000,
+        "identifyInfo": "蓝方战机无法做出有效回应，只能迅速撤离",
+        "jd": 1
+      }
+    ],
+    "time": 200,
+    "id": "test1",
+    "show": true,
+    "message": "",
+    "rendered": false,
+    "curFly": 0,
+    "flyInterval": 1000,
+    "speaker": "speaker3"
+  }
+}

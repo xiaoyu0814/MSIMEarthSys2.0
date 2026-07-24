@@ -1,0 +1,58 @@
+[
+  {
+    "type":"KJ-500",
+    "maxSpeed":370,
+    "maxHeight":9000,
+    "minHeight":0,
+    "firstTask":"空中预警"
+  },
+  {
+    "type": "gj-2_2",
+    "maxSpeed": 370,
+    "maxHeight": 9000,
+    "minHeight": 0,
+    "firstTask": "空中预警"
+  },
+  {
+    "type": "wz-7_1",
+    "maxSpeed": 750,
+    "maxHeight": 20000,
+    "minHeight": 0,
+    "firstTask": "空中预警"
+  },
+  {
+    "type": "wz-7_2",
+    "maxSpeed": 750,
+    "maxHeight": 20000,
+    "minHeight": 0,
+    "firstTask": "空中预警"
+  },
+  {
+    "type":"z-10_1",
+    "maxSpeed":300,
+    "maxHeight":6400,
+    "minHeight":0,
+    "firstTask":"空中预警"
+  },
+  {
+    "type": "z-10_2",
+    "maxSpeed": 300,
+    "maxHeight": 6400,
+    "minHeight": 0,
+    "firstTask": "空中预警"
+  },
+  {
+    "type": "ss-uav_1",
+    "maxSpeed": 700,
+    "maxHeight": 15000,
+    "minHeight": 0,
+    "firstTask": "空中预警"
+  },
+  {
+    "type": "j-16d_1",
+    "maxSpeed": 2450,
+    "maxHeight": 20000,
+    "minHeight": 0,
+    "firstTask": "打击重要目标"
+  }
+]

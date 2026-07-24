@@ -1,0 +1,136 @@
+{
+  "message_type": "formation_change",
+  "trigger": "formation_change",
+  "timestamp": "2025-12-26 10:31:28",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LeadTrail",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.9210227727890015,
+      "participants": [],
+      "unit_count": 5
+    },
+    "mission_style": {
+      "mission_type": "AEW",
+      "confidence": 1.0,
+      "sub_intent": "预警指挥",
+      "analysis": "预警机支援任务（置信度: 100.0%）"
+    },
+    "tactical_intent": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.1976010650396347,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "tactical_intent": "Orbit",
+        "confidence": 0.20220734179019928,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "tactical_intent": "Orbit",
+        "confidence": 0.2132459133863449,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "tactical_intent": "Orbit",
+        "confidence": 0.2714918255805969,
+        "atomic_actions": []
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "tactical_intent": "Orbit",
+        "confidence": 0.26951977610588074,
+        "atomic_actions": []
+      }
+    ],
+    "threat_assessment": [
+      {
+        "target_id": "1",
+        "unit_name": "bomber1",
+        "threat_level": "Medium",
+        "threat_score": 51.91593212410009,
+        "intent_score": 50.0,
+        "capability_score": 62.23711507220386,
+        "opportunity_score": 65.7803876744751,
+        "confidence": 0.5988005325198174,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 62.2分（权重: 35%） | 机会评估: 65.8分→威胁: 34.2分（权重: 15%） | 综合威胁评分: 51.9分 | 评估置信度: 59.9%",
+        "recommendations": [
+          "持续观察，保持警惕",
+          "准备应对预案"
+        ]
+      },
+      {
+        "target_id": "2",
+        "unit_name": "blue_1",
+        "threat_level": "Low",
+        "threat_score": 46.09951051948622,
+        "intent_score": 50.0,
+        "capability_score": 45.27889713980256,
+        "opportunity_score": 64.98735652963116,
+        "confidence": 0.6011036708950996,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.3分（权重: 35%） | 机会评估: 65.0分→威胁: 35.0分（权重: 15%） | 综合威胁评分: 46.1分 | 评估置信度: 60.1%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "3",
+        "unit_name": "blue_2",
+        "threat_level": "Low",
+        "threat_score": 45.887487516237,
+        "intent_score": 50.0,
+        "capability_score": 44.60904954068078,
+        "opportunity_score": 64.83786548667514,
+        "confidence": 0.6066229566931725,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 44.6分（权重: 35%） | 机会评估: 64.8分→威胁: 35.2分（权重: 15%） | 综合威胁评分: 45.9分 | 评估置信度: 60.7%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "4",
+        "unit_name": "blue_3",
+        "threat_level": "Low",
+        "threat_score": 45.86709388363439,
+        "intent_score": 50.0,
+        "capability_score": 45.41556599176335,
+        "opportunity_score": 66.85569475655187,
+        "confidence": 0.6357459127902985,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.4分（权重: 35%） | 机会评估: 66.9分→威胁: 33.1分（权重: 15%） | 综合威胁评分: 45.9分 | 评估置信度: 63.6%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      },
+      {
+        "target_id": "5",
+        "unit_name": "blue_4",
+        "threat_level": "Low",
+        "threat_score": 45.847745206163175,
+        "intent_score": 50.0,
+        "capability_score": 45.826718285486535,
+        "opportunity_score": 67.94404129171409,
+        "confidence": 0.6347598880529404,
+        "reasoning": "战术意图: Orbit（评分: 50.0，权重: 50%） | 能力评估: 45.8分（权重: 35%） | 机会评估: 67.9分→威胁: 32.1分（权重: 15%） | 综合威胁评分: 45.8分 | 评估置信度: 63.5%",
+        "recommendations": [
+          "保持常规监控"
+        ]
+      }
+    ],
+    "trigger_detail": {
+      "formation_change": true
+    }
+  },
+  "priority": 60,
+  "push_time": "2025-12-26 10:31:28",
+  "message_id": 1
+}

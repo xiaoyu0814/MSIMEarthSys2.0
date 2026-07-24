@@ -1,0 +1,23 @@
+{
+  "message_type": "formation_change",
+  "trigger": "formation_change",
+  "timestamp": "2025-12-31 15:44:53",
+  "data": {
+    "formation_relationship": {
+      "formation_tactical_action": "LeadTrail",
+      "formation_tactical_action_cn": null,
+      "confidence": 0.5179433226585388,
+      "participants": [],
+      "unit_count": 0
+    },
+    "mission_style": null,
+    "tactical_intent": [],
+    "threat_assessment": [],
+    "trigger_detail": {
+      "formation_change": true
+    }
+  },
+  "priority": 60,
+  "push_time": "2025-12-31 15:44:53",
+  "message_id": 8
+}
