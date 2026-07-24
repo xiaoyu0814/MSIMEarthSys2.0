@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    {"id": "罗纳德·里根号", "group": 0},
+    {"id": "USS Ronald Reagan", "group": 0},
+    {"id": "下水时间", "group": 1}
+  ],
+  "links": [
+    {"source": "罗纳德·里根号", "target": "USS Ronald Reagan", "value": 1},
+    {"source": "罗纳德·里根号", "target": "下水时间", "value": 8}
+  ]
+}

@@ -1,0 +1,9 @@
+{"type":"FeatureCollection", "features": [
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[129.7152778,33.1636111]},"properties":{"市":"佐世保基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[139.6684300,35.2919300]},"properties":{"市":"横须贺基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[135.3833333,35.4833333]},"properties":{"市":"舞鹤基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[132.5666667,34.2333333]},"properties":{"市":"吴港驻泊地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[127.6809317,26.2124013]},"properties":{"市":"冲绳那霸基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[131.7333333,32.3933333]},"properties":{"市":"新田原基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[131.0402778,33.6850000]},"properties":{"市":"筑城基地"}}
+  ]}

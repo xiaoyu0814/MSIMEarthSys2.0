@@ -1,0 +1,9 @@
+{"type":"FeatureCollection", "features": [
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[127.7677778,26.3555556]},"properties":{"市":"冲绳嘉手纳"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[127.74806,26.27083]},"properties":{"市":"冲绳普天间基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[-104.7042444,38.8144778]},"properties":{"市":"彼得森空军基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[-104.7520000,39.7018333]},"properties":{"市":"巴克利空军基地"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[-76.3133333,36.9450000]},"properties":{"市":"诺福克"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[-106.4214972,31.8011639]},"properties":{"市":"德克萨斯"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[-84.9691250,32.3604833]},"properties":{"市":"佐治亚"}}
+  ]}

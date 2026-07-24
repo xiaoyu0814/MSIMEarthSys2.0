@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风场数据生成脚本与文件列表</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        .script-file {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #e8f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .data-file {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #e8f8ed;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .description {
+            color: #555;
+            font-size: 0.95em;
+        }
+        .path {
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            margin: 2px;
+            background-color: #e3f2fd;
+            color: #1976d2;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .section {
+            margin-bottom: 50px;
+        }
+        .header-note {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌪️ 风场数据生成脚本与文件列表</h1>
+    <p class="header-note">基于原始数据：wind3d2_radar_taipei.json</p>
+
+    <div class="section">
+        <h2>📁 原始数据与脚本目录</h2>
+        <table>
+            <tr>
+                <th>文件名</th>
+                <th>描述</th>
+                <th>路径</th>
+            </tr>
+            <tr>
+                <td class="data-file">wind3d2_radar_taipei.json</td>
+                <td class="description">原始风场数据，20x20x6 网格</td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="data-file">filtered_wind_data2.json</td>
+                <td class="description">原始过滤数据（风场九等分来源）</td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>🔧 数据划分与拆分脚本</h2>
+        <table>
+            <tr>
+                <th>脚本文件</th>
+                <th>生成的数据文件</th>
+                <th>功能描述</th>
+                <th>路径</th>
+            </tr>
+            <tr>
+                <td class="script-file">split_wind_data.py</td>
+                <td class="data-file">
+                    wind_part1.json<br>
+                    wind_part2.json<br>
+                    wind_part3.json<br>
+                    wind_part4.json<br>
+                    wind_part5.json<br>
+                    wind_part6.json<br>
+                    wind_part7.json<br>
+                    wind_part8.json<br>
+                    wind_part9.json
+                </td>
+                <td class="description">
+                    <span class="tag">九等分</span>
+                    将 filtered_wind_data2.json 从左上角开始九等分
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">split_wind_part4.py</td>
+                <td class="data-file">
+                    wind_part4_1.json<br>
+                    wind_part4_2.json<br>
+                    wind_part4_3.json<br>
+                    wind_part4_4.json<br>
+                    wind_part4_5.json<br>
+                    wind_part4_6.json<br>
+                    wind_part4_7.json<br>
+                    wind_part4_8.json<br>
+                    wind_part4_9.json
+                </td>
+                <td class="description">
+                    <span class="tag">二次划分</span>
+                    将 wind_part4.json 再次九等分（wind_part4_subparts/ 目录）
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">split_taipei_nine.py</td>
+                <td class="data-file">
+                    taipei_part1.json<br>
+                    taipei_part2.json<br>
+                    taipei_part3.json<br>
+                    taipei_part4.json<br>
+                    taipei_part5.json<br>
+                    taipei_part6.json<br>
+                    taipei_part7.json<br>
+                    taipei_part8.json<br>
+                    taipei_part9.json
+                </td>
+                <td class="description">
+                    <span class="tag">九等分</span>
+                    将 wind3d2_radar_taipei.json 从左上角开始九等分
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>🐍 蛇形路线与单风场生成脚本</h2>
+        <table>
+            <tr>
+                <th>脚本文件</th>
+                <th>生成的数据文件</th>
+                <th>功能描述</th>
+                <th>路径</th>
+            </tr>
+            <tr>
+                <td class="script-file">extract_single_route.py</td>
+                <td class="data-file">
+                    wind_single_route.json
+                </td>
+                <td class="description">
+                    <span class="tag">对角线路线</span>
+                    对角线单路线提取，45度斜线，5个点宽度
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">extract_single_route_v2.py</td>
+                <td class="data-file">
+                    wind_single_route_v2.json
+                </td>
+                <td class="description">
+                    <span class="tag">数据主导</span>
+                    基于数据平均值的主要风流动路线
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">gen_wind_shapes.py</td>
+                <td class="data-file">
+                    wind_single_east.json<br>
+                    wind_single_northeast.json<br>
+                    wind_single_curved.json<br>
+                    wind_two_parallel.json<br>
+                    wind_converging.json<br>
+                    wind_crossing.json<br>
+                    wind_branch.json<br>
+                    wind_single_south.json<br>
+                    wind_diverging.json<br>
+                    wind_turbulent.json
+                </td>
+                <td class="description">
+                    <span class="tag">多形态</span>
+                    生成10种不同形态的单路线风场（水平、曲线、交汇、分支等）
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">gen_wind_real.py</td>
+                <td class="data-file">
+                    wind_twisted_v1.json<br>
+                    wind_converging_v1.json<br>
+                    wind_northeast_monsoon.json<br>
+                    wind_multiple_meanders.json
+                </td>
+                <td class="description">
+                    <span class="tag">真实涡流</span>
+                    生成符合真实气流规律的风场（含漩涡，蜿蜒路线）
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">gen_red_route_v3.py</td>
+                <td class="data-file">
+                    wind_red_route_v3.json
+                </td>
+                <td class="description">
+                    <span class="tag">红色路线</span>
+                    基于 red_route_v1 改进的双螺旋 + 蜿蜒路线
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">gen_long_snake.py</td>
+                <td class="data-file">
+                    wind_long_snake_full.json<br>
+                    wind_extreme_winding.json
+                </td>
+                <td class="description">
+                    <span class="tag">长蛇形</span>
+                    从左上到右下的完整蛇形风场，包含3个螺旋涡流
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>🌪️ 风切变与垂直风生成脚本</h2>
+        <table>
+            <tr>
+                <th>脚本文件</th>
+                <th>生成的数据文件</th>
+                <th>功能描述</th>
+                <th>路径</th>
+            </tr>
+            <tr>
+                <td class="script-file">gen_wind_shear.py</td>
+                <td class="data-file">
+                    wind_horizontal_shear.json<br>
+                    wind_vertical_shear.json<br>
+                    wind_combined_shear.json
+                </td>
+                <td class="description">
+                    <span class="tag">风切变</span>
+                    生成风切变风场（水平、垂直、复合三种）
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">gen_small_eddies_vertical.py</td>
+                <td class="data-file">
+                    wind_small_eddies_vertical.json<br>
+                    wind_focused_eddy_strong.json
+                </td>
+                <td class="description">
+                    <span class="tag">小涡流</span>
+                    生成小涡流 + 垂直风（5个小涡流或单个集中涡流）
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">gen_extreme_winding_vertical.py</td>
+                <td class="data-file">
+                    wind_extreme_winding_vertical.json<br>
+                    wind_winding_vertical_eddies.json
+                </td>
+                <td class="description">
+                    <span class="tag">极度蜿蜒</span>
+                    生成极度蜿蜒的蛇形路线，路线上有交替垂直风
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+            <tr>
+                <td class="script-file">gen_interleaved_vertical.py</td>
+                <td class="data-file">
+                    wind_interleaved_vertical.json<br>
+                    wind_blended_vertical.json
+                </td>
+                <td class="description">
+                    <span class="tag">交错垂直</span>
+                    生成完整背景平流 + 蜿蜒路线 + 交错上下风
+                </td>
+                <td class="path">f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>📊 统计信息</h2>
+        <table>
+            <tr>
+                <th>分类</th>
+                <th>脚本数量</th>
+                <th>生成数据文件数量</th>
+            </tr>
+            <tr>
+                <td>数据划分与拆分</td>
+                <td>3 个脚本</td>
+                <td>27 个文件</td>
+            </tr>
+            <tr>
+                <td>蛇形路线与单风场</td>
+                <td>6 个脚本</td>
+                <td>18 个文件</td>
+            </tr>
+            <tr>
+                <td>风切变与垂直风</td>
+                <td>4 个脚本</td>
+                <td>9 个文件</td>
+            </tr>
+            <tr>
+                <td><strong>总计</strong></td>
+                <td><strong>13 个脚本</strong></td>
+                <td><strong>54 个数据文件</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>🎯 推荐测试顺序</h2>
+        <table>
+            <tr>
+                <th>优先级</th>
+                <th>数据文件</th>
+                <th>推荐理由</th>
+            </tr>
+            <tr>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td class="data-file">wind_long_snake_full.json</td>
+                <td class="description">完整长蛇形，3个螺旋，蜿蜒度高</td>
+            </tr>
+            <tr>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td class="data-file">wind_interleaved_vertical.json</td>
+                <td class="description">完整背景平流 + 交错上下风</td>
+            </tr>
+            <tr>
+                <td>⭐⭐⭐⭐</td>
+                <td class="data-file">wind_red_route_v3.json</td>
+                <td class="description">双螺旋 + 蜿蜒路线，最接近用户绘制的红色路线</td>
+            </tr>
+            <tr>
+                <td>⭐⭐⭐⭐</td>
+                <td class="data-file">wind_small_eddies_vertical.json</td>
+                <td class="description">5个小涡流 + 垂直风，适合风切变测试</td>
+            </tr>
+        </table>
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; color: #7f8c8d;">
+        <p>📅 生成日期：2026-05-28</p>
+        <p>📁 所有文件路径：f:\project\仿真推演平台140\public\static\data\json\wind_json_output\</p>
+    </footer>
+</body>
+</html>

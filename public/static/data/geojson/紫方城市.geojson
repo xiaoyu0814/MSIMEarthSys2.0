@@ -1,0 +1,16 @@
+{"type":"FeatureCollection", "features": [
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[139.6916667,35.6897222]},"properties":{"市":"东京"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[139.6383333,35.4433333]},"properties":{"市":"横滨"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[135.5022222,34.6938889]},"properties":{"市":"大阪"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[136.9063889,35.1816667]},"properties":{"市":"名古屋"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[141.3544444,43.0619444]},"properties":{"市":"札幌"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[130.4013889,33.5902778]},"properties":{"市":"福冈"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[127.6809317,26.2124013]},"properties":{"市":"那霸"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[139.6686111,35.2769444]},"properties":{"市":"横须贺"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[129.7152778,33.1833333]},"properties":{"市":"佐世保"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[127.8044444,26.3305556]},"properties":{"市":"冲绳"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[139.3369444,35.7472222]},"properties":{"市":"福生"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[135.3833333,35.4833333]},"properties":{"市":"舞鹤"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[139.3955556,35.4886111]},"properties":{"市":"座间"}},
+  {"type":"Feature","geometry":{"type":"Point","coordinates":[141.3802778,40.7041667]},"properties":{"市":"三泽"}}
+  ]}

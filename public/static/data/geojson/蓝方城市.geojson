@@ -1,0 +1,11 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[121.5168704,25.0452909]},"properties":{"省代码":710000,"市代码":710100,"市":"台北","类型":"副省级市","ORIG_FID":62}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[121.4647918,25.0115806]},"properties":{"省代码":710000,"市代码":710800,"市":"新北","类型":"地级市","ORIG_FID":63}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[121.3009798,24.9936281]},"properties":{"省代码":710000,"市代码":712300,"市":"桃园","类型":"地级市","ORIG_FID":64}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[120.6469228,24.1632317]},"properties":{"省代码":710000,"市代码":710400,"市":"台中","类型":"地级市","ORIG_FID":65}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[120.1968038,22.9974147]},"properties":{"省代码":710000,"市代码":710500,"市":"台南","类型":"地级市","ORIG_FID":66}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[120.3014333,22.6272784]},"properties":{"省代码":710000,"市代码":710200,"市":"高雄","类型":"地级市","ORIG_FID":67}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[121.7394704,25.1241861]},"properties":{"省代码":710000,"市代码":710300,"市":"基隆","类型":"地级市","ORIG_FID":68}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[120.9647389,24.8034853]},"properties":{"省代码":710000,"市代码":710600,"市":"新竹","类型":"地级市","ORIG_FID":69}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[120.4476748,23.4809161]},"properties":{"省代码":710000,"市代码":710700,"市":"嘉义","类型":"地级市","ORIG_FID":70}}
+  ]}
