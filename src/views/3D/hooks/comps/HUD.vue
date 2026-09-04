@@ -123,12 +123,12 @@
         position: absolute;
         left: 30px;
         bottom: 30px;
-        border: 1px solid #00e5ff;
+        border: 1px solid var(--cyan-bright);
         z-index: 1000;
         transform: scale(1.5);
         transform-origin: bottom left;
-        background: rgba(0, 40, 0, 0.4);
-        box-shadow: 0 0 22.5px rgba(0, 229, 255, 0.25);
+        background: rgba(var(--panel-bg-rgb), 0.4);
+        box-shadow: 0 0 22.5px rgba(var(--cyan-bright-rgb), 0.25);
       "
       id="VideoWithNoiseCanvas"
       class="hidden"
@@ -546,12 +546,12 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  color: #00e5ff;
+  color: var(--cyan-bright);
   pointer-events: none;
   box-sizing: border-box;
   padding: 30px;
   z-index: 10;
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  text-shadow: 0 0 8px rgba(var(--cyan-bright-rgb), 0.6);
 }
 
 #uiContainer.hidden {
@@ -584,7 +584,7 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.5));
+  filter: drop-shadow(0 0 10px rgba(var(--cyan-bright-rgb), 0.5));
 }
 
 #hud-alt-box {
@@ -596,14 +596,14 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.5));
+  filter: drop-shadow(0 0 10px rgba(var(--cyan-bright-rgb), 0.5));
 }
 
 .value-box {
   margin-top: 5px;
   min-width: 100px;
   text-align: center;
-  background: rgba(0, 40, 0, 0.25);
+  background: rgba(var(--panel-bg-rgb), 0.4);
   position: relative;
   box-shadow: none;
 }
@@ -612,7 +612,7 @@ export default {
   content: '';
   position: absolute;
   inset: 0;
-  background: #00e5ff;
+  background: var(--cyan-bright);
   pointer-events: none;
 }
 
@@ -694,11 +694,11 @@ export default {
   left: 30px;
   width: 250px;
   height: 250px;
-  border: 1px solid #00e5ff;
-  background: rgba(0, 40, 0, 0.3);
+  border: 1px solid var(--cyan-bright);
+  background: rgba(var(--panel-bg-rgb), 0.4);
   overflow: hidden;
   box-sizing: border-box;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.25);
 }
 
 #coords {
@@ -707,15 +707,15 @@ export default {
   left: 30px;
   width: 250px;
   font-size: 13px;
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
-  background: rgba(0, 40, 0, 0.5);
-  border: 1px solid #00e5ff;
+  text-shadow: 0 0 8px rgba(var(--cyan-bright-rgb), 0.6);
+  background: rgba(var(--panel-bg-rgb), 0.4);
+  border: 1px solid var(--cyan-bright);
   border-bottom: none;
   box-sizing: border-box;
   padding: 4px;
   text-align: center;
   letter-spacing: 1px;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.25);
 }
 
 #compass-container {
@@ -725,8 +725,8 @@ export default {
   transform: translateX(-50%);
   width: 320px;
   height: 40px;
-  border-bottom: 2px solid rgba(0, 229, 255, 0.8);
-  box-shadow: 0 5px 15px -5px rgba(0, 229, 255, 0.4);
+  border-bottom: 2px solid rgba(var(--cyan-bright-rgb), 0.8);
+  box-shadow: 0 5px 15px -5px rgba(var(--cyan-bright-rgb), 0.4);
   overflow: hidden;
   pointer-events: none;
   display: flex;
@@ -752,7 +752,7 @@ export default {
   height: 100%;
   align-items: flex-end;
   font-size: 12px;
-  color: #00e5ff;
+  color: var(--cyan-bright);
   will-change: transform;
   width: 4320px;
 }
@@ -761,8 +761,8 @@ export default {
   position: absolute;
   bottom: 0;
   width: 2px;
-  background: #00e5ff;
-  box-shadow: 0 0 5px rgba(0, 229, 255, 0.8);
+  background: var(--cyan-bright);
+  box-shadow: 0 0 5px rgba(var(--cyan-bright-rgb), 0.8);
 }
 
 .compass-label {
@@ -781,9 +781,9 @@ export default {
   transform: translateX(-50%);
   width: 3px;
   height: 100%;
-  background: #00e5ff;
+  background: var(--cyan-bright);
   z-index: 10;
-  box-shadow: 0 0 10px #00e5ff;
+  box-shadow: 0 0 10px var(--cyan-bright);
 }
 
 #heading-display {
@@ -792,11 +792,11 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   font-size: 18px;
-  color: #00e5ff;
-  text-shadow: 0 0 10px #00e5ff;
-  background: rgba(0, 40, 0, 0.25);
+  color: var(--cyan-bright);
+  text-shadow: 0 0 10px var(--cyan-bright);
+  background: rgba(var(--panel-bg-rgb), 0.4);
   padding: 2px 8px;
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  border: 1px solid rgba(var(--cyan-bright-rgb), 0.3);
   min-width: 60px;
   text-align: center;
 }
@@ -829,10 +829,10 @@ export default {
   transform: translateX(-50%);
   min-width: 600px;
   max-width: 800px;
-  background: rgba(0, 40, 0, 0.7);
-  border: 1px solid #00e5ff;
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3),
-    inset 0 0 10px rgba(0, 229, 255, 0.2);
+  background: var(--panel-bg-deep);
+  border: 1px solid var(--cyan-bright);
+  box-shadow: 0 0 20px rgba(var(--cyan-bright-rgb), 0.3),
+    inset 0 0 10px rgba(var(--cyan-bright-rgb), 0.2);
   padding: 20px;
   transition: opacity 0.5s ease, transform 0.3s ease;
   z-index: 100;
@@ -854,11 +854,11 @@ export default {
 #commander-img {
   width: 100px;
   height: 100px;
-  border: 1px solid #00e5ff;
+  border: 1px solid var(--cyan-bright);
   object-fit: cover;
   filter: grayscale(1) contrast(1.2) brightness(0.8) sepia(1) hue-rotate(80deg)
     saturate(3);
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  box-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.5);
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -870,17 +870,17 @@ export default {
 
 .commander-name {
   font-size: 28px;
-  color: #00e5ff;
+  color: var(--cyan-bright);
   margin-bottom: 15px;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(0, 229, 255, 0.8);
+  text-shadow: 0 0 5px rgba(var(--cyan-bright-rgb), 0.8);
 }
 
 #dialogue-text {
   font-size: 20px;
-  color: #fff;
+  color: var(--text-primary);
   line-height: 1.6;
-  text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+  text-shadow: 0 0 5px rgba(var(--cyan-bright-rgb), 0.5);
   min-height: 60px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -888,7 +888,7 @@ export default {
 
 .dialogue-hint {
   font-size: 11px;
-  color: #00e5ff;
+  color: var(--cyan-bright);
   margin-top: 10px;
   opacity: 0.6;
   font-weight: normal;
@@ -907,15 +907,15 @@ export default {
 
 #region-notification .region-label {
   font-size: 20px;
-  color: rgba(0, 229, 255, 0.7);
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  color: rgba(var(--cyan-bright-rgb), 0.7);
+  text-shadow: 0 0 8px rgba(var(--cyan-bright-rgb), 0.6);
   margin-bottom: 5px;
 }
 
 #region-name {
   font-size: 32px;
-  color: #00e5ff;
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  color: var(--cyan-bright);
+  text-shadow: 0 0 8px rgba(var(--cyan-bright-rgb), 0.6);
 }
 
 #pull-up-warning {
@@ -924,10 +924,10 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
-  color: #f00;
-  text-shadow: 0 0 10px #f00;
+  color: var(--accent-red);
+  text-shadow: 0 0 10px var(--accent-red);
   z-index: 200;
-  border: 2px solid #f00;
+  border: 2px solid var(--accent-red);
   padding: 10px 20px;
   background: rgba(255, 0, 0, 0.1);
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
@@ -941,8 +941,8 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #00e5ff;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+  color: var(--cyan-bright);
+  text-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.8), 0 0 20px rgba(var(--black-rgb), 0.5);
   pointer-events: none;
   animation: kill-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 15;
@@ -958,13 +958,13 @@ export default {
 #kill-text {
   font-size: 24px;
   margin-bottom: 5px;
-  color: rgb(0, 225, 255);
+  color: var(--cyan-bright);
 }
 
 #kill-score {
   font-size: 32px;
   font-weight: bold;
-  color: rgb(0, 225, 255);
+  color: var(--cyan-bright);
 }
 
 #weapons-hud {
@@ -998,7 +998,7 @@ export default {
   align-items: center;
   width: 150px;
   padding: 7.5px 15px;
-  background: rgba(0, 40, 0, 0.4);
+  background: rgba(var(--panel-bg-rgb), 0.4);
   border: 1px solid rgba(0, 110, 255, 0.2);
   font-size: 24px;
   opacity: 0.6;
@@ -1030,10 +1030,10 @@ export default {
 }
 
 .weapon-item.active {
-  background: rgba(0, 80, 0, 0.6);
-  border: 1px solid #00e5ff;
+  background: rgba(var(--panel-bg-rgb), 0.4);
+  border: 1px solid var(--cyan-bright);
   opacity: 1;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.25);
   position: relative;
 }
 
@@ -1044,8 +1044,8 @@ export default {
   top: 0;
   width: 4.5px;
   height: 100%;
-  background: #00e5ff;
-  box-shadow: 0 0 12px #00e5ff;
+  background: var(--cyan-bright);
+  box-shadow: 0 0 12px var(--cyan-bright);
 }
 
 .weapon-ammo {
@@ -1058,7 +1058,7 @@ export default {
   align-items: center;
   width: 150px;
   padding: 7.5px 15px;
-  background: rgba(0, 40, 0, 0.4);
+  background: rgba(var(--panel-bg-rgb), 0.4);
   border: 1px solid rgba(0, 110, 255, 0.2);
   font-size: 24px;
   opacity: 0.6;
@@ -1086,10 +1086,10 @@ export default {
 }
 
 .sensor-item.active {
-  background: rgba(0, 80, 0, 0.6);
-  border: 1px solid #00e5ff;
+  background: rgba(var(--panel-bg-rgb), 0.4);
+  border: 1px solid var(--cyan-bright);
   opacity: 1;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.25);
   position: relative;
 }
 
@@ -1100,8 +1100,8 @@ export default {
   top: 0;
   width: 4.5px;
   height: 100%;
-  background: #00e5ff;
-  box-shadow: 0 0 12px #00e5ff;
+  background: var(--cyan-bright);
+  box-shadow: 0 0 12px var(--cyan-bright);
 }
 
 .sensor-status {
@@ -1110,15 +1110,15 @@ export default {
 
 #aircraft-icon {
   width: 105px;
-  border: 1px solid #00e5ff;
-  background: rgba(0, 40, 0, 0.4);
+  border: 1px solid var(--cyan-bright);
+  background: rgba(var(--panel-bg-rgb), 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 15px;
   box-sizing: border-box;
-  box-shadow: 0 0 22.5px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 22.5px rgba(var(--cyan-bright-rgb), 0.25);
 }
 
 #aircraft-icon img {
@@ -1126,7 +1126,7 @@ export default {
   height: calc(100% - 30px);
   max-width: 100%;
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(180deg)
-    brightness(118%) contrast(119%) drop-shadow(0 0 12px rgba(0, 229, 255, 0.6));
+    brightness(118%) contrast(119%) drop-shadow(0 0 12px rgba(var(--cyan-bright-rgb), 0.6));
 }
 
 #aircraft-label {
@@ -1138,18 +1138,18 @@ export default {
 /* 闪烁动画 */
 @keyframes aircraft-blink {
   0% {
-    box-shadow: 0 0 22.5px rgba(0, 229, 255, 0.25);
-    border-color: #00e5ff;
+    box-shadow: 0 0 22.5px rgba(var(--cyan-bright-rgb), 0.25);
+    border-color: var(--cyan-bright);
   }
 
   50% {
-    box-shadow: 0 0 45px var(--blink-color, #00e5ff);
-    border-color: var(--blink-color, #00e5ff);
+    box-shadow: 0 0 45px var(--blink-color, var(--cyan-bright));
+    border-color: var(--blink-color, var(--cyan-bright));
   }
 
   100% {
-    box-shadow: 0 0 22.5px rgba(0, 229, 255, 0.25);
-    border-color: #00e5ff;
+    box-shadow: 0 0 22.5px rgba(var(--cyan-bright-rgb), 0.25);
+    border-color: var(--cyan-bright);
   }
 }
 
@@ -1168,8 +1168,8 @@ export default {
 
 .weapon-item.overheated {
   background: rgba(80, 0, 0, 0.6) !important;
-  border: 1px solid #f00 !important;
-  color: #f00 !important;
+  border: 1px solid var(--accent-red) !important;
+  color: var(--accent-red) !important;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.4) !important;
   text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
@@ -1179,8 +1179,8 @@ export default {
 }
 
 .weapon-item.overheated::after {
-  background: #f00 !important;
-  box-shadow: 0 0 8px #f00 !important;
+  background: var(--accent-red) !important;
+  box-shadow: 0 0 8px var(--accent-red) !important;
 }
 
 @keyframes blink {
@@ -1296,21 +1296,21 @@ export default {
 /* 边框闪烁动画 */
 @keyframes border-blink {
   0% {
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3),
-      inset 0 0 10px rgba(0, 229, 255, 0.2);
-    border-color: #00e5ff;
+    box-shadow: 0 0 20px rgba(var(--cyan-bright-rgb), 0.3),
+      inset 0 0 10px rgba(var(--cyan-bright-rgb), 0.2);
+    border-color: var(--cyan-bright);
   }
 
   50% {
-    box-shadow: 0 0 30px rgba(0, 229, 255, 0.8),
-      inset 0 0 20px rgba(0, 229, 255, 0.6);
-    border-color: #ffffff;
+    box-shadow: 0 0 30px rgba(var(--cyan-bright-rgb), 0.8),
+      inset 0 0 20px rgba(var(--cyan-bright-rgb), 0.6);
+    border-color: var(--text-primary)fff;
   }
 
   100% {
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3),
-      inset 0 0 10px rgba(0, 229, 255, 0.2);
-    border-color: #00e5ff;
+    box-shadow: 0 0 20px rgba(var(--cyan-bright-rgb), 0.3),
+      inset 0 0 10px rgba(var(--cyan-bright-rgb), 0.2);
+    border-color: var(--cyan-bright);
   }
 }
 

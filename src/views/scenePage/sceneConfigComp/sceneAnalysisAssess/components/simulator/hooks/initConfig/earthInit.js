@@ -8,15 +8,8 @@ export function earthDataInit() {
     earth: window.MSIMEarth,
     viewer: window.EarthViewer
   })
-  // dataController._addHAJX()
-  // dataController._addDHFKSBQ()
-  // dataController.addTWFKSBQ()
-  // dataController.add_twlabel()
-  // dataController.add_bblabel()
-  //dataController.addTWGQYX()
-  // dataController._addDaoLian()
+  
   dataController.addTWTerrian()
-  // dataController.addbingLayer() // 添加bing全球高清影像
   dataController.addVectorLayer() // 添加矢量底图
   // dataController 保存到store内，可以进一步优化为直接绑定
   store.commit('setDataControl', dataController)
@@ -24,11 +17,6 @@ export function earthDataInit() {
   store.commit('setStateInfoOutLineColor', [0.0, 0.0, 0.0, 1.0])
   //store.commit('setStateInfoColor', [1.0, 1.0, 1.0, 1.0])
   store.commit('setStateInfoColor', [255 / 255, 165 / 255, 0, 1]) //橘色
-  // dataController.addGeojsonWeather({
-  //   url: basicVectorData.tianqiquyu,
-  //   id: '矢量天气'
-  // }) //加载天气区域数据
-  //dataController.addAirports()//加载机场数据
 }
 /**
  * 激活earthPlugn封装的后处理效果-createVibration

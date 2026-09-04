@@ -68,7 +68,6 @@ export default function () {
   const handleAreaFile = (fileName) => {
     // geoJson数据 加载数据显示
     if (EarthAPP.weatherBySceneName.indexOf(store.state.curSceneName) > -1) {
-      // dataController.addGeojsonAreaWeather({
       //   url: staticUrl + 'area/' + fileName,
       //   id: '矢量天气_AreaFile'
       //修改  basicVectorData.tianqiquyu 地址 否则之后图层中加载不加载程序默认的 geoJson文件

@@ -20,55 +20,7 @@ export default function () {
     if (EarthAPP.SIMInfoCount < 10) {
       // let pr = new window.EarthPlugn.postRender(window.MSIMEarth)
       if (EarthAPP.SIMInfoCount === 0) {
-        // 临时挂载两个地面站
-        // let entitiesData = {
-        //   id: 'TARGET',
-        //   position: new window.MSIMEarth.Cartesian3.fromDegrees(
-        //     121.23,
-        //     25.08,
-        //     100
-        //   ),
-        //   label: {
-        //     text: '目标',
-        //     font: 'normal 29px MicroSoft YaHei',
-        //     scale: 0.5,
-        //     showBackground: false,
-        //     backgroundColor: window.MSIMEarth.Color.RED.withAlpha(0.3),
-        //     // fillColor: color,
-        //     outlineColor: window.MSIMEarth.Color.RED,
-        //     outlineWidth: 1,
-        //     style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-        //     horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT, //水平位置
-        //     verticalOrigin: window.MSIMEarth.VerticalOrigin.BOTTOM,
-        //     pixelOffset: new window.MSIMEarth.Cartesian2(-15, -21),
-        //     eyeOffset: new window.MSIMEarth.ConstantProperty(
-        //       new window.MSIMEarth.Cartesian3(0, 0, -11)
-        //     ),
-        //     // distanceDisplayCondition:
-        //     //   new window.MSIMEarth.DistanceDisplayCondition(1000, 6e5), //20e5
-        //     distanceDisplayCondition:
-        //       new window.MSIMEarth.DistanceDisplayCondition(100, 40e5),
-        //     heightReference:
-        //       window.MSIMEarth.HeightReference.RELATIVE_TO_GROUND,
-        //     disableDepthTestDistance: Number.POSITIVE_INFINITY
-        //   },
-        //   billboard: {
-        //     image: './static/image/billboard/静态目标/dmz_red.png',
-        //     scale: 0.5,
-        //     distanceDisplayCondition:
-        //       new window.MSIMEarth.DistanceDisplayCondition(100, 40e5),
-        //     // heightReference: window.MSIMEarth.HeightReference.RELATIVE_TO_GROUND,// 聚合影响显示，注释
-        //     // // scaleByDistance: scByNear
-        //     disableDepthTestDistance: Number.POSITIVE_INFINITY
-        //   },
-        //   properties: {
-        //     side: 'red', //red或blue
-        //     labelName: '目标'
-        //   }
-        // }
-        // window.EarthViewer.entities.add(entitiesData)
-        // pr.createLoadingEffect(window.EarthViewer.scene.postProcessStages)
-        // 加载效果
+        
         let side = window.localStorage.getItem('side')
         getPAStatic({ side: side }).then((res) => { })
       }
@@ -114,11 +66,7 @@ export default function () {
           pixelOffset: {
             cartesian2: [-5, -35]
           }
-          // distanceDisplayCondition: {
-          //   distanceDisplayCondition: [1, 100e5]
-          // }
-          // curEn.label.outlineWidth = 2
-          // curEn.label.style = window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE
+          
         },
         model: {
           gltf: 'static/data/gltf/3DModel/pyramid.glb',
@@ -138,13 +86,7 @@ export default function () {
           width: 2,
           resolution: 10
         },
-        // billboard: {
-        //   image: 'static/image/billboard/satellite/DZ.png',
-        //   scale: 0.5,
-        //   distanceDisplayCondition: {
-        //     distanceDisplayCondition: [1, 250e5]
-        //   }
-        // },
+        
         properties: {
           airplaneAction: {
             altitute: `${Number(json.Data.Alt)}`,
@@ -181,6 +123,14 @@ export default function () {
     )
       return
     if (Number(json.Data.Lon) === 0 && Number(json.Data.Lat) === 0) return
+    
+    // 存储MU消息数据到store，供复盘场景使用
+    if (json.Data && json.Data.Name) {
+      store.commit('AFSIMModule/setMuData', {
+        name: json.Data.Name,
+        data: { ...json.Data }
+      })
+    }
 
     if (EarthAPP.i < 1) {
       console.log('初始化')
@@ -230,17 +180,25 @@ export default function () {
         pixelOffset: {
           cartesian2: [0, -30]
         }
-        // distanceDisplayCondition: {
-        //   distanceDisplayCondition: labelImgDistance
-        // }
       }
       czml[1].label.outlineColor = czml[1].model.silhouetteColor
       czml[1].label.distanceDisplayCondition = {
         distanceDisplayCondition: [0, 100e5] //res.labelDistanceDisplay
       }
-      czml[1].label.show = LocalCache.getCache('labelShow')
+      // 根据PA消息收到的数据控制czml label：静态标注显示时隐藏对应czml label
+      let paShowInfo = store.state.AFSIMModule.paShowData[json.Data.Name]
+      let curPAShow = false
+      if (paShowInfo) {
+        curPAShow = window.EarthPlugn.entity._getPAShow(
+          store.state.AFSIMModule.paDataShow,
+          paShowInfo.side,
+          paShowInfo.vision
+        )
+      }
+      czml[1].label.show = LocalCache.getCache('labelShow') && !curPAShow
       if (res && res.chineseName) {
         czml[1].label.text = res.chineseName
+        
       }
       // 仿真端追加了脚本启动PA携带的UTF-8格式中文Name
       let utf8Name = getUTF8NameByPA(json.Data.Name)
@@ -251,17 +209,6 @@ export default function () {
       czml[1].properties.airplaneAction.side = getSideByCSV(json)
 
       MSIMEarthCZMLProcessContainer.process(czml).then((res) => {
-        // setLabelCanvas(
-        //   json.Data.labelName,
-        //   'static/image/billboard/动态目标/planeB.png'
-        // ).then((response) => {
-        //   let curEn = res.entities.getById(json.Data.name)
-        //   if (curEn) {
-        //     curEn.billboard.image = response
-        //     // curEn.billboard.distanceDisplayCondition =
-        //     //   new window.MSIMEarth.DistanceDisplayCondition(0, 30e5)
-        //   }
-        // })
         czml = null
       })
       EarthAPP.i++
@@ -275,11 +222,6 @@ export default function () {
       console.log('首次加载', json.Data)
       //清除对应静态图标
       window.EarthViewer.entities.removeById(czml[1].id)
-      // EarthAPP.labelCollection._labels.forEach((e) => {
-      //   if (e?.id === czml[1].id) {
-      //     EarthAPP.labelCollection.remove(e)
-      //   }
-      // })
       if (json.Data.SPD === 0) {
         delete czml[1].orientation
       }
@@ -289,11 +231,7 @@ export default function () {
         side: json.Data.Side,
         id: czml[1].id
       })
-      // let billboard = billboardConfig({
-      //   type: json.Data.type,
-      //   side: json.Data.side,
-      //   id: czml[1].id
-      // })
+      
       if (typeof res !== 'undefined') {
         czml[1].model = res.model
         czml[1].model.silhouetteSize = 0 // 去掉之前的所有描边
@@ -304,16 +242,24 @@ export default function () {
           cartesian2: [0, -30]
         },
         show: false
-        // distanceDisplayCondition: {
-        //   distanceDisplayCondition: labelImgDistance
-        // }
       }
 
       czml[1].label.outlineColor = czml[1].model.silhouetteColor
       czml[1].label.distanceDisplayCondition = {
         distanceDisplayCondition: [0, 100e5] //res.labelDistanceDisplay
       }
-      czml[1].label.show = LocalCache.getCache('labelShow')
+      // 根据PA消息收到的数据控制czml label：静态标注显示时隐藏对应czml label
+      let paShowInfo = store.state.AFSIMModule.paShowData[json.Data.Name]
+      let curPAShow = false
+      if (paShowInfo) {
+        curPAShow = window.EarthPlugn.entity._getPAShow(
+          store.state.AFSIMModule.paDataShow,
+          paShowInfo.side,
+          paShowInfo.vision
+        )
+      }
+      console.log('curPAShow',store.state.AFSIMModule.paShowData,json.Data.Name,curPAShow)
+      czml[1].label.show = !curPAShow
       if (res && res.chineseName) {
         czml[1].label.text = res.chineseName
       }
@@ -324,19 +270,7 @@ export default function () {
       //   czml[1].label.text = utf8Name
       // }
       czml[1].properties.airplaneAction.side = res.side
-      // czml[1].billboard = billboard
-
-      // let orientation = computeOrientation(json)
-      // if (window.MSIMEarth.defined(orientation)) {
-      //   czml[1].orientation = {
-      //     unitQuaternion: [
-      //       orientation.x,
-      //       orientation.y,
-      //       orientation.z,
-      //       orientation.w
-      //     ]
-      //   }
-      // }
+      
       czml[1].properties.airplaneAction.side = getSideByCSV(json)
       MSIMEarthCZMLProcessContainer.process(czml).then((res) => {
         let curEn = res.entities.getById(json.Data.Name)
@@ -365,52 +299,9 @@ export default function () {
           )
         },
           false)
-        // }
-        //curEn.properties.airplaneAction._value.side
-        // setLabelCanvas(
-        //   json.Data.labelName,
-        //   'static/image/billboard/动态目标/planeB.png'
-        // ).then((response) => {
-        //   let curEn = res.entities.getById(json.Data.name)
-        //   if (curEn) {
-        //     curEn.billboard.image = response
-        //     // curEn.billboard.distanceDisplayCondition =
-        //     //   new window.MSIMEarth.DistanceDisplayCondition(0, 30e5)
-        //   }
-        // })
         czml = null
       })
     } else {
-      // 时间差值计算
-      // let curEntityTimeDif = window.MSIMEarth.JulianDate.addSeconds(
-      //   window.EarthViewer.clock.currentTime,
-      //   targetMEntity.properties.airplaneAction._value.realT,
-      //   new window.MSIMEarth.JulianDate()
-      // )
-      // console.log('curEntityTimeDif', curEntityTimeDif)
-      // if (curEntityTimeDif < 0.5) return
-      // let curH = targetMEntity.properties.airplaneAction._value.heading
-      // let curP = targetMEntity.properties.airplaneAction._value.pitch
-      // let curR = targetMEntity.properties.airplaneAction._value.roll
-
-      // let nextH = json.Data.HDG || 0
-      // let nextP = json.Data.Pitch || 0
-      // let nextR = json.Data.Roll || 0
-      // // 判断如果传入的姿态和当前姿态完全不相同就定向
-      // if (curH !== nextH && curP !== nextP && curR !== nextR) {
-      //   let orientation = computeOrientation(json)
-      //   if (window.MSIMEarth.defined(orientation)) {
-      //     czml[1].orientation = {
-      //       unitQuaternion: [
-      //         orientation.x,
-      //         orientation.y,
-      //         orientation.z,
-      //         orientation.w
-      //       ]
-      //     }
-      //   }
-      // }
-
       let jsonClone = JSON.parse(JSON.stringify(json))
       delete czml[1].model
       delete czml[1].orientation
@@ -477,6 +368,19 @@ export default function () {
           })
         } else {
           curEn.show = true
+        }
+        // 根据PA消息数据更新已有实体的label显隐
+        let paShowInfo = store.state.AFSIMModule.paShowData[json.Data.Name]
+        let curPAShow = false
+        if (paShowInfo) {
+          curPAShow = window.EarthPlugn.entity._getPAShow(
+            store.state.AFSIMModule.paDataShow,
+            paShowInfo.side,
+            paShowInfo.vision
+          )
+        }
+        if (curEn.label) {
+          curEn.label.show = !curPAShow
         }
         czml = null
       })

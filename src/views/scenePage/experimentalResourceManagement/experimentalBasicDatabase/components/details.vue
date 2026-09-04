@@ -148,7 +148,7 @@ const search = () => {
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(2, 26, 70, 1);
+  background-color: rgba(var(--panel-bg-rgb), 1);
   padding: 20px;
   .searchBox {
     padding: 0;
@@ -161,15 +161,15 @@ const search = () => {
       align-items: center;
     }
     :deep(.el-input__inner) {
-      color: #ffffff;
+      color: var(--text-primary);
     }
     :deep(.el-input__wrapper) {
       background-color: transparent;
-      box-shadow: 0 0 0 1px rgba(129, 211, 248, 1) inset;
+      box-shadow: 0 0 0 1px rgba(var(--cyan-bright-rgb), 1) inset;
     }
     :deep(.el-button) {
       background-color: transparent;
-      border-color: rgba(129, 211, 248, 1);
+      border-color: rgba(var(--cyan-bright-rgb), 1);
     }
   }
   .tableBox {
@@ -177,9 +177,9 @@ const search = () => {
     height: calc(100% - 36px - 32px - 20px);
     :deep(.el-table) {
       background-color: transparent;
-      color: #ffffff;
+      color: var(--text-primary);
       thead {
-        color: #ffffff;
+        color: var(--text-primary);
       }
       tr,
       th {
@@ -187,7 +187,7 @@ const search = () => {
       }
       tr:hover {
         td.el-table__cell {
-          background-color: rgba(129, 211, 248, 0.1);
+          background-color: rgba(var(--cyan-bright-rgb), 0.1);
         }
       }
     }
@@ -198,20 +198,20 @@ const search = () => {
     :deep(.el-input__wrapper) {
       background-color: transparent;
       .el-input__inner {
-        color: #ffffff;
+        color: var(--text-primary);
       }
     }
     :deep(.el-pagination__jump) {
-      color: #ffffff;
+      color: var(--text-primary);
     }
     :deep(.el-pager) {
       li {
         background-color: transparent;
-        color: #ffffff;
-        border: 1px solid #ffffff;
+        color: var(--text-primary);
+        border: 1px solid var(--text-primary);
       }
       .is-active {
-        color: #409eff;
+        color: var(--link-color);
       }
     }
   }

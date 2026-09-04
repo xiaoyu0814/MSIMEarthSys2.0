@@ -1,4 +1,4 @@
-// import { updateAllLegendPositions } from '../../../../../utils/earthPlugin/core/treeManagement/methods/weatherUtils.js';
+import { updateAllLegendPositions } from '../../../../../utils/earthPlugin/core/treeManagement/methods/weatherUtils.js';
 
 // 展示风场区域
 export function showWindArea(params) {

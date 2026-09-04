@@ -46,7 +46,7 @@ export function modelConfig(json, mode) {
   let curModelConfig = modelBasicConfig[type]
   // 判断是否从模型匹配文件中获取对应模型配置信息，如果curModelConfig === 'undefined'则需要手动扩展模型库
   if (typeof curModelConfig === 'undefined') {
-    console.log(`类型${type}不存在，请先扩展模型类型,暂时试用通用模型配置替代`)
+    // console.log(`类型${type}不存在，请先扩展模型类型,暂时试用通用模型配置替代`)
     curModelConfig = {
       MODEL: {
         modelname: '3DModel/pyramid.glb',

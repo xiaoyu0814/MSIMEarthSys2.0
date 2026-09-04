@@ -163,7 +163,7 @@ useTTS()
 }
 
 .title {
-  color: aliceblue !important;
+  color: var(--text-primary) !important;
 }
 .content1 {
   font-size: 25px;

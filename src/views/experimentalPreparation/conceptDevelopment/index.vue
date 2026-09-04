@@ -2,7 +2,7 @@
  * @Author: xujiajia xujiajia@piesat.cn
  * @Date: 2025-05-15 14:50:44
  * @LastEditors: xujiajia xujiajia@piesat.cn
- * @LastEditTime: 2025-05-16 09:10:58
+ * @LastEditTime: 2026-08-07 15:26:06
  * @FilePath: \sjzWeb\src\views\experimentalPreparation\conceptDevelopment\index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -45,7 +45,7 @@
         :row-class-name="rowStyle"
         :header-cell-style="{
           background: '#00254E',
-          color: ' #FFFFFF',
+          color: ' var(--text-primary)',
           height: '60px',
           fontSize: '18px'
         }"
@@ -163,13 +163,13 @@ const start = (row) => {}
   bottom: 0;
   left: 0;
   top: 60px;
-  background: #00254e;
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-solid);
+  box-shadow: 0 0 25px var(--glow-shadow);
   .s-header {
     height: 120px;
     padding: 20px 20px 0;
     text-align: left;
-    color: #fff;
+    color: var(--text-primary);
     box-sizing: border-box;
     .s-title {
       font-size: 28px;
@@ -196,7 +196,7 @@ const start = (row) => {}
         background-size: 100% 100%;
         width: 100px;
         height: 34px;
-        color: #ffff;
+        color: var(--text-primary);
         border-radius: 5px;
         margin-left: 10px;
         cursor: pointer;
@@ -212,23 +212,23 @@ const start = (row) => {}
   }
 }
 .el-table {
-  --el-table-border-color: #075d89;
+  --el-table-border-color: var(--input-border);
 }
 :deep(.el-input) {
   .el-input__wrapper {
     border-radius: 5px;
     box-shadow: none;
-    background-color: #00254e !important;
-    box-shadow: 0 0 0 1px #81d3f8 inset !important;
+    background-color: var(--panel-bg-solid) !important;
+    box-shadow: 0 0 0 1px var(--cyan-light) inset !important;
   }
   .el-input__inner {
-    color: #fff !important;
+    color: var(--text-primary) !important;
   }
 }
 :deep(.el-table) {
   .cellStyle {
-    background-color: #00254e !important;
-    color: #fff !important;
+    background-color: var(--panel-bg-solid) !important;
+    color: var(--text-primary) !important;
     font-family: 'Arial Normal', 'Arial';
     font-weight: 400;
     font-style: normal;
@@ -238,8 +238,8 @@ const start = (row) => {}
   }
 
   .cellStyle1 {
-    background-color: #335171 !important;
-    color: #fff !important;
+    background-color: var(--border-color-input) !important;
+    color: var(--text-primary) !important;
     font-family: 'Arial Normal', 'Arial';
     font-weight: 400;
     font-style: normal;

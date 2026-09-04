@@ -208,3 +208,21 @@ export function getInfraredSignatureEnvelope() {
     method: 'get'
   })
 }
+
+// 获取雷达包络数据
+export function GetRadarEnvelope() {
+  return http({
+    url: `${serverUrls.daqiService}/GetRadarEnvelope`,
+    // url:`http://localhost:8888/GetRadarEnvelope`,
+    method: 'get'
+  })
+}
+
+// 获取静态目标雷达包络数据
+export function getPlatformSensorEnvelopeModel(params) {
+  return http({
+    url: `http://localhost:8080/afsim/getPlatformSensorEnvelopeModel`,
+    method: 'get',
+    params
+  })
+}

@@ -28,7 +28,7 @@
         border
         style="width: 100%"
         :row-class-name="rowStyle"
-        :header-cell-style="{ background: '#2b4559', color: ' #FFFFFF' }"
+        :header-cell-style="{ background: 'var(--input-bg)', color: 'var(--text-primary)' }"
         max-height="500px"
       >
         <el-table-column
@@ -100,17 +100,17 @@ const getTableData = () => {
 .logContainer {
   width: 1100px;
   height: 600px;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
   padding: 3px 9px;
   position: fixed;
   right: calc(50% - 550px);
   top: 22%;
-  color: #fff;
+  color: var(--text-primary);
   .header {
     width: 100%;
     height: 45px;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid var(--text-primary);
     margin-bottom: 10px;
     .header-title {
       width: 100%;
@@ -126,18 +126,18 @@ const getTableData = () => {
   :deep(.el-table__header-wrapper),
   :deep(.el-table tr),
   :deep(.el-table thead) {
-    background-color: rgba(2, 26, 70, 0.88) !important;
+    background-color: var(--panel-bg-deep) !important;
   }
   :deep(.el-table tbody tr:hover > td) {
     background-color: transparent !important;
   }
   :deep(.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf) {
-    background: rgba(2, 26, 70, 0.88) !important;
-    color: #fff;
+    background: var(--panel-bg-deep) !important;
+    color: var(--text-primary);
   }
   :deep(.el-table thead),
   :deep(.el-table th.el-table__cell) {
-    color: white;
+    color: var(--text-primary);
     background-color: rgba(0, 123, 204, 0.15) !important;
   }
   :deep(.el-table) {
@@ -147,19 +147,19 @@ const getTableData = () => {
     /* 用来设置当前页面element全局table 选中某行时的背景色*/
     .el-table__body tr.current-row > td {
       background-color: #223b0b !important;
-      color: #fff;
+      color: var(--text-primary);
       /* color: #f19944; */ /* 设置文字颜色，可以选择不设置 */
     }
     /* 用来设置当前页面element全局table 鼠标移入某行时的背景色*/
     .el-table--enable-row-hover .el-table__body tr:hover > td {
       background-color: #f1dfb2;
-      color: #fff;
+      color: var(--text-primary);
       /* color: #f19944; */ /* 设置文字颜色，可以选择不设置 */
     }
     .el-table__empty-block {
-      background: rgba(2, 26, 70, 0.88);
+      background: var(--panel-bg-deep);
       .el-table__empty-text {
-        color: #fff;
+        color: var(--text-primary);
       }
     }
   }

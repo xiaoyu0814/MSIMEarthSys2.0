@@ -74,12 +74,12 @@ onMounted(() => {
   left: 0;
   top: 60px;
   background: #00254e;
-  box-shadow: 0 0 25px #1092d5;
+  box-shadow: 0 0 25px var(--glow-shadow);
   .s-header {
     height: 120px;
     padding: 20px 20px 0;
     text-align: left;
-    color: #fff;
+    color: var(--text-primary);
     box-sizing: border-box;
     .s-title {
       font-size: 28px;
@@ -107,9 +107,9 @@ onMounted(() => {
 }
 :deep(.el-step__title.is-process) {
   font-weight: 700;
-  color: #409eff !important;
+  color: var(--link-color) !important;
 }
 :deep(.el-step__description.is-process) {
-  color: #409eff !important;
+  color: var(--link-color) !important;
 }
 </style>

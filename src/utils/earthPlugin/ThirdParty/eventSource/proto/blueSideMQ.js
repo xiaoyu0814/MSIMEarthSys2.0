@@ -87,7 +87,7 @@ class RedProtoBufController {
           resolve()
         }
       } else {
-        console.log('没有检测到已有MQ连接')
+        //console.log('没有检测到已有MQ连接')
         resolve()
       }
     })
@@ -146,8 +146,8 @@ class RedProtoBufController {
       }
 
       function onFailed(frame) {
-        console.log('Failed: ' + frame)
-        console.log('一秒后重新连接')
+        //console.log('Failed: ' + frame)
+        //console.log('一秒后重新连接')
         globalStompClient = null
         globalSubscribe = null
         isConnected = false

@@ -426,34 +426,3 @@ export async function createTurbulence(config) {
   // 创建GUI
   await createTurbulenceGui();
 }
-
-export const getTurbulenceList = (hours) => {
-  if(hours > 23){
-    console.log(weatherDataConfig.turbulence.texturePaths)
-    return
-  }
-  let time = hours < 10 ? '0' + hours : hours
-  let oldHours = hours
-  if(oldHours == 0){
-    oldHours = 24
-  }
-  let oldtime = oldHours - 1 < 10 ? '0' + (oldHours - 1) : oldHours - 1
-  const params = {
-    "request_type": "texture",
-    "variable": "TI1",
-    "datetime": `2024-02-05 ${time}:00:00`
-  }
-  getTextureImage(params).then((res) => {
-    if (res.status == "success") {
-      let temp = {
-        name: `turbulence_${time}00`,
-        time: `${oldtime}-${time}`,
-        path: res.texture_data.image_url
-      }
-      weatherDataConfig.turbulence.texturePaths[hours] = temp
-    }
-    getTurbulenceList(hours + 1)
-  }).catch((err) => {
-    console.error('获取颠簸纹理图片失败', err)
-  })
-}

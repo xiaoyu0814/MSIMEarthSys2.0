@@ -64,11 +64,12 @@ export default class Bubble1 {
     } else if (val.div == 'planDetail') {
       if (typeof val.Members == 'number' && typeof val.InitialMembers == 'number') {
         // 如果this.title包含编组则不添加编组信息
+        console.log('this.title',this.title)
         if (this.title.includes('编组') > -1) {
           let textArr = this.title.split('编组')
-          this.title = textArr[0] + '编组' + '(' + val.InitialMembers + '/' + val.Members + ')'
+          this.title = textArr[0] + '编组' + '(' + val.Members + '/' + val.InitialMembers + ')'
         } else {
-          this.title = this.title + '编组' + '(' + val.InitialMembers + '/' + val.Members + ')'
+          this.title = this.title + '编组' + '(' + val.Members + '/' + val.InitialMembers + ')'
         }
       } else {
         // this.title = this.id
@@ -575,12 +576,13 @@ export default class Bubble1 {
     // let tracklines = await getPlatformMasterTrackList(params)
     // console.log('jam', jam)
     // 详标值获取
+  
     if (typeof formState.data.Members == 'number' && typeof formState.data.InitialMembers == 'number') {
       if (this.title.includes('编组') > -1) {
         let textArr = this.title.split('编组')
-        this.title = textArr[0] + '编组' + '(' + formState.data.InitialMembers + '/' + formState.data.Members + ')'
+        this.titleRef.value = textArr[0] + '编组' + '(' + formState.data.Members + '/' + formState.data.InitialMembers + ')'
       } else {
-        this.titleRef.value = id + '编组(' + formState.data.InitialMembers + '/' + formState.data.Members + ')'
+        this.titleRef.value = id + '编组(' + formState.data.Members + '/' + formState.data.InitialMembers + ')'
       }
     } else {
       // this.titleRef.value = id
@@ -705,18 +707,59 @@ export default class Bubble1 {
           contentArr[x].value = weaponValue
         }
       }
-      // // 如果contentArr中有值为空则移除
-      // console.log('移除前', contentArr)
-      // contentArr = contentArr.filter((item) => item.value !== '')
-      // console.log('移除后', contentArr)
     }
   }
   /**
- * 基于AFSIM提供的接口获取实时信息
+ * 基于AFSIM提供的接口获取复盘实时信息
  * @param {string} id 实体id
  */
-  async setLabelByAFSIMAPIFP(id) {
-    let params = { platform: id }
+   async setLabelByAFSIMAPIFP(id) {
+    let muData = store.state.AFSIMModule.muData[id]
+    if (!muData) return
+
+    // 更新标题
+    let titleName = id
+    if (
+      typeof store.state.sceneModule.currentFlyType?.chineseName !==
+        'undefined' &&
+      store.state.sceneModule.currentFlyType?.chineseName !== ''
+    ) {
+      titleName = store.state.sceneModule.currentFlyType.chineseName
+    }
+    if (this.titleRef && this.titleRef.value !== titleName) {
+      this.titleRef.value = titleName
+    }
+
+    // 三维总速度 m/s
+    const totalSpeed = Math.hypot(
+      muData.SpeedNED0 || 0,
+      muData.SpeedNED1 || 0,
+      muData.SpeedNED2 || 0
+    )
+    // 三维总速度 km/h
+    const totalSpeedKm = totalSpeed * 3.6;
+
+    // 更新内容
+    let contentArr = this.contentRef
+    for (let x = 0; x < contentArr.length; x++) {
+      if (contentArr[x].name == '经度') {
+        contentArr[x].value = (muData.Lon || 0).toFixed(3) + '°E'
+      } else if (contentArr[x].name == '纬度') {
+        contentArr[x].value = (muData.Lat || 0).toFixed(3) + '°N'
+      } else if (contentArr[x].name == '高度') {
+        contentArr[x].value = (muData.Alt || 0).toFixed(0) + '米'
+      } else if (contentArr[x].name == '速度') {
+        contentArr[x].value = totalSpeedKm.toFixed(0) + 'km/h'
+      } else if (contentArr[x].name == '航向角') {
+        contentArr[x].value = (muData.HDG || 0) + '°'
+      } else if (contentArr[x].name == '俯仰角') {
+        contentArr[x].value = (muData.Pitch || 0) + '°'
+      } else if (contentArr[x].name == '滚转角') {
+        contentArr[x].value = (muData.Roll || 0) + '°'
+      } else if (contentArr[x].name == '目标类型') {
+        contentArr[x].value = muData.Type || ''
+      }
+    }
   }
   //根据两点计算速度
   getSpeedByTwoPoint(curPositionGraphic) {

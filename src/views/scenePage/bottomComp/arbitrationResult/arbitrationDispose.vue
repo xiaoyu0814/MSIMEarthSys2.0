@@ -21,7 +21,7 @@
         :data="vueData.keyEventTable"
         style="width: 100%"
         show-overflow-tooltip
-        :header-cell-style="{ color: '#FFFFFF' }"
+        :header-cell-style="{ color: 'var(--text-primary)' }"
         max-height="200px"
         ref="tableRef"
       >
@@ -239,8 +239,8 @@ const handleCheck = (val) => {
   position: fixed;
   right: calc(50% - 400px);
   top: 14%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
 
   .header {
     display: flex;
@@ -254,7 +254,7 @@ const handleCheck = (val) => {
       font-weight: 700;
       font-style: normal;
       font-size: 19px;
-      color: #c2d7ee;
+      color: var(--text-secondary);
     }
 
     img {
@@ -272,16 +272,16 @@ const handleCheck = (val) => {
     }
     p {
       text-align: left;
-      color: #fff;
+      color: var(--text-primary);
       font-size: 14px;
       padding: 0;
       margin: 0;
       padding: 10px 0;
     }
     :deep(.el-textarea__inner) {
-      background-color: #2b4559 !important;
-      box-shadow: 0 0 0 1px #075d89 inset !important;
-      color: #fff !important;
+      background-color: var(--input-bg) !important;
+      box-shadow: 0 0 0 1px var(--input-border) inset !important;
+      color: var(--text-primary) !important;
     }
   }
   .dispose_footer {
@@ -292,7 +292,7 @@ const handleCheck = (val) => {
       background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
       width: 65px;
       height: 32px;
-      color: #ffff;
+      color: var(--text-primary);
       border-radius: 5px;
       margin-left: 10px;
       cursor: pointer;
@@ -309,22 +309,22 @@ const handleCheck = (val) => {
   }
 }
 ::v-deep(.el-tabs__item) {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 ::v-deep(.el-tabs__item.is-active) {
-  color: #409eff;
+  color: var(--link-color);
 }
 ::v-deep(.el-tabs__item:hover) {
-  color: #409eff;
+  color: var(--link-color);
 }
 
 ::v-deep(.el-checkbox) {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 ::v-deep .el-table td.el-table__cell,
 ::v-deep .el-table th.el-table__cell.is-leaf,
 ::v-deep .el-table__body-wrapper {
-  background: #2b4559 !important;
+  background: var(--input-bg) !important;
   color: #a3a6ad;
 }
 .el-table {

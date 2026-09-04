@@ -138,11 +138,11 @@ const save = () => {
     box-shadow: 0 0 0 1px #81d3f8 inset !important;
   }
   .el-input__inner {
-    color: #fff !important;
+    color: var(--text-primary) !important;
   }
 }
 :deep(.el-form-item__label) {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 16px;
 }
 :deep(.el-input) {
@@ -153,7 +153,7 @@ const save = () => {
     box-shadow: 0 0 0 1px #81d3f8 inset !important;
   }
   .el-input__inner {
-    color: #fff !important;
+    color: var(--text-primary) !important;
   }
 }
 .el-select {
@@ -167,12 +167,12 @@ const save = () => {
   height: 90px;
   border-radius: 5px;
   box-shadow: none;
-  color: #ffff;
+  color: var(--text-primary);
   background-color: #00254e !important;
   box-shadow: 0 0 0 1px #81d3f8 inset !important;
 }
 ::v-deep(.el-select__placeholder) {
-  color: #fff;
+  color: var(--text-primary);
 }
 .el-button--small {
   font-size: 15px;

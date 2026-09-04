@@ -2,50 +2,24 @@
   <div class="weather-container">
     <div class="container-main">
       <div class="buttonTitle">天气配置</div>
-      <el-tooltip
-        class="box-item"
-        effect="dark"
-        content="关闭面板"
-        placement="top"
-      >
-        <img
-          src="@/assets/image/panelIcons/关闭icon.png"
-          alt=""
-          class="close_sty"
-          @click="handleClose"
-        />
+      <el-tooltip class="box-item" effect="dark" content="关闭面板" placement="top">
+        <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_sty" @click="handleClose" />
       </el-tooltip>
-      <el-radio-group
-        v-model="state.curSelect"
-        class="checkedOption"
-        @change="handleCheckChange"
-      >
-        <el-radio
-          v-for="item in state.weatherList"
-          :key="item.value"
-          :label="item.value"
-        >
+      <el-radio-group v-model="state.curSelect" class="checkedOption" @change="handleCheckChange">
+        <el-radio v-for="item in state.weatherList" :key="item.value" :label="item.value">
           <el-tooltip effect="light" :content="item.label" placement="right">
             <img :src="item.name" alt="" style="width: 50px" />
           </el-tooltip>
         </el-radio>
       </el-radio-group>
       <div class="select_btn">
-        <el-button type="primary" size="small" @click="configDetail"
-          >详情</el-button
-        >
-        <el-button type="primary" size="small" @click="state.curSelect = ''"
-          >重置</el-button
-        >
-        <el-button type="primary" size="small" @click="confirmScene"
-          >确定</el-button
-        >
+        <el-button type="primary" size="small" @click="configDetail">详情</el-button>
+        <el-button type="primary" size="small" @click="state.curSelect = ''">重置</el-button>
+        <el-button type="primary" size="small" @click="confirmScene">确定</el-button>
       </div>
     </div>
   </div>
-  <changeWeatherAfsimConfig
-    v-if="state.showChanWeatAfsimConfig"
-  ></changeWeatherAfsimConfig>
+  <changeWeatherAfsimConfig v-if="state.showChanWeatAfsimConfig"></changeWeatherAfsimConfig>
 </template>
 
 <script setup>
@@ -153,9 +127,9 @@ const state = reactive({
 })
 const handleClose = () => {
   emitter.emit('closeBottomControlPanel', 'three')
-  emitter.emit('tagActiveClose', 'weatherControl')
+  emitter.emit('tagNavbarBtnClose', 'weatherControl')
 }
-const handleCheckChange = () => {}
+const handleCheckChange = () => { }
 const confirmScene = () => {
   if (state.curSelect == -1) {
     state.showChanWeatAfsimConfig = true
@@ -239,13 +213,6 @@ onUnmounted(() => {
   right: calc(17vw + 18%);
   bottom: 3%;
   width: 200px;
-  // height: 250px;
-  // background: url('@/assets/image/voiceInteraction/zjDiv.png');
-  // background-size: 100% 100%;
-  // padding: 40px 20px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -254,8 +221,10 @@ onUnmounted(() => {
     padding: 15px;
     height: 97%;
     width: 100%;
-    background: rgba(2, 26, 70, 0.88);
-    box-shadow: 0 0 25px #1092d5;
+    background: var(--panel-bg);
+    box-shadow: var(--box-shadow-glow);
+    border-top: 4px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     display: flex;
     flex-direction: column;
 
@@ -264,7 +233,7 @@ onUnmounted(() => {
       text-align: left;
       font-size: 16px;
       font-weight: 500;
-      color: #00c7fb;
+      color: var(--title-color);
       display: flex;
       align-items: center;
 
@@ -274,7 +243,7 @@ onUnmounted(() => {
         width: 4px;
         height: 20px;
         margin-right: 5px;
-        background: #1092d5;
+        background: var(--glow-shadow);
       }
     }
 
@@ -313,14 +282,14 @@ onUnmounted(() => {
     background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
     width: 50px;
     height: 25px;
-    color: #ffff;
+    color: var(--text-primary);
     border-radius: 5px;
     margin-left: 10px;
     cursor: pointer;
   }
 
   .el-button:disabled {
-    color: #cccccc;
+    color: var(--text-tertiary);
     border: none;
     cursor: auto;
   }

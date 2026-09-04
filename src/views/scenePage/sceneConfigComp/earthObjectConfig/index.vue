@@ -138,7 +138,7 @@ const handleClose = () => {
   // background: url('@/assets/image/voiceInteraction/zjDiv.png');
   // background-size: 100% 100%;
   // padding: 40px 20px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
+  background-image: var(--img-decoration);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -153,15 +153,15 @@ const handleClose = () => {
     padding: 15px;
     height: 97%;
     width: 100%;
-    background: rgba(2, 26, 70, 0.88);
-    box-shadow: 0 0 25px #1092d5;
+    background: var(--panel-bg-deep);
+    box-shadow: var(--box-shadow-glow);
 
     .buttonTitle {
       width: 100%;
       text-align: left;
       font-size: 16px;
       font-weight: 500;
-      color: #00c7fb;
+      color: var(--title-color);
     }
 
     .close_sty {
@@ -192,29 +192,29 @@ const handleClose = () => {
 }
 
 :deep .el-checkbox {
-  color: #11b5ec !important;
+  color: var(--primary-color) !important;
 }
 
 :deep .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  border: 1px solid #11b5ec;
+  background-color: var(--primary-color-half);
+  border: 1px solid var(--primary-color);
   border-radius: 50%;
-  color: #11b5ec;
+  color: var(--primary-color);
 }
 
 :deep .el-checkbox__input.is-checked .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
 }
 
 :deep .el-checkbox__input.is-disabled .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
-  border-color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
+  border-color: var(--primary-color-full);
 }
 
 :deep .el-checkbox__input.is-disabled {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
 }
 </style>

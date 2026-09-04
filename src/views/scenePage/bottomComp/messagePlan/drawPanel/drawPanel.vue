@@ -102,7 +102,7 @@ onBeforeMount(() => {})
     font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
     font-weight: 700;
     font-style: normal;
-    color: #ffffff;
+    color: var(--text-primary);
   }
 
   .top-right {
@@ -122,7 +122,7 @@ onBeforeMount(() => {})
     font-weight: 700;
     font-style: normal;
     font-size: 16px;
-    color: #c2d7ee;
+    color: var(--text-secondary);
     left: 0 !important;
   }
 }

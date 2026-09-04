@@ -1,123 +1,73 @@
+<!--
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-07-07 14:17:07
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-13 13:48:00
+ * @FilePath: \MSIMEarthSystem\src\views\combatSimulation\hooks\experimentList.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
-  <div
-    class="experimentList animate__animated animate__fadeInLeftBig animate__delay-0.1s"
-    v-show="vueData.showList"
-  >
+  <div class="experimentList animate__animated animate__fadeInLeftBig animate__delay-0.1s" v-show="vueData.showList">
     <div class="header">
       <span>实验列表</span>
       <div>
-        <el-button
-          type="primary"
-          size="small"
-          @click.stop="_getList"
-          style="margin-right: -180px"
-        >
+        <el-button type="primary" @click.stop="_getList" class="refreshList">
           刷新列表
         </el-button>
       </div>
       <div>
-        <el-tooltip
-          :content="
-            vueData.showRunningOnly ? '获取全部实验列表' : '获取运行中实验列表'
-          "
-          placement="top"
-        >
-          <el-switch
-            v-model="vueData.showRunningOnly"
-            inline-prompt
-            @change="handleShowRunningChange"
-            style="margin-right: 20px"
-          />
+        <el-tooltip :content="vueData.showRunningOnly ? '获取全部实验列表' : '获取运行中实验列表'
+          " placement="top">
+          <el-switch v-model="vueData.showRunningOnly" inline-prompt @change="handleShowRunningChange"
+            active-color="var(--cyan-bright)" inactive-color="#909399" style="margin-right: 20px" />
         </el-tooltip>
-        <el-tooltip
-          class="box-item"
-          effect="dark"
-          content="关闭面板"
-          placement="top"
-        >
-          <img
-            src="@/assets/image/panelIcons/关闭icon.png"
-            alt=""
-            class="close_sty"
-            @click="handleClose_"
-          />
+        <el-tooltip class="box-item" effect="dark" content="关闭面板" placement="top">
+          <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_sty" @click="handleClose_" />
         </el-tooltip>
       </div>
     </div>
     <div class="content">
       <div class="search_create">
-        <el-input
-          v-model="vueData.search"
-          :suffix-icon="Search"
-          style="width: 290px"
-          placeholder="请输入实验名称"
-          clearable
-          @keyup.enter="_getList"
-        />
+        <el-input v-model="vueData.search" :suffix-icon="Search" style="width: 290px" placeholder="请输入实验名称" clearable
+          @keyup.enter="_getList" />
         <span>
-          <el-button type="primary" :icon="Search" @click="_getList">
+          <el-button type="primary" :icon="Search" @click="_getList" style="margin-right: 4px;">
             查询
           </el-button>
         </span>
       </div>
       <div class="taskItem_box">
-        <div
-          class="item_box"
-          v-for="(item, index) in vueData.taskList"
-          :key="index"
-          :class="vueData.selectIndex == index ? 'select_style' : ''"
-        >
+        <div class="item_box" v-for="(item, index) in vueData.taskList" :key="index"
+          :class="vueData.selectIndex == index ? 'select_style' : ''">
           <div class="item_header" style="position: relative">
             <span class="title">
-              <img src="~@/assets/images/rwty/想定查询.svg" alt="" />
+              <div class="icon" :style="{ backgroundImage: 'var(--img-task-icon)' }"></div>
               <span :title="item.name" class="experiment-name">{{
                 item.name
               }}</span>
             </span>
-            <ul
-              class="btn_list"
-              style="display: block; position: absolute; right: -30px; top: 3px"
-              v-if="
-                vueData.isHaveRun == false ||
-                item.simRunStatus == 3 ||
-                item.simRunStatus == 2 ||
-                item.simRunStatus == 1
-              "
-            >
+            <ul class="btn_list" style="display: block; position: absolute; right: -26px; top: 3px" v-if="
+              vueData.isHaveRun == false ||
+              item.simRunStatus == 3 ||
+              item.simRunStatus == 2 ||
+              item.simRunStatus == 1
+            ">
               <li style="margin-bottom: 5px">
-                <el-button
-                  type="primary"
-                  size="small"
-                  @click.stop="startsCreateBox(item)"
-                  :disabled="
-                    item.simRunStatus == 1 ||
-                    item.simRunStatus == 2 ||
-                    item.simRunStatus == 3 ||
-                    vueData.isStarting
-                  "
-                  >开始推演</el-button
-                >
+                <el-button type="primary" size="small" @click.stop="startsCreateBox(item)" :disabled="item.simRunStatus == 1 ||
+                  item.simRunStatus == 2 ||
+                  item.simRunStatus == 3 ||
+                  vueData.isStarting
+                  ">开始推演</el-button>
               </li>
               <li style="margin-bottom: 5px">
-                <el-button
-                  type="primary"
-                  size="small"
-                  @click.stop="ContinueRunCurrentScene(item)"
-                  :disabled="
-                    item.simRunStatus == 0 ||
-                    item.simRunStatus == 4 ||
-                    vueData.isContinuing
-                  "
-                  >观看推演</el-button
-                >
+                <el-button type="primary" size="small" @click.stop="ContinueRunCurrentScene(item)" :disabled="item.simRunStatus == 0 ||
+                  item.simRunStatus == 4 ||
+                  vueData.isContinuing
+                  ">观看推演</el-button>
               </li>
               <li style="margin-bottom: 5px">
-                <el-button
-                  type="primary"
-                  size="small"
-                  @click.stop="_configExperimentReportContent(item)"
-                  >演播配置</el-button
-                >
+                <el-button type="primary" size="small"
+                  @click.stop="_configExperimentReportContent(item)">演播配置</el-button>
               </li>
               <!-- <li style="margin-bottom: 5px">
                 <el-button
@@ -133,45 +83,29 @@
           <ul class="item_content">
             <!-- <li>实验名称:{{ item.name }}</li> -->
             <!-- <li class="describe">关联场景:{{ item.sceneName }}</li> -->
-            <li
-              class="describe"
-              :style="{ color: item.simRunStatus == 2 ? '#00ff00' : '' }"
-            >
+            <li class="describe" :style="{ color: item.simRunStatus == 2 ? 'var(--status-running)' : '' }">
               运行状态:{{
                 item.simRunStatus == 2
                   ? '运行中'
                   : item.simRunStatus == 3
-                  ? '暂停'
-                  : '未运行'
+                    ? '暂停'
+                    : '未运行'
               }}
             </li>
-            <li :style="{ color: item.simRunStatus == 2 ? '#00ff00' : '' }">
+            <li :style="{ color: item.simRunStatus == 2 ? 'var(--status-running)' : '' }">
               规划时间:{{ item.createTime }}
             </li>
           </ul>
         </div>
       </div>
-      <selfPage
-        class="page_box"
-        :currentPage="vueData.pageNum"
-        :pageSize="vueData.pageSize"
-        :total="vueData.total"
-        @handleSizeChange="changePageSize"
-        @handleCurrentChange="changePageNum"
-      ></selfPage>
+      <selfPage class="page_box" :currentPage="vueData.pageNum" :pageSize="vueData.pageSize" :total="vueData.total"
+        @handleSizeChange="changePageSize" @handleCurrentChange="changePageNum"></selfPage>
       <reportConfig ref="reportConfigRef"></reportConfig>
     </div>
   </div>
   <!-- 实验详情弹窗 -->
-  <el-dialog
-    v-model="vueData.isEditTask"
-    :title="vueData.popTitle"
-    width="500px"
-    append-to-body
-    class="dialog-box"
-    style="background: #2b4559 !important; color: #fff"
-    @close="closeEditTask"
-  >
+  <el-dialog v-model="vueData.isEditTask" :title="vueData.popTitle" width="500px" append-to-body class="dialog-box"
+    style="background: #2b4559 !important; color: #fff" @close="closeEditTask">
     <el-form :model="vueData.instructInfo" label-width="160px">
       <el-form-item label="实验名称">
         <el-input v-model="vueData.instructInfo.name" :disabled="true" />
@@ -180,20 +114,14 @@
         <el-input v-model="vueData.instructInfo.sceneName" :disabled="true" />
       </el-form-item>
       <el-form-item label="实验目标">
-        <el-input
-          v-model="vueData.instructInfo.experimentTarget"
-          :disabled="true"
-        />
+        <el-input v-model="vueData.instructInfo.experimentTarget" :disabled="true" />
       </el-form-item>
       <!-- 实验样本生成模板未对接 -->
       <el-form-item label="实验样本生成模板">
         <el-input v-model="vueData.instructInfo.delivery" :disabled="true" />
       </el-form-item>
       <el-form-item label="实验预期结果">
-        <el-input
-          v-model="vueData.instructInfo.experimentExpectedResults"
-          :disabled="true"
-        />
+        <el-input v-model="vueData.instructInfo.experimentExpectedResults" :disabled="true" />
       </el-form-item>
       <el-form-item label="实验描述">
         <el-input v-model="vueData.instructInfo.describe" :disabled="true" />
@@ -206,27 +134,12 @@
         </el-form-item> -->
       <!--想定时间未对接 -->
       <el-form-item label="想定时间">
-        <el-date-picker
-          v-model="vueData.instructInfo.value1"
-          type="date"
-          style="width: 140px; margin-right: 10px"
-          format="YYYY/MM/DD"
-          :disabled="false"
-        />
+        <el-date-picker v-model="vueData.instructInfo.value1" type="date" style="width: 140px; margin-right: 10px"
+          format="YYYY/MM/DD" :disabled="false" />
       </el-form-item>
       <el-form-item label="实验方案变量设置结果">
-        <el-table
-          :data="vueData.popTableData"
-          style="width: 100%"
-          height="260"
-          border
-        >
-          <el-table-column
-            type="index"
-            width="55"
-            label="序号"
-            align="center"
-          />
+        <el-table :data="vueData.popTableData" style="width: 100%" height="260" border>
+          <el-table-column type="index" width="55" label="序号" align="center" />
           <el-table-column prop="name" label="变量名称" align="center" />
           <el-table-column prop="value" label="变量边界设置" align="center" />
         </el-table>
@@ -235,20 +148,14 @@
         <!-- <el-button type="primary" size="small" @click="createCamp"
           >确定</el-button
         > -->
-        <el-button type="primary" size="small" @click="closeEditTask"
-          >确定</el-button
-        >
+        <el-button type="primary" size="small" @click="closeEditTask">确定</el-button>
         <el-button size="small" @click="closeEditTask">取消</el-button>
       </el-form-item>
     </el-form>
   </el-dialog>
   <!-- 样本面板组件 -->
-  <samplePanel
-    v-if="vueData.showSamplePanel"
-    :experiment-id="vueData.currentExperimentId"
-    :experiment-name="vueData.currentExperimentName"
-    @close="closeSamplePanel"
-  />
+  <samplePanel v-if="vueData.showSamplePanel" :experiment-id="vueData.currentExperimentId"
+    :experiment-name="vueData.currentExperimentName" @close="closeSamplePanel" />
 </template>
 
 <script setup>
@@ -271,23 +178,10 @@ import { getZZQYData } from '@/service/experiment/experiment.js'
 import { getExpeSimClientInformation } from '@/service/timeline'
 import { getSimulationState } from '@/service/afsim'
 import {
-  SwitchButton,
-  Edit,
-  View,
-  Hide,
-  EditPen,
-  Comment,
-  Collection
-} from '@element-plus/icons-vue'
-import {
   queryExperimentJsonFile,
-  createOrUpdate,
-  downloadExperimentJsonFile
 } from '@/service/experiment/experiment'
 import { getScenarioById } from '@/service/experimentalPreparation.js'
 import { getById } from '@/service/experiment/experiment.js'
-import { configPlateformCHNName2 } from '@/utils/earthPlugin/ThirdParty/eventSource/event/earthEvent/czml/czmlRenderConfig/modelConfig/modelMatching.js'
-import { seaAirJointOperationsSceneTime } from '@/utils/earthPlugin/ThirdParty/eventSource/event/earthEvent'
 
 const store = useStore()
 
@@ -331,51 +225,12 @@ watch(
   },
   { deep: true, immediate: true }
 )
-// 实验开始或继续时获取 simClientIp，监听到值变化后实现循环调用获取仿真时间
-// watch(
-//   () => store.state.AFSIMModule.simClientIp,
-//   (newVal) => {
-//     // const { getSceneTime } = seaAirJointOperationsSceneTime()
-//     // getSimulationState(newVal)
-//     //   .then((res) => {
-//     //     let data = JSON.parse(res.data)
-//     //     let nData = JSON.parse(data.data)
-//     //     let curAT = { R: nData.clockRate, T: nData.simTime }
-//     //     getSceneTime(curAT)
-//     //   })
-//     //   .catch((res) => {
-//     //     console.log('没有获取到仿真实时状态数据')
-//     //   })
-//     setInterval(() => {
-//       getSimulationState(newVal)
-//         .then((res) => {
-//           let data = JSON.parse(res.data)
-//           let nData = JSON.parse(data.data)
-//           let curAT = { R: nData.clockRate, T: nData.simTime }
-//           // getSceneTime(curAT)
-//           experimentEventFlyControl(curAT)
-//         })
-//         .catch((res) => {
-//           console.log('没有获取到仿真实时状态数据')
-//         })
-//     }, 5000)
-//   },
-//   { deep: true }
-// )
 emitter.on('AT', (data) => {
-  // let curAT = { R: data.Data.R, T: data.Data.T }
-  // getSceneTime(curAT)
   experimentEventFlyControl(data)
 })
 // 通过 ref 引用子组件实例
 const reportConfigRef = ref(null)
 
-// 切换子组件显示/隐藏的方法
-const toggleChildVisibility = () => {
-  if (reportConfigRef.value) {
-    reportConfigRef.value.toggleReportConfigPaneVisibility()
-  }
-}
 const { configldrw } = commonMethods()
 
 const _queryExperimentJsonFile = () => {
@@ -480,8 +335,11 @@ const startsCreateBox = async (row) => {
           store.state.AFSIMModule.isEnterScene = true
           // 弹出时间轴
           emitter.emit('changeTimeLineState', true)
+          emitter.emit('hiddenBottom', true)
           // 关闭实验列表面板，方便再次打开刷新面板状态
           emitter.emit('isExperimentListShow', false)
+          // 获取图层管理的气象海洋服务列表
+          emitter.emit('getEnviromentServerList', true)
         })
         .catch((err) => {
           emitter.emit('showLoading', false)
@@ -498,11 +356,6 @@ const startsCreateBox = async (row) => {
     }
   }, DEBOUNCE_DELAY)
 }
-
-/**
- * 提交编辑
- */
-// const createCamp = () => {}
 /****
  * 配置实验过程中汇报的内容
  */
@@ -514,6 +367,8 @@ const _configExperimentReportContent = async (row) => {
   setTimeout(() => {
     emitter.emit('showEventList', true)
   }, 100)
+  // 获取图层管理的气象海洋服务列表
+  emitter.emit('getEnviromentServerList', true)
 }
 const blConfig = async (item) => {
   await getSceneTime(item.scenarioIdStr)
@@ -636,6 +491,8 @@ const ContinueRunCurrentScene = async (row) => {
         emitter.emit('showLoading', false)
         // 关闭实验列表面板，方便再次打开刷新面板状态
         emitter.emit('isExperimentListShow', false)
+        // 获取图层管理的气象海洋服务列表
+        emitter.emit('getEnviromentServerList', true)
       }, 2000)
     } catch (error) {
       emitter.emit('showLoading', false)
@@ -955,21 +812,22 @@ const _getRunList = () => {
 }
 // 处理显示运行中场景的切换
 const handleShowRunningChange = (value) => {
+
+  if (experimentListRefreshTimer) {
+    clearInterval(experimentListRefreshTimer)
+    experimentListRefreshTimer = null
+  }
+
   if (value) {
     _getRunList()
+    //清除定时器
+    experimentListRefreshTimer = setInterval(() => { _getRunList() }, 2000)
   } else {
     _getList()
+    experimentListRefreshTimer = setInterval(() => { _getListIntervel() }, 2000)
   }
 }
-// const loadingControl = () => {
-//   // 初始化三维场景时间控制器
-//   emitter.emit('showLoading', true)
-//   setTimeout(() => {
-//     emitter.emit('showLoading', false)
-//     // store.state.sceneModule.playState = 'pause'
-//     emitter.emit('initScenePauseState')
-//   }, 3000)
-// }
+
 // 选择实验后根据编辑平台配置的信息绘制各种区域
 const zzqy = (scenarioId) => {
   let dataController = new window.EarthPlugn.DataControl({
@@ -1120,7 +978,7 @@ onMounted(() => {
 // 组件卸载时移除事件监听
 onUnmounted(() => {
   emitter.off('sampleExperimentStarted', handleSampleExperimentStarted)
-  emitter.off('experimentStatusChanged', () => {})
+  emitter.off('experimentStatusChanged', () => { })
 
   if (startDebounceTimer) {
     clearTimeout(startDebounceTimer)
@@ -1157,8 +1015,7 @@ const handleExperimentStatusChanged = (data) => {
   if (experimentItem) {
     experimentItem.simRunStatus = data.status
     console.log(
-      `实验 ${experimentItem.name} 状态更新为: ${
-        data.status === 2 ? '运行中' : data.status === 3 ? '暂停' : '未运行'
+      `实验 ${experimentItem.name} 状态更新为: ${data.status === 2 ? '运行中' : data.status === 3 ? '暂停' : '未运行'
       }`
     )
   }
@@ -1337,13 +1194,15 @@ const getChineseName = (id) => {
   margin: 0;
   padding: 0 10px;
   box-sizing: border-box;
-  //background-image: url('@/assets/images/com_left_bg.png');
-  //background-size: 100% 100%;
   position: absolute;
   top: 13%;
   left: 3px;
-  background: rgba(2, 26, 70, 0.58);
-  box-shadow: 0 0 25px #1092d58a;
+  background: var(--panel-bg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-shadow: var(--box-shadow-glow);
+  border-top: 4px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
 
   .content {
     height: 75vh;
@@ -1357,23 +1216,12 @@ const getChineseName = (id) => {
       padding: 10px 10px 5px 10px;
 
       :deep(.el-input__wrapper) {
-        background-color: #2b4559 !important;
-        box-shadow: 0 0 0 1px #075d89 inset;
+        background-color: var(--input-bg) !important;
+        box-shadow: 0 0 0 1px var(--input-border) inset;
 
         .el-input__inner {
-          color: #ffffff;
+          color: var(--text-primary);
         }
-      }
-
-      .el-button {
-        background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
-        width: 80px;
-        height: 30px;
-        color: #ffff;
-        border-radius: 5px;
-        margin-left: 10px;
-        cursor: pointer;
-        margin-right: 5px;
       }
     }
 
@@ -1387,9 +1235,8 @@ const getChineseName = (id) => {
 
       .item_box,
       .create_box {
-        background-color: #223b5091;
-        border: 1px solid #ffffff00;
-        padding: 5px 15px 35px;
+        background-color: var(--panel-bg-dark);
+        padding: 12px 15px 35px;
         cursor: pointer;
         margin: 5px 10px;
 
@@ -1397,7 +1244,7 @@ const getChineseName = (id) => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          color: #81d3f8;
+          color: var(--text-primary);
           font-size: 16px;
 
           .title {
@@ -1415,17 +1262,27 @@ const getChineseName = (id) => {
               transition: color 0.3s ease;
 
               &:hover {
-                color: #00cbff;
+                color: var(--cyan-bright);
               }
+            }
+
+            .icon {
+              width: 26px;
+              height: 26px;
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              display: inline-block;
+              margin-right: 4px;
             }
           }
         }
 
         .item_content {
           text-align: left;
-          color: #b1b327;
+          color: var(--accent-orange);
           font-size: 12px;
           padding: 0;
+          padding-left: 24px;
 
           li {
             font-size: 14px;
@@ -1453,8 +1310,8 @@ const getChineseName = (id) => {
       }
 
       .select_style {
-        background-color: #02a7f04a;
-        border-color: #02a7f0;
+        background-color: var(--primary-color-half);
+        border-color: var(--primary-color);
       }
     }
   }
@@ -1466,7 +1323,7 @@ const getChineseName = (id) => {
     width: 100%;
     height: 40px;
     margin: 10px 0;
-    color: #fff;
+    color: var(--text-primary);
 
     :deep(.el-pagination) {
       justify-content: center;
@@ -1479,14 +1336,15 @@ const getChineseName = (id) => {
     justify-content: space-between;
     padding: 10px;
     padding: 5px 15px;
-    border-bottom: 1px solid #0b3855;
+    border-bottom: 1px solid var(--border-color);
     height: 35px;
     font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
     font-weight: 700;
     font-style: normal;
     font-size: 19px;
-    color: #c2d7ee;
+    color: var(--title-color);
     padding-top: 16px;
+
     .close_sty {
       width: 20px;
       height: 20px;
@@ -1494,6 +1352,12 @@ const getChineseName = (id) => {
       top: 22px;
       right: 10px;
       cursor: pointer;
+    }
+
+    .refreshList {
+      position: absolute;
+      top: 16px;
+      right: 100px;
     }
   }
 }
@@ -1507,28 +1371,29 @@ const getChineseName = (id) => {
 }
 
 // 为实验列表中的操作按钮添加样式
-.taskItem_box :deep(.el-button) {
-  background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
+.experimentList :deep(.el-button) {
+  background: var(--img-button-bg);
   width: 85px;
   height: 28px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
   border-radius: 3px;
   margin: 2px 0;
   cursor: pointer;
   border: none;
   padding: 0;
-  font-size: 12px;
+  font-size: 13px;
   display: block;
   text-align: center;
   line-height: 28px;
   transition: all 0.3s ease;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  box-shadow: 0 0 5px var(--glow-shadow);
   filter: brightness(0.9);
 
   &:hover:not(:disabled) {
-    box-shadow: 0 0 10px rgba(16, 146, 213, 0.8);
-    color: #ffffff;
+    box-shadow: 0 0 10px var(--el-button-primary-hover-bg);
+    color: var(--text-primary);
     filter: brightness(1.05);
   }
 
@@ -1564,8 +1429,8 @@ const getChineseName = (id) => {
 :deep(.el-dialog),
 .el-dialog,
 :deep(.el-dialog__body) {
-  background: #2e4b64 !important;
-  color: #fff !important;
+  background: var(--panel-bg-solid) !important;
+  color: var(--text-primary) !important;
 }
 
 :deep(.el-dialog) {
@@ -1573,8 +1438,8 @@ const getChineseName = (id) => {
   left: 50%;
   top: 50%;
   transform: translate3d(-50%, -50%, -50%);
-  background: rgba(8, 36, 62, 0.7) !important;
-  color: #fff;
+  background: var(--panel-bg) !important;
+  color: var(--text-primary);
   z-index: 10;
 
   .header {
@@ -1582,8 +1447,8 @@ const getChineseName = (id) => {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #2e4b64;
-    color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
     font-size: 18px;
   }
 
@@ -1596,20 +1461,22 @@ const getChineseName = (id) => {
 }
 
 :deep(.el-form-item__label) {
-  color: #fff;
+  color: var(--text-primary);
   justify-content: left;
 }
 
 :deep(.el-input) {
+  --el-input-border-color: var(--text-primary) !important;
+
   .el-input__wrapper {
     border-radius: 5px;
     box-shadow: none;
-    background-color: #2b4559 !important;
-    box-shadow: 0 0 0 1px #075d89 inset !important;
+    background-color: var(--input-bg) !important;
+    box-shadow: 0 0 0 1px var(--input-border) inset !important;
   }
 
   .el-input__inner {
-    color: #fff !important;
+    color: var(--text-primary) !important;
   }
 }
 
@@ -1617,8 +1484,8 @@ const getChineseName = (id) => {
   width: 100%;
 
   :deep(.el-select__wrapper) {
-    background-color: #2b4559 !important;
-    box-shadow: 0 0 0 1px #075d89 inset !important;
+    background-color: var(--input-bg) !important;
+    box-shadow: 0 0 0 1px var(--input-border) inset !important;
   }
 }
 
@@ -1626,23 +1493,23 @@ const getChineseName = (id) => {
   height: 90px;
   border-radius: 5px;
   box-shadow: none;
-  color: #ffff;
-  background-color: #2b4559 !important;
-  box-shadow: 0 0 0 1px #075d89 inset !important;
+  color: var(--text-primary);
+  background-color: var(--input-bg) !important;
+  box-shadow: 0 0 0 1px var(--input-border) inset !important;
 }
 
 ::v-deep(.el-select__placeholder) {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 ::v-deep .el-table td.el-table__cell,
 ::v-deep .el-table th.el-table__cell.is-leaf,
 ::v-deep .el-table__body-wrapper {
-  background: #2b4559 !important;
-  color: #a3a6ad;
+  background: var(--input-bg) !important;
+  color: var(--text-secondary);
 }
 
 .el-table {
-  --el-table-border-color: #075d89;
+  --el-table-border-color: var(--border-color);
 }
 </style>

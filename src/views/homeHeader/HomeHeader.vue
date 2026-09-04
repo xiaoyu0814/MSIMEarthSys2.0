@@ -1,29 +1,16 @@
+<!--
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-07-07 14:17:07
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-26 13:57:04
+ * @FilePath: \MSIMEarthSystem\src\views\homeHeader\HomeHeader.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="home-header">
     <div class="header-container">
       <div class="headbox_system">
-        <!-- <div
-          class="headbox_system_left"
-          v-for="item in state2.navbarBtn_left"
-          :key="item.name"
-          @click="clickHeaderItem(item)"
-          v-show="props.showList != 'zhibo'"
-        >
-          <div :class="['ststem-list', { 'ststem-list_blue': item.show }]">
-            {{ item.name }}
-          </div>
-          <div class="selectList" :style="getHeight(item)" v-show="item.show">
-            <div
-              class="select-item"
-              v-for="(t, i) in item.child"
-              :key="i"
-              @click="selectItemClick(t)"
-            >
-              {{ t.name }}
-            </div>
-          </div>
-        </div> -->
-        <div style="position: absolute; left: 70px; font-size: 20px; color: #fff" title="用户名称">
+        <div style="position: absolute; left: 70px; font-size: 20px; color: var(--text-primary)" title="用户名称">
           {{ state2.account }}
         </div>
       </div>
@@ -34,7 +21,7 @@
         </div>
       </div>
       <div class="header">
-        <span style="font-size: 24px; color: rgba(118, 228, 255, 0.74)">{{
+        <span style="font-size: 24px; color: var(--title-color-soft)">{{
           displayTitle
         }}</span><br />
         {{ state2.systemName }}
@@ -71,34 +58,9 @@
                 <span style="font-size: 16px; font-weight: 600; margin-top: 3px">
                   {{ state2.account }}</span>
               </div>
-
-              <!-- <el-button
-                size="small"
-                type="primary"
-                style="margin: 0"
-                @click="changePwd"
-              >
-                修改密码
-              </el-button> -->
-              <!-- <el-button
-                size="small"
-                type="primary"
-                style="margin: 10px 0"
-                @click="resetPwd"
-              >
-                重置密码
-              </el-button> -->
               <el-button size="small" type="primary" style="margin: 10px 0" @click="gotoHomePage">
                 返回首页
               </el-button>
-              <!-- <el-button
-                size="small"
-                type="primary"
-                style="margin: 0"
-                @click="logout"
-              >
-                退出登录
-              </el-button> -->
             </div>
             <template #reference>
               <el-badge :is-dot="false" class="badge">
@@ -127,8 +89,8 @@
             max-width: 200px;
             display: inline-block;
           " :style="state2.currentTaskName == '请选择场景'
-            ? 'color:#cccccc; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 550px; display: inline-block;'
-            : 'color:#ffffff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 550px; display: inline-block;'
+            ? 'color:var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 550px; display: inline-block;'
+            : 'color:var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 550px; display: inline-block;'
             ">
           {{ state2.currentTaskName }}
         </span>
@@ -189,7 +151,7 @@ const state2 = reactive({
   //   store.state.experimentModule.subSysName ||
   //   window.localStorage.getItem('subSysName')
   // }`, //'有人无人协同智能作战仿真支持系统',
-  systemName: `环境影响仿真推演及态势多维呈现`,
+  systemName: `无人智能作战仿真推演分系统`, //环境影响仿真推演及态势多维呈现
   isSimulationPop: false,
   experimentalDesign: false,
   currentTime: '', // 天文时间
@@ -197,8 +159,6 @@ const state2 = reactive({
   msgMessionTime: '', // 场景时间
   isShowSys: false,
   navigationShowage: '',
-  title11: require('@/assets/image/homeHeader/顶部背景图.png'),
-  title22: require('@/assets/image/homeHeader/头部.png'),
   showHomePanel: false, // 左右两侧面板显隐
   loginSeat: {
     img: require('@/assets/image/homeHeader/logo_white.png')
@@ -366,61 +326,7 @@ const clickHeaderItem = (item) => {
     store.commit('setExperimentalDataAnalysisVisible', false)
   }
 }
-const selectItemClick = (item) => {
-  item.show = !item.show
-  store.commit('setExperimentalBasicDatabaseVisible', false)
-  if (item.url) {
-    // router.push(item.url)
-    store.commit('setUrl', item.url)
-  }
-  if (item.name == '实验基础数据库') {
-    store.commit('setUrl', '')
-    store.commit('setExperimentalBasicDatabaseVisible', true)
-  }
-}
-// const changeHomePanel = () => {
-//   router.push('/homeMap/HomeMapHeader')
-// }
-/**
- * @description 修改密码
- */
-let changePwd = () => {
-  state2.dialogShow = true
-}
-/**
- * @description 重置密码
- */
-let resetPwd = () => {
-  ElMessageBox.confirm('确认重置密码？', '提示', {})
-    .then(() => {
-      //返回登录页面
-      logout()
-    })
-    .catch(() => { })
-}
 
-const getHeight = (item) => {
-  let height = item.child.length * 36
-  let str = 'height:' + height + 'px'
-  return str
-}
-
-/**
- * @description 登出
- */
-let logout = () => {
-  sessionStorage.clear()
-  localStorage.clear()
-  setTimeout(() => {
-    router.push('/login')
-    if (EventController) {
-      eventControllerSSEClose(EventController)
-    }
-    state2.currentTaskName = ''
-    store.state.sceneModule.sceneInfo = {}
-  }, 500)
-  // window.location.reload()
-}
 /**
  * @description 登出
  */
@@ -451,9 +357,7 @@ let handleClose = () => {
   position: absolute;
   top: 0;
 
-  // background: url('~@/assets/image/top.png');
-  background: url('@/assets/image/homeHeader/顶部背景图.png');
-  // background: url('@/assets/image/dataScreen/切图蓝-2.png');
+  background: var(--img-header);
   background-size: 100% 100%;
   z-index: 21; // 云渲染上要添加系统头,zindex设置比云渲染高
 
@@ -465,8 +369,6 @@ let handleClose = () => {
 
     .headbox_system {
       height: 60px;
-      // width: calc(50% - 210px);
-      // flex: 1.5;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -486,7 +388,7 @@ let handleClose = () => {
         width: 23%;
         height: 100%;
         font-size: 17px;
-        color: white;
+        color: var(--text-primary);
         line-height: 30px;
         display: flex;
         align-items: center;
@@ -500,27 +402,34 @@ let handleClose = () => {
         }
       }
     }
-
-    .header {
+    // 单标题样式
+    // .header {
+    //   flex: 0.9;
+    //   font-size: 20px;
+    //   font-weight: 700;
+    //   color: var(--text-primary);
+    //   letter-spacing: 6px;
+    //   box-sizing: border-box;
+    //   position: relative;
+    //   top: 0px;
+    //   margin: 0 auto;
+    //   text-align: center;
+    //   word-break: break-all;
+    // }
+    // 双标题样式
+    .header{
       height: 40px;
       width: 100%;
-      // width: 870px;
       flex: 2;
       font-size: 20px;
-      // line-height: 24px;
       font-weight: 700;
-      color: white;
-      // font-family: Roboto;
+      color: var(--text-primary);
       letter-spacing: 5px;
-      // display: flex;
-      // justify-content: center;
-      // padding-top: 10px;
       box-sizing: border-box;
       position: relative;
       top: -9px;
       letter-spacing: 6px;
     }
-
     .headbox_timetw {
       height: 60px;
       flex: 1.5;
@@ -543,12 +452,11 @@ let handleClose = () => {
       .time1,
       .time2 {
         width: 243px;
-        // padding: 0 10px;
         text-align: left;
       }
 
       .time1 {
-        margin-right: 50px;
+        margin-right: 200px;
       }
     }
 
@@ -574,9 +482,8 @@ let handleClose = () => {
       .time1,
       .time2 {
         width: 243px;
-        // padding: 0 10px;
         text-align: left;
-        margin-left: 70px;
+        margin-left: 220px;
       }
 
       .time1 {
@@ -586,12 +493,8 @@ let handleClose = () => {
 
     .header_img {
       cursor: pointer;
-      // width: 60px;
-      // height: 60px;
       padding: 10px;
       box-sizing: border-box;
-      // background: #123a5d;
-      // border-radius: 10px;
       position: absolute;
       top: 8px;
       left: 10px;
@@ -604,20 +507,17 @@ let handleClose = () => {
       }
 
       .seat_admin {
-        color: white;
-        //text-shadow: 3px 3px 5px #aeb2b3;
+        color: var(--text-primary);
         font-weight: bolder;
       }
 
       .seat_blue {
-        color: #06d6f9;
-        //text-shadow: 3px 3px 5px #06d6f9;
+        color: var(--cyan-color);
         font-weight: bolder;
       }
 
       .seat_red {
-        color: #f00;
-        //text-shadow: 3px 3px 5px #f00;
+        color: var(--accent-red);
         font-weight: bolder;
       }
     }
@@ -641,52 +541,14 @@ let handleClose = () => {
     }
   }
 
-  // .sceneSelectDIV {
-  //   margin-top: -7px;
-  //   font-size: 20px;
-  //   color: #fff;
-  //   position: relative;
-  //   cursor: pointer;
-
-  //   .scene_input {
-  //     margin-top: 25px;
-  //     border: none !important;
-
-  //     :deep .el-input__inner {
-  //       font-size: 18px;
-  //       font-weight: 500;
-  //       // width: 150px;
-  //       // background-color: transparent;
-  //       color: #06d6f9;
-  //       border: none !important;
-  //       text-align: center;
-  //       height: 30px;
-  //     }
-
-  //     :deep .el-input__wrapper {
-  //       background-color: transparent;
-  //     }
-  //   }
-
-  //   .arrowImg {
-  //     margin: 0 0 3px -10px;
-  //   }
-
-  //   .arrow_img_left {
-  //     margin: 0 0 3px 5px;
-  //   }
-  // }
-
   .sceneSelectDIV {
     position: absolute;
     left: 52%;
     top: 86%;
     transform: translate(-60%, 0);
     overflow: hidden;
-    /* line-height: 30px; */
     width: 450px;
     cursor: pointer;
-    // background-image: url('@/assets/image/dataScreen/补充切图-5.png');
     background-size: 100% 120%;
     display: flex;
     align-items: center;
@@ -711,45 +573,27 @@ let handleClose = () => {
       display: flex;
       justify-content: center;
       align-items: center;
-      // height: 50px;
-      // width: 50px;
     }
   }
 
   .header {
     height: 60px;
     width: 230px;
-    // line-height: 70px;
     font-size: 20px;
-    // line-height: 60px;
     font-weight: 700;
-    color: white;
+    color: var(--text-primary);
     letter-spacing: 10px;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
   }
 }
 
-// .time1 {
-//   position: absolute;
-//   top: 18%;
-//   left: 10%;
-// }
-// .time2 {
-//   position: absolute;
-//   top: 18%;
-//   left: 67%;
-// }
 .ledname1 {
-  color: #00cbff;
+  color: var(--cyan-bright);
   font-size: 17px;
   font-weight: 600;
 }
 
 .ledTime1 {
   color: #d1f6ff;
-  /* font-family: "led regular"; */
   font-size: 17px;
   font-weight: 600;
   margin-left: 10px;
@@ -757,14 +601,13 @@ let handleClose = () => {
 }
 
 .ledname2 {
-  color: #00cbff;
+  color: var(--cyan-bright);
   font-size: 17px;
   font-weight: 600;
 }
 
 .ledTime2 {
   color: #d1f6ff;
-  /* font-family: "led regular"; */
   font-size: 17px;
   font-weight: 600;
   margin-left: 10px;
@@ -775,7 +618,7 @@ let handleClose = () => {
   --el-input-border-color: #e5e5e500 !important;
   --el-input-hover-border: transparent !important;
   --el-input-focus-border: transparent !important;
-  --el-input-placeholder-color: #06d6f9;
+  --el-input-placeholder-color: var(--cyan-placeholder);
 }
 
 :deep(.el-select) {
@@ -797,7 +640,7 @@ let handleClose = () => {
 :deep(.el-dialog),
 :deep(.custom-dialog-class),
 .custom-dialog-class {
-  background: url(@/assets/image/panelIcons/背景框.png);
+  background: var(--img-panel-frame);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: fixed;
@@ -819,7 +662,7 @@ let handleClose = () => {
   box-sizing: border-box;
   font-size: 22px;
   font-weight: 900;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 :deep(.el-dialog__header) {
@@ -831,18 +674,16 @@ let handleClose = () => {
 
 .ststem-list {
   white-space: nowrap;
-  // background: url('@/assets/images/situationInforRelevance/默认.png');
   background-size: 100% 100%;
   height: 35px;
   padding: 0 15px;
 }
 
 .system-item2 {
-  // width: 100px;
   height: 100%;
   background-size: 100% 100%;
   font-size: 17px;
-  color: white;
+  color: var(--text-primary);
   height: 38px;
   line-height: 32px;
   display: flex;
@@ -853,7 +694,6 @@ let handleClose = () => {
 }
 
 .ststem-list:hover {
-  //background: url('@/assets/images/situationInforRelevance/选中.png');
   background-size: 100% 100%;
 }
 
@@ -867,70 +707,61 @@ let handleClose = () => {
   height: 100%;
   background-size: 100% 100%;
   font-size: 15px;
-  color: white;
+  color: var(--text-primary);
   height: 40px;
   line-height: 36px;
-  // display: flex;
-  // justify-content: center;
   cursor: pointer;
   margin-right: 6px;
 
   .selectList {
     width: 150px;
     height: 200px;
-    background-color: #172e51 !important;
-    box-shadow: 0 0 25px #1092d5;
+    background-color: var(--input-bg) !important;
+    box-shadow: var(--box-shadow-glow);
 
     .select-item:hover {
-      background: url('@/assets/image/panelIcons/下拉选项背景.png');
+      background: var(--img-dropdown);
       background-size: 100% 100%;
-      //color: rgba(1, 230, 213, 1);
-      color: #00cbff;
-
-      //border: none !important;
-      //box-shadow: none;
+      color: var(--cyan-bright);
     }
   }
 
   .ststem-list {
     white-space: nowrap;
-    //background: url("@/assets/images/默认.png");
     background-size: 100% 100%;
     height: 44px;
     padding: 0 15px;
   }
 
   .ststem-list:hover {
-    //background: url("@/assets/images/选中.png");
     background-size: 100% 100%;
   }
 
   .ststem-list_blue {
-    color: #00cbff;
+    color: var(--cyan-bright);
   }
 
   .scene_input {
-    // margin-top: 25px;
     border: none !important;
 
     :deep(.el-input__inner) {
       font-size: 18px;
       font-weight: 500;
-      color: #06d6f9;
+      color: var(--cyan-color);
       border: none !important;
       text-align: center;
     }
 
     :deep(.el-input__wrapper) {
-      background-color: #172e51 !important;
-      box-shadow: 0 0 25px #1092d5;
+      background-color: var(--input-bg) !important;
+      box-shadow: var(--box-shadow-glow);
     }
 
     :deep(.el-input) {
       --el-input-border-color: #e5e5e500 !important;
       --el-input-hover-border: transparent !important;
       --el-input-focus-border: transparent !important;
-      --el-input-placeholder-color: #06d6f9;
+      --el-input-placeholder-color: var(--cyan-placeholder);
     }
 
     :deep(.el-select) {

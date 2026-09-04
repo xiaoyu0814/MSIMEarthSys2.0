@@ -231,15 +231,15 @@ const closeBox = () => {
   bottom: 0;
   top: 100px;
   z-index: 1;
-  background-color: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
-  color: #ffffff;
+  background-color: rgba(var(--panel-bg-rgb), 0.88);
+  box-shadow: 0 0 25px var(--glow-shadow);
+  color: var(--text-primary);
   padding: 20px;
 
   .header {
     height: 90px;
     text-align: left;
-    border-bottom: 1px solid #1092d5;
+    border-bottom: 1px solid var(--glow-shadow);
     .titleBox {
       display: flex;
       justify-content: space-between;
@@ -264,16 +264,16 @@ const closeBox = () => {
   .treeBox {
     width: 300px;
     height: 100%;
-    border-right: 1px solid #ffffff;
+    border-right: 1px solid var(--text-primary);
 
     :deep(.el-tree) {
       background-color: transparent;
-      color: #ffffff;
+      color: var(--text-primary);
       .el-tree-node__content:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(var(--white-rgb), 0.1);
       }
       .el-tree-node:focus > .el-tree-node__content {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(var(--white-rgb), 0.1);
       }
     }
 
@@ -282,7 +282,7 @@ const closeBox = () => {
           .el-tree-node.is-current
           > .el-tree-node__content
       ) {
-      background-color: #409eff;
+      background-color: var(--link-color);
     }
   }
   .contentBox {
@@ -313,8 +313,8 @@ const closeBox = () => {
       gap: 40px;
       li {
         width: 17.9%;
-        background-color: #ffffff;
-        color: #000000;
+        background-color: var(--text-primary);
+        color: var(--panel-bg-solid);
         img {
           height: 150px;
           width: 100%;

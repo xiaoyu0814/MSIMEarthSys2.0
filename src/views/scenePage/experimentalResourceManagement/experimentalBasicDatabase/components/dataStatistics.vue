@@ -308,9 +308,9 @@ onMounted(() => {
   transform: translate(-50%, -50%);
   width: 800px;
   height: 600px;
-  background-color: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
-  color: #ffffff;
+  background-color: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
+  color: var(--text-primary);
   z-index: 1;
   header {
     display: flex;
@@ -319,7 +319,7 @@ onMounted(() => {
     font-size: 16px;
     font-weight: bold;
     padding: 10px;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid var(--text-primary);
 
     .icon {
       cursor: pointer;
@@ -331,15 +331,15 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     :deep(.el-input__inner) {
-      color: #ffffff;
+      color: var(--text-primary);
     }
     :deep(.el-input__wrapper) {
       background-color: transparent;
-      box-shadow: 0 0 0 1px rgba(129, 211, 248, 1) inset;
+      box-shadow: 0 0 0 1px rgba(var(--cyan-bright-rgb), 1) inset;
     }
     :deep(.el-button) {
       background-color: transparent;
-      border-color: rgba(129, 211, 248, 1);
+      border-color: rgba(var(--cyan-bright-rgb), 1);
     }
   }
 
@@ -363,9 +363,9 @@ onMounted(() => {
   }
   :deep(.el-table) {
     background-color: transparent;
-    color: #ffffff;
+    color: var(--text-primary);
     thead {
-      color: #ffffff;
+      color: var(--text-primary);
     }
     tr,
     th {
@@ -373,7 +373,7 @@ onMounted(() => {
     }
     tr:hover {
       td.el-table__cell {
-        background-color: rgba(129, 211, 248, 0.1);
+        background-color: rgba(var(--cyan-bright-rgb), 0.1);
       }
     }
   }

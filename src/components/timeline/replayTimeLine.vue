@@ -453,7 +453,6 @@ const exitReplayFun = () => {
     viewer: window.EarthViewer
   })
   dataController.add_bblabel()
-  dataController.addChina()
   removeOperationalArea()
   // let cusP = new window.EarthPlugn.customPritive(
   //   window.MSIMEarth,

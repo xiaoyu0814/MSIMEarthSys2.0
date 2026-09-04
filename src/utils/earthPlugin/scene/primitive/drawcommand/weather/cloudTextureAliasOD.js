@@ -118,10 +118,10 @@ export default function createCloudTextureAliasOD(config, earth, viewer) {
 
           // 添加到场景
           viewer.scene.primitives.add(humidityPrimitive);
-          console.log("云层数据加载成功！");
+          console.log("数据加载成功！");
         })
         .catch((error) => {
-          console.error("加载云层数据失败：", error);
+          console.error("加载数据失败：", error);
         });
     } else {
       // 添加到场景

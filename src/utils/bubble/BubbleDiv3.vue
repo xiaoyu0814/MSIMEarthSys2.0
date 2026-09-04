@@ -257,7 +257,7 @@ watch(
   left: 5%;
   transform: translate(-50%, -50%);
   .details-content {
-    color: white;
+    color: var(--text-primary);
     text-align: left;
     font-size: 14px;
     padding: 0 13px;
@@ -268,7 +268,7 @@ watch(
     .spanStyle {
       font-size: 18px;
       left: 5px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
     }
   }
 }
@@ -284,7 +284,7 @@ watch(
   left: 25%;
   transform: translate(-50%, -50%);
   .details-content {
-    color: white;
+    color: var(--text-primary);
     text-align: left;
     font-size: 14px;
     padding: 0 13px;
@@ -295,7 +295,7 @@ watch(
     .spanStyle {
       font-size: 18px;
       left: 5px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
     }
   }
 }
@@ -311,13 +311,13 @@ watch(
   right: -8%;
   transform: translate(-50%, -50%);
   .details-content {
-    color: white;
+    color: var(--text-primary);
     position: relative;
 
     .spanStyle {
       font-size: 18px;
       left: 5px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
     }
   }
 }
@@ -333,11 +333,11 @@ watch(
   transform: translate(-50%, -50%);
   .details-content {
     width: 100%;
-    color: white;
+    color: var(--text-primary);
     position: relative;
     .spanStyle {
       font-size: 18px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
       position: relative;
       top: 60px;
     }
@@ -360,11 +360,11 @@ watch(
   transform: translate(-50%, -50%);
   .details-content {
     width: 100%;
-    color: white;
+    color: var(--text-primary);
     position: relative;
     .spanStyle {
       font-size: 18px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
       position: relative;
       top: 60px;
     }
@@ -388,11 +388,11 @@ watch(
   transform: translate(-50%, -50%);
   .details-content {
     width: 100%;
-    color: white;
+    color: var(--text-primary);
     position: relative;
     .spanStyle {
       font-size: 18px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
       position: relative;
       top: 60px;
     }
@@ -415,14 +415,14 @@ watch(
   left: 4%;
   transform: translate(-50%, -50%);
   .up-content {
-    color: white;
+    color: var(--text-primary);
     padding: 55px 0;
     position: relative;
 
     .spanUpStyle {
       font-size: 25px;
       left: 5px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
     }
   }
 }
@@ -437,14 +437,14 @@ watch(
   left: 4%;
   transform: translate(-50%, -50%);
   .down-content {
-    color: white;
+    color: var(--text-primary);
     padding: 55px 0;
     position: relative;
 
     .spanDownStyle {
       font-size: 25px;
       left: 5px;
-      color: rgb(255, 255, 255);
+      color: var(--text-primary);
     }
   }
 }
@@ -463,7 +463,7 @@ watch(
 /*定义滑块 内阴影+圆角*/
 &::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  box-shadow: inset 0 0 0px aqua;
-  background-color: aqua;
+  box-shadow: inset 0 0 0px var(--cyan-color);
+  background-color: var(--cyan-color);
 }
 </style>

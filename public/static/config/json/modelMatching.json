@@ -2105,11 +2105,6 @@
         "modelname": "3DModel/pyramid.glb"
       }
     },
-    "PAC_3_Vehicle": {
-      "MODEL": {
-        "modelname": "3DModel/pyramid.glb"
-      }
-    },
     "CHAFF": {
       "MODEL": {
         "modelname": "3DModel/pyramid.glb",
@@ -2735,9 +2730,9 @@
     },
     "Khibiny": {
       "MODEL": {
-        "modelname": "3DModel/pyramid.glb",
-        "minimumPixelSize": 10,
-        "scale": 0.1
+        "modelname": "3DModel/Khibiny.glb",
+        "minimumPixelSize": 20,
+        "scale": 1.0
       },
       "labelDisplayByDistance": [
         0,
@@ -3017,7 +3012,7 @@
     },
     "MaguraV5": {
       "MODEL": {
-        "modelname": "3DModel/055quzhujian.glb"
+        "modelname": "3DModel/magura.glb"
       },
       "labelDisplayByDistance": [
         0,
@@ -5533,6 +5528,72 @@
       "labelDisplayByDistance": [
         0,
         30e3
+      ]
+    },
+    "PAC_3_Vehicle": {
+      "MODEL": {
+        "modelname": "3DModel/无人车.glb",
+        "minimumPixelSize": 15,
+        "scale": 0.7
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e3
+      ]
+    },
+    "SeaHunter_USV": {
+      "MODEL": {
+        "modelname": "3DModel/Khibiny.glb",
+        "minimumPixelSize": 20,
+        "scale": 1.0
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "Overload_USV": {
+      "MODEL": {
+        "modelname": "3DModel/Khibiny.glb",
+        "minimumPixelSize": 20,
+        "scale": 1.0
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "LCSFreedom": {
+      "MODEL": {
+        "modelname": "3DModel/huweijian.glb",
+        "minimumPixelSize": 20,
+        "scale": 1.0
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "FrigateConstellation": {
+      "MODEL": {
+        "modelname": "3DModel/huweijian.glb",
+        "minimumPixelSize": 20,
+        "scale": 1.0
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
+      ]
+    },
+    "UH_60": {
+      "MODEL": {
+        "modelname": "3DModel/MG_ZSJ_31.glb",
+        "minimumPixelSize": 20,
+        "scale": 1.0
+      },
+      "labelDisplayByDistance": [
+        0,
+        30e5
       ]
     },
     "ReconnaissanceCompany": {

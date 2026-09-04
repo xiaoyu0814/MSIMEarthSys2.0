@@ -3,13 +3,12 @@
  * @Version: 1.0
  * @Author: ZX Li
  * @Date: 2025-09-05 15:31:21
- * @LastEditors: ZX Li
- * @LastEditTime: 2025-09-05 15:31:21
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-03 16:03:02
  */
 export default function () {
   // 创建eyes实体
   const createEyes = (params, volumesData) => {
-    debugger
     let entityTarget = window.EarthPlugn.entity._GetCZMLEntity(
       params.name,
       'MSIMEarthCZMLProcessContainer'

@@ -130,7 +130,7 @@ const state = reactive({
     flex-shrink: 0;
     height: 300px;
     width: 250px;
-    background-image: url('~@/assets/image/panelIcons/装饰.png');
+    background-image: var(--img-decoration);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: inline-flex;
@@ -141,14 +141,14 @@ const state = reactive({
     .item-container {
       width: 98.8%;
       height: 97.4%;
-      background: rgba(2, 26, 70, 0.88);
-      box-shadow: 0 0 25px #1092d5;
+      background: var(--panel-bg-deep);
+      box-shadow: var(--box-shadow-glow);
 
       .item-title {
         text-align: left;
         font-size: 20px;
         font-weight: 500;
-        color: #00c7fb;
+        color: var(--title-color);
         display: flex;
         align-items: center;
         margin: 5px 10px;
@@ -160,7 +160,7 @@ const state = reactive({
           width: 4px;
           height: 20px;
           margin-right: 5px;
-          background: #1092d5;
+          background: var(--glow-shadow);
         }
       }
 
@@ -169,11 +169,11 @@ const state = reactive({
       }
 
       :deep(.el-form-item__label) {
-        color: white;
+        color: var(--text-primary);
       }
 
       :deep(.el-form-item__content) {
-        color: white;
+        color: var(--text-primary);
       }
 
       :deep(.el-form-item) {

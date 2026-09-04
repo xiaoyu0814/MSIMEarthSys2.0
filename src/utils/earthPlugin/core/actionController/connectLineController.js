@@ -36,31 +36,31 @@ export default class ConnectLine {
     let repeat = new window.MSIMEarth.Cartesian2(repeatNum, repeatNum)
 
     // 为了更好的控制链路显隐，需要基于showref之上再添加一层显隐控制，
-    // 当前的链路显隐是通过遍历entities.id，对包含链路特定id群体进行显隐控制，每次接到新的链路消息即便当前处于隐藏状态仍然会展示最新链路
-    // 增加的这一层级是想通过store/scene内的属性值在初始化层面判定显隐，以保证链路显隐控制
-    //showref = store.getters.getLinkState
-    let linkWidth = (params.width || 15) / store.getters.getLinkWidthScale // 根据不同席位会（目前主要是2D/3D显示区别）设定宽度
-    // let missilePath = computeFlyline([targetLng, targetLat], [sourceLng, sourceLat], 80000)
-    //console.log('线宽比例', store.getters.getLinkWidthScale)
+    let linkWidth = (params.width || 15) / store.getters.getLinkWidthScale
+   
     let mixColor = params.color || window.MSIMEarth.Color.RED
     let imgUrl = require('/public/static/image/texture/通信.png')
     switch (params.type) {
       case 'RE_STrackInit':
-        imgUrl = require('/public/static/image/texture/RE_STrackInit.png')
+        imgUrl =  require('/public/static/image/texture/linkImages/RE_STrackInit.png')
+        repeat = new window.MSIMEarth.Cartesian2(1, 1)
+        linkWidth = 3
+        break
+      case 'RE_LTrackInit':
+        imgUrl = require('/public/static/image/texture/linkImages/RE_LTrackInit.png')
         repeat = new window.MSIMEarth.Cartesian2(1, 1)
         linkWidth = 3
         break
       case 'RE_WeaponF':
-        imgUrl = require('/public/static/image/texture/RE_WeaponF.png')
+        imgUrl = require('/public/static/image/texture/linkImages/RE_WeaponF.png')
         params.speed = 2
-        // repeat = new window.MSIMEarth.Cartesian2(4, 4)
         break
       case 'RE_JamA':
-        imgUrl = require('/public/static/image/texture/RE_JamA.png')
+        imgUrl = require('/public/static/image/texture/linkImages/RE_JamA.png')
         params.speed = 0.1
         break
       case 'RE_MR':
-        imgUrl = require('/public/static/image/texture/RE_MR4.png')
+        imgUrl = require('/public/static/image/texture/linkImages/RE_MR.png')
         break
       default:
         break
@@ -105,8 +105,7 @@ export default class ConnectLine {
           arcType: window.MSIMEarth.ArcType.NONE,
           width: 1,
           material: mixColor,
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(0, 80e5)
+          distanceDisplayCondition:new window.MSIMEarth.DistanceDisplayCondition(0, 80e5)
         }
       })
     } else {
@@ -147,7 +146,6 @@ export default class ConnectLine {
           material: new window.MSIMEarth.FlowLineMaterialProperty({
             transparent: true,
             mixColor: mixColor || window.MSIMEarth.Color.WHITE,
-            // repeat: new window.MSIMEarth.Cartesian2(8, 8),
             repeat: repeat,
             mixRatio: params.mix || 0.5,
             flowSpeed: params.speed ? params.speed : 5,
@@ -233,8 +231,7 @@ export default class ConnectLine {
       } else {
         position = [entityPos1, entityPos2]
       }
-      // 只直线
-      // let position = [entityPos1, entityPos2]
+      
       return position
     }
   }
@@ -255,29 +252,7 @@ export default class ConnectLine {
       )
       return
     }
-    // 标牌弹出
-    // beautyToast.info({
-    //   title: '通信',
-    //   message: params.sourId + params.msgSource,
-    //   darkTheme: true
-    // })
-    let startOptions = {
-      entityId: params.sourId,
-      czmlSource: 'MSIMEarthCZMLProcessContainer',
-      type: params.type || 'SDC',
-      title: params.sourId,
-      msg: params.msgSource
-    }
-    // window.sceneAction.popUp.setStyleEffect(startOptions)
-    // setTimeout(() => {
-    //   // 清除
-    //   sceneAction.connectLineManagement.removeStrikePlan({
-    //     sourId: params.sourId,
-    //     targetId: params.targetId,
-    //     type: params.type || 'SDC'
-    //   })
-    //   window.sceneAction.popUp.cancleStyleEffect(startOptions)
-    // }, params.startPopTime || 2000)
+   
     let linkId = `${params.type}==${params.sourId}==${params.targetId}Ray`
     let hasLink = viewer.entities.getById(linkId)
     if (hasLink) return
@@ -292,15 +267,6 @@ export default class ConnectLine {
     let repeatNum = params.repeat || 2
     let repeat = new window.MSIMEarth.Cartesian2(repeatNum, repeatNum)
 
-    // 为了更好的控制链路显隐，需要基于showref之上再添加一层显隐控制，
-    // 当前的链路显隐是通过遍历entities.id，对包含链路特定id群体进行显隐控制，每次接到新的链路消息即便当前处于隐藏状态仍然会展示最新链路
-    // 增加的这一层级是想通过store/scene内的属性值在初始化层面判定显隐，以保证链路显隐控制
-    //showref = store.getters.getLinkState
-    const linkWidthRay =
-      (params.Raywidth || 6) / store.getters.getLinkWidthScale // 根据不同席位会（目前主要是2D/3D显示区别）设定宽度
-
-    // let missilePath = computeFlyline([targetLng, targetLat], [sourceLng, sourceLat], 80000)
-    //console.log('线宽比例', store.getters.getLinkWidthScale)
     let mixColor = params.color || window.MSIMEarth.Color.RED
     window.EarthViewer.entities.add({
       position: new window.MSIMEarth.CallbackProperty(changePosition, false),
@@ -315,19 +281,7 @@ export default class ConnectLine {
         width: 1,
         material: mixColor
       }
-      // ellipse: {
-      //   semiMinorAxis: params.radius || 100000,
-      //   semiMajorAxis: params.radius || 100000,
-      //   material: new window.MSIMEarth.MultiCircleMaterialProperty({
-      //     color: mixColor, // 127, 255, 212
-      //     repeat: new window.MSIMEarth.Cartesian2(4.0, 4.0),
-      //     half: true,
-      //     flowSpeed: 0.2,
-      //     transparent: 0.8
-      //   }),
-      //   // fill: true,
-      //   height: new window.MSIMEarth.CallbackProperty(changeHeight, false)
-      // }
+      
     })
     // 长度百分比，当达到1时不再增加
     let LengthPercentage = 0.0001

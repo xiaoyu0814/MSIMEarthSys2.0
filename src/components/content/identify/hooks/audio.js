@@ -22,8 +22,6 @@ const playAudio = (dataPath, store, textVal) => {
 
     emitter.emit('configVoice', textVal.value)
     setTimeout(() => {
-      console.log('识别动画总时长')
-
       store.state.sceneModule.showIdentify = false
     }, identifyShowTime) // (identifyDuration * 3 + 10) * 1000  识别动画总时长
     // }, ((identifyDuration * 3 + 5) * 1000) / window.EarthViewer.clock.multiplier) // (identifyDuration * 3 + 10) * 1000  识别动画总时长

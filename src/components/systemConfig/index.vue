@@ -29,7 +29,7 @@
             <template #default="{ node, data }">
               <span class="custom-tree-node">
                 <template v-if="node.level === 1">
-                  <el-icon color="#409efc" :size="20" class="TreeSettingNode">
+                  <el-icon color="var(--link-color)" :size="20" class="TreeSettingNode">
                     <Setting />
                   </el-icon>
                 </template>
@@ -319,21 +319,17 @@ const showDialDetailSetting = (isTrue, data) => {
   width: 15vw;
   z-index: 998;
 
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
+  background: var(--panel-bg);
+  box-shadow: var(--box-shadow-glow);
+  border-top: 4px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background: linear-gradient(135deg,
-      rgba(2, 26, 70, 0.95) 0%,
-      rgba(0, 199, 251, 0.1) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 0 30px rgba(16, 146, 213, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 199, 251, 0.3);
 
   .configContainer {
     height: 97%;
@@ -351,10 +347,10 @@ const showDialDetailSetting = (isTrue, data) => {
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 10px;
-      color: #00c7fb;
+      color: var(--title-color);
       font-family: 'Arial', sans-serif;
       box-sizing: border-box;
-      text-shadow: 0 0 10px rgba(0, 199, 251, 0.5);
+      text-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.5);
       letter-spacing: 1px;
       position: relative;
 
@@ -378,11 +374,11 @@ const showDialDetailSetting = (isTrue, data) => {
       .section-title {
         font-size: 16px;
         font-weight: 500;
-        color: #409efc;
+        color: var(--cyan-bright);
         padding-left: 8%;
-        border-bottom: 1px solid rgba(0, 199, 251, 0.3);
+        border-bottom: 1px solid rgba(var(--cyan-bright-rgb), 0.3);
         padding-bottom: 5px;
-        text-shadow: 0 0 5px rgba(64, 158, 252, 0.5);
+        text-shadow: 0 0 5px rgba(var(--link-color-rgb), 0.5);
       }
     }
   }
@@ -394,7 +390,7 @@ const showDialDetailSetting = (isTrue, data) => {
   max-height: 200px;
   width: 95%;
   background: transparent;
-  color: #c2d7ee;
+  color: var(--text-primary);
   overflow-y: auto;
   box-sizing: border-box;
   padding-left: 8%;
@@ -415,29 +411,29 @@ const showDialDetailSetting = (isTrue, data) => {
   border: 1px solid transparent;
 
   &:hover {
-    background-color: rgba(0, 199, 251, 0.15) !important;
-    color: #00c7fb;
-    border-color: rgba(0, 199, 251, 0.4);
-    box-shadow: 0 0 15px rgba(0, 199, 251, 0.3);
+    background-color: rgba(var(--cyan-bright-rgb), 0.15) !important;
+    color: var(--title-color-soft);
+    border-color: rgba(var(--cyan-bright-rgb), 0.4);
+    box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.3);
   }
 }
 
 :deep .el-tree-node .is-current>.el-tree-node__content {
-  background-color: rgba(0, 199, 251, 0.2) !important;
-  color: #00c7fb;
-  border-color: rgba(0, 199, 251, 0.6);
-  box-shadow: 0 0 15px rgba(0, 199, 251, 0.4);
+  background-color: rgba(var(--cyan-bright-rgb), 0.2) !important;
+  color: var(--cyan-bright);
+  border-color: rgba(var(--cyan-bright-rgb), 0.6);
+  box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.4);
 }
 
 :deep .el-tree-node:focus>.el-tree-node__content {
-  background-color: rgba(0, 199, 251, 0.15) !important;
-  color: #00c7fb;
-  border-color: rgba(0, 199, 251, 0.4);
+  background-color: rgba(var(--cyan-bright-rgb), 0.15) !important;
+  color: var(--cyan-bright);
+  border-color: rgba(var(--cyan-bright-rgb), 0.4);
 }
 
 :deep el-tree-node__expand-icon el-icon-caret-right:before {
-  color: rgba(0, 199, 251, 0.8);
-  text-shadow: 0 0 5px rgba(0, 199, 251, 0.5);
+  color: rgba(var(--cyan-bright-rgb), 0.8);
+  text-shadow: 0 0 5px rgba(var(--cyan-bright-rgb), 0.5);
 }
 
 
@@ -445,13 +441,13 @@ const showDialDetailSetting = (isTrue, data) => {
 .TreeSettingNode {
   margin-right: 8px;
   top: 4px;
-  color: #00c7fb !important;
-  text-shadow: 0 0 10px rgba(0, 199, 251, 0.8);
+  color: var(--title-color) !important;
+  text-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.8);
   transition: all 0.3s ease;
 
   &:hover {
     transform: scale(1.1);
-    text-shadow: 0 0 15px rgba(0, 199, 251, 1);
+    text-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 1);
   }
 }
 
@@ -459,32 +455,32 @@ const showDialDetailSetting = (isTrue, data) => {
 :deep .el-checkbox {
   .el-checkbox__input {
     .el-checkbox__inner {
-      background-color: rgba(2, 26, 70, 0.8);
-      border-color: rgba(64, 158, 252, 0.6);
+      background-color: rgba(var(--panel-bg-rgb), 0.8);
+      border-color: var(--primary-color);
       transition: all 0.3s ease;
 
       &:hover {
-        border-color: rgba(0, 199, 251, 0.8);
-        box-shadow: 0 0 10px rgba(0, 199, 251, 0.5);
+        border-color: rgba(var(--cyan-bright-rgb), 0.8);
+        box-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.5);
       }
     }
 
     &:checked {
       .el-checkbox__inner {
-        background-color: rgba(0, 199, 251, 0.8);
-        border-color: rgba(0, 199, 251, 1);
-        box-shadow: 0 0 10px rgba(0, 199, 251, 0.6);
+        background-color: rgba(var(--cyan-bright-rgb), 0.8);
+        border-color: rgba(var(--cyan-bright-rgb), 1);
+        box-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.6);
       }
 
       +.el-checkbox__label {
-        color: #00c7fb;
-        text-shadow: 0 0 5px rgba(0, 199, 251, 0.5);
+        color: var(--title-color);
+        text-shadow: 0 0 5px rgba(var(--cyan-bright-rgb), 0.5);
       }
     }
   }
 
   .el-checkbox__label {
-    color: #409efc;
+    color: var(--link-color);
     transition: all 0.3s ease;
   }
 }
@@ -496,23 +492,23 @@ const showDialDetailSetting = (isTrue, data) => {
 }
 
 :deep ::-webkit-scrollbar-track {
-  background: rgba(2, 26, 70, 0.3);
+  background: rgba(var(--panel-bg-rgb), 0.3);
   border-radius: 3px;
 }
 
 :deep ::-webkit-scrollbar-thumb {
-  background: rgba(0, 199, 251, 0.6);
+  background: rgba(var(--cyan-bright-rgb), 0.6);
   border-radius: 3px;
-  box-shadow: 0 0 10px rgba(0, 199, 251, 0.5);
+  box-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.5);
 
   &:hover {
-    background: rgba(0, 199, 251, 0.8);
-    box-shadow: 0 0 15px rgba(0, 199, 251, 0.8);
+    background: rgba(var(--cyan-bright-rgb), 0.8);
+    box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.8);
   }
 }
 
 :deep ::-webkit-scrollbar-corner {
-  background: rgba(2, 26, 70, 0.3);
+  background: rgba(var(--panel-bg-rgb), 0.3);
 }
 
 .radio-checkbox-wrapper {
@@ -531,27 +527,27 @@ const showDialDetailSetting = (isTrue, data) => {
   vertical-align: middle;
 
   .radio-inner {
-    width: 16px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: rgba(17, 181, 236, 0.5);
-    border: 1px solid #11b5ec;
-    position: relative;
-    transition: all 0.3s ease;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      width: 7px;
-      height: 7px;
+      width: 16px;
+      height: 15px;
       border-radius: 50%;
-      background-color: #11b5ec;
-      transition: transform 0.3s ease;
+      background-color: var(--primary-color-half);
+      border: 1px solid var(--primary-color);
+      position: relative;
+      transition: all 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        transition: transform 0.3s ease;
+      }
     }
-  }
 
   &.is-checked {
     .radio-inner {
@@ -570,8 +566,8 @@ const showDialDetailSetting = (isTrue, data) => {
   }
 
   &:hover:not([disabled]) .radio-inner {
-    border-color: rgba(0, 199, 251, 1);
-    box-shadow: 0 0 10px rgba(0, 199, 251, 0.5);
+    border-color: rgba(var(--cyan-bright-rgb), 1);
+    box-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.5);
   }
 }
 </style>

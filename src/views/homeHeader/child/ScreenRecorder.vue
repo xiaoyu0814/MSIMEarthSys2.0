@@ -3,7 +3,7 @@
     <!-- 录屏控制按钮 -->
     <div class="control-buttons">
       <!-- 开始/暂停/继续按钮 -->
-      <div class="screen-recorder" @click="toggleRecord">
+      <!-- <div class="screen-recorder" @click="toggleRecord">
         <el-tooltip
           effect="light"
           :content="
@@ -19,7 +19,6 @@
               idle: !isRecording
             }"
           >
-            <!-- 科技风录屏图标 -->
             <svg
               v-if="!isRecording"
               width="14"
@@ -36,9 +35,7 @@
               <line x1="16" y1="10" x2="22" y2="10" />
               <line x1="16" y1="14" x2="22" y2="14" />
             </svg>
-            <!-- 录制中状态 -->
             <div v-else-if="!isPaused" class="recording-dot"></div>
-            <!-- 暂停状态 -->
             <svg
               v-else
               width="12"
@@ -54,7 +51,7 @@
             </svg>
           </div>
         </el-tooltip>
-      </div>
+      </div> -->
 
       <!-- 结束录制按钮 -->
       <div class="stop-recorder" @click="stopRecording" v-if="isRecording">

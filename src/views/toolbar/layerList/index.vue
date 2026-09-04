@@ -1,3 +1,11 @@
+<!--
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-08-06 09:36:20
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-11 17:28:28
+ * @FilePath: \MSIMEarthSystem\src\views\toolbar\layerList\index.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="data-container">
     <div class="layerList">
@@ -7,12 +15,12 @@
           <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_sty" @click="handleClose_" />
         </el-tooltip>
       </div>
-      <el-menu ref="treeRef" :default-active="''" mode="vertical" class="menu-tree" @select="handleMenuSelect">
+      <el-menu ref="treeRef" :default-active="''" mode="vertical" class="menu-tree" @select="handleMenuSelect"
+        @open="handleOpen">
         <template v-for="item in store.state.sceneModule.layerManagementData" :key="item.code">
           <el-sub-menu :index="String(item.code)">
             <template #title>
-              <img style="margin-right: 6px; width: 17px; height: 17px"
-                :src="require(`@/assets/image/layerlist/${item.image}`)" />
+              <img style="margin-right: 6px; width: 21px; height: 21px" :src="getThemeImg(item.image)" />
               <span>{{ item.name }}</span>
             </template>
             <template v-for="child in item.childList" :key="child.code">
@@ -23,22 +31,26 @@
                     @change="(val) => handleCheck(child, { checkedKeys: getCheckedKeys() })" />
                 </span>
                 <span v-if="child.name == '网络通信'">
-                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 15px;vertical-align: middle;"
+                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 18px;vertical-align: middle;"
                     src="@/assets/image/texture/RE_MR.png" />
                 </span>
                 <span v-else-if="child.name == '电磁干扰'">
-                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 15px;vertical-align: middle;"
+                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 12px;vertical-align: middle;"
                     src="@/assets/image/texture/RE_JamA.png" />
                 </span>
                 <span v-else-if="child.name == '火力打击'">
-                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 15px;vertical-align: middle;"
+                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 12px;vertical-align: middle;"
                     src="@/assets/image/texture/RE_WeaponF.png" />
                 </span>
-                <span v-else-if="child.name == '局域追踪'">
-                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 15px;vertical-align: middle;"
-                    src="@/assets/image/texture/RE_STrackInit.png" />
+                <span v-else-if="child.name == '传感器追踪'">
+                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 12px;vertical-align: middle;"
+                    src="@/assets/image/texture/RE_LTrackInit.png" />
                 </span>
-                <span v-else>{{ child.name }}</span>
+                <!-- <span v-else-if="child.name == '传感器追踪'">
+                  {{ child.name }}<img style="margin-left: 6px;width: 150px; height: 12px;vertical-align: middle;"
+                    src="@/assets/image/texture/传感器追踪.png" />
+                </span> -->
+                <span v-else>{{ child.name || child.layerNameCn }}</span>
               </el-menu-item>
               <el-sub-menu v-else :index="String(child.code)">
                 <template #title>
@@ -111,12 +123,44 @@
 import { loadData } from './hooks/index.js'
 import store from '@/store/index'
 import emitter from '@/utils/eventbus'
+import { themeType } from '@/config/theme.js'
 import { reactive, onMounted, nextTick } from 'vue'
 
 const vuedata = reactive({
   lockout: true,
   switchValue: false
 })
+const handleOpen = (index) => {
+  if (treeRef.value) {
+    store.state.sceneModule.layerManagementData.forEach((item) => {
+      const itemCode = String(item.code)
+      if (itemCode !== index) {
+        treeRef.value.close(itemCode)
+      }
+    })
+  }
+}
+// 根据主题类型动态加载图片资源
+// 注意：Webpack 的 require() 需要静态路径前缀才能在构建时分析依赖
+// 因此每个主题分支使用独立的 require() + 模板字符串，确保路径可被静态分析
+const getThemeImg = (name) => {
+  switch (themeType) {
+    // 蓝色
+    case 1:
+      return require(`@/assets/image/layerlist/${name}`)
+    // 黑色
+    case 2:
+      return require(`@/assets/image/layerlist/${name}`)
+    // 白色
+    case 3:
+      return require(`@/assets/image/layerlist/${name}`)
+    // 绿色
+    case 4:
+      return require(`@/assets/image/layerlist/menu_green/${name}`)
+    default:
+      return require(`@/assets/image/layerlist/${name}`)
+  }
+}
 const {
   state,
   state2,
@@ -146,19 +190,8 @@ const {
 onMounted(() => {
   vuedata.lockout = store.state.sceneModule.islayerListLock
   nextTick(() => {
-    if (treeRef.value) {
-      store.state.sceneModule.layerManagementData.forEach((item) => {
-        treeRef.value.open(String(item.code))
-      })
-    }
-    if (sessionStorage.getItem('roleKey') != 'pilotseat') {
-      //非导调席位
-      // if (treeRef.value.getNode('31')) {
-      //   treeRef.value.remove(treeRef.value.getNode('31')) //移除场景配置图层节点下的模型树节点，因为在2D模式下模型描边不显示
-      // }
-      // if (treeRef.value.getNode('campaignSituation')) {
-      //   treeRef.value.remove(treeRef.value.getNode('campaignSituation')) //移除战役态势图层，因为在2D模式下会报错，因为当前cesium版本过低，需要1.103以上的版本
-      // }
+    if (treeRef.value && store.state.sceneModule.layerManagementData.length > 0) {
+      treeRef.value.open(String(store.state.sceneModule.layerManagementData[0].code))
     }
   })
 })
@@ -279,13 +312,11 @@ const handleClose_ = () => {
   position: fixed;
   right: 6%;
   top: 10%;
-  // right: 10px;
   margin-top: 0px;
   height: 460px;
   width: 17vw;
   z-index: 998;
 
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -296,8 +327,10 @@ const handleClose_ = () => {
   .layerList {
     height: 97%;
     width: 100%;
-    background: rgba(2, 26, 70, 0.58);
-    box-shadow: 0 0 25px #1092d58a;
+    background: var(--panel-bg);
+    box-shadow: var(--box-shadow-glow-soft);
+    border-top: 3px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 
     .layerTitle {
       height: 40px;
@@ -311,8 +344,8 @@ const handleClose_ = () => {
       font-weight: 700;
       font-style: normal;
       font-size: 19px;
-      color: #c2d7ee;
-      border-bottom: 2px solid #0372a6;
+      color: var(--title-color);
+      border-bottom: 2px solid var(--border-color);
 
       .lock_sty {
         width: 20px;
@@ -351,7 +384,7 @@ const handleClose_ = () => {
       // background: url('@/assets/image/voiceInteraction/zjDiv.png');
       // background-size: 100% 100%;
       // padding: 40px 20px;
-      background-image: url('~@/assets/image/panelIcons/装饰.png');
+      background-image: var(--img-decoration);
       background-repeat: no-repeat;
       background-size: 100% 100%;
       display: flex;
@@ -362,8 +395,8 @@ const handleClose_ = () => {
         padding: 15px;
         height: 97%;
         width: 100%;
-        background: rgba(2, 26, 70, 0.88);
-        box-shadow: 0 0 25px #1092d5;
+        background: var(--panel-bg-deep);
+        box-shadow: var(--box-shadow-glow);
 
         .close_Sty {
           width: 20px;
@@ -391,7 +424,7 @@ const handleClose_ = () => {
     height: 90% !important;
     width: 95%;
     background: transparent;
-    color: #e9fcfd;
+    color: var(--text-highlight);
     overflow-y: auto;
     box-sizing: border-box;
     padding-left: 3%;
@@ -408,7 +441,7 @@ const handleClose_ = () => {
     text-align: left;
     font-size: 16px;
     font-weight: 500;
-    color: #00c7fb;
+    color: var(--title-color);
   }
 
   .checkedOption {
@@ -439,10 +472,10 @@ const handleClose_ = () => {
       height: 20px;
 
       .el-input__wrapper {
-        background: rgba(0, 0, 0, 0.2);
+        background: var(--el-select-bg);
 
         .el-input__inner {
-          color: #fff;
+          color: var(--text-primary);
         }
       }
     }
@@ -480,39 +513,42 @@ const handleClose_ = () => {
 }
 
 :deep .el-radio__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  border: 1px solid #11b5ec;
+  background-color: var(--primary-color-half);
+  border: 1px solid var(--primary-color);
 }
 
 :deep .el-radio {
-  color: #11b5ec;
+  color: var(--primary-color);
 }
 
 :deep .el-checkbox {
-  color: #11b5ec !important;
+  color: var(--primary-color) !important;
 }
 
 :deep .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  border: 1px solid #11b5ec;
+  background-color: var(--primary-color-half);
+  border: 1px solid var(--primary-color);
   border-radius: 50%;
-  color: #11b5ec;
+  color: var(--primary-color);
 }
 
 :deep .el-checkbox__input.is-checked .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color);
+  color: var(--primary-color-full);
 }
 
 :deep .el-checkbox__input.is-disabled .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
-  border-color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
+}
+
+:deep .el-checkbox__input.is-checked .el-checkbox__inner {
+  border-color: var(--primary-color) !important;
 }
 
 :deep .el-checkbox__input.is-disabled {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
 }
 
 :deep .el-tree-node {
@@ -521,29 +557,33 @@ const handleClose_ = () => {
 
 :deep .el-tree-node__content:hover,
 .el-upload-list__item:hover {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half);
 }
 
 :deep .el-tree-node .is-current>.el-tree-node__content {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half);
 }
 
 :deep .el-tree-node:focus>.el-tree-node__content {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half);
 }
 
 :deep el-tree-node__expand-icon el-icon-caret-right:before {
-  color: rgba(17, 181, 236, 1);
+  color: var(--primary-color-full);
 }
 
 :deep .menu-tree {
   height: 90% !important;
   width: 100%;
   background: transparent;
-  color: #e9fcfd;
+  color: var(--text-highlight);
   overflow-y: auto;
   box-sizing: border-box;
   border: none;
+}
+
+:deep .el-menu {
+  background: transparent !important;
 }
 
 :deep .menu-tree .el-menu-item,
@@ -553,24 +593,24 @@ const handleClose_ = () => {
   font-size: 16px;
   letter-spacing: 0.5px;
   padding: 10px 0 10px 20px;
-  background: rgba(2, 26, 70, 0.95);
-  color: #e9fcfd;
+  background: transparent !important;
+  color: var(--text-primary);
   border: none;
 }
 
 :deep .menu-tree .el-menu-item:hover,
 :deep .menu-tree .el-sub-menu__title:hover {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half) !important;
 }
 
 
 :deep .menu-tree .el-sub-menu .el-menu-item:hover {
-  background-color: rgba(2, 26, 70, 0.75);
-  color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half) !important;
+  color: var(--text-primary) !important;
 }
 
 :deep .menu-tree .el-sub-menu .el-sub-menu__title {
-  color: #a8d8ea;
+  color: var(--text-primary);
   padding-left: 20px;
   height: 40px;
   line-height: 40px;
@@ -579,11 +619,11 @@ const handleClose_ = () => {
 }
 
 :deep .menu-tree .el-sub-menu .el-sub-menu__title:hover {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half) !important;
 }
 
 :deep .menu-tree .el-sub-menu__icon-arrow {
-  color: rgba(17, 181, 236, 1);
+  color: var(--primary-color-full);
   font-size: 15px;
 }
 

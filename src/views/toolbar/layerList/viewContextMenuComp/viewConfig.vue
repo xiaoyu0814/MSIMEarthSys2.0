@@ -1,19 +1,19 @@
 <!--
  * @Author: caoyazhen caoyazhen@piesat.cn
  * @Date: 2024-05-08 14:37:30
- * @LastEditors: 谢小宇 xiexiaoyu@piesat.cn
- * @LastEditTime: 2026-06-04 18:34:11
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-13 14:04:44
  * @FilePath: \MSIMEarthSysN\src\views\toolbar\layerList\viewContextMenuComp\viewConfig.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <li class="viewConfig" v-for="(item, index) in props.viewList" :key="index" @click="viewClick(item, index)">
-    <el-tooltip class="box-item" effect="dark" :content="item.disabled ? '该功能不可用' : item.name" placement="bottom-start">
-      <img :src="require(`@/assets/image/rightNavbar/viewContextMenu/${item.urlon}`)
-        " v-if="item.isShow" />
-      <img :src="require(`@/assets/image/rightNavbar/viewContextMenu/${item.urloff}`)
-        " v-else />
+  <li class="viewConfig" v-for="(item, index) in props.viewList" :key="index" @click="viewClick(item, index)"
+    :class="{ 'active': item.isShow }">
+    <el-tooltip class="box-item" effect="dark" :content="item.disabled ? '该功能不可用' : item.name" placement="left">
+      <img :src="getThemeImg(item.urlon)" v-if="item.isShow" />
+      <img :src="getThemeImg(item.urloff)" v-else />
     </el-tooltip>
+    <div class="contentName" :class="{ 'activeName': item.isShow }">{{ item.name }}</div>
   </li>
 </template>
 
@@ -23,6 +23,7 @@ import emitter from '@/utils/eventbus'
 import { reactive, onMounted, ref } from 'vue'
 import { changeCameraView } from '@/utils/earthPlugin/ThirdParty/cameraControl/cameraControl'
 import { detailedSignageCheckChange } from '@/views/toolbar/layerList/hooks/showHideConfig'
+import { themeType } from '@/config/theme.js'
 import store from '@/store'
 const props = defineProps({
   viewList: {
@@ -30,16 +31,27 @@ const props = defineProps({
     defind: {}
   }
 })
-
-// watch(
-//   () => store.state.sceneModule.getViewerState,
-//   (newVal, oldVal) => {
-//     if (newVal) {
-//     }
-//   },
-//   { immediate: true, deep: true }
-// )
-
+// 根据主题类型动态加载图片资源
+// 注意：Webpack 的 require() 需要静态路径前缀才能在构建时分析依赖
+// 因此每个主题分支使用独立的 require() + 模板字符串，确保路径可被静态分析
+const getThemeImg = (name) => {
+  switch (themeType) {
+    // 蓝色
+    case 1:
+      return require(`@/assets/image/rightNavbar/viewContextMenu/${name}`)
+    // 黑色
+    case 2:
+      return require(`@/assets/image/rightNavbar/viewContextMenu/${name}`)
+    // 白色
+    case 3:
+      return require(`@/assets/image/rightNavbar/viewContextMenu/${name}`)
+    // 绿色
+    case 4:
+      return require(`@/assets/image/rightNavbar/viewContextMenu/menu_green/${name}`)
+    default:
+      return require(`@/assets/image/rightNavbar/viewContextMenu/${name}`)
+  }
+}
 onMounted(() => {
   if (window.EarthViewer.scene.mode === 2) {
     //第一和锁定视角不可用
@@ -78,7 +90,7 @@ const viewClick = (item, index) => {
       emitter.emit('showUI', false)
       emitter.emit('showDeduce', false)
       planLine_show_hidden(false)
-      panel_show_hidden(false)
+      //panel_show_hidden(false)
       store.commit('experimentModule/SET_FLY_CONTROL', true)// 开启镜头跳转
       break
     case '第一视角':
@@ -87,7 +99,7 @@ const viewClick = (item, index) => {
       emitter.emit('showUI', false)
       emitter.emit('showDeduce', false)
       planLine_show_hidden(false)
-      panel_show_hidden(false)
+      //panel_show_hidden(false)
       store.commit('experimentModule/SET_FLY_CONTROL', true)// 开启镜头跳转
       break
     case '第三视角':
@@ -96,7 +108,7 @@ const viewClick = (item, index) => {
       emitter.emit('showUI', true)
       emitter.emit('showDeduce', true)
       planLine_show_hidden(true)
-      panel_show_hidden(true)
+      //panel_show_hidden(true)
       store.commit('experimentModule/SET_FLY_CONTROL', false)// 关闭镜头跳转
       removePopUp() // 删除PopUp气泡
       break
@@ -106,7 +118,7 @@ const viewClick = (item, index) => {
       emitter.emit('showUI', false)
       emitter.emit('showDeduce', false)
       planLine_show_hidden(false)
-      panel_show_hidden(false)
+      //panel_show_hidden(false)
       store.commit('experimentModule/SET_FLY_CONTROL', true)// 开启镜头跳转
       break
     default:
@@ -157,19 +169,35 @@ const removePopUp = () => {
 
 <style lang="less" scoped>
 .viewConfig {
-  width: 34px;
-  height: 34px;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   padding-right: 5px;
   margin-right: 5px;
+  margin-top: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
 
-  //border-right: 1px solid;
   img {
     width: 30px;
     height: 30px;
   }
 
-  // &:nth-child(5n) {
-  //   border-right: 1px solid;
-  // }
+  .contentName {
+    font-size: 14px;
+    font-weight: bolder;
+    color: var(--text-primary);
+    margin-left: 4px;
+    letter-spacing: 1.2px;
+  }
+}
+
+.active {
+  background-color: var(--primary-color-half);
+}
+
+.activeName {
+  color: var(--title-color) !important;
 }
 </style>

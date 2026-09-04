@@ -136,10 +136,10 @@ export default {
     text-align: left;
     font-size: 22px;
     padding: 20px;
-    color: white;
+    color: var(--text-primary);
   }
   .details-content {
-    color: white;
+    color: var(--text-primary);
     text-align: left;
     font-size: 18px;
     padding: 0 20px 20px;
@@ -179,14 +179,14 @@ export default {
     right: 20px;
     position: absolute;
     background: none;
-    color: aqua;
+    color: var(--cyan-color);
     border: none;
     font-size: 18px;
   }
   .spanStyle {
     font-size: 14px;
     left: 5px;
-    color: aqua;
+    color: var(--cyan-color);
   }
 }
 .sixspanStyle {
@@ -210,7 +210,7 @@ export default {
 /*定义滑块 内阴影+圆角*/
 &::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  box-shadow: inset 0 0 0px aqua;
-  background-color: aqua;
+  box-shadow: inset 0 0 0px var(--cyan-color);
+  background-color: var(--cyan-color);
 }
 </style>

@@ -503,8 +503,8 @@ const makeOption = () => {
   #correlationEcharts {
     width: 100%;
     height: 99%;
-    background: rgba(2, 26, 70, 0.88);
-    box-shadow: 0 0 25px #1092d5;
+    background: var(--panel-bg-deep);
+    box-shadow: var(--box-shadow-glow);
   }
 }
 </style>

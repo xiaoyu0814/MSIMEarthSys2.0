@@ -306,16 +306,16 @@ MouseEventsController.prototype.loadMouseEvents = function (options) {
             }
             //存储当前点击飞机的状态信息
             // 获取中文名称后续要从实体本身获取，因为实体已经存在于场景不需要再去匹配，只需要在对应的实体获取即可，例如picked.id.text._value,由于label是用labelcollection构建，所以需要到对应collection获取。
-            let chineseName = (
-              configPlateformCHNName(picked.id._id) == picked.id._id
-                ? configPlateformCHNName2(picked.id._id)
-                : configPlateformCHNName(picked.id._id)
-            )?.name
+            let chineseName = picked.id &&
+            picked.id.label &&
+            picked.id.label.text &&
+            picked.id.label.text._value
+              ? picked.id.label.text._value
+              : ''
             store.commit('setCurrentFlyType', {
               name: entitName,
               entityId: picked.id._id,
               type: msg,
-              // chineseName: configPlateformCHNName(picked.id._id)
               chineseName: chineseName
             })
             //存储飞机高度

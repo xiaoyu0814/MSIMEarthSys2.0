@@ -3,8 +3,8 @@
  * @Version: 2.0
  * @Autor: wx
  * @Date: 2022-05-06 01:28:50
- * @LastEditors: ZX Li
- * @LastEditTime: 2024-03-05 14:48:21
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-07 16:45:19
  */
 const AFSIMModule = {
   namespaced: true, //独立使用
@@ -25,15 +25,6 @@ const AFSIMModule = {
       ATValue: -1,
       jamArr: [], //存放当前场景被干扰对象
       dtList: [], //
-      //开始或继续实验时从仿真引擎获取到的当前仿真运行状态，例如 时间倍率 开始暂停状态等
-      //   {
-      //     "clockRate": 10,
-      //     "filename": "E:/XXSIM290_Windows_20250214/demos/JointFirePowerStrike/run_course1.txt",
-      //     "pause": false,
-      //     "ratio": 65.25459123671824,
-      //     "simState": 4,
-      //     "simTime": 23491.65282599991
-      // }
       simulationState: {},
       simClientIp: '', //实验开始或者继续时获取，进而实现时间接口循环自调用
       heatMapContainer: null, // 热力图容器
@@ -42,6 +33,7 @@ const AFSIMModule = {
       dqST: true,// 决定受大气影响的侦察包括是否调取光学探测区域
       opticalDqST: true,// 决定受大气影响的侦察包括是否调取光学探测区域
       infraredDqST: true,// 决定受大气影响的侦察包括是否调取红外探测区域
+      radarDqST: true,// 决定受大气影响的侦察包括是否调取雷达探测区域
       showARMultiPoints: true, // 是否显示地表影像，默认显示
       isEnterScene: false,// 是否已经进入场景
       labelColor: {
@@ -51,6 +43,9 @@ const AFSIMModule = {
       windGui: null, // 存储风场GUI对象
       fp: false,// 是否打开的是复盘问价
       PA_UTF8_Name: [],//从PA消息中获取的中文名称映射
+      muData: {},//存储MU消息数据，key为平台Name，value为MU消息的Data对象
+      volumeDataDict: {},//存储传感器包络信息字典
+      paShowData: {},//存储PA消息的Side和Vision，key为平台Name，用于控制czml label显隐
     }
   },
   getters: {
@@ -101,6 +96,30 @@ const AFSIMModule = {
     // 清除风场GUI对象
     clearWindGui(state) {
       state.windGui = null
+    },
+    // 设置MU消息数据
+    setMuData(state, { name, data }) {
+      state.muData[name] = data
+    },
+    // 清除所有MU消息数据
+    clearMuData(state) {
+      state.muData = {}
+    },
+    // 设置传感器包络信息字典
+    setVolumeDataDict(state, payload) {
+      state.volumeDataDict = payload
+    },
+    // 清除所有传感器包络信息字典
+    clearVolumeDataDict(state) {
+      state.volumeDataDict = {}
+    },
+    // 设置PA消息的Side和Vision
+    setPaShowData(state, { name, side, vision }) {
+      state.paShowData[name] = { side, vision }
+    },
+    // 清除所有PA消息的Side和Vision
+    clearPaShowData(state) {
+      state.paShowData = {}
     },
   },
   actions: {

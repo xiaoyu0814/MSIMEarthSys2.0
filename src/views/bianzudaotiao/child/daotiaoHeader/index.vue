@@ -427,8 +427,8 @@ onMounted(() => {
     border-bottom: 2px solid @tech-blue;
     border-top: 1px solid rgba(6, 214, 249, 0.5);
     // 增强阴影，提升立体感，使其与主体内容分离
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 30px rgba(6, 214, 249, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 25px rgba(var(--black-rgb), 0.5), 0 0 30px rgba(6, 214, 249, 0.2),
+      inset 0 1px 0 rgba(var(--white-rgb), 0.2);
     position: relative;
     z-index: 1;
     // 添加顶部和底部的发光线条，增强科技感
@@ -491,7 +491,7 @@ onMounted(() => {
 
       .subtitle {
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(var(--white-rgb), 0.7);
         font-family: 'Courier New', monospace;
         letter-spacing: 1px;
       }
@@ -655,7 +655,7 @@ onMounted(() => {
               rgba(3, 35, 90, 0.98) 0%,
               rgba(0, 50, 100, 0.98) 100%
             );
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+            box-shadow: 0 4px 20px rgba(var(--black-rgb), 0.5),
               0 0 20px rgba(6, 214, 249, 0.3);
             z-index: 1000;
             animation: dropdownFadeIn 0.3s ease-out;
@@ -673,7 +673,7 @@ onMounted(() => {
 
             .dropdown-item {
               padding: 8px 12px;
-              color: rgba(255, 255, 255, 0.9);
+              color: rgba(var(--white-rgb), 0.9);
               font-size: 14px;
               cursor: pointer;
               transition: all 0.3s ease;
@@ -775,7 +775,7 @@ onMounted(() => {
     .expand-btn {
       cursor: pointer;
       font-size: 18px;
-      color: #c2d7ee;
+      color: var(--text-secondary);
       transition: all 0.3s ease;
       flex-shrink: 0;
       width: 32px;
@@ -785,8 +785,8 @@ onMounted(() => {
       justify-content: center;
 
       &:hover {
-        color: #00cbff;
-        background-color: rgba(0, 203, 255, 0.1);
+        color: var(--cyan-bright);
+        background-color: rgba(var(--cyan-bright-rgb), 0.1);
         border-radius: 4px;
       }
     }

@@ -1,8 +1,8 @@
 /*
  * @Author: caoyazhen caoyazhen@piesat.cn
  * @Date: 2024-03-29 11:27:47
- * @LastEditors: yuqiangqiang yqq@piesat.cn
- * @LastEditTime: 2024-08-25 14:08:08
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-10 10:42:43
  * @FilePath: \MSIMEarthSysN\src\utils\earthPlugin\ThirdParty\eventSource\event\earthActionByEvent\RE_WeaponF.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -25,19 +25,8 @@ export default function () {
       color[2] / 255,
       0.5
     )
-    json.Data.sSide = configWeapenPlateformCSV(json.Data.WPName).camp //后期仿真引擎阵营完善后可以去掉
-    console.log('武器阵营', json.Data.sSide)
+    json.Data.sSide = configWeapenPlateformCSV(json.Data.WPName).camp 
     setTimeout(() => {
-      // console.log('json.Data.sName', json.Data.sName)
-      // sceneAction.connectLineManagement.addDashLine({
-      //   sourId: json.Data.WPName,
-      //   targetId: json.Data.tName,
-      //   color: colorC,
-      //   side: json.Data.sSide,
-      //   type: 'RE_WeaponF',
-      //   width: 3, // 10
-      //   show: store.state.sceneModule.sceneLinkConfig.fireHitting
-      // })
       sceneAction.connectLineManagement.addLine({
         sourId: json.Data.WPName,
         targetId: json.Data.tName,

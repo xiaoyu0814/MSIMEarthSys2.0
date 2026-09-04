@@ -129,7 +129,7 @@ class EventARSIMByMQController {
           resolve()
         }
       } else {
-        console.log('没有检测到已有MQ连接')
+        //console.log('没有检测到已有MQ连接')
         resolve()
       }
     })
@@ -180,17 +180,17 @@ class EventARSIMByMQController {
         globalStompClient = client
         isConnected = true
         EarthAPP.MQCount += 1
-        console.log(
-          `事件MQ消息初始化成功,当前页面连接事件MQ次数:${EarthAPP.MQCount}`
-        )
+        // console.log(
+        //   `事件MQ消息初始化成功,当前页面连接事件MQ次数:${EarthAPP.MQCount}`
+        // )
         let currentSubscribe = client.subscribe(exchange, function (messages) {
           that.handleMessage(messages)
         })
       }
 
       function onFailed(frame) {
-        console.log('Failed: ' + frame)
-        console.log('一秒后重新连接')
+        //console.log('Failed: ' + frame)
+        //console.log('一秒后重新连接')
         globalStompClient = null
         globalSubscribe = null
         isConnected = false

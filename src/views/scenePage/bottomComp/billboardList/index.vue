@@ -126,11 +126,11 @@ const getCardTabs = (name) => {}
   position: absolute;
   left: calc(50% - 800px);
   bottom: 32px;
-  color: #ffffff;
+  color: var(--text-primary);
   width: 1600px;
   height: 206px;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
   // background-image: url('~@/assets/image/panelIcons/装饰.png');
   // background-repeat: no-repeat;
   // background-size: 100% 100%;

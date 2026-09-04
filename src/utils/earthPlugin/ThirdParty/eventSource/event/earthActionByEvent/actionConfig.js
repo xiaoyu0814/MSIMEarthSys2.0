@@ -1,8 +1,8 @@
 /*
  * @Author: caoyazhen caoyazhen@piesat.cn
  * @Date: 2024-04-07 14:02:12
- * @LastEditors: yuqiangqiang yqq@piesat.cn
- * @LastEditTime: 2024-08-23 11:51:54
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-07 16:52:17
  * @FilePath: \MSIMEarthSysN\src\utils\earthPlugin\ThirdParty\eventSource\event\earthActionByEvent\RE_LTrack.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -41,5 +41,27 @@ function createLineMessage(json, lineType) {
   }
 }
 
-export { createLineMessage }
-export default { createLineMessage }
+function getColorBySide(side) {
+  let color 
+  switch (side) {
+    case 'red':
+      color = window.MSIMEarth.Color.RED.withAlpha(0.3)
+      break
+    case 'blue':
+      color = window.MSIMEarth.Color.BLUE.withAlpha(0.3)
+      break
+    case 'green':
+      color = window.MSIMEarth.Color.GREEN.withAlpha(0.3)
+      break
+    case 'purple':
+      color = window.MSIMEarth.Color.PURPLE.withAlpha(0.3)
+      break
+    default:
+      color = window.MSIMEarth.Color.WHITE
+      break
+  }
+  return color
+}
+
+export { createLineMessage,getColorBySide}
+export default { createLineMessage, getColorBySide}

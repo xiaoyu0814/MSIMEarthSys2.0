@@ -24,6 +24,7 @@ declare module '@vue/runtime-core' {
     ContourlineLegend: typeof import('./src/components/content/contourlineLegend/index.vue')['default']
     Create: typeof import('./src/components/communication/document/create.vue')['default']
     DialDetailSetting: typeof import('./src/components/dialDetailSetting/dialDetailSetting.vue')['default']
+    DirectiveChat: typeof import('./src/components/directiveChat/index.vue')['default']
     Document: typeof import('./src/components/communication/document.vue')['default']
     Draggable: typeof import('./src/components/draggable/index.vue')['default']
     EarthInfo: typeof import('./src/components/earthBasicInfo/EarthInfo.vue')['default']

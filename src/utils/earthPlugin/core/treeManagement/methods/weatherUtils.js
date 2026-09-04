@@ -4,7 +4,7 @@
  * 更新所有图例位置
  */
 export function updateAllLegendPositions() {
-  const legendConfig = window.weatherDataConfig?.LEGEND_CONFIG || {
+  const legendConfig = {
     baseTop: 80,
     baseRight: 120,
     gap: 15,

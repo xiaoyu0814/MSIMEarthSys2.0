@@ -1,5 +1,6 @@
 import store from '@/store'
 import emitter from '@/utils/eventbus'
+import LocalCache from '@/utils/earthPlugin/ThirdParty/storageManagement/localStorage.js'
 import { clusterPA, savePA, layerConfigByPA, PAConfig } from './PAConfig'
 import { getUTF8NameByPA } from '../czml/czmlRenderConfig/index'
 export default function () {
@@ -57,6 +58,28 @@ export default function () {
       json.Data.Side,
       json.Data.Vision
     )
+    // 单独存储PA消息的Side和Vision，供webCZML_DataProto控制czml label显隐
+    store.commit('AFSIMModule/setPaShowData', {
+      name: json.Data.Name,
+      side: json.Data.Side,
+      vision: json.Data.Vision
+    })
+    // PA数据到达时主动更新已有CZML实体的label显隐
+    if (typeof MSIMEarthCZMLProcessContainer !== 'undefined') {
+      let czmlEn = MSIMEarthCZMLProcessContainer.entities.getById(json.Data.Name)
+      if (czmlEn && czmlEn.label) {
+        let paShowInfo = store.state.AFSIMModule.paShowData[json.Data.Name]
+        let curPAShow = false
+        if (paShowInfo) {
+          curPAShow = window.EarthPlugn.entity._getPAShow(
+            store.state.AFSIMModule.paDataShow,
+            paShowInfo.side,
+            paShowInfo.vision
+          )
+        }
+        czmlEn.label.show =  !curPAShow
+      }
+    }
     let entitiesData = {
       id: json.Data.Name + 'PA',
       position: window.MSIMEarth.Cartesian3.fromDegrees(

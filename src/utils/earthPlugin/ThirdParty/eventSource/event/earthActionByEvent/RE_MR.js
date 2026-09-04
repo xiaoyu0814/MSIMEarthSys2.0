@@ -1,8 +1,8 @@
 /*
  * @Author: caoyazhen caoyazhen@piesat.cn
  * @Date: 2024-04-07 14:02:12
- * @LastEditors: caoyazhen caoyazhen@piesat.cn
- * @LastEditTime: 2024-05-23 10:54:22
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-10 10:25:31
  * @FilePath: \MSIMEarthSysN\src\utils\earthPlugin\ThirdParty\eventSource\event\earthActionByEvent\RE_MR.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -21,21 +21,6 @@ export default function () {
     if (typeof json.Line === 'undefined') return
 
     let colorC = new window.MSIMEarth.Color(1.0, 0, 0, 0.7)
-    // let curColor = [0, 0, 0, 0]
-    // if (json.Line) {
-    //   curColor = json.Line
-    // }
-    // let colorC = new window.MSIMEarth.Color(
-    //   curColor[0] / 255,
-    //   curColor[1] / 255,
-    //   curColor[2] / 255,
-    //   curColor[3] / 255
-    // )
-    // if (json.Data.RPN == 'BB_beidou' || json.Data.XPN == 'BB_beidou') {
-    //   colorC = window.MSIMEarth.Color.RED
-    // } else if (json.Data.RPN == 'BB_A51' || json.Data.XPN == 'BB_A51') {
-    //   colorC = new window.MSIMEarth.Color(0, 1.0, 1.0, 1.0)
-    // }
     let side = getSideByXPN(json.Data.XPN)
     sceneAction.connectLineManagement.addLine({
       sourId: json.Data.XPN,
@@ -44,7 +29,7 @@ export default function () {
       type: json.Type,
       side: side,
       width: 10,
-      speed: 2, //json.Data.speed ? json.Data.speed : 5,
+      speed: 2, 
       show: store.state.sceneModule.sceneLinkConfig.networkCommunication,
       mix: 1.0,
       repeat: 4

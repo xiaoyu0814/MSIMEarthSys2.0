@@ -149,8 +149,8 @@ const handleChange = (val, arg) => {
   position: fixed;
   right: calc(50% - 450px);
   top: 15%;
-  background: rgba(2, 26, 70, 0.95);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-solid);
+  box-shadow: var(--box-shadow-glow);
 
   .header {
     display: flex;
@@ -164,7 +164,7 @@ const handleChange = (val, arg) => {
       font-weight: 700;
       font-style: normal;
       font-size: 19px;
-      color: #c2d7ee;
+      color: var(--text-secondary);
     }
 
     img {
@@ -184,28 +184,28 @@ const handleChange = (val, arg) => {
       width: 100%;
       margin-right: 10px;
       .title {
-        color: #fff;
+        color: var(--text-primary);
         font-size: 16px;
-        border: 1px solid #075d89;
+        border: 1px solid var(--input-border);
       }
       .event_list {
         text-align: left;
-        color: #ffffff;
+        color: var(--text-primary);
         padding: 5px;
         height: 430px;
         margin-top: 10px;
-        border: 1px solid #075d89;
+        border: 1px solid var(--input-border);
         :deep(.el-tree) {
           background: transparent;
-          color: #fff;
+          color: var(--text-primary);
         }
         :deep(.el-tree-node:focus > .el-tree-node__content) {
           background: #006eb1;
-          color: #fff;
+          color: var(--text-primary);
         }
         :deep(.el-tree-node__content:hover) {
           background: #064773;
-          color: #fff;
+          color: var(--text-primary);
         }
         .eventname {
           padding: 5px 0;
@@ -222,7 +222,7 @@ const handleChange = (val, arg) => {
       background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
       width: 65px;
       height: 32px;
-      color: #ffff;
+      color: var(--text-primary);
       border-radius: 5px;
       margin-left: 10px;
       cursor: pointer;
@@ -234,22 +234,22 @@ const handleChange = (val, arg) => {
   }
 }
 ::v-deep(.el-tabs__item) {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 ::v-deep(.el-tabs__item.is-active) {
-  color: #409eff;
+  color: var(--link-color);
 }
 ::v-deep(.el-tabs__item:hover) {
-  color: #409eff;
+  color: var(--link-color);
 }
 
 ::v-deep(.el-checkbox) {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 ::v-deep .el-table td.el-table__cell,
 ::v-deep .el-table th.el-table__cell.is-leaf,
 ::v-deep .el-table__body-wrapper {
-  background: #2b4559 !important;
+  background: var(--input-bg) !important;
   color: #a3a6ad;
 }
 .el-table {

@@ -1,10 +1,6 @@
-// import { loadGLSL } from '@/utils/postProcess/load.js'
-// import { galaxyLineGLSL } from '@/utils/postProcess/galaxyline.js'
 import store from '@/store'
-// import SuperGif from '@/utils/libgif.js'
 import { worldPosToGraphic } from '@/utils/mapTools'
 import { airport } from './data/airport2.js'
-//import { airport } from '@/utils/earthPlugin/Assets/data/airport/airportTH.js'
 import { LoadSatellitByCzml } from '@/utils/earthPlugin/core/actionController/satellitCZML'
 import { areaConfig } from './methodConfig/areaConfig.js'
 import Heatmap3d from './methodConfig/heatmap3d.js'
@@ -19,200 +15,6 @@ class DataControl {
     }
     this.dataManagement = new window.EarthPlugn.dataManagement(option)
   }
-
-  // 地面和船显隐
-  showGroundTargetOrResource(actorId, flag) {
-    let viewer = window.EarthViewer
-    let entity = viewer.entities.getById(actorId)
-    if (!entity) {
-      let ds = viewer.dataSources.getByName(actorId)
-      if (ds.length > 0) {
-        entity = ds[0].entities.getById(actorId)
-      }
-    }
-    if (entity) {
-      entity.show = flag
-    }
-  }
-
-  // 热力图显隐
-  async addHeatMap(type) {
-    let viewer = window.EarthViewer
-    let heatMap = store.state.AFSIMModule.heatMapContainer
-    if (type) {
-      try {
-        // 从UE.json文件获取热力图数据
-        const response = await fetch('static/data/json/UE.json')
-        const jsonData = await response.json()
-
-        // 计算数据范围
-        let minValue = Infinity
-        let maxValue = -Infinity
-        for (let i = 0; i < jsonData.length; i++) {
-          const value = parseFloat(jsonData[i].A)
-          if (value < minValue) minValue = value
-          if (value > maxValue) maxValue = value
-        }
-
-        let heatList = []
-        for (let i = 0; i < jsonData.length; i++) {
-          let item = jsonData[i]
-          let value = parseFloat(item.A)
-          // 归一化到 0-1 范围
-          let normalizedValue = (value - minValue) / (maxValue - minValue)
-          // 确保值在 0-1 范围内
-          normalizedValue = Math.max(0, Math.min(1, normalizedValue))
-
-          let param = {
-            lnglat: [parseFloat(item.O), parseFloat(item.L)],
-            value: normalizedValue // 使用归一化后的值作为热力值
-          }
-          heatList.push(param)
-          viewer.entities.add({
-            position: window.MSIMEarth.Cartesian3.fromDegrees(
-              param.lnglat[0],
-              param.lnglat[1],
-              parseFloat(item.A || 0)
-            ),
-            point: {
-              pixelSize: 5,
-              color: window.MSIMEarth.Color.RED
-            }
-          })
-        }
-
-        heatMap = new Heatmap3d(window.EarthViewer, {
-          list: heatList,
-          raduis: 15,
-          baseHeight: 200,
-          // primitiveType: "TRNGLE",
-          primitiveType: 'LINES',
-          gradient: {
-            '.3': 'blue',
-            '.5': 'green',
-            '.7': 'yellow',
-            '.95': 'red'
-          }
-        })
-        store.state.AFSIMModule.heatMapContainer = heatMap
-      } catch (error) {
-        console.error('加载热力图数据失败:', error)
-      }
-    } else {
-      if (heatMap) {
-        heatMap.destroy()
-      }
-    }
-  }
-
-  //加载geojson数据 （暂时不用这个
-  addGeojsonData(options) {
-    let viewer = window.EarthViewer
-    let Cesium = window.MSIMEarth
-    var promise = window.MSIMEarth.GeoJsonDataSource.load(options.url)
-    if (!options.geoType) return
-    promise.then(function (dataSource) {
-      dataSource.name = options.id
-      viewer.dataSources.add(dataSource).then
-      var entities = dataSource.entities.values
-      for (let i = 0; i < entities.length; i++) {
-        let entity = entities[i]
-        entity.billboard = undefined
-        let geoType = options.geoType
-        switch (geoType) {
-          case 'point':
-            entity.point = {
-              color: options.color,
-              pixelSize: options.size || 5
-            }
-            break
-          case 'polyline':
-            // entity.polyline.material = options.color
-            entity.polyline.material =
-              new window.MSIMEarth.PolylineGlowMaterialProperty({
-                glowPower: 0.1,
-                color: options.color
-              })
-            entity.polyline.width = options.width || 12
-            break
-          case 'polygon':
-            // if (entity._name == '中印' || entity._name == '中朝') {
-            //   entity.polygon.material = window.MSIMEarth.Color.CYAN.withAlpha(0.2)
-            //   entity.polygon.outlineColor = window.MSIMEarth.Color.CYAN.withAlpha(0.7)
-            // } else if (entity._name.indexOf('海') > -1) {
-            //   entity.polygon.material = window.MSIMEarth.Color.CRIMSON.withAlpha(0.2)
-            //   entity.polygon.outlineColor = window.MSIMEarth.Color.CRIMSON.withAlpha(0.7)
-            // } else {
-            //   entity.polygon.material = options.color
-            // }
-            entity.polygon.material = window.MSIMEarth.Color.CYAN.withAlpha(0.2)
-            entity.polygon.outlineColor =
-              window.MSIMEarth.Color.CYAN.withAlpha(0.6)
-            entity.polyline = {
-              positions: entity.polygon.hierarchy._value.positions,
-              width: 10,
-              material: new window.MSIMEarth.AreaLineBMaterialProperty({
-                color: window.MSIMEarth.Color.CYAN,
-                duration: 400
-              })
-            }
-            break
-          default:
-            break
-        }
-        if (options.addLabel) {
-          let textVal = ''
-          if (entity.properties) {
-            textVal = entity.properties.zhname || entity.properties.NAME
-            let nearDis = options.nearDis || 1e2
-            let farDis = options.farDis || 1e6
-            let color = window.MSIMEarth.Color.WHITE
-            if (textVal == '中华人民共和国') {
-              color = window.MSIMEarth.Color.RED
-            }
-            entity.label = {
-              text: textVal,
-              font: 'normal 29px MicroSoft YaHei',
-              scale: options.scale || 0.5,
-              fillColor: color,
-              outlineColor: color,
-              outlineWidth: 1,
-              style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-              horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT, //水平位置
-              verticalOrigin: window.MSIMEarth.VerticalOrigin.BOTTOM,
-              pixelOffset: new window.MSIMEarth.Cartesian2(-33, -11),
-              eyeOffset: new window.MSIMEarth.ConstantProperty(
-                new window.MSIMEarth.Cartesian3(0, 0, -11)
-              ),
-              distanceDisplayCondition:
-                new window.MSIMEarth.DistanceDisplayCondition(nearDis, farDis)
-            }
-          }
-        }
-      }
-    })
-  }
-
-  delGeojsonData() { }
-
-  //卫星显隐控制 {dataSourceName:"czml的name",isVisible:true/false,entityId:""}
-  satelliteIsvisible(params) {
-    console.log(params)
-    let dataSource = viewer.dataSources.getByName(params.dataSourceName)
-    if (params.entityId) {
-      let es = dataSource.getByName(params.entityId)
-      es.forEach((element) => {
-        element.show = params.isVisible
-      })
-    } else {
-      if (dataSource.length > 0) {
-        for (let k = 0; k < dataSource.length; k++) {
-          dataSource[k].show = params.isVisible
-        }
-      }
-    }
-  }
-
   // 添加海岸基线
   _addHAJX() {
     const options = {
@@ -227,14 +29,6 @@ class DataControl {
   }
   // 添加防空识别区
   _addDHFKSBQ() {
-    const options = {
-      url: 'static/data/geojson/FK识别区/DH防空识别点数据.json',
-      color: window.MSIMEarth.Color.RED, //152, 56, 93
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'point',
-      id: '防空1'
-    }
     const options2 = {
       url: 'static/data/geojson/FK识别区/东海防空识别线数据.json',
       color: window.MSIMEarth.Color.RED,
@@ -246,11 +40,11 @@ class DataControl {
     // this.addGeojson(options)
     this.addGeojson(options2)
     // 东海防空识别区的标识
-    let center = new window.MSIMEarth.Cartesian3.fromDegrees(
+    let center = window.MSIMEarth.Cartesian3.fromDegrees(
       124.56142578414978,
       29.088438770842423
     )
-    let centerTW = new window.MSIMEarth.Cartesian3.fromDegrees(
+    let centerTW = window.MSIMEarth.Cartesian3.fromDegrees(
       120.83108755879553,
       23.589335002507163
     )
@@ -268,15 +62,11 @@ class DataControl {
       position: center,
       orientation: quaternion,
       label: {
-        // text: '财政局西门',
         text: '东海防空识别区',
-        // backgroundColor: new window.MSIMEarth.Color(1.0, 153 / 255, 18 / 255, 1.0),
-        // showBackground: false,
         font: 'normal 46px MicroSoft YaHei',
         scale: 0.5,
         fillColor: window.MSIMEarth.Color.RED,
         style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-        // outlineWidth: 2,
         horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT, //水平位置
         verticalOrigin: window.MSIMEarth.VerticalOrigin.BOTTOM,
         pixelOffset: new window.MSIMEarth.Cartesian2(-63, 11),
@@ -311,7 +101,7 @@ class DataControl {
         )
       }
     })
-    let centerTW = new window.MSIMEarth.Cartesian3.fromDegrees(
+    let centerTW = window.MSIMEarth.Cartesian3.fromDegrees(
       120.83108755879553,
       23.589335002507163
     )
@@ -352,26 +142,29 @@ class DataControl {
       }
     })
   }
+
+  //删除台湾防空识别区
+  deletFKSBQ()
+  {
+    if (window.EarthViewer.entities.getById('twfksbq_polyline_id')) {
+      window.EarthViewer.entities.removeById('twfksbq_polyline_id')
+    }
+    if (window.EarthViewer.entities.getById('twfksbq_name_id')) {
+      window.EarthViewer.entities.removeById('twfksbq_name_id')
+    }
+    if (window.EarthViewer.entities.getById('dhfksbq_name_id')) {
+      window.EarthViewer.entities.removeById('dhfksbq_name_id')
+    }
+  }
   /**
    * 添加四海两边
    */
   _add4H2B() {
-    // const options = {
-    //   url: basicVectorData.fourSeaTwoBorder,
-    //   color: window.MSIMEarth.Color.RED,
-    //   addLabel: false,
-    //   dataType: 'vector',
-    //   geoType: 'polygon',
-    //   id: '4H2B'
-    // }
-    // this.addGeojson(options)
     let add = true
     window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
       if (dataSource._name == '4H2B') {
         dataSource.show = true
         add = false
-        // 移除czml路径
-        // window.EarthViewer.dataSources.remove(dataSource)
       }
     })
     if (!add) return
@@ -412,15 +205,6 @@ class DataControl {
       id: 'daolian2'
     }
     this.addGeojson(options2)
-    // const options3 = {
-    //   url: basicVectorData.daolian3,
-    //   color: window.MSIMEarth.Color.YELLOW,
-    //   addLabel: false,
-    //   dataType: 'vector',
-    //   geoType: 'polyline',
-    //   id: 'daolian3'
-    // }
-    // this.addGeojson(options3)
   }
   // 添加geojson
   addGeojson(options) {
@@ -961,9 +745,7 @@ class DataControl {
    */
   addTWGQYX() {
     let mvtProvider = new window.MSIMEarth.UrlTemplateImageryProvider({
-      url: layersUrlConfig.twHDImage
-      // minimumLevel: 14 //最小层级
-      // maximumLevel: 18 //最大层级
+      url: layersUrlConfig.twImage
     })
     let mvtProvider1 =
       window.EarthViewer.imageryLayers.addImageryProvider(mvtProvider)
@@ -1106,96 +888,6 @@ class DataControl {
       })
   }
 
-  //添加中国 北京点
-  addChina() {
-    // window.EarthViewer.entities.add({
-    //   id: 'shoudu',
-    //   position: window.MSIMEarth.Cartesian3.fromDegrees(
-    //     116.41228426717022,
-    //     40.18554306975011
-    //   ),
-    //   billboard: {
-    //     image: './static/image/billboard/实五角星3.png',
-    //     show: true,
-    //     width: 5,
-    //     height: 5,
-    //     rotation: 0.0,
-    //     eyeOffset: new window.MSIMEarth.ConstantProperty(
-    //       new window.MSIMEarth.Cartesian3(0, 0, -1)
-    //     ),
-    //     pixelOffset: new window.MSIMEarth.Cartesian2(0.0, -1),
-    //     scaleByDistance: new window.MSIMEarth.NearFarScalar(
-    //       1.5e2,
-    //       6.0,
-    //       1.5e7,
-    //       3.5
-    //     ),
-    //     distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(
-    //       0,
-    //       350e5
-    //     ),
-    //     disableDepthTestDistance: Number.POSITIVE_INFINITY
-    //   },
-    //   label: {
-    //     text: '北京市',
-    //     font: '400 18px MicroSoft YaHei',
-    //     fillColor: new window.MSIMEarth.Color(230 / 255, 0 / 255, 0 / 255, 0.7),
-    //     style: window.MSIMEarth.LabelStyle.FILL,
-    //     // style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-    //     horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-    //     verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-    //     pixelOffset: new window.MSIMEarth.Cartesian2(-25, -20),
-    //     // showBackground: true,
-    //     backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-    //     distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(
-    //       0,
-    //       350e5
-    //     ),
-    //     scaleByDistance: new window.MSIMEarth.NearFarScalar(
-    //       30e5,
-    //       1.0,
-    //       80e5,
-    //       0.7
-    //     ),
-    //     outlineColor: window.MSIMEarth.Color.BLACK,
-    //     outlineWidth: 2,
-    //     // disableDepthTestDistance: Number.POSITIVE_INFINITY
-    //     disableDepthTestDistance: 100000
-    //   }
-    // })
-    // window.EarthViewer.entities.add({
-    //   id: 'china',
-    //   position: window.MSIMEarth.Cartesian3.fromDegrees(
-    //     108.90773811396551,
-    //     30.345157066965147
-    //   ),
-    //   label: {
-    //     text: '中华人民共和国',
-    //     font: '400 28px MicroSoft YaHei',
-    //     fillColor: new window.MSIMEarth.Color(230 / 255, 0 / 255, 0 / 255, 0.7),
-    //     style: window.MSIMEarth.LabelStyle.FILL,
-    //     // style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-    //     horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-    //     verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-    //     pixelOffset: new window.MSIMEarth.Cartesian2(-25, -80),
-    //     // showBackground: true,
-    //     backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-    //     distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(
-    //       20e5,
-    //       350e5
-    //     ),
-    //     scaleByDistance: new window.MSIMEarth.NearFarScalar(
-    //       30e5,
-    //       1.0,
-    //       80e5,
-    //       0.6
-    //     ),
-    //     outlineColor: window.MSIMEarth.Color.BLACK,
-    //     outlineWidth: 2,
-    //     disableDepthTestDistance: Number.POSITIVE_INFINITY
-    //   }
-    // })
-  }
   /**
    * 主要城市
    */
@@ -1292,25 +984,7 @@ class DataControl {
             sourceAlt
           )
           e.billboard = undefined
-          // e.billboard = {
-          //   image: 'static/image/billboard/城市.png',
-          //   show: true,
-          //   width: 10,
-          //   height: 10,
-          //   rotation: 0.0,
-          //   eyeOffset: new window.MSIMEarth.ConstantProperty(
-          //     new window.MSIMEarth.Cartesian3(0, 0, -1)
-          //   ),
-          //   // pixelOffset: new window.MSIMEarth.Cartesian2(0.0, -45),
-          //   scaleByDistance: new window.MSIMEarth.NearFarScalar(
-          //     1.5e2,
-          //     6.0,
-          //     1.5e7,
-          //     3.5
-          //   ),
-          //   distanceDisplayCondition:
-          //     new window.MSIMEarth.DistanceDisplayCondition(0, 300e5)
-          // }
+         
           e.label = {
             text: e.name,
             font: '100 18px MicroSoft YaHei',
@@ -1327,99 +1001,6 @@ class DataControl {
           }
         })
       })
-
-    // window.EarthViewer.entities.add({
-    //   position: window.MSIMEarth.Cartesian3.fromDegrees(
-    //     120.26157328273332,
-    //     38.57415106853603
-    //   ),
-    //   label: {
-    //     text: '渤海',
-    //     font: '20px 黑体',
-    //     fillColor: window.MSIMEarth.Color.BLUE,
-    //     style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-    //     horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-    //     verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-    //     pixelOffset: new window.MSIMEarth.Cartesian2(-35, -10),
-    //     // showBackground: true,
-    //     outlineColor: window.MSIMEarth.Color.WHITE,
-    //     outlineWidth: 2,
-    //     backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-    //     distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(
-    //       20e5,
-    //       100e5
-    //     )
-    //   }
-    // })
-    // window.EarthViewer.entities.add({
-    //   position: window.MSIMEarth.Cartesian3.fromDegrees(
-    //     123.59699699558637,
-    //     34.167035046098306
-    //   ),
-    //   label: {
-    //     text: '黄海',
-    //     font: '20px 黑体',
-    //     fillColor: window.MSIMEarth.Color.BLUE,
-    //     style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-    //     horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-    //     verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-    //     pixelOffset: new window.MSIMEarth.Cartesian2(-35, -10),
-    //     // showBackground: true,
-    //     outlineColor: window.MSIMEarth.Color.WHITE,
-    //     outlineWidth: 2,
-    //     backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-    //     distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(
-    //       20e5,
-    //       100e5
-    //     )
-    //   }
-    // })
-    // window.EarthViewer.entities.add({
-    //   position: window.MSIMEarth.Cartesian3.fromDegrees(
-    //     122.81499205347458,
-    //     27.3254533714982
-    //   ),
-    //   label: {
-    //     text: '东海',
-    //     font: '20px 黑体',
-    //     fillColor: window.MSIMEarth.Color.BLUE,
-    //     style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-    //     horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-    //     verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-    //     // pixelOffset: new window.MSIMEarth.Cartesian2(-85, -10),
-    //     // showBackground: true,
-    //     outlineColor: window.MSIMEarth.Color.WHITE,
-    //     outlineWidth: 2,
-    //     backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-    //     distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(
-    //       20e5,
-    //       100e5
-    //     )
-    //   }
-    // })
-    // window.EarthViewer.entities.add({
-    //   position: window.MSIMEarth.Cartesian3.fromDegrees(
-    //     113.98819955558463,
-    //     12.282693794963846
-    //   ),
-    //   label: {
-    //     text: '南海',
-    //     font: '20px 黑体',
-    //     fillColor: window.MSIMEarth.Color.BLUE,
-    //     style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-    //     horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-    //     verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-    //     pixelOffset: new window.MSIMEarth.Cartesian2(-35, -10),
-    //     // showBackground: true,
-    //     outlineColor: window.MSIMEarth.Color.WHITE,
-    //     outlineWidth: 2,
-    //     backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-    //     distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(
-    //       20e5,
-    //       100e5
-    //     )
-    //   }
-    // })
   }
   // 添加其他主城市(蓝方 紫方 绿色等)
   addMainCityOther(url, side, name) {
@@ -1612,82 +1193,7 @@ class DataControl {
     }
     this.addGeojson(options)
   }
-  //台湾地理数据测试
-  addTWDL() {
-    const options = {
-      url: 'static/geojson/gis_osm_waterways_free_1.json',
-      color: window.MSIMEarth.Color.RED.withAlpha(0.5),
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'polyline',
-      id: 'test'
-    }
-    this.addGeojson(options)
-  }
-  /**
-   * 中印等高点
-   */
-  addElevation() {
-    elevationPoints.forEach((element) => {
-      window.EarthViewer.entities.add({
-        position: window.MSIMEarth.Cartesian3.fromDegrees(
-          element.coordinate[0],
-          element.coordinate[1],
-          element.coordinate[2]
-        ),
-        label: {
-          text: `${element.value}`,
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(
-              0,
-              // 2e5
-              10e5
-            ),
-          height: 1000,
-          heightReference: window.MSIMEarth.HeightReference.CLAMP_TO_GROUND,
-          // backgroundColor: new window.MSIMEarth.Color(1.0, 153 / 255, 18 / 255, 1.0),
-          // showBackground: false,
-          font: 'normal 32px BLACK',
-          scale: 0.6,
-          fillColor: window.MSIMEarth.Color.YELLOW,
-          style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-          // horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT, //水平位置
-          // verticalOrigin: window.MSIMEarth.VerticalOrigin.BOTTOM,
-          pixelOffset: new window.MSIMEarth.Cartesian2(0, -15),
-          eyeOffset: new window.MSIMEarth.ConstantProperty(
-            new window.MSIMEarth.Cartesian3(0, 0, -1)
-          )
-        }
-      })
-    })
-  }
-  /**
-   * 中印态势初始
-   */
-  addZYTS() {
-    // 219国道
-    const options1 = {
-      url: basicVectorData.g219,
-      color: window.MSIMEarth.Color.YELLOW,
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'polyline',
-      width: 4,
-      id: 'g219'
-    }
-    this.addGeojson(options1)
-    // 印度河和狮泉河
-    const options2 = {
-      url: basicVectorData.yinduheshiquanhe,
-      color: window.MSIMEarth.Color.YELLOW,
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'polyline',
-      width: 4,
-      id: 'yindushiquan'
-    }
-    this.addGeojson(options2)
-  }
+
   /**
    *   清除primitive 'customCloud'
    * @param {*} primitiveName primitive名称
@@ -1700,109 +1206,7 @@ class DataControl {
       }
     })
   }
-  /**
-   * 中印边界班公湖坡度坡向
-   * @param {*} type '中印边界坡度' '中印边界坡向'
-   */
-  add_ZY_Slope_Aspect(type) {
-    switch (type) {
-      case '中印边界坡度':
-        window.EarthViewer.camera.flyTo({
-          destination: new window.MSIMEarth.Cartesian3(
-            893450.427911107,
-            5503791.00276749,
-            3361838.329586078
-          ),
-          orientation: {
-            heading: 6.208681757063205, //偏航角
-            pitch: -0.601335396103261, //-0.08401170275668313, //水平俯仰角
-            roll: 0.00014297250188821664
-          },
-          complete: () => { }
-        })
-        let slope = new window.MSIMEarth.UrlTemplateImageryProvider({
-          url: googleConfig.slope
-        })
-        slope.name = '中印边界坡度'
-        window.EarthViewer.imageryLayers.addImageryProvider(slope)
-        break
-      case '中印边界坡向':
-        window.EarthViewer.camera.flyTo({
-          destination: new window.MSIMEarth.Cartesian3(
-            893450.427911107,
-            5503791.00276749,
-            3361838.329586078
-          ),
-          orientation: {
-            heading: 6.208681757063205, //偏航角
-            pitch: -0.601335396103261, //-0.08401170275668313, //水平俯仰角
-            roll: 0.00014297250188821664
-          },
-          complete: () => { }
-        })
-        let aspect = new window.MSIMEarth.UrlTemplateImageryProvider({
-          url: googleConfig.aspect
-        })
-        aspect.name = '中印边界坡向'
-        window.EarthViewer.imageryLayers.addImageryProvider(aspect)
-        break
-      default:
-        break
-    }
-  }
-  /**
-   * 班公湖地形
-   */
-  add_ZY_BGHTerrain() {
-    try {
-      window.EarthViewer.scene.globe.depthTestAgainstTerrain = true
-      let terrainLayer = new window.MSIMEarth.CesiumTerrainProvider({
-        url: googleConfig.bangonghuTerrian,
-        tilingScheme: new window.MSIMEarth.GeographicTilingScheme()
-      })
-      window.EarthViewer.scene.terrainProvider = terrainLayer
-    } catch (error) {
-      console.error('添加班公湖地形失败:', error)
-      // 使用椭球体地形作为备选方案
-      window.EarthViewer.scene.terrainProvider =
-        new window.MSIMEarth.EllipsoidTerrainProvider({})
-    }
-  }
 
-  /**
-   * 中印班公湖附近区域等高线
-   */
-  add_ZYContourLine() {
-    let webmercator1 = new window.MSIMEarth.UrlTemplateImageryProvider({
-      url: googleConfig.bangonghuContourLine,
-      minimumLevel: 0, //最小层级
-      maximumLevel: 18 //最大层级
-    })
-    webmercator1.name = '中印班公湖等高线1'
-    window.EarthViewer.imageryLayers.addImageryProvider(webmercator1)
-    let webmercator2 = new window.MSIMEarth.UrlTemplateImageryProvider({
-      url: googleConfig.bangonghuContourLine2,
-      minimumLevel: 0, //最小层级
-      maximumLevel: 18 //最大层级
-    })
-    webmercator2.name = '中印班公湖等高线2'
-    window.EarthViewer.imageryLayers.addImageryProvider(webmercator2)
-    // window.cameraListener = function () {
-    //   var e = window.EarthViewer.camera.position
-    //   // console.log(window.MSIMEarth.Cartographic.fromCartesian(e).height, webmercator2.show);
-    //   if (
-    //     window.MSIMEarth.Cartographic.fromCartesian(e).height < 50000 &&
-    //     window.MSIMEarth.Cartographic.fromCartesian(e).height > 5000
-    //   ) {
-    //     webmercator1.show = true
-    //     webmercator2.show = true
-    //   } else {
-    //     webmercator1.show = false
-    //     webmercator2.show = false
-    //   }
-    // }
-    // window.EarthViewer.camera.changed.addEventListener(window.cameraListener)
-  }
   /**
    * 添加arcServer发布的矢量底图
    */
@@ -1828,31 +1232,7 @@ class DataControl {
       }
     }
   }
-  // // 等待效果
-  // loadingPost(time, callback) {
-  //   console.log(time)
-  //   let loadPost = new window.MSIMEarth.PostProcessStage({
-  //     name: 'load',
-  //     fragmentShader: loadGLSL
-  //   })
-  //   window.ppsCollection.add(loadPost)
-  //   setTimeout(() => {
-  //     window.ppsCollection.remove(loadPost)
-  //     callback()
-  //   }, time)
-  // }
-  // // 星线效果
-  // galaxyLinePost(time, callback) {
-  //   let loadPost = new window.MSIMEarth.PostProcessStage({
-  //     name: 'galaxyline',
-  //     fragmentShader: galaxyLineGLSL
-  //   })
-  //   window.ppsCollection.add(loadPost)
-  //   setTimeout(() => {
-  //     window.ppsCollection.remove(loadPost)
-  //     callback()
-  //   }, 10000)
-  // }
+  
   // 基于后处理效果名称移除该效果
   removePost(name) {
     if (window.ppsCollection) {
@@ -1863,322 +1243,8 @@ class DataControl {
       })
     }
   }
-  // // 控制loading显示隐藏
-  // loadingPost2(type) {
-  //   if (window.loadPost2) {
-  //     window.ppsCollection.remove(window.loadPost2)
-  //     window.loadPost2 = null
-  //   }
-  //   if (type) {
-  //     window.loadPost2 = new window.MSIMEarth.PostProcessStage({
-  //       name: 'load',
-  //       fragmentShader: loadGLSL
-  //     })
-  //     window.ppsCollection.add(window.loadPost2)
-  //   }
-  // }
-  // 翻页下拉效果
-  // pageDropPost(time, callback) {
-  //   let loadPost = new window.MSIMEarth.PostProcessStage({
-  //     name: 'pageDrop',
-  //     fragmentShader: pageDrop,
-  //     uniforms: {
-  //       // iMouse: { x: 1.0, y: 1.0 },
-  //       iMouse: { x: 0.0, y: 0.0, z: 0.0, w: 1.0 },
-  //       direction: 0
-  //     }
-  //   })
-  //   window.ppsCollection.add(loadPost)
-  //   setTimeout(() => {
-  //     window.ppsCollection.remove(loadPost)
-  //     callback()
-  //   }, time)
-  // }
-  // // 翻页网格效果
-  // pageGridPost(time, callback) {
-  //   let loadPost = new window.MSIMEarth.PostProcessStage({
-  //     name: 'pageGrid',
-  //     fragmentShader: pageGrid,
-  //     uniforms: {
-  //       // iMouse: { x: 1.0, y: 1.0 },
-  //       iMouse: { x: 0.0, y: 0.0, z: 0.0, w: 1.0 },
-  //       direction: 0
-  //     }
-  //   })
-  //   window.ppsCollection.add(loadPost)
-  //   setTimeout(() => {
-  //     window.ppsCollection.remove(loadPost)
-  //     callback()
-  //   }, time)
-  // }
-  // // 全局高光效果
-  // bloomAllPost(time, callback) {
-  //   let loadPost = new window.MSIMEarth.PostProcessStage({
-  //     name: 'bloomAll',
-  //     fragmentShader: bloomAll,
-  //     uniforms: {
-  //       // iMouse: { x: 1.0, y: 1.0 },
-  //       iMouse: { x: 0.0, y: 0.0, z: 0.0, w: 1.0 },
-  //       direction: 0,
-  //       bloomVal: 0.1
-  //     }
-  //   })
-  //   window.ppsCollection.add(loadPost)
-  //   setTimeout(() => {
-  //     window.ppsCollection.remove(loadPost)
-  //     callback()
-  //   }, time)
-  // }
-  // 中印灾害数据展示
-  add_ZYZH() {
-    const options1 = {
-      url: basicVectorData.zyzh_nishiliu,
-      color: window.MSIMEarth.Color.YELLOW,
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'point',
-      width: 4,
-      id: 'debris'
-    }
-    this.addGeojson(options1)
-    const options2 = {
-      url: basicVectorData.yzzh_huapo,
-      color: window.MSIMEarth.Color.YELLOW,
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'point',
-      width: 4,
-      id: 'landslide'
-    }
-    this.addGeojson(options2)
-    const options3 = {
-      url: basicVectorData.zyzh_dizhen,
-      color: window.MSIMEarth.Color.YELLOW,
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'point',
-      width: 4,
-      id: 'earthquake'
-    }
-    this.addGeojson(options3)
-  }
-  // 中印水纹湖泊冰川
-  add_ZYRiver() {
-    const options1 = {
-      url: basicVectorData.zyRiver_link,
-      color: window.MSIMEarth.Color.YELLOW,
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'polyline',
-      width: 4,
-      id: 'zyRiver_link'
-    }
-    this.addGeojson(options1)
-    // const options2 = {
-    //   url: basicVectorData.zyWater_area,
-    //   color: window.MSIMEarth.Color.YELLOW,
-    //   addLabel: false,
-    //   dataType: 'vector',
-    //   geoType: 'polygon',
-    //   width: 4,
-    //   id: 'zyWater_area'
-    // }
-    // this.addGeojson(options2)
-    // const options3 = {
-    //   url: basicVectorData.zyGlacier,
-    //   color: window.MSIMEarth.Color.YELLOW,
-    //   addLabel: false,
-    //   dataType: 'vector',
-    //   geoType: 'polygon',
-    //   width: 4,
-    //   id: 'zyGlacier'
-    // }
-    // this.addGeojson(options3)
-  }
-  // 中印边界整体态势展示地点名
-  add_ZYBJ() {
-    zy_taishiPoints.forEach((item) => {
-      window.EarthViewer.entities.add({
-        position: window.MSIMEarth.Cartesian3.fromDegrees(
-          item.coordinate[0],
-          item.coordinate[1],
-          100
-        ),
-        billboard: {
-          image: 'static/image/billboard/省会2.png',
-          show: true,
-          width: 2,
-          height: 2,
-          rotation: 0.0,
-          eyeOffset: new window.MSIMEarth.ConstantProperty(
-            new window.MSIMEarth.Cartesian3(0, 0, -1)
-          ),
-          pixelOffset: new window.MSIMEarth.Cartesian2(0, -3),
-          // pixelOffset: new window.MSIMEarth.Cartesian2(0.0, -20),
-          scaleByDistance: new window.MSIMEarth.NearFarScalar(
-            1.5e2,
-            6.0,
-            1.5e7,
-            3.5
-          ),
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(0, 10e5),
-          heightReference: window.MSIMEarth.HeightReference.RELATIVE_TO_GROUND
-        },
-        label: {
-          text: item.name,
-          font: '18px black',
-          fillColor: window.MSIMEarth.Color.WHITE,
-          style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-          horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-          verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-          pixelOffset: new window.MSIMEarth.Cartesian2(0, -40),
-          outlineColor: window.MSIMEarth.Color.BLACK,
-          outlineWidth: 2,
-          // showBackground: true,
-          backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-          heightReference: window.MSIMEarth.HeightReference.RELATIVE_TO_GROUND,
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(0, 10e5)
-        }
-      })
-    })
-  }
-  /**
-   * 中印气象点位标注
-   */
-  add_ZYQixiangPositions() {
-    // 印度河和狮泉河
-    const options = {
-      url: basicVectorData.ZY_qixiang_position,
-      color: window.MSIMEarth.Color.YELLOW,
-      addLabel: false,
-      dataType: 'vector',
-      geoType: 'point',
-      width: 4,
-      id: 'zy_QixiangPositions'
-    }
-    this.addGeojson(options)
-  }
-  /*****************************7月新数据 ******************************/
-  /**
-   * 添加等温线
-   */
-  add_dengwenxian() {
-    var promise = window.MSIMEarth.GeoJsonDataSource.load(
-      basicVectorData.dengwenxian
-    )
-    // console.log(options)
-    // if (!options.geoType) return
-    promise.then(function (dataSource) {
-      // dataSource.name = options.id
-      window.EarthViewer.dataSources.add(dataSource)
-    })
-  }
-  /**
-   * 降水
-   */
-  add_jiangshui() {
-    var promise = window.MSIMEarth.GeoJsonDataSource.load(
-      basicVectorData.jiangshui
-    )
-    // console.log(options)
-    // if (!options.geoType) return
-    promise.then(function (dataSource) {
-      // dataSource.name = options.id
-      console.log('dataSource :>> ', dataSource)
-      window.EarthViewer.dataSources.add(dataSource)
-    })
-  }
-  /**
-   * 电厂
-   */
-  add_dianchang() {
-    var promise = window.MSIMEarth.GeoJsonDataSource.load(
-      basicVectorData.dianchang
-    )
-    // console.log(options)
-    // if (!options.geoType) return
-    promise.then(function (dataSource) {
-      // dataSource.name = options.id
-      console.log('dataSource :>> ', dataSource)
-      dataSource.entities.values.forEach((ds) => {
-        console.log(ds)
-      })
-      window.EarthViewer.dataSources.add(dataSource)
-    })
-  }
-  add_taiwan_dem_vector() {
-    let webmercator1 = new window.MSIMEarth.UrlTemplateImageryProvider({
-      url: googleConfig.taiWanDem
-      // minimumLevel: 0, //最小层级
-      // maximumLevel: 18 //最大层级
-    })
-    webmercator1.name = '台湾地形'
-    window.EarthViewer.imageryLayers.addImageryProvider(webmercator1)
-  }
-  add_taiwan_terrain_vector() {
-    let webmercato1 = new window.MSIMEarth.UrlTemplateImageryProvider({
-      url: googleConfig.taiWanTerrain
-      // minimumLevel: 0, //最小层级
-      // maximumLevel: 18 //最大层级
-    })
-    webmercato1.name = '台湾地势'
-    window.EarthViewer.imageryLayers.addImageryProvider(webmercato1)
-  }
-  add_taiwan_soil_vector() {
-    let webmercato1 = new window.MSIMEarth.UrlTemplateImageryProvider({
-      url: googleConfig.taiWanSoil
-      // minimumLevel: 0, //最小层级
-      // maximumLevel: 18 //最大层级
-    })
-    webmercato1.name = '台湾土壤'
-    window.EarthViewer.imageryLayers.addImageryProvider(webmercato1)
-  }
-  /**
-   * 添加台湾一二级标注
-   */
-  add_twlabel() {
-    let height = 500
-    if (window.EarthViewer.scene.globe.depthTestAgainstTerrain) {
-      height = 5000
-    }
-    taiwan12biaozhu.forEach((e) => {
-      window.EarthViewer.entities.add({
-        position: window.MSIMEarth.Cartesian3.fromDegrees(
-          e.coordinate[0],
-          e.coordinate[1],
-          height
-        ),
-        label: {
-          text: e.name,
-          font: e.font,
-          fillColor: window.MSIMEarth.Color.BLACK,
-          style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-          horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-          verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-          // pixelOffset: new window.MSIMEarth.Cartesian2(-35, -10),
-          // showBackground: true,
-          outlineColor: window.MSIMEarth.Color.WHITE,
-          outlineWidth: e.outlineWidth,
-          backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(
-              e.displayByDistance[0],
-              e.displayByDistance[1]
-            ),
-          eyeOffset: new window.MSIMEarth.ConstantProperty(
-            new window.MSIMEarth.Cartesian3(0, 0, -1)
-          )
-          // disableDepthTestDistance: Number.POSITIVE_INFINITY
-        }
-      })
-      // if (e.lv === 2) {
-      //   taiwanLabel.distanceDisplayCondition =
-      //     new window.MSIMEarth.DistanceDisplayCondition(3e3, 25e5)
-      // }
-    })
-  }
+ 
+  
   /**
    * 添加北部一二级标注
    */
@@ -2223,191 +1289,7 @@ class DataControl {
       // }
     })
   }
-  /**
-   * 夜间灯光
-   */
-  add_YJDG() {
-    // var bloom = window.EarthViewer.scene.postProcessStages.bloom
-    // bloom.enabled = Boolean(viewModel.show)
-    // bloom.uniforms.glowOnly = Boolean(viewModel.glowOnly)
-    // bloom.uniforms.contrast = Number(viewModel.contrast)
-    // bloom.uniforms.brightness = Number(viewModel.brightness)
-    // bloom.uniforms.delta = Number(viewModel.delta)
-    // bloom.uniforms.sigma = Number(viewModel.sigma)
-    // bloom.uniforms.stepSize = Number(viewModel.stepSize)
-    let color
-    basicVectorData.yejiandengguang.forEach((dg) => {
-      var promise = window.MSIMEarth.GeoJsonDataSource.load(dg.dgUrl)
-      promise.then(function (dataSource) {
-        dataSource.name = dg.name
-        var entities = dataSource.entities.values
-        for (let index = 0; index < entities.length; index++) {
-          let en = entities[index]
-
-          switch (en.properties.ContourMin._value) {
-            case 10:
-              color = new window.MSIMEarth.Color(0.9, 0.9, 0.9, 0.7)
-              break
-            case 30:
-              color = new window.MSIMEarth.Color(0.92, 0.92, 0.92, 0.75)
-              break
-            case 40:
-              color = new window.MSIMEarth.Color(0.94, 0.94, 0.94, 0.84)
-              break
-            case 50:
-              color = new window.MSIMEarth.Color(0.96, 0.96, 0.96, 0.88)
-              break
-            case 60:
-              color = new window.MSIMEarth.Color(0.98, 0.98, 0.98, 0.92)
-              break
-            default:
-              color = new window.MSIMEarth.Color(0.99, 0.99, 0.99, 0.98)
-              break
-          }
-          en.polygon.material = color
-          en.polygon.outline = false
-        }
-        window.EarthViewer.dataSources.add(dataSource)
-      })
-    })
-    basicVectorData.yejiandengguangLine.forEach((dg) => {
-      var promise = window.MSIMEarth.GeoJsonDataSource.load(dg.dgUrl)
-      promise.then(function (dataSource) {
-        dataSource.name = dg.name
-        var entities = dataSource.entities.values
-        for (let index = 0; index < entities.length; index++) {
-          let en = entities[index]
-
-          switch (en.properties.ContourMin._value) {
-            case 10:
-              color = new window.MSIMEarth.Color(0.9, 0.9, 0.9, 0.7)
-              break
-            case 30:
-              color = new window.MSIMEarth.Color(0.92, 0.92, 0.92, 0.75)
-              break
-            case 40:
-              color = new window.MSIMEarth.Color(0.94, 0.94, 0.94, 0.84)
-              break
-            case 50:
-              color = new window.MSIMEarth.Color(0.96, 0.96, 0.96, 0.88)
-              break
-            case 60:
-              color = new window.MSIMEarth.Color(0.98, 0.98, 0.98, 0.92)
-              break
-            default:
-              color = new window.MSIMEarth.Color(0.99, 0.99, 0.99, 0.98)
-              break
-          }
-          // en.polyline.material = color
-          en.polyline.material = new window.MSIMEarth.FlowLineMaterialProperty({
-            transparent: true,
-            mixColor: new window.MSIMEarth.Color(1.0, 1.0, 1.0, 1.0),
-            // mixColor: color,
-            mixRatio: 0.9,
-            flowSpeed: 2.0,
-            repeat: new window.MSIMEarth.Cartesian2(4, 4),
-            image: require('@/assets/image/knowleadge/materialline.png')
-          })
-          en.polyline.width = 5
-        }
-        window.EarthViewer.dataSources.add(dataSource)
-      })
-    })
-  }
-  /**
-   * 地图颜色控制
-   */
-  change_BaseLayerColor() {
-    // 此处改成requestAnimationFrame动态变暗  展示完成后再恢复并移除cancelAnimationFrame
-    let baseLayerConfig // = window.EarthViewer.imageryLayers.get(1)
-    window.EarthViewer.imageryLayers._layers.forEach((e) => {
-      if (e.imageryProvider.name === '影像底图服务') {
-        baseLayerConfig = e
-      }
-    })
-    baseLayerConfig.brightness = 0.42
-    baseLayerConfig.contrast = 1.52
-    baseLayerConfig.hue = 0.16
-    baseLayerConfig.saturation = 1.58
-    baseLayerConfig.gamma = 1.04
-    // 获取图层
-    // let targetLayer
-    // window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-    //   if (layer.imageryProvider.name === '影像底图服务') {
-    //     targetLayer = layer
-    //   }
-    // })
-
-    // if (targetLayer) window.EarthViewer.imageryLayers.remove(targetLayer)
-
-    // let imageryProvider = new window.MSIMEarth.UrlTemplateImageryProvider({
-    //   url: googleConfig.url4,
-    //   // tilingScheme: new window.MSIMEarth.WebMercatorTilingScheme() //url5
-    //   tilingScheme: new window.MSIMEarth.GeographicTilingScheme() //url4
-    // })
-    // let layer =
-    //   window.EarthViewer.imageryLayers.addImageryProvider(imageryProvider)
-
-    // // 参数配置
-    // const baseLayerController = new BaseLayerControl({
-    //   bkColor: 'black',
-    //   alpha: 0.5,
-    //   invert: true
-    // })
-    // //rewrite requestImage method
-    // const requestImage = layer.imageryProvider.requestImage
-    // imageryProvider.requestImage = function (x, y, level, request) {
-    //   var promise = requestImage.bind(imageryProvider)(x, y, level, request)
-    //   if (promise) {
-    //     promise = promise.then((image) => {
-    //       var imageProcessed = baseLayerController.process(image)
-    //       return imageProcessed || image
-    //     })
-    //   }
-    //   return promise
-    // }
-  }
-  /**
-   * 按照给定的10条数据依次清除
-   */
-  clear_YJDG() {
-    // 1 按照0-9顺序清除灯光数据
-    let index = 0
-    let st = setInterval(() => {
-      let polygonName = basicVectorData.yejiandengguang[index].name
-      let PolylineName = basicVectorData.yejiandengguangLine[index].name
-      window.EarthViewer.dataSources._dataSources.forEach((e) => {
-        if (e.name == polygonName) {
-          window.EarthViewer.dataSources.remove(e)
-        }
-      })
-      window.EarthViewer.dataSources._dataSources.forEach((e) => {
-        if (e.name == PolylineName) {
-          window.EarthViewer.dataSources.remove(e)
-        }
-      })
-      index++
-      if (index === 10) {
-        clearInterval(st)
-        setTimeout(() => {
-          // 最好自然过度
-          let baseLayerConfig // = window.EarthViewer.imageryLayers.get(1)
-          window.EarthViewer.imageryLayers._layers.forEach((e) => {
-            if (e.imageryProvider.name === '影像底图服务') {
-              baseLayerConfig = e
-            }
-          })
-          baseLayerConfig.brightness = 0.9
-          baseLayerConfig.contrast = 1.0
-          baseLayerConfig.hue = 0
-          baseLayerConfig.saturation = 1.6
-          baseLayerConfig.gamma = 0.6
-        }, 1000)
-      }
-    }, 500)
-    // requestAnimationFrame(clear_YJDG)
-    //2 清除完毕后恢复底图配色，去除环境光
-  }
+ 
   clearLayerGeo(id) {
     window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
       if (dataSource._name == id) {
@@ -2451,59 +1333,7 @@ class DataControl {
       window.EarthViewer.entities.removeById(item.name)
     })
   }
-  // baseGif(e) {
-  //   const viewer = window.EarthViewer
-  //   let options = e
-  //   let url = ''
 
-  //   switch (options.type) {
-  //     case 0:
-  //       url = require('/public/static/image/gif/中雨.gif')
-  //       break
-  //     case 1:
-  //       url = require('/public/static/image/gif/大雨.gif')
-  //       break
-  //     case 2:
-  //       url = require('/public/static/image/gif/多云.gif')
-  //       break
-  //     case 3:
-  //       url = require('/public/static/image/gif/晴.gif')
-  //       break
-  //     default:
-  //       break
-  //   }
-  //   let gifDiv = document.createElement('div')
-  //   let gifImg = document.createElement('img')
-  //   // gif库需要img标签配置下面两个属性
-  //   gifImg.setAttribute('rel:animated_src', url)
-  //   gifImg.setAttribute('rel:auto_play', '1') // 设置自动播放属性 118.34573072478551 32.25604843382856
-  //   gifDiv.appendChild(gifImg)
-
-  //   let superGif = new SuperGif({
-  //     gif: gifImg
-  //   })
-  //   viewer.entities.removeById(e.name + 'gifff')
-  //   superGif.load(function () {
-  //     viewer.entities.add({
-  //       id: e.name + 'gifff',
-  //       position: window.MSIMEarth.Cartesian3.fromDegrees(
-  //         e.position[0],
-  //         e.position[1],
-  //         3000
-  //       ),
-  //       billboard: {
-  //         image: new window.MSIMEarth.CallbackProperty(() => {
-  //           // 转成base64,直接加canvas理论上是可以的，这里设置有问题
-  //           return superGif.get_canvas().toDataURL()
-  //         }, false),
-  //         scale: 0.5,
-  //         // pixelOffset: new window.MSIMEarth.Cartesian2(-73, -38),
-  //         pixelOffset: new window.MSIMEarth.Cartesian2(20, 0),
-  //         eyeOffset: new window.MSIMEarth.Cartesian3(0, 0, -2)
-  //       }
-  //     })
-  //   })
-  // }
   //机场
   addDLAirport = () => {
     console.log('被调用')
@@ -2970,35 +1800,7 @@ class DataControl {
       window.EarthViewer.entities.removeById(item.name)
     })
   }
-  // T矢量底图标注
-  addTLayer() {
-    const tiandituTk = '7711a24780452f03bb7c02fba98183b9'
-    const vec = 'vec'
-    const cva = 'cva'
-    // 添加天地图影像底图
-    const tMapImagery = new window.MSIMEarth.WebMapTileServiceImageryProvider({
-      url: `http://t0.tianditu.gov.cn/${vec}_w/wmts?tk=${tiandituTk}`,
-      layer: vec,
-      style: 'default',
-      tileMatrixSetID: 'w',
-      format: 'tiles',
-      maximumLevel: 18
-    })
-    tMapImagery.hue = 3
-    tMapImagery.contrast = -1.2
-    window.EarthViewer.imageryLayers.addImageryProvider(tMapImagery)
-    // 添加注记底图
-    const tMapImagery2 = new window.MSIMEarth.WebMapTileServiceImageryProvider({
-      url: `http://t0.tianditu.gov.cn/${cva}_w/wmts?tk=${tiandituTk}`,
-      layer: cva,
-      style: 'default',
-      tileMatrixSetID: 'w',
-      format: 'tiles',
-      maximumLevel: 18
-    })
-    window.EarthViewer.imageryLayers.addImageryProvider(tMapImagery2)
-  }
-
+  
   /**
    * 添加bing全球高清影像
    */
@@ -3006,7 +1808,7 @@ class DataControl {
     let addLayer = true
     // 便利当前底图集合，如果已经存在bing底图则切换为显示
     window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider && layer.imageryProvider.name === 'bing底图') {
+      if (layer.imageryProvider && layer.imageryProvider.name === 'globalImage') {
         layer.show = true
         addLayer = false
       }
@@ -3014,215 +1816,21 @@ class DataControl {
     // 如果当前没有添加过全球矢量地图则添加
     if (addLayer) {
       let bingProvider = new window.MSIMEarth.UrlTemplateImageryProvider({
-        url: layersUrlConfig.urlB,
+        url: layersUrlConfig.urlBingMap,
         tilingScheme: new window.MSIMEarth.WebMercatorTilingScheme() //WebMercatorTilingScheme() //GeographicTilingScheme()
       })
-      bingProvider.name = 'bing底图'
+      bingProvider.name = 'globalImage'
       let bingLayer =
-        window.EarthViewer.imageryLayers.addImageryProvider(bingProvider)
+      window.EarthViewer.imageryLayers.addImageryProvider(bingProvider)
       bingLayer.show = true
       bingLayer.brightness = 1.5 //0.9 1.52
       bingLayer.contrast = 1.0
       bingLayer.hue = 0
       bingLayer.saturation = 1.6
       bingLayer.gamma = 0.7 //0.6 0.7
-      // let baseLayerBZ = new window.MSIMEarth.UrlTemplateImageryProvider({
-      //   url: layersUrlConfig.urlVBlackMap
-      // })
-
-      // baseLayerBZ.name = 'bing底图标注'
-      // window.EarthViewer.imageryLayers.addImageryProvider(baseLayerBZ)
-      // window.cameraListener2 = function () {
-      //   var e = window.EarthViewer.camera.position
-      //   if (window.MSIMEarth.Cartographic.fromCartesian(e).height < 80000) {
-      //     // 显示自定义的天空盒
-      //     bingLayer.show = true
-      //   } else {
-      //     bingLayer.show = false
-      //   }
-      // }
-      // window.EarthViewer.camera.changed.addEventListener(window.cameraListener2)
-    }
-  }
-  /**
-   * 添加西安发布的区域高清影像
-   */
-  addXiAnAreaLayer() {
-    let addLayer = true
-    let addLayer2 = true
-    // 便利当前底图集合，如果已经存在bing底图则切换为显示
-    window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (
-        layer.imageryProvider.name === '齐齐哈尔机场' ||
-        layer.imageryProvider.name === '拉林机场'
-      ) {
-        layer.show = true
-        addLayer = false
-        addLayer2 = false
-      }
-    })
-    // 如果当前没有添加过全球矢量地图则添加
-    if (addLayer) {
-      let baseLayerBZ = new window.MSIMEarth.UrlTemplateImageryProvider({
-        url: layersUrlConfig.urlVBlackMap
-      })
-      baseLayerBZ.name = '齐齐哈尔机场'
-      window.EarthViewer.imageryLayers.addImageryProvider(baseLayerBZ)
-    }
-
-    if (addLayer) {
-      let baseLayerXiAnAreaMap1 =
-        new window.MSIMEarth.UrlTemplateImageryProvider({
-          url: layersUrlConfig.urlXiAnAreaMap1,
-          tilingScheme: new window.MSIMEarth.WebMercatorTilingScheme() //GeographicTilingScheme()
-        })
-      baseLayerXiAnAreaMap1.name = '拉林机场'
-      window.EarthViewer.imageryLayers.addImageryProvider(baseLayerXiAnAreaMap1)
-    }
-  }
-  /**
-   * 添加西安发布的晕眩图
-   */
-  addXiAnYunXuanLayer() {
-    let addLayer = true
-    // 便利当前底图集合，如果已经存在bing底图则切换为显示
-    window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider.name === '全球晕眩图') {
-        layer.show = true
-        addLayer = false
-      }
-    })
-    // 如果当前没有添加过全球矢量地图则添加
-    if (addLayer) {
-      let baseLayerBZ = new window.MSIMEarth.UrlTemplateImageryProvider({
-        url: layersUrlConfig.urlXiAnYunXuanMap
-      })
-      baseLayerBZ.name = '全球晕眩图'
-      let XYlayer =
-        window.EarthViewer.imageryLayers.addImageryProvider(baseLayerBZ)
-      XYlayer.show = true
-      XYlayer.brightness = 0.8 //0.9 1.52
-      XYlayer.contrast = 1.2
-      XYlayer.hue = 0.1
-      XYlayer.saturation = 1.3
-      XYlayer.gamma = 0.6 //0.6 0.7
-    }
-  }
-  /**
-   * 添加瓦片图层服务
-   * url:图层服务地址；name：图层名称
-   */
-  addImagerServer(url, name) {
-    let addLayer = true
-    // 便利当前底图集合，如果已经存在则切换为显示
-    window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider.name === name) {
-        layer.show = true
-        addLayer = false
-      }
-    })
-    // 如果当前没有添加过地图则添加
-    if (addLayer) {
-      let baseLayerBZ = new window.MSIMEarth.UrlTemplateImageryProvider({
-        url: url
-      })
-      baseLayerBZ.name = name
-      window.EarthViewer.imageryLayers.addImageryProvider(baseLayerBZ)
-    }
-  }
-  /**
-   * 添加西安发布矢量深色底图
-   */
-  addBlackMapUrlLayer() {
-    let addLayer = true
-    // 便利当前底图集合，如果已经存在bing底图则切换为显示
-    window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider.name === '矢量深色底图') {
-        layer.show = true
-        addLayer = false
-      }
-    })
-    // 如果当前没有添加过全球矢量地图则添加
-    if (addLayer) {
-      let xiAnBlackMapProvider =
-        new window.MSIMEarth.UrlTemplateImageryProvider({
-          url: layersUrlConfig.xiAnBlackMapUrl
-        })
-      xiAnBlackMapProvider.name = '矢量深色底图'
-      let xiAnBlackMapLayer =
-        window.EarthViewer.imageryLayers.addImageryProvider(
-          xiAnBlackMapProvider
-        )
-      xiAnBlackMapLayer.show = true
-      xiAnBlackMapLayer.brightness = 1.5 //0.9 1.52
-      xiAnBlackMapLayer.contrast = 1.0
-      xiAnBlackMapLayer.hue = 0
-      xiAnBlackMapLayer.saturation = 1.6
-      xiAnBlackMapLayer.gamma = 0.7 //0.6 0.7
     }
   }
 
-  // baseMapVec
-  /**
-   * 添加西安发布矢量深色底图
-   */
-  addRoadVecMapLayer() {
-    let addLayer = true
-    // 便利当前底图集合，如果已经存在bing底图则切换为显示
-    window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider.name === '路网底图') {
-        layer.show = true
-        addLayer = false
-      }
-    })
-    // 如果当前没有添加过全球矢量地图则添加
-    if (addLayer) {
-      let xiAnBlackMapProvider =
-        new window.MSIMEarth.UrlTemplateImageryProvider({
-          url: layersUrlConfig.urlBaseMapVec
-        })
-      xiAnBlackMapProvider.name = '路网底图'
-      let xiAnBlackMapLayer =
-        window.EarthViewer.imageryLayers.addImageryProvider(
-          xiAnBlackMapProvider
-        )
-      xiAnBlackMapLayer.show = true
-      xiAnBlackMapLayer.brightness = 1.5 //0.9 1.52
-      xiAnBlackMapLayer.contrast = 1.0
-      xiAnBlackMapLayer.hue = 0
-      xiAnBlackMapLayer.saturation = 1.6
-      xiAnBlackMapLayer.gamma = 0.7 //0.6 0.7
-    }
-  }
-  /**
-   * bing全球高清影像  与 全球矢量底图 切换
-   * 默认 全球矢量底图
-   */
-  toogleEarthFun(layertoogle) {
-    if (layertoogle) {
-      // 切换 bing
-      window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-        if (layer.imageryProvider.name === 'bing底图') {
-          layer.show = true
-          window.EarthViewer.imageryLayers.raiseToTop(layer)
-        }
-        if (layer.imageryProvider.name === '全球矢量底图') {
-          layer.show = false
-        }
-      })
-    } else {
-      // 切换 全球矢量底图
-      window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-        if (layer.imageryProvider.name === 'bing底图') {
-          layer.show = false
-        }
-        if (layer.imageryProvider.name === '全球矢量底图') {
-          layer.show = true
-          window.EarthViewer.imageryLayers.raiseToTop(layer)
-        }
-      })
-    }
-  }
   /**
    * 添加矢量底图
    */
@@ -3230,7 +1838,7 @@ class DataControl {
     let addLayer = true
     // 便利当前底图集合，如果已经存在全球矢量底图则切换为显示
     window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider && layer.imageryProvider.name === '全球矢量底图') {
+      if (layer.imageryProvider && layer.imageryProvider.name === 'vectorLayer') {
         layer.show = true
         addLayer = false
       }
@@ -3238,33 +1846,20 @@ class DataControl {
     // 如果当前没有添加过全球矢量地图则添加
     if (addLayer) {
       let baseLayer = new window.MSIMEarth.UrlTemplateImageryProvider({
-        url: layersUrlConfig.urlWindy
-        // tilingScheme: new window.MSIMEarth.GeographicTilingScheme()
+        url: layersUrlConfig.urlTianDiMap
       })
-      baseLayer.name = '全球矢量底图'
+      baseLayer.name = 'vectorLayer'
       window.EarthViewer.imageryLayers.addImageryProvider(baseLayer)
-      // let baseLayer2 = new window.MSIMEarth.UrlTemplateImageryProvider({
-      //   url: layersUrlConfig.urlGlobalVectorMap2
-      //   // tilingScheme: new window.MSIMEarth.GeographicTilingScheme()
-      // })
-      // baseLayer2.name = '全球矢量底图2'
-      // let imgLayer =
-      //   window.EarthViewer.imageryLayers.addImageryProvider(baseLayer2)
-      // imgLayer.brightness = 0.7
-      // imgLayer.contrast = 1.06
-      // imgLayer.hue = 0
-      // imgLayer.saturation = 1.82
-      // imgLayer.gamma = 0.64
     }
   }
   /**
    * 添加矢量底图带标注
    */
-  addVectorLayer2() {
+  addAnnotationVectorLayer() {
     let addLayer = true
     // 便利当前底图集合，如果已经存在全球矢量底图则切换为显示
     window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider && layer.imageryProvider.name === '全球矢量底图2') {
+      if (layer.imageryProvider && layer.imageryProvider.name === 'annotationVectorLayer') {
         layer.show = true
         addLayer = false
       }
@@ -3272,21 +1867,20 @@ class DataControl {
     // 如果当前没有添加过全球矢量地图则添加
     if (addLayer) {
       let baseLayer = new window.MSIMEarth.UrlTemplateImageryProvider({
-        url: layersUrlConfig.urlWindy2
-        // tilingScheme: new window.MSIMEarth.GeographicTilingScheme()
+        url: layersUrlConfig.urlAnnotationMap
       })
-      baseLayer.name = '全球矢量底图2'
+      baseLayer.name = 'annotationVectorLayer'
       window.EarthViewer.imageryLayers.addImageryProvider(baseLayer)
     }
   }
   /**
  * 添加暗色矢量底图
  */
-  addVectorLayerDark() {
+  addDarkVectorLayer() {
     let addLayer = true
     // 便利当前底图集合，如果已经存在全球矢量底图则切换为显示
     window.EarthViewer.imageryLayers._layers.forEach((layer) => {
-      if (layer.imageryProvider && layer.imageryProvider.name === '全球矢量底图3') {
+      if (layer.imageryProvider && layer.imageryProvider.name === 'darkVectorLayer') {
         layer.show = true
         addLayer = false
       }
@@ -3294,10 +1888,9 @@ class DataControl {
     // 如果当前没有添加过全球矢量地图则添加
     if (addLayer) {
       let baseLayer = new window.MSIMEarth.UrlTemplateImageryProvider({
-        url: layersUrlConfig.urlWindy3
-        // tilingScheme: new window.MSIMEarth.GeographicTilingScheme()
+        url: layersUrlConfig.urldarkVectorMap
       })
-      baseLayer.name = '全球矢量底图3'
+      baseLayer.name = 'darkVectorLayer'
       window.EarthViewer.imageryLayers.addImageryProvider(baseLayer)
     }
   }
@@ -3333,7 +1926,7 @@ class DataControl {
    * 根据图层名称移除（隐藏）图层
    * @param {string} layerNmae 图层名称
    */
-  removeLaer(layerNmae) {
+  removeLayer(layerNmae) {
     window.EarthViewer.imageryLayers._layers.forEach((layer) => {
       if (layer.imageryProvider && layer.imageryProvider.name === layerNmae) {
         layer.show = false
@@ -3442,579 +2035,12 @@ class DataControl {
       }
     })
   }
-  // 机场标注-天气
-  addAirportWeather() {
-    airport.forEach((e) => {
-      // 图片材质
-      let imgMaterial = ''
-      let image = ''
-      switch (e.type) {
-        case 1:
-          {
-            switch (e.status) {
-              case '0':
-                image = './static/image/billboard/0_R.png'
-                break
-              case '1':
-                image = './static/image/billboard/2_R.png'
-                break
-              case '2':
-                image = './static/image/billboard/3_R.png'
-                break
-              case '3':
-                image = './static/image/billboard/4_R.png'
-                break
-              case '4':
-                image = './static/image/billboard/6_R.png'
-                break
-              case '5':
-                image = './static/image/billboard/8_R.png'
-                break
-              default:
-                break
-            }
-          }
-          break
-        case 2:
-          {
-            switch (e.status) {
-              case '0':
-                image = './static/image/billboard/0_B.png'
-                break
-              case '1':
-                image = './static/image/billboard/2_B.png'
-                break
-              case '2':
-                image = './static/image/billboard/3_B.png'
-                break
-              case '3':
-                image = './static/image/billboard/4_B.png'
-                break
-              case '4':
-                image = './static/image/billboard/6_B.png'
-                break
-              case '5':
-                image = './static/image/billboard/8_B.png'
-                break
-              default:
-                break
-            }
-          }
-          break
-      }
-
-      let center = window.MSIMEarth.Cartesian3.fromDegrees(e.lng, e.lat, 100)
-      var heading = -window.MSIMEarth.Math.PI_OVER_TWO
-      var pitch = window.MSIMEarth.Math.PI_OVER_FOUR
-      var roll = 0.0
-      var hpr = new window.MSIMEarth.HeadingPitchRoll(heading, pitch, roll)
-      var quaternion = window.MSIMEarth.Transforms.headingPitchRollQuaternion(
-        center,
-        hpr
-      )
-      //let rotation = Math.random() * 360 - 180
-      let rotation = e.rd
-      window.EarthViewer.entities.removeById(e.airportName)
-      window.EarthViewer.entities.add({
-        name: 'weatherAnalysis',
-        id: e.airportName,
-        position: center,
-        orientation: quaternion,
-        properties: {
-          weather: e.weatherDesc,
-          temperature: e.temperature,
-          description: e.stationWeatherDesc
-        },
-        billboard: {
-          image: image,
-          show: true,
-          width: 10,
-          height: 10,
-          eyeOffset: new window.MSIMEarth.ConstantProperty(
-            new window.MSIMEarth.Cartesian3(0, 0, -10)
-          ),
-          pixelOffset: new window.MSIMEarth.Cartesian2(0, -35),
-          scale: 3,
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(0, 30e5)
-        },
-        label: {
-          text: e.airportName,
-          font: '14px Lucida Console',
-          fillColor: window.MSIMEarth.Color.BLACK,
-          style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-          horizontalOrigin: window.MSIMEarth.HorizontalOrigin.CENTER,
-          verticalOrigin: window.MSIMEarth.VerticalOrigin.TOP,
-          pixelOffset: new window.MSIMEarth.Cartesian2(0, -17),
-          outlineColor: window.MSIMEarth.Color.WHITE,
-          outlineWidth: 3,
-          eyeOffset: new window.MSIMEarth.ConstantProperty(
-            new window.MSIMEarth.Cartesian3(0, 0, -12)
-          ),
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(0, 30e5)
-        }
-      })
-    })
-  }
-  //清除标注-天气
-  removeAirportWeather() {
-    airport.forEach((e) => {
-      window.EarthViewer.entities.removeById(e.airportName)
-    })
-  }
-  //添加北斗卫星轨道数据
-  addBeiDou() {
-    if (EarthViewer.dataSources.getByName('simple').length > 0) {
-      EarthViewer.dataSources.getByName('simple')[0].show = true
-    } else {
-      let czmlData = require('/public/static/data/czml/czmlArray.js')
-      LoadSatellitByCzml(czmlData.starlinkCZML2)
-    }
-  }
-  //隐藏北斗卫星
-  removeBeiDou() {
-    if (EarthViewer.dataSources.getByName('simple').length > 0) {
-      EarthViewer.dataSources.getByName('simple')[0].show = false
-    }
-  }
-  /**
-   * 加载雷达探测图层
-   */
-  addleidaganrao(param) {
-    let viewer = this.viewer || window.EarthViewer
-    let earth = this.earth || window.MSIMEarth
-    let position = new earth.Cartesian3.fromDegrees(121.61619, 23.983558)
-    let imgUrl =
-      'static/image/texture/leida/20240304083445_pd_118_126_20_28_三部雷达一起_高分辨率.png'
-    switch (param) {
-      case 0:
-        imgUrl =
-          'static/image/texture/leida/20240304083445_pd_118_126_20_28_三部雷达一起_高分辨率.png'
-        position = new earth.Cartesian3.fromDegrees(121.61619, 23.983558)
-        // 三合一雷达图，需要添加两外两个雷达目标
-        viewer.entities.add({
-          id: 'leidaganrao1_2',
-          position: new earth.Cartesian3.fromDegrees(121.610147, 24.064019),
-          billboard: {
-            distanceDisplayCondition: new earth.DistanceDisplayCondition(
-              0,
-              // 2e5
-              100e5
-            ),
-            image: 'static/image/billboard/路基常规对空情报雷达b.png',
-            name: 'singleWarning',
-            show: true,
-            width: 3,
-            height: 3,
-            // alignedAxis: new window.MSIMEarth.Cartesian3(10, 0, 0),
-            eyeOffset: new earth.ConstantProperty(
-              new earth.Cartesian3(0, 0, -1)
-            ),
-            // sizeInMeters: true, //图像的尺寸被指定成图像实际的尺寸
-            // pixelOffset: new window.MSIMEarth.Cartesian2(0.0, 0),
-            // position: window.MSIMEarth.Cartesian3.fromDegrees(116.2, 39.53, 15),
-            //   distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(0, 6.8e10),
-            // verticalOrigin: window.MSIMEarth.VerticalOrigin.TOP,
-            scale: 1,
-            scaleByDistance: new window.MSIMEarth.NearFarScalar(
-              1.5e2,
-              6.0,
-              1.5e7,
-              3.5
-            )
-            // disableDepthTestDistance: Number.POSITIVE_INFINITY, //防止深度测试导致的遮挡 默认为0会遮挡
-          },
-          label: {
-            distanceDisplayCondition: new earth.DistanceDisplayCondition(
-              0,
-              // 2e5
-              30e5
-            ),
-            text: '地面雷达',
-            // backgroundColor: new window.MSIMEarth.Color(1.0, 153 / 255, 18 / 255, 1.0),
-            // showBackground: false,
-            font: 'normal 32px MicroSoft YaHei',
-            scale: 0.4,
-            fillColor: earth.Color.BLUE,
-            style: earth.LabelStyle.FILL_AND_OUTLINE,
-            horizontalOrigin: earth.HorizontalOrigin.LEFT, //水平位置
-            verticalOrigin: earth.VerticalOrigin.BOTTOM,
-            pixelOffset: new earth.Cartesian2(-20, -15),
-            eyeOffset: new earth.ConstantProperty(
-              new earth.Cartesian3(0, 0, -1)
-            )
-          }
-        })
-        viewer.entities.add({
-          id: 'leidaganrao1_3',
-          position: new earth.Cartesian3.fromDegrees(121.592024, 23.999455),
-          billboard: {
-            distanceDisplayCondition: new earth.DistanceDisplayCondition(
-              0,
-              // 2e5
-              100e5
-            ),
-            image: 'static/image/billboard/路基常规对空情报雷达b.png',
-            name: 'singleWarning',
-            show: true,
-            width: 3,
-            height: 3,
-            // alignedAxis: new window.MSIMEarth.Cartesian3(10, 0, 0),
-            eyeOffset: new earth.ConstantProperty(
-              new earth.Cartesian3(0, 0, -1)
-            ),
-            // sizeInMeters: true, //图像的尺寸被指定成图像实际的尺寸
-            // pixelOffset: new window.MSIMEarth.Cartesian2(0.0, 0),
-            // position: window.MSIMEarth.Cartesian3.fromDegrees(116.2, 39.53, 15),
-            //   distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(0, 6.8e10),
-            // verticalOrigin: window.MSIMEarth.VerticalOrigin.TOP,
-            scale: 1,
-            scaleByDistance: new window.MSIMEarth.NearFarScalar(
-              1.5e2,
-              6.0,
-              1.5e7,
-              3.5
-            )
-            // disableDepthTestDistance: Number.POSITIVE_INFINITY, //防止深度测试导致的遮挡 默认为0会遮挡
-          },
-          label: {
-            distanceDisplayCondition: new earth.DistanceDisplayCondition(
-              0,
-              // 2e5
-              30e5
-            ),
-            text: '地面雷达',
-            // backgroundColor: new window.MSIMEarth.Color(1.0, 153 / 255, 18 / 255, 1.0),
-            // showBackground: false,
-            font: 'normal 32px MicroSoft YaHei',
-            scale: 0.4,
-            fillColor: earth.Color.BLUE,
-            style: earth.LabelStyle.FILL_AND_OUTLINE,
-            horizontalOrigin: earth.HorizontalOrigin.LEFT, //水平位置
-            verticalOrigin: earth.VerticalOrigin.BOTTOM,
-            pixelOffset: new earth.Cartesian2(-20, -15),
-            eyeOffset: new earth.ConstantProperty(
-              new earth.Cartesian3(0, 0, -1)
-            )
-          }
-        })
-        break
-      case 1:
-        imgUrl =
-          'static/image/texture/leida/20240304084227_200_pd_118_126_20_28_24.064019n_121.610147e.png'
-        position = new earth.Cartesian3.fromDegrees(121.610147, 24.064019)
-        break
-      case 2:
-        imgUrl =
-          'static/image/texture/leida/20240304104209_3510_pd_118_126_20_28_23.999455n_121.592024e.png'
-        position = new earth.Cartesian3.fromDegrees(121.592024, 23.999455)
-        break
-      default:
-        break
-    }
-    viewer.entities.add({
-      id: 'leidaganrao1',
-      name: '受干扰的雷达区域',
-      position: position,
-      rectangle: {
-        coordinates: earth.Rectangle.fromDegrees(118.0, 20.0, 126.0, 28.0),
-        material: imgUrl,
-        // rotation: new earth.CallbackProperty(getRotationValue, false),
-        // stRotation: new earth.CallbackProperty(getRotationValue, false),
-        classificationType: earth.ClassificationType.TERRAIN
-      },
-      billboard: {
-        distanceDisplayCondition: new earth.DistanceDisplayCondition(
-          0,
-          // 2e5
-          100e5
-        ),
-        image: 'static/image/billboard/路基常规对空情报雷达b.png',
-        name: 'singleWarning',
-        show: true,
-        width: 3,
-        height: 3,
-        // alignedAxis: new window.MSIMEarth.Cartesian3(10, 0, 0),
-        eyeOffset: new earth.ConstantProperty(new earth.Cartesian3(0, 0, -1)),
-        // sizeInMeters: true, //图像的尺寸被指定成图像实际的尺寸
-        // pixelOffset: new window.MSIMEarth.Cartesian2(0.0, 0),
-        // position: window.MSIMEarth.Cartesian3.fromDegrees(116.2, 39.53, 15),
-        //   distanceDisplayCondition: new window.MSIMEarth.DistanceDisplayCondition(0, 6.8e10),
-        // verticalOrigin: window.MSIMEarth.VerticalOrigin.TOP,
-        scale: 1,
-        scaleByDistance: new window.MSIMEarth.NearFarScalar(
-          1.5e2,
-          6.0,
-          1.5e7,
-          3.5
-        )
-        // disableDepthTestDistance: Number.POSITIVE_INFINITY, //防止深度测试导致的遮挡 默认为0会遮挡
-      },
-      label: {
-        distanceDisplayCondition: new earth.DistanceDisplayCondition(
-          0,
-          // 2e5
-          30e5
-        ),
-        text: '地面雷达',
-        // backgroundColor: new window.MSIMEarth.Color(1.0, 153 / 255, 18 / 255, 1.0),
-        // showBackground: false,
-        font: 'normal 32px MicroSoft YaHei',
-        scale: 0.4,
-        fillColor: earth.Color.BLUE,
-        style: earth.LabelStyle.FILL_AND_OUTLINE,
-        horizontalOrigin: earth.HorizontalOrigin.LEFT, //水平位置
-        verticalOrigin: earth.VerticalOrigin.BOTTOM,
-        pixelOffset: new earth.Cartesian2(-20, -15),
-        eyeOffset: new earth.ConstantProperty(new earth.Cartesian3(0, 0, -1))
-      }
-    })
-  }
-  /**
-   * 卸载雷达探测图层
-   */
-  removeLeidaganrao() {
-    let viewer = this.viewer || window.EarthViewer
-    viewer.entities.removeById('leidaganrao1')
-    viewer.entities.removeById('leidaganrao1_2')
-    viewer.entities.removeById('leidaganrao1_3')
-    viewer.entities.removeById('leidaganrao2')
-    viewer.entities.removeById('leidaganrao3')
-  }
-  /*
-  加载雷达矢量数据
-  */
-  addleidashiliang() {
-    var promise = window.MSIMEarth.GeoJsonDataSource.load(
-      './static/data/geojson/leidashiliang.json'
-    )
-    promise.then(function (dataSource) {
-      window.EarthViewer.dataSources.add(dataSource)
-      dataSource.name = 'leidashiliang'
-      dataSource.id = 'leidashiliang'
-      var entities = dataSource.entities.values
-      for (let i = 0; i < entities.length; i++) {
-        let entity = entities[i]
-        entity.polygon.material = new window.MSIMEarth.Color(0.6, 0.7, 0.8, 0.3)
-        entity.polygon.outlineColor = new window.MSIMEarth.Color(
-          0.8,
-          0.8,
-          0.8,
-          1.0
-        )
-        entity.polygon.outlineWidth = 5
-      }
-    })
-  }
-  // 添加天气区域降水
-  addGeojsonAreaWeather(options) {
-    window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
-      if (dataSource._name == options.id) {
-        window.EarthViewer.dataSources.remove(dataSource)
-      }
-    })
-    var promise = window.MSIMEarth.GeoJsonDataSource.load(options.url)
-    promise.then(function (dataSource) {
-      window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
-        if (dataSource._name == options.id) {
-          window.EarthViewer.dataSources.remove(dataSource)
-        }
-      })
-      dataSource.name = options.id
-      // var entities = dataSource.entities.values
-      // for (let i = 0; i < entities.length; i++) {
-      //   let entity = entities[i]
-      //   if (entity.polygon) {
-      //     let fillColor = entity.properties.fill.getValue()
-      //     let fill0pacity = entity.properties['fill-opacity'].getValue()
-      //     if (localStorage.getItem('side') == 'admin') {
-      //       fill0pacity = 0.3
-      //     }
-      //     entity.polygon.material =
-      //       MSIMEarth.Color.fromCssColorString(fillColor).withAlpha(fill0pacity)
-      //     entity.polygon.height.setValue(VisParams.vectorDataHeight)
-      //     entity.polygon.perPositionHeight = false
-      //     // entity.polygon.heightReference= window.MSIMEarth.HeightReference.CLAMP_TO_GROUND
-      //     // entity.polygon._classificationType = window.MSIMEarth.ClassificationType.TERRAIN
-      //   }
-      // }
-      window.EarthViewer.dataSources.add(dataSource)
-    })
-  }
-  //添加机场静态数据
-  addAirports() {
-    airPorts.forEach((value) => {
-      addStaticEntity(value)
-    })
-    function addStaticEntity(param) {
-      let imageParams = {}
-      if (param.side == 'blue')
-        imageParams.imageUrl = './static/image/billboard/静态目标/机场B.png'
-      else imageParams.imageUrl = './static/image/billboard/静态目标/机场R.png'
-      imageParams.scale = 0.5
-      // = new window.MSIMEarth.Color(1.0, 0, 0, 1.0)
-      if (store.state.sceneModule.showJB) {
-        if (param.side == 'blue')
-          imageParams.imageUrl = './static/image/TOPNG/blue/60101_四级机场B.png'
-        else
-          imageParams.imageUrl = './static/image/TOPNG/red/60101_四级机场R.png'
-        imageParams.scale = 1.0
-      }
-      let outColor = null
-      if (param.side == 'blue')
-        outColor = new window.MSIMEarth.Color(0, 0, 1.0, 1.0)
-      else if (param.side == 'red')
-        outColor = new window.MSIMEarth.Color(1.0, 0, 0, 1.0)
-      else outColor = new window.MSIMEarth.Color(0.0, 1.0, 1.0, 1.0)
-      let entitiesData = {
-        id: param.name,
-        position: new window.MSIMEarth.Cartesian3.fromDegrees(
-          param.lon,
-          param.lat,
-          param.alt + 1000
-        ),
-        label: {
-          text: param.labelName,
-          font: 'normal 29px MicroSoft YaHei',
-          scale: 0.5,
-          // fillColor: color,
-          outlineColor: outColor,
-          outlineWidth: 3,
-          style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-          horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT, //水平位置
-          verticalOrigin: window.MSIMEarth.VerticalOrigin.BOTTOM,
-          pixelOffset: new window.MSIMEarth.Cartesian2(-33, -21),
-          eyeOffset: new window.MSIMEarth.ConstantProperty(
-            new window.MSIMEarth.Cartesian3(0, 0, -11)
-          ),
-          // distanceDisplayCondition:
-          //   new window.MSIMEarth.DistanceDisplayCondition(1000, 6e5), //20e5
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(10, 70e5),
-          heightReference: window.MSIMEarth.HeightReference.RELATIVE_TO_GROUND,
-          disableDepthTestDistance: Number.POSITIVE_INFINITY
-        },
-        billboard: {
-          image: imageParams.imageUrl,
-          scale: imageParams.scale,
-          distanceDisplayCondition:
-            new window.MSIMEarth.DistanceDisplayCondition(10, 60e5)
-        }
-      }
-      // 单个实体形式
-      if (window.EarthViewer.entities.getById(param.name))
-        window.EarthViewer.entities.removeById(param.name)
-      window.EarthViewer.entities.add(entitiesData)
-    }
-  }
+ 
   // 添加 作战区域 数据
   addGeojsonByOperationalAreaFile(options, visible) {
     return
   }
 
-  // 添加空域 数据
-  addGeojsonByKyAreaFile(options, visible) {
-    window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
-      if (dataSource._name == options.id) {
-        if (options.backLoad) {
-          window.EarthViewer.dataSources.remove(dataSource)
-        } else {
-          var entities = dataSource.entities.values
-          for (let i = 0; i < entities.length; i++) {
-            let entity = entities[i]
-            if (entity.label) {
-              entity.label.show = visible
-            }
-            if (entity.billboard) {
-              entity.billboard.show = visible
-            }
-            if (entity.polyline) {
-              entity.polyline.show = visible
-            }
-            if (entity.polygon) {
-              entity.polygon.show = visible
-            }
-          }
-        }
-      }
-    })
-    if (!options.backLoad) return
-    var promise = window.MSIMEarth.GeoJsonDataSource.load(options.url)
-    promise.then(function (dataSource) {
-      window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
-        if (dataSource._name == options.id) {
-          window.EarthViewer.dataSources.remove(dataSource)
-        }
-      })
-      dataSource.name = options.id
-      var entities = dataSource.entities.values
-      for (let i = 0; i < entities.length; i++) {
-        let entity = entities[i]
-        // point===>billboard 改为 lable
-        if (entity.billboard) {
-          if (entity.properties['color']) {
-            let fillColor = entity.properties['color'].getValue()
-            entity.label = {
-              text: entity.properties.label._value,
-              font: '22px black',
-              fillColor: MSIMEarth.Color.fromCssColorString(fillColor),
-              style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-              horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-              verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-              pixelOffset: new window.MSIMEarth.Cartesian2(0, -40),
-              outlineColor: window.MSIMEarth.Color.BLACK,
-              outlineWidth: 2,
-              // showBackground: true,
-              backgroundColor: new window.MSIMEarth.Color.fromBytes(
-                235,
-                155,
-                33
-              ),
-              heightReference:
-                window.MSIMEarth.HeightReference.RELATIVE_TO_GROUND
-            }
-          }
-          entity.billboard = undefined
-          entity['description'] = undefined
-        }
-        // 区域
-        if (entity.polygon) {
-          if (entity.properties['color']) {
-            let fillColor = entity.properties['color'].getValue()
-            let fill0pacity = entity.properties['opacity']
-              ? entity.properties['opacity'].getValue()
-              : 0.1
-            entity.polygon.material =
-              MSIMEarth.Color.fromCssColorString(fillColor).withAlpha(
-                fill0pacity
-              )
-            // entity.polygon['height'].setValue(VisParams.vectorDataHeight)
-            entity.polygon['perPositionHeight'] = false
-            entity.polygon.show = visible
-          }
-          if (entity.properties['lineWidth']) {
-            let lineWidth = entity.properties['lineWidth'].getValue()
-            entity.polygon.outline = true
-            entity.polygon.outlineWidth = lineWidth
-            entity.polygon.outlineColor = MSIMEarth.Color.fromCssColorString(
-              entity.properties['color'].getValue()
-            )
-          }
-        }
-        // 线段
-        if (entity.polyline) {
-          entity.polyline.material = MSIMEarth.Color.fromCssColorString(
-            entity.properties['color'].getValue()
-          )
-          let lineWidth = entity.properties['lineWidth'].getValue()
-          entity.polyline.width = lineWidth
-          entity.polyline.clampToGround = true
-        }
-      }
-      window.EarthViewer.dataSources.add(dataSource)
-    })
-  }
   //添加航线规划
   addPlanFlyLine(id, position, side) {
     if (window.EarthViewer.entities.getById(id + '-planLine')) {
@@ -4272,70 +2298,7 @@ class DataControl {
       }
     })
   }
-  /**
-   * 添加雷达遮罩
-   */
-  addRadarEllipse() {
-    let names = ['10_soc_cmdr', '3500_large_sam_battalion']
-    let farDis = 55500
-    names.forEach((name) => {
-      //显示半球效果
-      const entityMethod = new window.EarthPlugn.entity({
-        earth: window.MSIMEarth,
-        viewer: window.EarthViewer
-      })
-      let entity = entityMethod.getCZMLEntity(
-        name,
-        'MSIMEarthCZMLProcessContainer'
-      )
-      if (!entity || !entity.position) return
-      if (!farDis) return
-      let changePositions = function () {
-        let updateEntity = entityMethod.getCZMLEntity(
-          name,
-          'MSIMEarthCZMLProcessContainer'
-        )
-        if (!updateEntity) return
-        let YGPosition = updateEntity.position.getValue(
-          window.EarthViewer.clock.currentTime
-        )
-        if (!window.MSIMEarth.defined(YGPosition)) return
-        return YGPosition
-      }
-      let radarEllipsoid = EarthViewer.entities.add({
-        id: name + '-ellipsoidEntity',
-        position: new window.MSIMEarth.CallbackProperty(changePositions, false),
-        ellipsoid: {
-          radii: new MSIMEarth.Cartesian3(farDis, farDis, farDis),
-          maximumCone: MSIMEarth.Math.PI_OVER_TWO,
-          material: new window.MSIMEarth.Color(
-            55 / 255,
-            55 / 255,
-            255 / 255,
-            0.1
-          ),
-          fill: true,
-          outline: true,
-          outlineColor: new window.MSIMEarth.Color(
-            55 / 255,
-            55 / 255,
-            255 / 255,
-            0.2
-          ),
-          outlineWidth: 0.1
-        }
-      })
-    })
-  }
-  /**
-   * 移除雷达遮罩
-   */
-  removeRadarEllipse() {
-    let names = ['10_soc_cmdr', '3500_large_sam_battalion']
-    names.forEach((name) => {
-      window.EarthViewer.entities.removeById(name)
-    })
-  }
+ 
   /**
    * 模拟光学卫星开机
    */
@@ -4362,62 +2325,6 @@ class DataControl {
   addZZQU(data) {
     const { addOperationalArea } = areaConfig()
     addOperationalArea(data)
-    // window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
-    //   if (dataSource._name == options.id) {
-    //     window.EarthViewer.dataSources.remove(dataSource)
-    //   }
-    // })
-
-    // var promise = window.MSIMEarth.GeoJsonDataSource.load(options.url)
-    // promise.then(function (dataSource) {
-    //   window.EarthViewer.dataSources._dataSources.forEach((dataSource) => {
-    //     if (dataSource._name == options.id) {
-    //       window.EarthViewer.dataSources.remove(dataSource)
-    //     }
-    //   })
-    //   dataSource.name = options.id
-    //   var entities = dataSource.entities.values
-    //   for (let i = 0; i < entities.length; i++) {
-    //     let entity = entities[i]
-    //     entity.billboard = undefined
-    //     if (entity.polygon) {
-    //       let fillColor = entity.properties.color.getValue()
-    //       let fill0pacity = entity.properties['opacity'].getValue()
-    //       if (localStorage.getItem('side') == 'admin') {
-    //         fill0pacity = 0.3
-    //       }
-    //       entity.polygon.material =
-    //         MSIMEarth.Color.fromCssColorString(fillColor).withAlpha(fill0pacity)
-    //       // entity.polygon.height.setValue(VisParams.vectorDataHeight)
-    //       entity.polygon.perPositionHeight = false
-    //       entity.polygon.outlineColor = window.MSIMEarth.Color.BLACK
-    //       entity.polygon.outlineWidth = 1
-    //       // entity.polygon.heightReference= window.MSIMEarth.HeightReference.CLAMP_TO_GROUND
-    //       // entity.polygon._classificationType = window.MSIMEarth.ClassificationType.TERRAIN
-    //     }
-    //     // EarthAPP.labelCollection.add({
-    //     //   id: entity.id,
-    //     //   position: entity.position._value,
-    //     //   text: entity.properties.label._value,
-    //     //   font: '22px black',
-    //     //   fillColor:
-    //     //     MSIMEarth.Color.fromCssColorString(fillColor).withAlpha(0.01),
-    //     //   style: window.MSIMEarth.LabelStyle.FILL_AND_OUTLINE,
-    //     //   horizontalOrigin: window.MSIMEarth.HorizontalOrigin.LEFT,
-    //     //   verticalOrigin: window.MSIMEarth.VerticalOrigin.CENTER,
-    //     //   pixelOffset: new window.MSIMEarth.Cartesian2(0, -40),
-    //     //   outlineColor: window.MSIMEarth.Color.BLACK,
-    //     //   outlineWidth: 2,
-    //     //   // showBackground: true,
-    //     //   backgroundColor: new window.MSIMEarth.Color.fromBytes(235, 155, 33),
-    //     //   distanceDisplayCondition:
-    //     //     new window.MSIMEarth.DistanceDisplayCondition(0, 60e5)
-    //     //   // heightReference:
-    //     //   //   window.MSIMEarth.HeightReference.RELATIVE_TO_GROUND
-    //     // })
-    //   }
-    //   window.EarthViewer.dataSources.add(dataSource)
-    // })
   }
 
   /**
@@ -4430,68 +2337,928 @@ class DataControl {
       }
     })
   }
+  
   /**
-   * 加载湿度区域
+   * 积冰区图层加载
    */
-  async addHumidity(url, name) {
-    let DC = new window.EarthPlugn.DCPrimitive({
-      viewer: window.EarthViewer,
-      earth: window.MSIMEarth
-    })
-    const response = await fetch(url)
-    const data = await response.json()
-    DC.createCloud(data, name)
+  addIcingAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
   }
+
   /**
-   * 移除湿度区域
+   * 积冰区图层删除
    */
-  removeHumidity(name) {
-    window.EarthViewer.scene.primitives._primitives.forEach((e) => {
-      if (e.name == name) {
-        window.EarthViewer.scene.primitives.remove(e)
+  removeIcingAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 颠簸区图层加载
+   */
+  addBumpyAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
+  }
+
+  /**
+   * 颠簸区图层删除
+   */
+  removeBumpyAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 大风区图层加载
+   */
+  addStwAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
+  }
+
+  /**
+   * 大风区图层删除
+   */
+  removeStwAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 湿度区图层加载
+   */
+  addRhuAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
+  }
+
+  /**
+   * 湿度区图层删除
+   */
+  removeRhuAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 雷电强降水区图层加载
+   */
+  addPreAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
+  }
+
+  /**
+   * 雷电强降水区图层删除
+   */
+  removePreAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 低能见度区图层加载
+   */
+  addVisAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
+  }
+
+  /**
+   * 低能见度区图层删除
+   */
+  removeVisAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 高云量红外衰减区图层加载
+   */
+  addHccIrAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
+  }
+
+  /**
+   * 高云量红外衰减区图层删除
+   */
+  removeHccIrAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 低空风切变高发区图层加载
+   */
+  addLlmsAreaLayer(val) {
+    this._loadWeatherOceanLayer(val)
+  }
+
+  /**
+   * 低空风切变高发区图层删除
+   */
+  removeLlmsAreaLayer(val) {
+    this._removeWeatherOceanLayer(val)
+  }
+
+  /**
+   * 通用气象海洋图层加载方法
+   */
+  async _loadWeatherOceanLayer(val) {
+    const { code, layerNameCn, dataUrls, drawType, featureType } = val
+    const cleanUrl = dataUrls[0]
+
+    this._removeWeatherOceanLayer(val)
+
+    switch (drawType) {
+      case '面':
+        await this._loadPolygonLayer(cleanUrl, layerNameCn, code, featureType)
+        break
+      case '线':
+        await this._loadPolylineLayer(cleanUrl, layerNameCn, code, featureType)
+        break
+      case '点':
+        await this._loadPointLayer(cleanUrl, layerNameCn, code, featureType)
+        break
+      default:
+        await this._loadPolygonLayer(cleanUrl, layerNameCn, code, featureType)
+        break
+    }
+  }
+
+  /**
+   * 删除气象海洋图层
+   */
+  _removeWeatherOceanLayer(val) {
+    const { layerNameCn, code } = val
+    const viewer = window.EarthViewer
+
+    viewer.dataSources._dataSources.forEach((dataSource) => {
+      if (dataSource._name === layerNameCn || dataSource._name === code) {
+        viewer.dataSources.remove(dataSource)
       }
     })
-  }
-  /**
-   * 加载云层
-   */
-  async addCloud(url, name) {
-    let DC = new window.EarthPlugn.DCPrimitive({
-      viewer: window.EarthViewer,
-      earth: window.MSIMEarth
-    })
-    const response = await fetch(url)
-    const data = await response.json()
-    DC.createCloud(data, name)
-  }
-  /**
-   * 移除云层
-   */
-  removeCloud(name) {
-    window.EarthViewer.scene.primitives._primitives.forEach((e) => {
-      if (e.name == name) {
-        window.EarthViewer.scene.primitives.remove(e)
+
+    const entitiesToRemove = []
+    viewer.entities.values.forEach((entity) => {
+      if (
+        entity.name &&
+        (entity.name === layerNameCn ||
+          entity.name === code ||
+          entity.name.startsWith(layerNameCn + '_') ||
+          entity.name.startsWith(code + '_'))
+      ) {
+        entitiesToRemove.push(entity.id)
       }
     })
-  }
-  /**
-   * 加载风场数据
-   */
-  loadWindData(levels, windDataList) {
-    const fetchPromises = levels.map((level) => {
-      return fetch(
-        `static/data/json/wind_json_output/wind_level_${level}.json`
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          // res.wdata内的值全是-1，将值改成1
-          res.wdata = res.wdata.map((item) => (item === -1 ? 1 : item))
-          windDataList.push(res)
-        })
-        .catch((error) => {
-          console.error(`加载风场数据 wind_level_${level}.json 失败:`, error)
-        })
+
+    entitiesToRemove.forEach((id) => {
+      viewer.entities.removeById(id)
     })
+
+    viewer.scene.requestRender()
+  }
+
+  /**
+   * 加载面类型图层
+   */
+  async _loadPolygonLayer(url, layerName, code, featureType) {
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+
+      switch (featureType) {
+        case 'UU_VV':
+          await this._loadUuVvPolygon(data, layerName, code)
+          break
+        case 'RHU':
+          await this._loadRhuPolygon(data, layerName, code)
+          break
+        case 'PRE':
+          await this._loadPrePolygon(data, layerName, code)
+          break
+        case 'VIS':
+          await this._loadVisPolygon(data, layerName, code)
+          break
+        case 'CLO_COV':
+          await this._loadClocovPolygon(data, layerName, code)
+          break
+        default:
+          await this._loadDefaultPolygon(data, layerName, code)
+          break
+      }
+    } catch (error) {
+      console.error(`加载面类型图层 ${layerName} 失败:`, error)
+    }
+  }
+
+  /**
+   * 加载线类型图层
+   */
+  async _loadPolylineLayer(url, layerName, code, featureType) {
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+
+      switch (featureType) {
+        case 'UU_VV':
+          await this._loadUuVvPolyline(data, layerName, code)
+          break
+        case 'RHU':
+          await this._loadRhuPolyline(data, layerName, code)
+          break
+        case 'PRE':
+          await this._loadPrePolyline(data, layerName, code)
+          break
+        case 'VIS':
+          await this._loadVisPolyline(data, layerName, code)
+          break
+        case 'CLO_COV':
+          await this._loadClocovPolyline(data, layerName, code)
+          break
+        default:
+          await this._loadDefaultPolyline(data, layerName, code)
+          break
+      }
+    } catch (error) {
+      console.error(`加载线类型图层 ${layerName} 失败:`, error)
+    }
+  }
+
+  /**
+   * 加载点类型图层
+   */
+  async _loadPointLayer(url, layerName, code, featureType) {
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+
+      switch (featureType) {
+        case 'UU_VV':
+          await this._loadUuVvPoint(data, layerName, code)
+          break
+        case 'RHU':
+          await this._loadRhuPoint(data, layerName, code)
+          break
+        case 'PRE':
+          await this._loadPrePoint(data, layerName, code)
+          break
+        case 'VIS':
+          await this._loadVisPoint(data, layerName, code)
+          break
+        case 'CLO_COV':
+          await this._loadClocovPoint(data, layerName, code)
+          break
+        default:
+          await this._loadDefaultPoint(data, layerName, code)
+          break
+      }
+    } catch (error) {
+      console.error(`加载点类型图层 ${layerName} 失败:`, error)
+    }
+  }
+
+  async _loadUuVvPolygon(data, layerName, code) {
+    await this._loadGeoJsonPolygon(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.CYAN
+    )
+  }
+
+  async _loadRhuPolygon(data, layerName, code) {
+    await this._loadGeoJsonPolygon(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.BLUE
+    )
+  }
+
+  async _loadPrePolygon(data, layerName, code) {
+    await this._loadGeoJsonPolygon(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.GREEN
+    )
+  }
+
+  async _loadVisPolygon(data, layerName, code) {
+    await this._loadGeoJsonPolygon(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.GRAY
+    )
+  }
+
+  async _loadClocovPolygon(data, layerName, code) {
+    await this._loadGeoJsonPolygon(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.WHITE
+    )
+  }
+
+  async _loadDefaultPolygon(data, layerName, code) {
+    await this._loadGeoJsonPolygon(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.YELLOW
+    )
+  }
+
+  async _loadGeoJsonPolygon(data, layerName, code, color) {
+    const features = data.features || data
+    const Cesium = window.MSIMEarth
+    const viewer = window.EarthViewer
+
+    features.forEach((feature) => {
+      const geometry = feature.geometry
+      const properties = feature.properties || {}
+      const typeConfig = properties.type || {}
+      const borderShape = typeConfig.borderShape || 'solid'
+      const fillEnabled = typeConfig.fillEnabled !== false
+
+      const fillColorHex = properties.fill || '#FF0000'
+      const fillOpacity =
+        properties['fill-opacity'] !== undefined
+          ? properties['fill-opacity']
+          : 0.4
+      const strokeWidth =
+        properties['stroke-width'] !== undefined
+          ? properties['stroke-width']
+          : 3
+
+      const fillColor = Cesium.Color.fromCssColorString(fillColorHex)
+      const strokeColor = Cesium.Color.fromCssColorString(fillColorHex)
+
+      if (
+        !geometry ||
+        (geometry.type !== 'Polygon' && geometry.type !== 'MultiPolygon')
+      ) {
+        return
+      }
+
+      const coordinates =
+        geometry.type === 'Polygon'
+          ? [geometry.coordinates]
+          : geometry.coordinates
+
+      coordinates.forEach((polygonCoords) => {
+        const outerRing = polygonCoords[0]
+        const innerRings = polygonCoords.slice(1)
+
+        let processedOuterRing = outerRing
+        let processedInnerRings = innerRings
+
+        if (borderShape === 'jagged' || borderShape === 'jagged2') {
+          if (borderShape === 'jagged') {
+            processedOuterRing = this._wavyPolygon(outerRing, {
+              amplitude: 0.006,
+              frequency: 70,
+              segmentsPerEdge: 16
+            })
+            processedInnerRings = innerRings.map((ring) =>
+              this._wavyPolygon(ring, {
+                amplitude: 0.006,
+                frequency: 70,
+                segmentsPerEdge: 16
+              })
+            )
+          } else if (borderShape === 'jagged2') {
+            processedOuterRing = this._wavyPolygon(outerRing, {
+              amplitude: 0.025,
+              frequency: 30,
+              segmentsPerEdge: 20
+            })
+            processedInnerRings = innerRings.map((ring) =>
+              this._wavyPolygon(ring, {
+                amplitude: 0.025,
+                frequency: 30,
+                segmentsPerEdge: 20
+              })
+            )
+          }
+        }
+
+        const outerPositions = []
+        processedOuterRing.forEach((coord) => {
+          outerPositions.push(
+            Cesium.Cartesian3.fromDegrees(coord[0], coord[1], 1000)
+          )
+        })
+
+        const innerPositionsArray = []
+        processedInnerRings.forEach((ring) => {
+          const positions = []
+          ring.forEach((coord) => {
+            positions.push(
+              Cesium.Cartesian3.fromDegrees(coord[0], coord[1], 1000)
+            )
+          })
+          innerPositionsArray.push(positions)
+        })
+
+        const hierarchy = new Cesium.PolygonHierarchy(
+          outerPositions,
+          innerPositionsArray.length > 0 ? innerPositionsArray : undefined
+        )
+
+        if (fillEnabled) {
+          viewer.entities.add({
+            name: layerName,
+            polygon: {
+              hierarchy: hierarchy,
+              material: fillColor.withAlpha(fillOpacity),
+              outline: false,
+              height: 1000,
+              heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              extrudedHeight: 1001,
+              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                0,
+                Number.MAX_VALUE
+              ),
+              disableDepthTestDistance: Number.POSITIVE_INFINITY
+            }
+          })
+        }
+
+        this._createBorderLine(
+          viewer,
+          Cesium,
+          outerPositions,
+          layerName,
+          strokeColor,
+          borderShape,
+          strokeWidth
+        )
+
+        innerRings.forEach((ring) => {
+          const innerPositions = []
+          ring.forEach((coord) => {
+            innerPositions.push(
+              Cesium.Cartesian3.fromDegrees(coord[0], coord[1], 1000)
+            )
+          })
+          this._createBorderLine(
+            viewer,
+            Cesium,
+            innerPositions,
+            layerName,
+            strokeColor,
+            borderShape,
+            strokeWidth
+          )
+        })
+      })
+
+      const weatherPoints = properties.weatherPoint || []
+      weatherPoints.forEach((point) => {
+        const pointUrl = point.pointUrl
+        const rotate = point.rotate || 0
+        const coord = point.coordinates
+        const describe = point.describe || ''
+
+        if (pointUrl && coord && coord.length >= 2) {
+          const position = Cesium.Cartesian3.fromDegrees(coord[0], coord[1], 1)
+
+          viewer.entities.add({
+            name: layerName + '_weatherPoint_image',
+            position: position,
+            billboard: {
+              image: pointUrl,
+              show: true,
+              width: 40,
+              height: 40,
+              scale: 1.0,
+              scaleByDistance: new Cesium.NearFarScalar(
+                1000,
+                1.5,
+                1000000,
+                0.3
+              ),
+              verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+              heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                0,
+                Number.MAX_VALUE
+              ),
+              disableDepthTestDistance: Number.POSITIVE_INFINITY
+            }
+          })
+
+          if (describe && describe.length > 0) {
+            viewer.entities.add({
+              name: layerName + '_weatherPoint_label',
+              position: position,
+              label: {
+                text: describe,
+                show: true,
+                font: 'bold 14px sans-serif',
+                fillColor: Cesium.Color.WHITE,
+                strokeColor: Cesium.Color.TRANSPARENT,
+                strokeWidth: 0,
+                style: Cesium.LabelStyle.FILL,
+                scale: 1.0,
+                scaleByDistance: new Cesium.NearFarScalar(
+                  1000,
+                  1.5,
+                  1000000,
+                  0.3
+                ),
+                verticalOrigin: Cesium.VerticalOrigin.TOP,
+                heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+                distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                  0,
+                  Number.MAX_VALUE
+                ),
+                disableDepthTestDistance: Number.POSITIVE_INFINITY
+              }
+            })
+          }
+        }
+      })
+    })
+
+    viewer.scene.requestRender()
+  }
+
+  _smoothPolygon(coordinates, tolerance = 5) {
+    if (coordinates.length < 3) return coordinates
+    const points = coordinates.slice(0, -1)
+    const interpolatedPoints = []
+    for (let i = 0; i < points.length; i++) {
+      const p0 = points[(i - 1 + points.length) % points.length]
+      const p1 = points[i]
+      const p2 = points[(i + 1) % points.length]
+      const p3 = points[(i + 2) % points.length]
+      for (let t = 0; t < 1; t += 1 / tolerance) {
+        const t2 = t * t,
+          t3 = t2 * t
+        const x =
+          0.5 *
+          (2 * p1[0] +
+            (-p0[0] + p2[0]) * t +
+            (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 +
+            (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3)
+        const y =
+          0.5 *
+          (2 * p1[1] +
+            (-p0[1] + p2[1]) * t +
+            (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 +
+            (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3)
+        interpolatedPoints.push([x, y])
+      }
+    }
+    interpolatedPoints.push(interpolatedPoints[0])
+    return interpolatedPoints
+  }
+
+  _wavyPolygon(coordinates, options = {}) {
+    if (!coordinates || coordinates.length < 3) return coordinates
+    const { amplitude = 0.015, frequency = 14, segmentsPerEdge = 16 } = options
+
+    const closed =
+      coordinates[0][0] === coordinates[coordinates.length - 1][0] &&
+      coordinates[0][1] === coordinates[coordinates.length - 1][1]
+    const verts = closed ? coordinates.slice(0, -1) : coordinates.slice()
+    const n = verts.length
+    if (n < 3) return coordinates
+
+    let minLng = Infinity,
+      maxLng = -Infinity
+    let minLat = Infinity,
+      maxLat = -Infinity
+    for (const [lng, lat] of verts) {
+      if (lng < minLng) minLng = lng
+      if (lng > maxLng) maxLng = lng
+      if (lat < minLat) minLat = lat
+      if (lat > maxLat) maxLat = lat
+    }
+    const centerLng = (minLng + maxLng) / 2
+    const centerLat = (minLat + maxLat) / 2
+
+    const cosLat = Math.cos((centerLat * Math.PI) / 180) || 1
+
+    const edgeLens = []
+    let totalLen = 0
+    for (let i = 0; i < n; i++) {
+      const [lng1, lat1] = verts[i]
+      const [lng2, lat2] = verts[(i + 1) % n]
+      const dx = (lng2 - lng1) * cosLat
+      const dy = lat2 - lat1
+      const len = Math.sqrt(dx * dx + dy * dy)
+      edgeLens.push(len)
+      totalLen += len
+    }
+
+    if (totalLen === 0) return coordinates
+
+    const totalSamples = n * segmentsPerEdge
+    const result = []
+    let progress = 0
+
+    for (let i = 0; i < n; i++) {
+      const [lng1, lat1] = verts[i]
+      const [lng2, lat2] = verts[(i + 1) % n]
+      const edgeLen = edgeLens[i]
+      const samplesOnEdge = segmentsPerEdge
+
+      for (let s = 0; s < samplesOnEdge; s++) {
+        const t = s / samplesOnEdge
+
+        const baseLng = lng1 + (lng2 - lng1) * t
+        const baseLat = lat1 + (lat2 - lat1) * t
+
+        const dxNorm = (baseLng - centerLng) * cosLat
+        const dyNorm = baseLat - centerLat
+        const dist = Math.sqrt(dxNorm * dxNorm + dyNorm * dyNorm)
+
+        let ux, uy
+        if (dist > 1e-10) {
+          ux = dxNorm / dist
+          uy = dyNorm / dist
+        } else {
+          const angle = Math.atan2(dyNorm, dxNorm) + Math.PI / 2
+          ux = Math.cos(angle)
+          uy = Math.sin(angle)
+        }
+
+        const phase = (progress / totalLen) * Math.PI * 2 * frequency
+        const wave = Math.sin(phase)
+
+        const newLng = baseLng + (ux * amplitude * wave) / cosLat
+        const newLat = baseLat + uy * amplitude * wave
+
+        result.push([newLng, newLat])
+
+        progress += edgeLen / samplesOnEdge
+      }
+    }
+
+    result.push(result[0])
+    return result
+  }
+
+  _createBorderLine(
+    viewer,
+    Cesium,
+    positions,
+    layerName,
+    color,
+    borderShape,
+    strokeWidth = 3
+  ) {
+    const material = color.withAlpha(0.9)
+    const lineWidth = Math.max(1, strokeWidth)
+    switch (borderShape) {
+      case 'jagged':
+      case 'jagged2':
+        viewer.entities.add({
+          name: layerName + '_outline',
+          polyline: {
+            positions: positions,
+            width: lineWidth,
+            material: material,
+            distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+              0,
+              Number.MAX_VALUE
+            ),
+            disableDepthTestDistance: Number.POSITIVE_INFINITY
+          }
+        })
+        break
+      case 'dashed':
+        viewer.entities.add({
+          name: layerName + '_outline',
+          polyline: {
+            positions: positions,
+            width: lineWidth,
+            material: new Cesium.PolylineDashMaterialProperty({
+              color: material,
+              dashLength: 15,
+              gapLength: 10
+            }),
+            distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+              0,
+              Number.MAX_VALUE
+            ),
+            disableDepthTestDistance: Number.POSITIVE_INFINITY
+          }
+        })
+        break
+      case 'dotted':
+        viewer.entities.add({
+          name: layerName + '_outline',
+          polyline: {
+            positions: positions,
+            width: lineWidth,
+            material: new Cesium.PolylineDashMaterialProperty({
+              color: material,
+              dashLength: 3,
+              gapLength: 8
+            }),
+            distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+              0,
+              Number.MAX_VALUE
+            ),
+            disableDepthTestDistance: Number.POSITIVE_INFINITY
+          }
+        })
+        break
+      case 'solid':
+      default:
+        viewer.entities.add({
+          name: layerName + '_outline',
+          polyline: {
+            positions: positions,
+            width: lineWidth,
+            material: material,
+            distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+              0,
+              Number.MAX_VALUE
+            ),
+            disableDepthTestDistance: Number.POSITIVE_INFINITY
+          }
+        })
+        break
+    }
+  }
+
+  async _loadUuVvPolyline(data, layerName, code) {
+    await this._loadGeoJsonPolyline(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.CYAN
+    )
+  }
+
+  async _loadRhuPolyline(data, layerName, code) {
+    await this._loadGeoJsonPolyline(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.BLUE
+    )
+  }
+
+  async _loadPrePolyline(data, layerName, code) {
+    await this._loadGeoJsonPolyline(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.GREEN
+    )
+  }
+
+  async _loadVisPolyline(data, layerName, code) {
+    await this._loadGeoJsonPolyline(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.GRAY
+    )
+  }
+
+  async _loadClocovPolyline(data, layerName, code) {
+    await this._loadGeoJsonPolyline(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.WHITE
+    )
+  }
+
+  async _loadDefaultPolyline(data, layerName, code) {
+    await this._loadGeoJsonPolyline(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.YELLOW
+    )
+  }
+
+  async _loadGeoJsonPolyline(data, layerName, code, color) {
+    const geojson = {
+      type: 'FeatureCollection',
+      features: data.features || data
+    }
+
+    window.EarthViewer.dataSources
+      .add(window.MSIMEarth.GeoJsonDataSource.load(geojson))
+      .then((dataSource) => {
+        dataSource.name = layerName
+        const entities = dataSource.entities.values
+        for (let i = 0; i < entities.length; i++) {
+          const entity = entities[i]
+          if (entity.polyline) {
+            entity.polyline.material = color
+            entity.polyline.width = 2
+            entity.polyline.clampToGround = true
+            entity.polyline.distanceDisplayCondition =
+              new window.MSIMEarth.DistanceDisplayCondition(0, 1000e5)
+            entity.polyline.disableDepthTestDistance = Number.POSITIVE_INFINITY
+          }
+        }
+      })
+  }
+
+  async _loadUuVvPoint(data, layerName, code) {
+    await this._loadGeoJsonPoint(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.CYAN
+    )
+  }
+
+  async _loadRhuPoint(data, layerName, code) {
+    await this._loadGeoJsonPoint(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.BLUE
+    )
+  }
+
+  async _loadPrePoint(data, layerName, code) {
+    await this._loadGeoJsonPoint(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.GREEN
+    )
+  }
+
+  async _loadVisPoint(data, layerName, code) {
+    await this._loadGeoJsonPoint(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.GRAY
+    )
+  }
+
+  async _loadClocovPoint(data, layerName, code) {
+    await this._loadGeoJsonPoint(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.WHITE
+    )
+  }
+
+  async _loadDefaultPoint(data, layerName, code) {
+    await this._loadGeoJsonPoint(
+      data,
+      layerName,
+      code,
+      window.MSIMEarth.Color.YELLOW
+    )
+  }
+
+  async _loadGeoJsonPoint(data, layerName, code, color) {
+    const geojson = {
+      type: 'FeatureCollection',
+      features: data.features || data
+    }
+
+    window.EarthViewer.dataSources
+      .add(window.MSIMEarth.GeoJsonDataSource.load(geojson))
+      .then((dataSource) => {
+        dataSource.name = layerName
+        const entities = dataSource.entities.values
+        for (let i = 0; i < entities.length; i++) {
+          const entity = entities[i]
+          if (entity.point) {
+            entity.point.color = color
+            entity.point.pixelSize = 5
+            entity.point.heightReference =
+              window.MSIMEarth.HeightReference.CLAMP_TO_GROUND
+          }
+          if (entity.properties && entity.properties.imageUrl) {
+            const imageUrl = entity.properties.imageUrl._value
+            const position = entity.position._value
+            if (imageUrl && position) {
+              entity.billboard = {
+                image: imageUrl,
+                show: true,
+                width: 5,
+                height: 5,
+                eyeOffset: new window.MSIMEarth.ConstantProperty(
+                  new window.MSIMEarth.Cartesian3(0, 0, -1)
+                ),
+                pixelOffset: new window.MSIMEarth.Cartesian2(0, -25),
+                scaleByDistance: new window.MSIMEarth.NearFarScalar(
+                  1.5e2,
+                  6.0,
+                  1.5e7,
+                  3.5
+                ),
+                heightReference:
+                  window.MSIMEarth.HeightReference.CLAMP_TO_GROUND,
+                distanceDisplayCondition:
+                  new window.MSIMEarth.DistanceDisplayCondition(0, 100e5)
+              }
+            }
+          }
+        }
+      })
   }
 }
 export default DataControl

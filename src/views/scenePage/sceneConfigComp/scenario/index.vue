@@ -1,30 +1,7 @@
 <template>
-  <div
-    class="conclusion-plan animate__animated animate__fadeInUp animate__delay-2200s"
-  >
-    <!-- <div class="content-title">想定</div> -->
-    <div class="system-config" @click="showScenarioDetails">
-      <el-tooltip effect="light" content="" placement="left">
-        <img
-          src="@/assets/image/homeHeader/ai.png"
-          alt=""
-          srcset=""
-          style="width: 20px; height: 20px"
-        />
-      </el-tooltip>
-    </div>
-    <el-tooltip
-      class="box-item"
-      effect="dark"
-      content="关闭面板"
-      placement="top"
-    >
-      <img
-        src="@/assets/image/panelIcons/关闭icon.png"
-        alt=""
-        class="close_sty"
-        @click="handleClose"
-      />
+  <div class="conclusion-plan animate__animated animate__fadeInUp animate__delay-2200s">
+    <el-tooltip class="box-item" effect="dark" content="关闭面板" placement="top">
+      <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_sty" @click="handleClose" />
     </el-tooltip>
     <div class="content-form">
       <el-form class="form" label-width="130px" :model="state.formContent">
@@ -39,17 +16,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="background-title">
-          <div class="cicrle"></div>
-          任务简报
-        </div>
-        <div class="background-content">
-          <div class="content-main">
-            <div class="content-text overflow-JB">
-              {{ state.formContent.jianbao }}
-            </div>
-          </div>
-        </div> -->
         <div class="background-title">
           <div class="cicrle"></div>
           任务目的
@@ -67,29 +33,11 @@
           战场环境态势图
         </div>
         <div class="background-content">
-          <el-carousel
-            class="situation-carousel"
-            :autoplay="false"
-            trigger="click"
-            height="350px"
-          >
-            <el-carousel-item
-              v-for="(item, index) in state.taskEnvironmentSituationImg"
-              :key="item"
-            >
-              <el-image
-                class="situation-image"
-                style="width: 100%; height: 100%"
-                :src="item"
-                :zoom-rate="1.2"
-                :max-scale="7"
-                :min-scale="0.2"
-                :preview-src-list="state.taskEnvironmentSituationImg"
-                :initial-index="index"
-                :preview-teleported="true"
-                show-progress
-                fit="cover"
-              />
+          <el-carousel class="situation-carousel" :autoplay="false" trigger="click" height="350px">
+            <el-carousel-item v-for="(item, index) in state.taskEnvironmentSituationImg" :key="item">
+              <el-image class="situation-image" style="width: 100%; height: 100%" :src="item" :zoom-rate="1.2"
+                :max-scale="7" :min-scale="0.2" :preview-src-list="state.taskEnvironmentSituationImg"
+                :initial-index="index" :preview-teleported="true" show-progress fit="cover" />
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -100,29 +48,9 @@
         </div>
         <div class="background-content" v-if="_forceMapShow">
           <div class="content-main force-situation-container">
-            <iframe
-              :src="_forceMapUrl"
-              class="force-situation-iframe"
-              frameborder="0"
-              title="兵力态势图"
-            ></iframe>
+            <iframe :src="_forceMapUrl" class="force-situation-iframe" frameborder="0" title="兵力态势图"></iframe>
           </div>
         </div>
-        <!-- <div class="background-title">
-          <div class="cicrle"></div>
-          战场环境
-        </div>
-        <div class="background-content">
-          <div class="content-main">
-            <div class="content-text">
-              {{ state.formContent.taskEnvironment }}
-            </div>
-          </div>
-        </div>
-        <div class="background-title">
-          <div class="cicrle"></div>
-          情报要素
-        </div> -->
         <div class="confrontation-class" v-if="blShow">
           <div class="ourStrength"></div>
           <div class="ourStrength-content">
@@ -130,10 +58,8 @@
             <div class="blueForce">
               <div style="font-size: 80px" v-if="state.side == 'red'">未知</div>
               <div style="display: flex; flex-wrap: wrap" v-else>
-                <el-form-item
-                  class="blueForce-item"
-                  v-for="(value, key) in state.formContent.blueForce"
-                  >{{ key }}：{{ value }}
+                <el-form-item class="blueForce-item" v-for="(value, key) in state.formContent.blueForce">{{ key }}：{{
+                  value }}
                 </el-form-item>
               </div>
             </div>
@@ -146,10 +72,8 @@
                 未知
               </div>
               <div style="display: flex; flex-wrap: wrap" v-else>
-                <el-form-item
-                  class="redForce-item"
-                  v-for="(value, key) in state.formContent.redForce"
-                  >{{ key }}：{{ value }}
+                <el-form-item class="redForce-item" v-for="(value, key) in state.formContent.redForce">{{ key }}：{{
+                  value }}
                 </el-form-item>
               </div>
             </div>
@@ -160,19 +84,10 @@
           <div class="image-airport"></div>
         </div>
         <div class="form-btnList">
-          <el-button type="primary" :icon="Microphone" @click="setVoice"
-            >播放语音</el-button
-          >
-          <el-button type="primary" :icon="Microphone" @click="pauseVoice"
-            >暂停语音</el-button
-          >
-          <el-button
-            v-if="state.showSceneBtn"
-            type="primary"
-            :icon="View"
-            @click="checkMemberOfTask(store.state.curSceneInfo, true)"
-            >想定推演</el-button
-          >
+          <el-button type="primary" :icon="Microphone" @click="setVoice">播放语音</el-button>
+          <el-button type="primary" :icon="Microphone" @click="pauseVoice">暂停语音</el-button>
+          <el-button v-if="state.showSceneBtn" type="primary" :icon="View"
+            @click="checkMemberOfTask(store.state.curSceneInfo, true)">想定推演</el-button>
         </div>
       </el-form>
     </div>
@@ -184,18 +99,11 @@ import { onMounted, reactive, watch, ref } from 'vue'
 import emitter from '@/utils/eventbus'
 import { speechSynthesis } from './hooks/index'
 import store from '@/store'
-import { playVoice } from '@/utils/voice'
 import { View, Microphone } from '@element-plus/icons-vue'
-import { creatScene } from '@/views/homeHeader/hooks/index'
 import { getResultByRefresh } from '@/service/SSE'
 import { loadingTask } from '@/views/seatManagement/adminuser/taskManagement/hooks/index.js'
 const { checkMemberOfTask } = loadingTask()
-const { sceneSelectChange } = creatScene()
-import { useRouter } from 'vue-router'
-
 let cameraController = new window.EarthPlugn.CameraControl({})
-
-const router = useRouter()
 
 let blShow = ref(EarthAPP.xdyBLShow)
 
@@ -248,23 +156,8 @@ const state = reactive({
     './static/image/situation/图4.png'
   ]
 })
-//显示详情详情
-const showScenarioDetails = () => {
-  // emitter.emit('DetailsShow', true)
-
-  // router.push({
-  //   path: '/home/ThinkAboutDetails',
-  //   target: '_blank'
-  // })
-  window.open('http://localhost:8080/#/ThinkAboutDetails', '_blank')
-  // router.push({ name: '/home/ThinkAboutDetails' }) // 使用命名路由或直接传递路径和参数
-}
 speechSynthesis()
 onMounted(() => {
-  // 打开想定播报背景，暂时关闭，采用手动播报
-  // if (store.state.curSceneInfo.voiceName) {
-  //   playVoice(store.state.curSceneInfo.voiceName)
-  // }
   let taskId = store.state.curSceneInfo.id ? store.state.curSceneInfo.id : ''
   let params = {
     id: taskId
@@ -278,10 +171,6 @@ onMounted(() => {
 })
 const setVoice = () => {
   cameraController.identifyInfoCOnfig(state.formContent.beijing, 0, 'speaker4')
-  // emitter.emit('configVoice', state.formContent.beijing)
-  // if (store.state.curSceneInfo.voiceName) {
-  //   playVoice(store.state.curSceneInfo.voiceName)
-  // }
 }
 //暂停语音播放
 const pauseVoice = () => {
@@ -292,21 +181,7 @@ const pauseVoice = () => {
   }
   emitter.emit('pauseVoice')
   state.goon = !state.goon
-  // if (store.state.sceneModule.voiceUrl) {
-  //   store.state.sceneModule.voiceUrl.pause()
-  // }
 }
-// watch(
-//   () => store.state.sceneModule.startingFalseInfo,
-//   (newVal) => {
-//     state.formContent.redForce = newVal.red.typeOfEquipment
-//     state.formContent.blueForce = newVal.blue.typeOfEquipment
-//   }
-// )
-// 深度监听任务详情
-// missionBrief: '', //实验任务简报brief
-// missionObjective: '', //实验任务目标
-// scenarioBackground: '' //实验场景背景
 watch(
   () => store.state.experimentModule.missionObjective,
   (newValue, oldValue) => {
@@ -342,7 +217,7 @@ watch(
 )
 const handleClose = () => {
   emitter.emit('closeBottomControlPanel', 'three')
-  emitter.emit('tagActiveClose', 'scenarioContent')
+  emitter.emit('tagNavbarBtnClose', 'scenarioContent')
 }
 </script>
 
@@ -352,18 +227,16 @@ const handleClose = () => {
   top: 10%;
   left: 20%;
   transform: translate(-50%, 0%);
-
+  background: var(--panel-bg);
+  box-shadow: var(--box-shadow-glow);
+  border-top: 4px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   z-index: 0;
   width: 1200px;
   max-height: 80vh;
   overflow-y: auto;
-  color: #eee;
-  background: url('@/assets/image/panelIcons/背景.png') no-repeat;
-  background-size: 100% 100%;
-  border: 1px solid rgba(117, 252, 255, 0.8);
-  border-radius: 4px;
+  color: var(--text-primary);
   backdrop-filter: blur(1px);
-  // animation: zoomIn 0.4s;
 
   .content-title {
     background: url('@/assets/image/panelIcons/title-bg3.png') no-repeat;
@@ -371,7 +244,7 @@ const handleClose = () => {
     height: 40px;
     line-height: 48px;
     font-size: 25px;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: 2.4px;
     font-weight: 400;
     text-align: left;
@@ -390,11 +263,10 @@ const handleClose = () => {
 
   .content-form {
     .form {
-      // margin: 0 0 10px;
-      color: white;
+      color: var(--text-primary);
 
       .background-title {
-        color: #fff;
+        color: var(--text-primary);
         font-size: 16px;
         font-weight: 600;
         letter-spacing: 1px;
@@ -409,14 +281,14 @@ const handleClose = () => {
           position: absolute;
           height: 2px;
           width: 40%;
-          background-image: linear-gradient(45deg, #48edff, transparent);
+          background-image: linear-gradient(45deg, var(--cyan-glow), transparent);
           bottom: 0px;
           left: 19px;
         }
 
         .cicrle {
-          background: #80fbff;
-          border: 3.5px solid rgba(128, 251, 255, 1);
+          background: var(--cyan-glow);
+          border: 3.5px solid var(--cyan-glow);
           box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 0px 6px 1px rgba(0, 255, 245, 0.75);
           margin-right: 12px;
@@ -440,7 +312,7 @@ const handleClose = () => {
           overflow: auto;
 
           .content-text {
-            color: rgba(0, 231, 255, 1);
+            color: var(--cyan-glow);
             transition: color ease-out 0.3s, text-shadow ease-out 0.3s;
             text-shadow: 0 0 1rem #0cf;
             text-indent: 2em;
@@ -487,8 +359,7 @@ const handleClose = () => {
             .time-img {
               width: 10%;
               height: 100%;
-              background: url('~@/assets/image/panelIcons/任务时间.png')
-                no-repeat;
+              background: url('~@/assets/image/panelIcons/任务时间.png') no-repeat;
               background-size: 100%;
               margin-right: 10px;
               background-position: center;
@@ -499,11 +370,11 @@ const handleClose = () => {
               height: 100%;
 
               .time-title {
-                color: rgba(196, 255, 255, 1);
+                color: var(--cyan-light);
               }
 
               .time-main {
-                color: rgba(0, 231, 255, 1);
+                color: var(--cyan-glow);
               }
             }
           }
@@ -517,8 +388,7 @@ const handleClose = () => {
             .area-img {
               width: 10%;
               height: 100%;
-              background: url('~@/assets/image/panelIcons/任务区域.png')
-                no-repeat;
+              background: url('~@/assets/image/panelIcons/任务区域.png') no-repeat;
               background-size: 100%;
               background-position: center;
               margin-right: 10px;
@@ -529,11 +399,11 @@ const handleClose = () => {
               height: 100%;
 
               .area-title {
-                color: rgba(196, 255, 255, 1);
+                color: var(--cyan-light);
               }
 
               .area-main {
-                color: rgba(0, 231, 255, 1);
+                color: var(--cyan-glow);
               }
             }
           }
@@ -617,6 +487,7 @@ const handleClose = () => {
           }
 
           .blueForce {
+
             // display: flex;
             .blueForce-item {
               // margin: 10px;
@@ -651,6 +522,7 @@ const handleClose = () => {
           }
 
           .redForce {
+
             // display: flex;
             .redForce-item {
               // margin: 10px;
@@ -722,7 +594,7 @@ const handleClose = () => {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 4px;
         border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #eee;
+        color: var(--text-secondary);
         // padding: 10px;
 
         :deep .el-input__wrapper {
@@ -733,11 +605,11 @@ const handleClose = () => {
 
         :deep .el-textarea__inner {
           background-color: rgba(255, 255, 255, 0.1);
-          color: #eee;
+          color: var(--text-primary);
         }
 
         :deep .el-input__inner {
-          color: #eee;
+          color: var(--text-primary);
         }
       }
 
@@ -753,7 +625,7 @@ const handleClose = () => {
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 4px;
           padding: 10px;
-          color: #eee;
+          color: var(--text-primary);
           font-size: 30px;
 
           &:hover {
@@ -768,13 +640,29 @@ const handleClose = () => {
       text-align: right;
 
       .el-button {
-        background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
+        background: var(--img-button-bg);
+        background-size: 100% 100%;
         width: 100px;
         height: 35px;
-        color: #ffff;
-        border-radius: 5px;
-        margin-left: 10px;
+        color: rgb(255, 255, 255);
+        border-radius: 3px;
+        margin: 2px 4px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        font-size: 14px;
+        text-align: center;
+        line-height: 35px;
+        transition: all 0.3s ease;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        filter: brightness(0.9);
+
+        &:hover:not(:disabled) {
+          box-shadow: 0 0 10px var(--el-button-primary-hover-bg);
+          color: var(--text-primary);
+          filter: brightness(1.05);
+        }
       }
     }
 
@@ -831,7 +719,7 @@ const handleClose = () => {
 }
 
 :deep .el-form-item__label {
-  color: white;
+  color: var(--text-primary);
   font-size: 30px;
   padding: 10px;
 }
@@ -849,4 +737,3 @@ const handleClose = () => {
   right: 40px;
 }
 </style>
-

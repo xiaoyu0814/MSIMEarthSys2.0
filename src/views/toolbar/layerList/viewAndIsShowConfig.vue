@@ -14,30 +14,11 @@
             class="close_Sty"
             @click="handleClose"
           />
-          <!-- <div class="type-infor">
-            <ul>
-              <li v-for="(item, index) in state2.inforList" :key="index">
-                <label>{{ item.name }}：</label><span>{{ item.value }}</span>
-              </li>
-            </ul>
-          </div> -->
           <el-tabs
             type="border-card"
             v-model="state2.tabSelect"
             @tab-click="getCardTabs"
           >
-            <!-- <el-tab-pane label="视角配置" name="视角配置">
-              <el-radio-group
-                v-model="state2.statusRadio"
-                @change="changeSelected1"
-              >
-                <el-radio label="first">第一视角</el-radio>
-                <el-radio label="three">第三视角</el-radio>
-                <el-radio label="lockEntity">锁定实体</el-radio>
-                <el-radio label="free">自由视角</el-radio>
-                <el-radio label="viewAngle">观看视角</el-radio>
-              </el-radio-group>
-            </el-tab-pane> -->
             <el-tab-pane label="平台信息" name="显隐">
               <div class="checkedOption">
                 <el-checkbox-group v-model="state2.commandVisibleRadio">
@@ -83,102 +64,7 @@
                 >
               </div>
             </el-tab-pane>
-            <el-tab-pane
-              label="模拟器"
-              name="模拟器"
-              v-if="state2.isShowSimModel"
-            >
-              <div class="checkedOption">
-                <el-radio-group
-                  v-model="state2.simModelControlRadio"
-                  @change="changeCommandControl"
-                >
-                  <el-radio
-                    v-for="(item, index) in state2.simModelControlObj"
-                    :key="index"
-                    :label="item.value"
-                  >
-                    {{ item.name }}
-                  </el-radio>
-                </el-radio-group>
-              </div>
-              <div
-                v-if="state2.simModelControlRadio.length > 0"
-                class="redioBtnClar"
-              >
-                <el-button
-                  type="primary"
-                  size="small"
-                  @click="clearSimModelCommandControl"
-                  >取消</el-button
-                >
-              </div>
-            </el-tab-pane>
-            <!--这里解开特情就能显示-->
-            <!-- <el-tab-pane label="特情" name="特情" v-if="state2.isShowHuifang">
-              <div class="checkedOption">
-                <el-radio-group
-                  v-model="state2.commandSpecialRadio"
-                  @change="changeCommandControl"
-                >
-                  <el-radio
-                    v-for="(item, index) in state2.commandSpecialObj"
-                    :key="index"
-                    :label="item.value"
-                  >
-                    {{ item.name }}
-                  </el-radio>
-                </el-radio-group>
-              </div>
-            </el-tab-pane> -->
-            <el-tab-pane
-              label="链路↓"
-              name="链路↓"
-              v-if="state2.isShowLianLuModel"
-            >
-              <div class="checkedOption">
-                <el-checkbox-group v-model="state2.commandinCommingCheck">
-                  <div
-                    v-for="(item, index) in state2.commandinCommingObj"
-                    :key="index"
-                    style="text-align: left"
-                  >
-                    <el-checkbox
-                      :label="item.value"
-                      @change="commandinCommingControl(item.value)"
-                    >
-                      {{ item.name }}
-                    </el-checkbox>
-                  </div>
-                </el-checkbox-group>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane
-              label="链路↑"
-              name="链路↑"
-              v-if="state2.isShowLianLuModel"
-            >
-              <div class="checkedOption">
-                <el-checkbox-group v-model="state2.ommandinOutGoingCheck">
-                  <div
-                    v-for="(item, index) in state2.commandinOutGoingObj"
-                    :key="index"
-                    style="text-align: left"
-                  >
-                    <el-checkbox
-                      :label="item.value"
-                      @change="commandinOutGoingControl(item.value)"
-                    >
-                      {{ item.name }}
-                    </el-checkbox>
-                  </div>
-                </el-checkbox-group>
-              </div>
-            </el-tab-pane>
           </el-tabs>
-
-          <!-- <div class="buttonTitle">视角配置：</div> -->
-          <!-- <div class="buttonTitle">显隐配置：</div> -->
         </div>
       </div>
     </div>
@@ -213,6 +99,9 @@ const state2 = reactive({
   existSightFrame: true,
   existMissileLine: true,
   existOperationalRadius: true,
+  existdetectionRadius: true,
+  existfireRadius: true,
+  existlinkInfos: true,
   existCommunicationRadius: true,
   existFirepowerRadius: true,
   existFrustum: true,
@@ -242,6 +131,9 @@ const state2 = reactive({
   sightFrameChecked: false,
   missileLineChecked: false,
   operationalRadiusChecked: false,
+  detectionRadiusChecked: false,
+  fireRadiusChecked: false,
+  linkInfosChecked: false,
   communicationRadiusChecked: false,
   firepowerRadiusChecked: false,
   narrowBandDisbChecked: false,
@@ -288,31 +180,10 @@ const state2 = reactive({
     localStorage.getItem('systemTitle') !== '复盘回放' ? '指令' : '显隐',
   commandControlRadio: '',
   commandControlObj: [
-    // {
-    //   name: '攻击指定位置',
-    //   value: 'fireAtPosition'
-    // },
-    // { name: '攻击指定目标', value: 'fireAtTarget' },
-    // {
-    //   name: '攻击自定义指令',
-    //   value: 'fireByRaw'
-    // },
-    // {
-    //   name: '攻击',
-    //   value: 'openFire'
-    // },
-    // {
-    //   name: '变更高度',
-    //   value: 'moveToAltitude'
-    // },
-    // {
-    //   name: '变更到指定位置',
-    //   value: 'moveToPosition'
-    // },
-    // {
-    //   name: '改变位置',
-    //   value: 'setPosition'
-    // },
+    {
+      name: '变更高度',
+      value: 'moveToAltitude'
+    },
     {
       name: '变更速度',
       value: 'moveToSpeedKMH'
@@ -325,22 +196,10 @@ const state2 = reactive({
       name: '变更传感器开关',
       value: 'switchToSensor'
     },
-    // {
-    //   name: '变更到目标距离',
-    //   value: 'moveToTarget'
-    // },
-    // {
-    //   name: '变更传感器频率',
-    //   value: 'sensorChangeFrequency'
-    // },
     {
       name: '变更传感器模式',
       value: 'sensorChangeMode'
     },
-    // {
-    //   name: '变更雷达工作状态',
-    //   value: 'sensorChangeState'
-    // },
     {
       name: '变更干扰机工作状态',
       value: 'fireTurnOnWeapon'
@@ -350,106 +209,17 @@ const state2 = reactive({
       value: 'attackTarget'
     },
     {
-      name: '销毁',
-      value: 'destroyTarget'
-    }
-    // {
-    //   name: '变更弹药数量',
-    //   value: 'setWeaponNum'
-    // }
-    // {
-    //   name: '发送干扰弹',
-    //   value: 'generatingJammer'
-    // },
-    // {
-    //   name: '激光定向干扰',
-    //   value: 'laserDirectedJamming'
-    // },
-    // {
-    //   name: '激光欺骗',
-    //   value: 'laserDeception'
-    // },
-    // {
-    //   name: '变更烟雾干扰装置状态',
-    //   value: 'changeInfraredState'
-    // },
-    // {
-    //   name: '伴飞',
-    //   value: 'accompanyingFlight'
-    // },
-    // {
-    //   name: '飞机起飞',
-    //   value: 'taskOff'
-    // }
-    // {
-    //   name: '语音控制',
-    //   value: 'ShowVoice'
-    // }
-  ],
-  commandSpecialRadio: '',
-  commandSpecialObj: [
-    {
-      name: '发动机故障',
-      value: 'breakMover'
-    },
-    {
-      name: '油料缺失',
-      value: 'deficiencyFuel'
-    },
-    {
-      name: '缺失弹药',
-      value: 'deficiencyWeaponQuantity'
+      name: '弹药配置',
+      value: 'setWeaponNum'
     }
   ],
-  inComming: {
-    detectChecked: false,
-    SensorTrackChecked: false,
-    localTrackChecked: false,
-    jamChecked: false,
-    fireChecked: false,
-    killChecked: false,
-    commChecked: false,
-    taskChecked: false
-  },
-  outGoing: {
-    detectChecked: false,
-    SensorTrackChecked: false,
-    localTrackChecked: false,
-    jamChecked: false,
-    fireChecked: false,
-    killChecked: false,
-    commChecked: false,
-    taskChecked: false
-  },
   connectLineManage: null,
   entityConfigSum: 14,
   entityConfigCount: 0,
   isShowHuifang: localStorage.getItem('systemTitle') !== '复盘回放',
   simModelControlRadio: '',
-  simModelControlObj: [
-    {
-      name: '运控',
-      value: 'controlOrder'
-    },
-    {
-      name: '集合',
-      value: 'gatherAround'
-    },
-    {
-      name: '机场气象',
-      value: 'airPortWeather'
-    }
-    // {
-    //   name: '海洋海况',
-    //   value: 'ocean'
-    // }
-  ],
   commandVisibleRadio: [],
   commandVisibleObj: [
-    {
-      name: '路径',
-      value: 'pathCheck'
-    },
     {
       name: '路径墙',
       value: 'entityWall'
@@ -459,145 +229,31 @@ const state2 = reactive({
       value: 'entityWack'
     },
     {
-      name: '航线',
-      value: 'planLine'
-    },
-    // {
-    //   name: '瞄准框',
-    //   value: 'sightFrame'
-    // },
-    // {
-    //   name: '导弹线',
-    //   value: 'missileLine'
-    // },
-    // {
-    //   name: '作战半径',
-    //   value: 'operationalRadius'
-    // },
-    // {
-    //   name: '防空范围',
-    //   value: 'fkfw'
-    // },
-    // {
-    //   name: '感知能力',
-    //   value: 'entityFrustum'
-    // },
-    // {
-    //   name: '通信半径',
-    //   value: 'communicationRadius'
-    // },
-    {
-      name: '卫星开机',
-      value: 'satelliteTurnOn'
-    }
-    // {
-    //   name: '火力半径',
-    //   value: 'communicationRadius'
-    // },
-    // {
-    //   name: '传感器范围',
-    //   value: 'entitySensor'
-    // },
-    // {
-    //   name: '干扰范围(全频)',
-    //   value: 'fullBandDisb'
-    // },
-    // {
-    //   name: '干扰范围(窄带)',
-    //   value: 'narrowBandDisb'
-    // },
-    // {
-    //   name: '雷达覆盖与探测可能性图',
-    //   value: 'getEMToolInfo'
-    // },
-    // {
-    //   name: '杂波图',
-    //   value: 'getNoiseMap'
-    // },
-    // {
-    //   name: '激光干扰机工作状态',
-    //   value: 'LaserDesignatorState'
-    // }
-  ],
-  commandinCommingCheck: [],
-  commandinCommingObj: [
-    {
-      name: '雷达探测',
-      value: 'InDetectChange'
+      name: '侦察半径',
+      value: 'entityFrustum'
     },
     {
-      name: '传感器追踪',
-      value: 'InSensorChange'
+      name: '作战半径',
+      value: 'operationalRadius'
     },
     {
-      name: '局域追踪',
-      value: 'InLocalChange'
+      name: '火力半径',
+      value: 'fireRadius'
     },
     {
-      name: '火力打击',
-      value: 'InFireChange'
-    },
-    {
-      name: '电磁干扰',
-      value: 'InJamChange'
-    },
-    {
-      name: '网络通信',
-      value: 'InCommChange'
-    },
-    {
-      name: '任务关联',
-      value: 'InTaskChange'
-    }
-  ],
-  ommandinOutGoingCheck: [],
-  commandinOutGoingObj: [
-    {
-      name: '雷达探测',
-      value: 'OutDetectChange'
-    },
-    {
-      name: '传感器追踪',
-      value: 'OutSensorChange'
-    },
-    {
-      name: '局域追踪',
-      value: 'OutLocalChange'
-    },
-    {
-      name: '火力打击',
-      value: 'OutFireChange'
-    },
-    {
-      name: '电磁干扰',
-      value: 'OutJamChange'
-    },
-    {
-      name: '网络通信',
-      value: 'OutCommChang'
-    },
-    {
-      name: '任务关联',
-      value: 'OutTaskChange'
+      name: '链路信息',
+      value: 'linkInfos'
     }
   ],
   isShowSimModel: false,
   isShowLianLuModel: false
-  // isShowSimModel:
-  // localStorage.getItem('systemTitle') !== '复盘回放' &&
-  // store.state.sceneModule.currentNode.code == 'green'
 })
 
 onMounted(() => {
   state2.OldcommandControlObj = state2.commandControlObj
-  state2.OldcommandSpecialObj = state2.commandSpecialObj
-  state2.OldsimModelControlObj = state2.simModelControlObj
   state2.OldcommandVisibleObj = state2.commandVisibleObj
-  state2.OldcommandinCommingObj = state2.commandinCommingObj
-  state2.OldcommandinOutGoingObj = state2.commandinOutGoingObj
   //显示当前飞机状态属性信息
   showPlaneInfo(store.state.sceneModule.currentFlyType)
-  showEntityConfig(store.state.sceneModule.entityLinkConfig)
   emitOnListener()
   const sceneAction = new window.EarthPlugn.sceneAction({
     earth: window.MSIMEarth,
@@ -607,15 +263,7 @@ onMounted(() => {
   state2.connectLineManage = sceneAction.connectLineManagement
   moveBtnPanel('panelContextMenu')
 })
-simModelList.forEach((item) => {
-  console.log('更多', item)
-  if (store.state.sceneModule.currentNode.code == item.value) {
-    state2.isShowSimModel = true
-  } else {
-    state2.isShowSimModel = false
-  }
-})
-console.log('更多中模拟器', state2.isShowSimModel)
+
 //显示飞机当前状态的信息
 const showPlaneInfo = (inforData) => {
   state2.inforList = []
@@ -664,16 +312,8 @@ const controlFieldShowOrHide = (typeName) => {
   })
   //过滤指令
   filterDetailsField(fieldSetting, 'commandControlObj')
-  //过滤特情
-  filterDetailsField(fieldSetting, 'commandSpecialObj')
-  //过滤模拟器
-  filterDetailsField(fieldSetting, 'simModelControlObj')
   //过滤显隐
   filterDetailsField(fieldSetting, 'commandVisibleObj')
-  //链路↓
-  filterDetailsField(fieldSetting, 'commandinCommingObj')
-  //链路↑
-  filterDetailsField(fieldSetting, 'commandinOutGoingObj')
   controlFieldCheck()
 }
 
@@ -724,132 +364,46 @@ let getCardTabs = (name) => {
   emitter.emit('clearSimModelCommandControl', state2.simModelControlRadio)
   state2.simModelControlRadio = ''
 }
-const showEntityConfig = (configData) => {
-  let config = configData
-  if (configData) {
-    let commandinCommingCheck = []
-    let ommandinOutGoingCheck = []
-    state2.commandinCommingObj.forEach((element) => {
-      commandinCommingCheck.push(element.value)
-    })
-    state2.commandinOutGoingObj.forEach((element) => {
-      ommandinOutGoingCheck.push(element.value)
-    })
-    state2.commandinCommingCheck = commandinCommingCheck
-    state2.ommandinOutGoingCheck = ommandinOutGoingCheck
-  }
-  // state2.inComming.detectChecked = config
-  // state2.outGoing.detectChecked = config
-
-  // state2.inComming.SensorTrackChecked = config
-  // state2.outGoing.SensorTrackChecked = config
-
-  // state2.inComming.localTrackChecked = config
-  // state2.outGoing.localTrackChecked = config
-
-  // state2.inComming.jamChecked = config
-  // state2.outGoing.jamChecked = config
-
-  // state2.inComming.fireChecked = config
-  // state2.outGoing.fireChecked = config
-
-  // state2.inComming.killChecked = config
-  // state2.outGoing.killChecked = config
-
-  // state2.inComming.commChecked = config
-  // state2.outGoing.commChecked = config
-
-  // state2.inComming.taskChecked = config
-  // state2.outGoing.taskChecked = config
-  if (config) state2.entityConfigCount = state2.entityConfigSum
-  else state2.entityConfigCount = 0
-}
 const emitOnListener = () => {
   //监听是否显示
-  emitter.on('existPath', (value) => {
-    state2.existPath = value
-  })
   emitter.on('existWack', (value) => {
     state2.existWack = value
-  })
-  emitter.on('existSensor', (value) => {
-    state2.existSensor = value
   })
   emitter.on('existWall', (value) => {
     state2.existWall = value
   })
-  emitter.on('existSightFrame', (value) => {
-    state2.existSightFrame = value
-  })
-  emitter.on('existMissileLine', (value) => {
-    state2.existMissileLine = value
-  })
   emitter.on('existOperationalRadius', (value) => {
     state2.existOperationalRadius = value
   })
-  emitter.on('existCommunicationRadius', (value) => {
-    state2.existCommunicationRadius = value
+  emitter.on('existdetectionRadius', (value) => {
+    state2.existdetectionRadius = value
   })
-  emitter.on('existFirepowerRadius', (value) => {
-    state2.existFirepowerRadius = value
+  emitter.on('existfireRadius', (value) => {
+    state2.existfireRadius = value
   })
-  emitter.on('existFrustum', (value) => {
-    state2.existFrustum = value
-  })
-  emitter.on('existFullBandDisb', (value) => {
-    state2.existFullBandDisb = value
-  })
-  emitter.on('existNarrowBandDisb', (value) => {
-    state2.existNarrowBandDisb = value
-  })
-  emitter.on('existFrustum', (value) => {
-    state2.existFrustum = value
-  })
-  emitter.on('fireAtPosition', (value) => {
-    state2.fireAtPosition = value
+  emitter.on('existlinkInfos', (value) => {
+    state2.existlinkInfos = value
   })
   //监听是否选中
-  emitter.on('pathChecked', (value) => {
-    state2.pathChecked = value
-  })
   emitter.on('wackChecked', (value) => {
     state2.wackChecked = value
-  })
-  emitter.on('sensorChecked', (value) => {
-    state2.sensorChecked = value
-  })
-  emitter.on('frustumChecked', (value) => {
-    state2.frustumChecked = value
   })
   emitter.on('wallChecked', (value) => {
     state2.wallChecked = value
   })
-  emitter.on('sightFrameChecked', (value) => {
-    state2.sightFrameChecked = value
-  })
-  emitter.on('missileLineChecked', (value) => {
-    state2.missileLineChecked = value
-  })
   emitter.on('operationalRadiusChecked', (value) => {
     state2.operationalRadiusChecked = value
   })
-  emitter.on('communicationRadiusChecked', (value) => {
-    state2.communicationRadiusChecked = value
+  emitter.on('detectionRadiusChecked', (value) => {
+    state2.detectionRadiusChecked = value
   })
-  emitter.on('firepowerRadiusChecked', (value) => {
-    state2.firepowerRadiusChecked = value
+  emitter.on('fireRadiusChecked', (value) => {
+    state2.fireRadiusChecked = value
   })
-  emitter.on('narrowBandDisbChecked', (value) => {
-    state2.narrowBandDisbChecked = value
+  emitter.on('linkInfosChecked', (value) => {
+    state2.linkInfosChecked = value
   })
-  emitter.on('fullBandDisbChecked', (value) => {
-    state2.fullBandDisbChecked = value
-  })
-  emitter.on('fireAtPositionChecked', (value) => {
-    state2.fireAtPositionChecked = value
-  })
-  // emitter.off('showCommandControl')
-  // 指令控制弹窗显示
+
   emitter.on('showCommandControl', (value) => {
     state2.commandControlIsShow = value.isShow
     if (value.isShow) {
@@ -872,22 +426,13 @@ const emitOnListener = () => {
       state2.commandFormData['sensorArr'] = value.commandFormData['sensorArr']
     }
   })
-  // 模拟器指令控制弹窗显示
-  emitter.on('showSimModelCommandControl', (value) => {
-    state2.simModelCommandControlIsShow = value.isShow
-    if (value.isShow) {
-      state2.simModelCommandFormData = value.simModelCommandFormData
-    }
-  })
+  
   // 清空单选
   emitter.on('clearRedioData', () => {
     state2.commandControlRadio = ''
     state2.commandSpecialRadio = ''
   })
-  // 模拟器导调清空单选
-  emitter.on('clearSimModelRadioData', () => {
-    state2.simModelControlRadio = ''
-  })
+  
 }
 const handleClose = () => {
   emitter.emit('showConfigPanel', false)
@@ -915,22 +460,6 @@ const changeVisibleControl = (value) => {
   newtargetDetailsCheck[entityId] = state2.commandVisibleRadio
   store.commit('setTargetDetailsCheck', newtargetDetailsCheck)
 }
-/**
- * @description 链路↑所有方法调用集合
- * @param { String } value 勾选value值
- */
-const commandinOutGoingControl = (value) => {
-  let isHave = state2.ommandinOutGoingCheck.includes(value)
-  entityInFunctionObj['entity' + value](isHave)
-}
-/**
- * @description 链路↓所有方法调用集合
- * @param { String } value 勾选value值
- */
-const commandinCommingControl = (value) => {
-  let isHave = state2.ommandinOutGoingCheck.includes(value)
-  entityInFunctionObj['entity' + value](isHave)
-}
 
 const clearCommandControl = () => {
   emitter.emit('clearCommandControl', state2.commandControlRadio)
@@ -940,174 +469,6 @@ const clearSimModelCommandControl = () => {
   emitter.emit('clearSimModelCommandControl', state2.simModelControlRadio)
   state2.simModelControlRadio = ''
 }
-const entityConfig = (itemcheck) => {
-  let entityId = store.state.sceneModule.currentFlyType.entityId
-  if (itemcheck) {
-    state2.entityConfigCount += 1
-    if (state2.entityConfigCount >= state2.entityConfigSum) {
-      emitter.emit('setLinkChecked', true)
-      store.state.sceneModule.entityLinkConfigList.push(entityId)
-    } else {
-      emitter.emit('setLinkChecked', false)
-      let index = store.state.sceneModule.entityLinkConfigList.indexOf(entityId)
-      if (index > -1) {
-        store.state.sceneModule.entityLinkConfigList.splice(index, 1)
-      }
-    }
-  } else {
-    state2.entityConfigCount -= 1
-    emitter.emit('setLinkChecked', false)
-    let index = store.state.sceneModule.entityLinkConfigList.indexOf(entityId)
-    if (index > -1) {
-      store.state.sceneModule.entityLinkConfigList.splice(index, 1)
-    }
-  }
-}
-
-let entityInFunctionObj = {}
-entityInFunctionObj.entityInDetectChange = (value) => {
-  state2.inComming.detectChecked = value
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'RE_SDC',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.detectChecked)
-}
-entityInFunctionObj.entityInSensorChange = (value) => {
-  state2.inComming.SensorTrackChecked = value
-  console.log('是这里吗', store.state.sceneModule.currentFlyType.entityId)
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'RE_STrackInit',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.SensorTrackChecked)
-}
-
-entityInFunctionObj.entityInLocalChange = (value) => {
-  state2.inComming.localTrackChecked = value
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'RE_LTrackInit',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.localTrackChecked)
-}
-
-entityInFunctionObj.entityInFireChange = (value) => {
-  state2.inComming.fireChecked = value
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'RE_WeaponF',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'distancelabel',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.fireChecked)
-}
-
-entityInFunctionObj.entityInJamChange = (value) => {
-  state2.inComming.jamChecked = value
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'RE_JamA',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.jamChecked)
-}
-
-entityInFunctionObj.entityInCommChange = (value) => {
-  state2.inComming.commChecked = value
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'RE_MR',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.commChecked)
-}
-
-entityInFunctionObj.entityInTaskChange = (value) => {
-  state2.inComming.taskChecked = value
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'Task_Aign',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.taskChecked)
-}
-
-entityInFunctionObj.entityInKillChange = (value) => {
-  state2.inComming.killChecked = value
-  state2.connectLineManage.showEntityByTwoKeyword(
-    'RE_WeaponWH',
-    store.state.sceneModule.currentFlyType.entityId,
-    value
-  )
-  entityConfig(state2.inComming.killChecked)
-}
-
-entityInFunctionObj.entityOutDetectChange = (value) => {
-  state2.outGoing.detectChecked = value
-  let linkId = `RE_SDC==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  entityConfig(state2.outGoing.detectChecked)
-}
-
-entityInFunctionObj.entityOutSensorChange = (value) => {
-  state2.outGoing.SensorTrackChecked = value
-  console.log('还是这里', store.state.sceneModule.currentFlyType.entityId)
-  let linkId = `RE_STrackInit==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  entityConfig(state2.outGoing.SensorTrackChecked)
-}
-
-entityInFunctionObj.entityOutLocalChange = (value) => {
-  state2.outGoing.localTrackChecked = value
-  let linkId = `RE_LTrackInit==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  entityConfig(state2.outGoing.localTrackChecked)
-}
-
-entityInFunctionObj.entityOutFireChange = (value) => {
-  state2.outGoing.fireChecked = value
-  let linkId = `RE_WeaponF==${store.state.sceneModule.currentFlyType.entityId}==`
-  let labelId = `distancelabel==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  state2.connectLineManage.showEntityByKeyword(labelId, value)
-  entityConfig(state2.outGoing.fireChecked)
-}
-
-entityInFunctionObj.entityOutJamChange = (value) => {
-  state2.outGoing.jamChecked = value
-  let linkId = `RE_JamA==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  entityConfig(state2.outGoing.jamChecked)
-}
-
-entityInFunctionObj.entityOutCommChange = (value) => {
-  state2.outGoing.commChecked = value
-  let linkId = `RE_MR==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  entityConfig(state2.outGoing.commChecked)
-}
-
-entityInFunctionObj.entityOutTaskChange = (value) => {
-  state2.outGoing.taskChecked = value
-  let linkId = `Task_Aign==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  entityConfig(state2.outGoing.taskChecked)
-}
-
-entityInFunctionObj.entityOutKillChange = (value) => {
-  state2.outGoing.killChecked = value
-  let linkId = `RE_WeaponWH==${store.state.sceneModule.currentFlyType.entityId}==`
-  state2.connectLineManage.showEntityByKeyword(linkId, value)
-  entityConfig(state2.outGoing.killChecked)
-}
 // 深度监听
 watch(
   () => store.state.sceneModule.currentFlyType,
@@ -1116,13 +477,8 @@ watch(
   },
   { deep: true }
 )
-watch(
-  () => store.state.sceneModule.entityLinkConfig,
-  (newValue) => {
-    showEntityConfig(newValue)
-  },
-  { deep: true }
-)
+
+
 </script>
 
 <style lang="less" scoped>

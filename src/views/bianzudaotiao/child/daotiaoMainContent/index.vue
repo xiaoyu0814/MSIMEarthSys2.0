@@ -1240,9 +1240,9 @@ onMounted(() => {
 // 科技风变量
 @tech-blue: #06d6f9;
 @tech-dark-blue: #001a46;
-@tech-light-blue: rgba(6, 214, 249, 0.1);
-@tech-border: rgba(6, 214, 249, 0.3);
-@tech-glow: 0 0 10px rgba(6, 214, 249, 0.5);
+@tech-light-blue: rgba(var(--cyan-color-rgb), 0.1);
+@tech-border: rgba(var(--cyan-color-rgb), 0.3);
+@tech-glow: 0 0 10px rgba(var(--cyan-color-rgb), 0.5);
 
 .daotiao-main-content {
   width: 100%;
@@ -1267,10 +1267,10 @@ onMounted(() => {
     right: 0;
     bottom: 0;
     background-image: linear-gradient(
-        rgba(6, 214, 249, 0.1) 1px,
+        rgba(var(--cyan-color-rgb), 0.1) 1px,
         transparent 1px
       ),
-      linear-gradient(90deg, rgba(6, 214, 249, 0.1) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(var(--cyan-color-rgb), 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
     pointer-events: none;
     z-index: 0;
@@ -1292,17 +1292,17 @@ onMounted(() => {
     }
 
     &::-webkit-scrollbar-track {
-      background: rgba(6, 214, 249, 0.1);
+      background: rgba(var(--cyan-color-rgb), 0.1);
       border-radius: 4px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgba(6, 214, 249, 0.5);
+      background: rgba(var(--cyan-color-rgb), 0.5);
       border-radius: 4px;
       transition: background 0.3s ease;
 
       &:hover {
-        background: rgba(6, 214, 249, 0.8);
+        background: rgba(var(--cyan-color-rgb), 0.8);
       }
     }
   }
@@ -1310,10 +1310,10 @@ onMounted(() => {
   .grid-container {
     background: linear-gradient(
       135deg,
-      rgba(2, 26, 70, 0.9) 0%,
+      rgba(var(--panel-bg-rgb), 0.9) 0%,
       rgba(0, 40, 80, 0.9) 100%
     );
-    box-shadow: 0 0 30px rgba(6, 214, 249, 0.2);
+    box-shadow: 0 0 30px rgba(var(--cyan-color-rgb), 0.2);
     position: relative;
     // 允许容器横向扩展
     width: auto;
@@ -1339,14 +1339,14 @@ onMounted(() => {
     display: flex;
     background: linear-gradient(
       135deg,
-      rgba(2, 26, 70, 0.98) 0%,
+      rgba(var(--panel-bg-rgb), 0.98) 0%,
       rgba(0, 40, 80, 0.98) 100%
     );
     color: @tech-blue;
     font-weight: 600;
     font-size: 14px;
     border-bottom: 1px solid @tech-border;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(var(--black-rgb), 0.3);
     // 添加吸顶效果
     position: sticky;
     top: 0;
@@ -1430,7 +1430,7 @@ onMounted(() => {
       transition: background 0.3s ease;
     }
     &:hover::-webkit-scrollbar-thumb {
-      background: rgba(6, 214, 249, 0.5);
+      background: rgba(var(--cyan-color-rgb), 0.5);
     }
     // 添加平滑滚动效果
     scroll-behavior: smooth;
@@ -1442,8 +1442,8 @@ onMounted(() => {
     width: auto;
 
     &:hover {
-      background: rgba(6, 214, 249, 0.1);
-      box-shadow: inset 0 0 20px rgba(6, 214, 249, 0.1);
+      background: rgba(var(--cyan-color-rgb), 0.1);
+      box-shadow: inset 0 0 20px rgba(var(--cyan-color-rgb), 0.1);
     }
 
     &:last-child {
@@ -1461,7 +1461,7 @@ onMounted(() => {
       height: 30px;
       background: linear-gradient(
         135deg,
-        rgba(6, 214, 249, 0.6) 0%,
+        rgba(var(--cyan-color-rgb), 0.6) 0%,
         rgba(0, 128, 255, 0.6) 100%
       );
       border-radius: 50%;
@@ -1471,7 +1471,7 @@ onMounted(() => {
       opacity: 0;
       transition: opacity 0.3s ease;
       pointer-events: none;
-      box-shadow: 0 0 15px rgba(6, 214, 249, 0.6);
+      box-shadow: 0 0 15px rgba(var(--cyan-color-rgb), 0.6);
 
       // 箭头图标
       &::before {
@@ -1510,7 +1510,7 @@ onMounted(() => {
     transition: all 0.3s ease;
     border-radius: 8px;
     // 添加基础阴影，增强立体感
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(var(--black-rgb), 0.3);
     // 确保宽度计算方式一致，包括padding和border
     box-sizing: border-box;
 
@@ -1564,13 +1564,13 @@ onMounted(() => {
       border-left: 1px solid rgba(30, 144, 255, 0.5);
       border-bottom: 1px solid rgba(0, 191, 255, 0.3);
       border-top: 1px solid rgba(0, 191, 255, 0.6);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(var(--black-rgb), 0.4),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.2);
 
       &:hover {
         // 增强悬停效果，提升立体感
         box-shadow: 0 6px 20px rgba(30, 144, 255, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3),
+          inset 0 1px 0 rgba(var(--white-rgb), 0.3),
           inset 0 0 30px rgba(30, 144, 255, 0.3);
         // 添加轻微的上浮效果，增强立体感
         transform: translateY(-2px);
@@ -1594,13 +1594,13 @@ onMounted(() => {
       transition: all 0.3s ease;
       // 增强立体感基础
       transform-style: preserve-3d;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(var(--black-rgb), 0.4),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.2);
 
       &:hover {
         // 增强悬停效果，提升立体感
-        box-shadow: 0 8px 25px rgba(6, 214, 249, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 25px rgba(var(--cyan-color-rgb), 0.4),
+          inset 0 1px 0 rgba(var(--white-rgb), 0.3);
         // 添加轻微的上浮效果，增强立体感
         transform: translateY(-3px);
       }
@@ -1618,9 +1618,9 @@ onMounted(() => {
         border-bottom: 1px solid rgba(72, 187, 120, 0.4);
         border-top: 1px solid rgba(103, 194, 58, 0.9);
         // 增强发光效果
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
+        box-shadow: 0 4px 15px rgba(var(--black-rgb), 0.4),
           0 0 20px rgba(103, 194, 58, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          inset 0 1px 0 rgba(var(--white-rgb), 0.2);
       }
 
       &.AttackTarget-partial {
@@ -1636,9 +1636,9 @@ onMounted(() => {
         border-bottom: 1px solid rgba(247, 183, 49, 0.4);
         border-top: 1px solid rgba(230, 162, 60, 0.9);
         // 增强发光效果
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
+        box-shadow: 0 4px 15px rgba(var(--black-rgb), 0.4),
           0 0 20px rgba(230, 162, 60, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          inset 0 1px 0 rgba(var(--white-rgb), 0.2);
       }
       &.none-partial {
         // 提高黄色亮度，增加透明度
@@ -1653,9 +1653,9 @@ onMounted(() => {
         border-bottom: 1px solid rgba(238, 4, 4, 0.4);
         border-top: 1px solid rgba(236, 5, 5, 0.9);
         // 增强发光效果
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
+        box-shadow: 0 4px 15px rgba(var(--black-rgb), 0.4),
           0 0 20px rgba(226, 66, 17, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          inset 0 1px 0 rgba(var(--white-rgb), 0.2);
       }
 
       // 红方特有装饰
@@ -1696,7 +1696,7 @@ onMounted(() => {
     padding: 10px;
     background: linear-gradient(
       135deg,
-      rgba(2, 26, 70, 0.5) 0%,
+      rgba(var(--panel-bg-rgb), 0.5) 0%,
       rgba(0, 40, 80, 0.5) 100%
     );
     // 确保容器能够自由扩展宽度
@@ -1716,7 +1716,7 @@ onMounted(() => {
       transition: background 0.3s ease;
     }
     &:hover::-webkit-scrollbar-thumb {
-      background: rgba(6, 214, 249, 0.5);
+      background: rgba(var(--cyan-color-rgb), 0.5);
     }
     // 添加平滑滚动效果
     scroll-behavior: smooth;
@@ -1741,7 +1741,7 @@ onMounted(() => {
       font-size: 16px;
       font-weight: 600;
       color: @tech-blue;
-      text-shadow: 0 0 5px rgba(6, 214, 249, 0.5);
+      text-shadow: 0 0 5px rgba(var(--cyan-color-rgb), 0.5);
       font-family: 'Microsoft YaHei', sans-serif;
       width: 170px;
       overflow: hidden;
@@ -1750,7 +1750,7 @@ onMounted(() => {
 
     .tech-subtext {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(var(--white-rgb), 0.7);
       font-family: 'Courier New', monospace;
       letter-spacing: 0.5px;
     }
@@ -1769,7 +1769,7 @@ onMounted(() => {
       }
 
       .AttackTarget-all & {
-        color: #67c23a;
+        color: var(--status-running);
         text-shadow: 0 0 5px rgba(103, 194, 58, 0.5);
       }
 
@@ -1790,7 +1790,7 @@ onMounted(() => {
   .tech-text {
     font-size: 14px;
     color: @tech-blue;
-    text-shadow: 0 0 5px rgba(6, 214, 249, 0.5);
+    text-shadow: 0 0 5px rgba(var(--cyan-color-rgb), 0.5);
     font-family: 'Microsoft YaHei', sans-serif;
     width: 170px;
     overflow: hidden;
@@ -1814,7 +1814,7 @@ onMounted(() => {
   }
   .red-force.command-configured.none-partial {
     // 增强黄色阴影效果，使用更明亮的黄色和更高的透明度
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.6), 0 0 25px rgba(248, 3, 3, 0.8),
+    box-shadow: 0 4px 15px var(--accent-red), 0 0 25px rgba(248, 3, 3, 0.8),
       inset 0 1px 0 rgb(255 255 255 / 30%);
   }
 
@@ -1841,7 +1841,7 @@ onMounted(() => {
     );
     border: 1px solid @tech-border;
     border-radius: 8px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7), 0 0 30px rgba(6, 214, 249, 0.4);
+    box-shadow: 0 4px 25px rgba(var(--black-rgb), 0.7), 0 0 30px rgba(var(--cyan-color-rgb), 0.4);
     z-index: 2000;
     animation: fadeIn 0.2s ease-out;
     overflow: hidden;
@@ -1854,7 +1854,7 @@ onMounted(() => {
       padding: 8px 12px;
       background: linear-gradient(
         135deg,
-        rgba(6, 214, 249, 0.2) 0%,
+        rgba(var(--cyan-color-rgb), 0.2) 0%,
         rgba(0, 128, 255, 0.2) 100%
       );
       border-bottom: 1px solid @tech-border;
@@ -1910,7 +1910,7 @@ onMounted(() => {
             gap: 8px;
 
             label {
-              color: rgba(255, 255, 255, 0.8);
+              color: rgba(var(--white-rgb), 0.8);
               font-size: 12px;
               width: 40px;
             }
@@ -1920,7 +1920,7 @@ onMounted(() => {
               padding: 6px 8px;
               border: 1px solid @tech-border;
               border-radius: 4px;
-              background: rgba(6, 214, 249, 0.1);
+              background: rgba(var(--cyan-color-rgb), 0.1);
               color: @tech-blue;
               font-size: 12px;
               outline: none;
@@ -1928,8 +1928,8 @@ onMounted(() => {
 
               &:focus {
                 border-color: @tech-blue;
-                box-shadow: 0 0 10px rgba(6, 214, 249, 0.3);
-                background: rgba(6, 214, 249, 0.15);
+                box-shadow: 0 0 10px rgba(var(--cyan-color-rgb), 0.3);
+                background: rgba(var(--cyan-color-rgb), 0.15);
               }
             }
           }
@@ -1958,15 +1958,15 @@ onMounted(() => {
             opacity: 0.5;
             cursor: not-allowed;
             box-shadow: none;
-            background: rgba(6, 214, 249, 0.05) !important;
-            border-color: rgba(6, 214, 249, 0.2) !important;
-            color: rgba(6, 214, 249, 0.5) !important;
+            background: rgba(var(--cyan-color-rgb), 0.05) !important;
+            border-color: rgba(var(--cyan-color-rgb), 0.2) !important;
+            color: rgba(var(--cyan-color-rgb), 0.5) !important;
           }
 
           &.btn-confirm {
             background: linear-gradient(
               135deg,
-              rgba(6, 214, 249, 0.2),
+              rgba(var(--cyan-color-rgb), 0.2),
               rgba(0, 128, 255, 0.2)
             );
             color: @tech-blue;
@@ -1974,22 +1974,22 @@ onMounted(() => {
             &:not(:disabled):hover {
               background: linear-gradient(
                 135deg,
-                rgba(6, 214, 249, 0.3),
+                rgba(var(--cyan-color-rgb), 0.3),
                 rgba(0, 128, 255, 0.3)
               );
               border-color: @tech-blue;
-              box-shadow: 0 0 10px rgba(6, 214, 249, 0.4);
+              box-shadow: 0 0 10px rgba(var(--cyan-color-rgb), 0.4);
             }
           }
 
           &.btn-immediate {
             background: rgba(103, 194, 58, 0.1);
-            color: #67c23a;
+            color: var(--status-running);
             border-color: rgba(103, 194, 58, 0.3);
 
             &:not(:disabled):hover {
               background: rgba(103, 194, 58, 0.2);
-              border-color: #67c23a;
+              border-color: var(--status-running);
               box-shadow: 0 0 10px rgba(103, 194, 58, 0.3);
             }
           }
@@ -2002,7 +2002,7 @@ onMounted(() => {
         align-items: center;
         gap: 10px;
         padding: 8px 16px;
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(var(--white-rgb), 0.9);
         font-size: 13px;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -2012,7 +2012,7 @@ onMounted(() => {
         &:hover {
           background: linear-gradient(
             135deg,
-            rgba(6, 214, 249, 0.2) 0%,
+            rgba(var(--cyan-color-rgb), 0.2) 0%,
             rgba(0, 128, 255, 0.2) 100%
           );
           color: @tech-blue;
@@ -2022,7 +2022,7 @@ onMounted(() => {
         &.active {
           background: linear-gradient(
             135deg,
-            rgba(6, 214, 249, 0.3) 0%,
+            rgba(var(--cyan-color-rgb), 0.3) 0%,
             rgba(0, 128, 255, 0.3) 100%
           );
           color: @tech-blue;
@@ -2077,7 +2077,7 @@ onMounted(() => {
     .loading-spinner {
       width: 50px;
       height: 50px;
-      border: 3px solid rgba(6, 214, 249, 0.2);
+      border: 3px solid rgba(var(--cyan-color-rgb), 0.2);
       border-top: 3px solid @tech-blue;
       border-radius: 50%;
       animation: spin 1s linear infinite;
@@ -2108,7 +2108,7 @@ onMounted(() => {
       border-radius: 4px;
       background: linear-gradient(
         135deg,
-        rgba(6, 214, 249, 0.1) 0%,
+        rgba(var(--cyan-color-rgb), 0.1) 0%,
         rgba(0, 128, 255, 0.1) 100%
       );
       color: @tech-blue;
@@ -2119,7 +2119,7 @@ onMounted(() => {
         border-color: @tech-blue;
         background: linear-gradient(
           135deg,
-          rgba(6, 214, 249, 0.2) 0%,
+          rgba(var(--cyan-color-rgb), 0.2) 0%,
           rgba(0, 128, 255, 0.2) 100%
         );
         box-shadow: @tech-glow;
@@ -2140,14 +2140,14 @@ onMounted(() => {
   top: calc(50% - 100px);
   background: linear-gradient(
     135deg,
-    rgba(2, 26, 70, 0.95) 0%,
+    rgba(var(--panel-bg-rgb), 0.95) 0%,
     rgba(0, 40, 80, 0.95) 100%
   );
-  border: 1px solid rgba(6, 214, 249, 0.5);
+  border: 1px solid rgba(var(--cyan-color-rgb), 0.5);
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(6, 214, 249, 0.3),
-    inset 0 0 20px rgba(6, 214, 249, 0.1);
-  color: #fff;
+  box-shadow: 0 0 20px rgba(var(--cyan-color-rgb), 0.3),
+    inset 0 0 20px rgba(var(--cyan-color-rgb), 0.1);
+  color: var(--text-primary);
   font-size: 14px;
   z-index: 9999;
   overflow: hidden;
@@ -2189,10 +2189,10 @@ onMounted(() => {
     padding: 12px 15px;
     background: linear-gradient(
       90deg,
-      rgba(6, 214, 249, 0.2) 0%,
+      rgba(var(--cyan-color-rgb), 0.2) 0%,
       rgba(0, 128, 255, 0.2) 100%
     );
-    border-bottom: 1px solid rgba(6, 214, 249, 0.3);
+    border-bottom: 1px solid rgba(var(--cyan-color-rgb), 0.3);
 
     .header-title {
       display: flex;
@@ -2201,7 +2201,7 @@ onMounted(() => {
       font-size: 14px;
       font-weight: 600;
       color: #06d6f9;
-      text-shadow: 0 0 5px rgba(6, 214, 249, 0.5);
+      text-shadow: 0 0 5px rgba(var(--cyan-color-rgb), 0.5);
     }
 
     .header-close {
@@ -2211,7 +2211,7 @@ onMounted(() => {
       transition: all 0.3s ease;
 
       &:hover {
-        background-color: rgba(6, 214, 249, 0.2);
+        background-color: rgba(var(--cyan-color-rgb), 0.2);
         transform: rotate(90deg);
       }
     }
@@ -2227,17 +2227,17 @@ onMounted(() => {
     }
 
     &::-webkit-scrollbar-track {
-      background: rgba(6, 214, 249, 0.1);
+      background: rgba(var(--cyan-color-rgb), 0.1);
       border-radius: 3px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgba(6, 214, 249, 0.5);
+      background: rgba(var(--cyan-color-rgb), 0.5);
       border-radius: 3px;
       transition: background 0.3s ease;
 
       &:hover {
-        background: rgba(6, 214, 249, 0.8);
+        background: rgba(var(--cyan-color-rgb), 0.8);
       }
     }
 
@@ -2246,14 +2246,14 @@ onMounted(() => {
       justify-content: space-between;
       align-items: center;
       padding: 8px 0;
-      border-bottom: 1px solid rgba(6, 214, 249, 0.1);
+      border-bottom: 1px solid rgba(var(--cyan-color-rgb), 0.1);
 
       &:last-child {
         border-bottom: none;
       }
 
       .item-label {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(var(--white-rgb), 0.7);
         font-size: 12px;
         display: inline-block;
         width: 80px;
@@ -2261,7 +2261,7 @@ onMounted(() => {
       }
 
       .item-value {
-        color: #fff;
+        color: var(--text-primary);
         font-size: 13px;
         font-weight: 500;
         display: inline-block;
@@ -2273,7 +2273,7 @@ onMounted(() => {
           padding: 6px 8px;
           border: 1px solid @tech-border;
           border-radius: 4px;
-          background: rgba(6, 214, 249, 0.1);
+          background: rgba(var(--cyan-color-rgb), 0.1);
           color: @tech-blue;
           font-size: 12px;
           outline: none;
@@ -2281,8 +2281,8 @@ onMounted(() => {
 
           &:focus {
             border-color: @tech-blue;
-            box-shadow: 0 0 10px rgba(6, 214, 249, 0.3);
-            background: rgba(6, 214, 249, 0.15);
+            box-shadow: 0 0 10px rgba(var(--cyan-color-rgb), 0.3);
+            background: rgba(var(--cyan-color-rgb), 0.15);
           }
         }
       }
@@ -2299,7 +2299,7 @@ onMounted(() => {
             rgba(103, 194, 58, 0.3) 0%,
             rgba(72, 187, 120, 0.3) 100%
           );
-          color: #67c23a;
+          color: var(--status-running);
           border: 1px solid rgba(103, 194, 58, 0.5);
         }
 
@@ -2335,7 +2335,7 @@ onMounted(() => {
             rgba(30, 144, 255, 0.3) 0%,
             rgba(0, 191, 255, 0.3) 100%
           );
-          color: #409eff;
+          color: var(--link-color);
           border: 1px solid rgba(30, 144, 255, 0.5);
         }
 
@@ -2357,7 +2357,7 @@ onMounted(() => {
         &.btn-confirm {
           background: linear-gradient(
             135deg,
-            rgba(6, 214, 249, 0.2),
+            rgba(var(--cyan-color-rgb), 0.2),
             rgba(0, 128, 255, 0.2)
           );
           color: @tech-blue;
@@ -2366,11 +2366,11 @@ onMounted(() => {
           &:not(:disabled):hover {
             background: linear-gradient(
               135deg,
-              rgba(6, 214, 249, 0.3),
+              rgba(var(--cyan-color-rgb), 0.3),
               rgba(0, 128, 255, 0.3)
             );
             border-color: @tech-blue;
-            box-shadow: 0 0 10px rgba(6, 214, 249, 0.4);
+            box-shadow: 0 0 10px rgba(var(--cyan-color-rgb), 0.4);
           }
         }
       }
@@ -2392,7 +2392,7 @@ onMounted(() => {
   );
   border: 1px solid @tech-border;
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 50px rgba(6, 214, 249, 0.5);
+  box-shadow: 0 8px 30px rgba(var(--black-rgb), 0.8), 0 0 50px rgba(var(--cyan-color-rgb), 0.5);
   z-index: 3000;
   backdrop-filter: blur(15px);
   animation: slideIn 0.3s ease-out;
@@ -2420,7 +2420,7 @@ onMounted(() => {
     padding: 12px;
     background: linear-gradient(
       135deg,
-      rgba(6, 214, 249, 0.2) 0%,
+      rgba(var(--cyan-color-rgb), 0.2) 0%,
       rgba(0, 128, 255, 0.2) 100%
     );
     border-bottom: 1px solid @tech-border;
@@ -2435,7 +2435,7 @@ onMounted(() => {
     overflow-y: auto;
 
     .save-info-text {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(var(--white-rgb), 0.9);
       font-size: 14px;
       margin-bottom: 12px;
       text-align: center;
@@ -2453,7 +2453,7 @@ onMounted(() => {
       justify-content: space-between;
       align-items: center;
       padding: 8px 12px;
-      background: rgba(6, 214, 249, 0.1);
+      background: rgba(var(--cyan-color-rgb), 0.1);
       border: 1px solid @tech-border;
       border-radius: 6px;
       animation: cardSlideIn 0.3s ease-out forwards;
@@ -2466,7 +2466,7 @@ onMounted(() => {
       }
 
       .card-type {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(var(--white-rgb), 0.7);
         font-size: 12px;
       }
     }
@@ -2475,11 +2475,11 @@ onMounted(() => {
   .save-info-footer {
     padding: 12px 16px;
     border-top: 1px solid @tech-border;
-    background: rgba(6, 214, 249, 0.05);
+    background: rgba(var(--cyan-color-rgb), 0.05);
 
     .progress-bar {
       height: 6px;
-      background: rgba(6, 214, 249, 0.2);
+      background: rgba(var(--cyan-color-rgb), 0.2);
       border-radius: 3px;
       overflow: hidden;
       position: relative;
@@ -2489,7 +2489,7 @@ onMounted(() => {
         background: linear-gradient(90deg, @tech-blue, #0080ff);
         border-radius: 3px;
         transition: width 0.3s ease;
-        box-shadow: 0 0 10px rgba(6, 214, 249, 0.6);
+        box-shadow: 0 0 10px rgba(var(--cyan-color-rgb), 0.6);
         animation: progressGlow 1.5s ease-in-out infinite;
       }
     }
@@ -2533,10 +2533,10 @@ onMounted(() => {
 @keyframes progressGlow {
   0%,
   100% {
-    box-shadow: 0 0 10px rgba(6, 214, 249, 0.6);
+    box-shadow: 0 0 10px rgba(var(--cyan-color-rgb), 0.6);
   }
   50% {
-    box-shadow: 0 0 20px rgba(6, 214, 249, 0.9);
+    box-shadow: 0 0 20px rgba(var(--cyan-color-rgb), 0.9);
   }
 }
 // 编组克隆样式 - 保持原有颜色，只添加发光和阴影增强
@@ -2549,15 +2549,15 @@ onMounted(() => {
   border: inherit !important;
   box-shadow: inherit !important;
   // 只在原有基础上增强发光效果
-  filter: drop-shadow(0 0 15px rgba(6, 214, 249, 0.5));
+  filter: drop-shadow(0 0 15px rgba(var(--cyan-color-rgb), 0.5));
 }
 
 @keyframes cloneGlow {
   from {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(6, 214, 249, 0.4);
+    box-shadow: 0 4px 20px rgba(var(--black-rgb), 0.5), 0 0 20px rgba(var(--cyan-color-rgb), 0.4);
   }
   to {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 40px rgba(6, 214, 249, 0.8);
+    box-shadow: 0 8px 30px rgba(var(--black-rgb), 0.7), 0 0 40px rgba(var(--cyan-color-rgb), 0.8);
   }
 }
 // 选中编组样式
@@ -2568,12 +2568,12 @@ onMounted(() => {
 @keyframes selectedPulse {
   0%,
   100% {
-    box-shadow: 0 4px 15px rgba(6, 214, 249, 0.4),
-      0 0 20px rgba(6, 214, 249, 0.2);
+    box-shadow: 0 4px 15px rgba(var(--cyan-color-rgb), 0.4),
+      0 0 20px rgba(var(--cyan-color-rgb), 0.2);
   }
   50% {
-    box-shadow: 0 8px 25px rgba(6, 214, 249, 0.6),
-      0 0 40px rgba(6, 214, 249, 0.4);
+    box-shadow: 0 8px 25px rgba(var(--cyan-color-rgb), 0.6),
+      0 0 40px rgba(var(--cyan-color-rgb), 0.4);
   }
 }
 // &.expanded {

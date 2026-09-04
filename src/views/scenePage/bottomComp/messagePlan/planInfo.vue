@@ -52,8 +52,8 @@ onMounted(() => {})
   position: fixed;
   left: calc(50% - 300px);
   top: calc(50% - 250px);
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
   .header {
     display: flex;
     justify-content: space-between;
@@ -65,14 +65,14 @@ onMounted(() => {})
       font-weight: 700;
       font-style: normal;
       font-size: 19px;
-      color: #c2d7ee;
+      color: var(--text-secondary);
     }
   }
   .planInfo_content {
     padding: 5px 20px;
     box-sizing: border-box;
     font-size: 16px;
-    color: #c2d7ee;
+    color: var(--text-secondary);
     p {
       text-align: left;
       padding-left: 18px;

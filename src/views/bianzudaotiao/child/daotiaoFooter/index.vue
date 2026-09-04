@@ -142,8 +142,8 @@ onMounted(() => {
   position: relative;
   z-index: 1;
   // 增强阴影，提升立体感，使其与主体内容分离
-  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.5), 0 0 30px rgba(6, 214, 249, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 25px rgba(var(--black-rgb), 0.5), 0 0 30px rgba(6, 214, 249, 0.2),
+    inset 0 -1px 0 rgba(var(--white-rgb), 0.2);
   // 添加顶部和底部的发光线条，增强科技感
   &::before {
     content: '';
@@ -195,18 +195,18 @@ onMounted(() => {
       border: 1px solid @tech-border;
       transition: all 0.3s ease;
       // 增强图例颜色块的立体感和亮度
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 8px rgba(var(--black-rgb), 0.3),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.2);
 
       &.tech-color {
         // 增强发光效果
         box-shadow: 0 0 15px rgba(6, 214, 249, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+          inset 0 1px 0 rgba(var(--white-rgb), 0.3);
 
         &:hover {
           transform: scale(1.2);
           box-shadow: 0 0 25px rgba(6, 214, 249, 0.6),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            inset 0 1px 0 rgba(var(--white-rgb), 0.4);
         }
       }
 

@@ -2,7 +2,7 @@
  * @Author: xujiajia xujiajia@piesat.cn
  * @Date: 2026-07-09 14:47:25
  * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
- * @LastEditTime: 2026-07-15 18:06:34
+ * @LastEditTime: 2026-07-23 14:13:54
  * @FilePath: \MSIMEarthSys\src\utils\earthPlugin\ThirdParty\eventSource\event\earthEvent\state\ActionByEvent\Opt_SensorType.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -77,11 +77,7 @@ export function opticalSensorON(params)
      const sensorAzimuth = element.azimuth || 0;
      const sensorElevation = element.elevation || 0;
      const sensorPointQuat = yprToQuaternion(sensorAzimuth, sensorElevation, 0);
-
-    //  const scanAz = (beam.FOVAzimuthMin + beam.FOVAzimuthMax) / 2;
-    //  const scanEl = (beam.FOVElevationMin + beam.FOVElevationMax) / 2;
-    //  const scanQuat = yprToQuaternion(scanAz, scanEl, 0);
-
+     
      let finalQuat = quatMultiply(platformOrient, installQuat);
      finalQuat = quatMultiply(finalQuat, sensorPointQuat);
     //  finalQuat = quatMultiply(finalQuat, scanQuat);
@@ -122,7 +118,7 @@ export function opticalSensorON(params)
           maximumClock: (beam.FOVAzimuthMax),
           minimumCone: elevationToCone(beam.FOVElevationMax),
           maximumCone: elevationToCone(beam.FOVElevationMin),
-          material: window.MSIMEarth.Color.RED.withAlpha(0.4),
+          material: window.MSIMEarth.Color.RED.withAlpha(0.2),
           outline: true
         }
       })

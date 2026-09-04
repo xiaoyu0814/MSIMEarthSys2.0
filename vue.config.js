@@ -10,9 +10,7 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/MSIMEarthSys2.0/'
-    : '/',
+  publicPath: './',
   outputDir: 'MSIMEarthSys1.3', // 输出文件目录
   lintOnSave: false, // eslint 是否在保存时检查 关闭语法检查
   // assetsDir: 'static', // 配置js、css静态资源二级目录的位置
@@ -40,7 +38,7 @@ module.exports = defineConfig({
         changeOrigin: true
       },
       '^/gateway': {
-        target: 'http://192.168.123.201:16001/', //172.16.100.204、10.1.51.95:9500
+        target: 'http://34.15.87.10:16001/', //172.16.100.204、10.1.51.95:9500
         pathRewrite: {
           '^/gateway': ''
         },
@@ -68,7 +66,7 @@ module.exports = defineConfig({
         }
       },
       '^/afsim': {
-        target: 'http://192.168.123.206:4322/', //172.16.100.204、10.1.51.95:9500
+        target: 'http://34.15.87.49:4322/', //172.16.100.204、10.1.51.95:9500
         pathRewrite: {
           '^/afsim': ''
         },
@@ -76,21 +74,21 @@ module.exports = defineConfig({
       },
       '^/dqData': {
         // 获取大气影响范围包络数据代理配置
-        target: 'http://192.168.123.206:8888/',
+        target: 'http://34.15.87.49:8888/',
         pathRewrite: {
           '^/dqData': ''
         },
         changeOrigin: true
       },
       '^/statistics': {
-        target: 'http://192.168.123.201:16006/', //172.16.100.204、10.1.51.95:9500
+        target: 'http://34.15.87.10:16006/', //172.16.100.204、10.1.51.95:9500
         pathRewrite: {
           '^/statistics': ''
         },
         changeOrigin: true
       },
       '^/review': {
-        target: 'http://192.168.123.206:5000', //172.16.100.204、10.1.51.95:9500
+        target: 'http://34.15.87.49:5000', //172.16.100.204、10.1.51.95:9500
         pathRewrite: {
           '^/review': ''
         },

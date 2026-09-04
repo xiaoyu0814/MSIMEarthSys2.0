@@ -46,7 +46,7 @@
         :row-class-name="rowStyle"
         :header-cell-style="{
           background: '#00254E',
-          color: ' #FFFFFF',
+          color: ' var(--text-primary)',
           height: '60px',
           fontSize: '18px'
         }"
@@ -185,12 +185,12 @@ const closeBox = () => {
   left: 0;
   top: 60px;
   background: #00254e;
-  box-shadow: 0 0 25px #1092d5;
+  box-shadow: 0 0 25px var(--glow-shadow);
   .s-header {
     height: 120px;
     padding: 20px 20px 0;
     text-align: left;
-    color: #fff;
+    color: var(--text-primary);
     box-sizing: border-box;
     .titleBox {
       display: flex;
@@ -222,7 +222,7 @@ const closeBox = () => {
         background-size: 100% 100%;
         width: 100px;
         height: 34px;
-        color: #ffff;
+        color: var(--text-primary);
         border-radius: 5px;
         margin-left: 10px;
         cursor: pointer;
@@ -238,7 +238,7 @@ const closeBox = () => {
   }
 }
 .el-table {
-  --el-table-border-color: #075d89;
+  --el-table-border-color: var(--input-border);
 }
 :deep(.el-input) {
   .el-input__wrapper {
@@ -248,13 +248,13 @@ const closeBox = () => {
     box-shadow: 0 0 0 1px #81d3f8 inset !important;
   }
   .el-input__inner {
-    color: #fff !important;
+    color: var(--text-primary) !important;
   }
 }
 :deep(.el-table) {
   .cellStyle {
     background-color: #00254e !important;
-    color: #fff !important;
+    color: var(--text-primary) !important;
     font-family: 'Arial Normal', 'Arial';
     font-weight: 400;
     font-style: normal;
@@ -265,7 +265,7 @@ const closeBox = () => {
 
   .cellStyle1 {
     background-color: #335171 !important;
-    color: #fff !important;
+    color: var(--text-primary) !important;
     font-family: 'Arial Normal', 'Arial';
     font-weight: 400;
     font-style: normal;

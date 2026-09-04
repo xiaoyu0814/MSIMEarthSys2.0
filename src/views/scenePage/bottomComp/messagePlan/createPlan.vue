@@ -46,8 +46,8 @@ onMounted(() => {})
   position: fixed;
   left: calc(50% - 350px);
   top: 11%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
 
   .header {
     display: flex;
@@ -61,7 +61,7 @@ onMounted(() => {})
       font-weight: 700;
       font-style: normal;
       font-size: 19px;
-      color: #c2d7ee;
+      color: var(--text-secondary);
     }
   }
   .creat_plan_content {
@@ -72,7 +72,7 @@ onMounted(() => {})
       font-size: 16px;
     }
     :deep(.el-tabs__item.is-active) {
-      color: #ffffff !important;
+      color: var(--text-primary) !important;
       font-weight: bold !important;
     }
     :deep(.el-tabs__nav-wrap::after) {

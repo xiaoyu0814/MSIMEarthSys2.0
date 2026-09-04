@@ -278,7 +278,6 @@ class CameraControl {
   }
   // 基于Cartesian3坐标完成视角跳转及事件弹窗和语音播报等
   flyRecursionByCartesian3(option) {
-    console.log('镜头跳转', option)
     let that = this
     let curFly = option.curFly
     if (curFly >= option.flyArr.length) return

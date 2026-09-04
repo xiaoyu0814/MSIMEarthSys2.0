@@ -2,18 +2,14 @@
   <ul class="viewContextMenu" :style="vueData.styles">
     <div class="closeImg">
       <span class="entityName">{{
-        store.state.sceneModule.currentFlyType.chineseName
+        vueData.entityTitle
       }}</span>
-      <img
-        src="@/assets/image/panelIcons/关闭icon.png"
-        alt=""
-        class="close_Sty"
-        @click="handleClose"
-      />
+      <el-tooltip class="box-item" effect="dark" content="关闭面板" placement="top">
+        <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_Sty" @click="handleClose" />
+      </el-tooltip>
     </div>
     <viewConfig :viewList="vueData.viewList"></viewConfig>
     <layerConfig :layerList="vueData.layerList"></layerConfig>
-    <!-- <renderConfig :renderList="vueData.renderList"></renderConfig> -->
     <showMoreConfig :moreList="vueData.moreList"></showMoreConfig>
   </ul>
 </template>
@@ -57,13 +53,6 @@ let vueData = reactive({
       isShow: true,
       disabled: false
     },
-    // {
-    //   name: '第一视角',
-    //   urlon: '第一视角on.png',
-    //   urloff: '第一视角off.png',
-    //   isShow: false,
-    //   disabled: false
-    // },
     {
       name: '第三视角',
       urlon: '第三视角on.png',
@@ -71,89 +60,12 @@ let vueData = reactive({
       isShow: false,
       disabled: false
     }
-    // {
-    //   name: '场景视角',
-    //   urlon: '场景视角on.png',
-    //   urloff: '场景视角off.png',
-    //   isShow: false,
-    //   disabled: false
-    // }
   ],
   layerList: [
-    // {
-    //   name: '天气',
-    //   urlon: '天气on.png',
-    //   urloff: '天气off.png',
-    //   isShow: store.state.sceneModule.toolbarGlobalConfig.vectorWeather,
-    //   disabled: false
-    // },
-    // {
-    //   name: '雷达探测',
-    //   urlon: '雷达探测on.png',
-    //   urloff: '雷达探测off.png',
-    //   isShow: true,
-    //   disabled: true
-    // },
     {
-      name: '标签详标',
+      name: '实体标牌',
       urlon: '标签详标on.png',
       urloff: '标签详标off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '作战半径',
-      urlon: '作战半径_on.png',
-      urloff: '作战半径_off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '火力半径',
-      urlon: '火力半径_on.png',
-      urloff: '火力半径_off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '侦察半径',
-      urlon: '侦察半径_on.png',
-      urloff: '侦察半径_off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '链路信息',
-      urlon: '指挥链路on.png',
-      urloff: '指挥链路off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '变更位置',
-      urlon: '变更位置_on.png',
-      urloff: '变更位置_off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '弹药配置',
-      urlon: '弹药配置_on.png',
-      urloff: '弹药配置_off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '目标距离',
-      urlon: '目标距离on.png',
-      urloff: '目标距离off.png',
-      isShow: false,
-      disabled: false
-    },
-    {
-      name: '正北方向',
-      urlon: '正北方向设置on.png',
-      urloff: '正北方向设置off.png',
       isShow: false,
       disabled: false
     },
@@ -170,20 +82,27 @@ let vueData = reactive({
       urloff: '航线off.png',
       isShow: false,
       disabled: false
-    }
-  ],
-  renderList: [
-    // {
-    //   name: '孪生场景',
-    //   urlon: '孪生场景on.png',
-    //   urloff: '孪生场景off.png',
-    //   isShow: store.state.sceneModule.showUEContainer
-    // },
+    },
     {
-      name: '语音交互',
-      urlon: '语音交互on.png',
-      urloff: '语音交互off.png',
-      isShow: store.state.sceneModule.toolbarGlobalConfig.voiceInteraction
+      name: '传感器显隐',
+      urlon: '雷达探测on.png',
+      urloff: '雷达探测off.png',
+      isShow: false,
+      disabled: false
+    },
+    {
+      name: '变更位置',
+      urlon: '变更位置on.png',
+      urloff: '变更位置off.png',
+      isShow: false,
+      disabled: false
+    },
+    {
+      name: '目标距离',
+      urlon: '目标距离on.png',
+      urloff: '目标距离off.png',
+      isShow: false,
+      disabled: false
     }
   ],
   moreList: [
@@ -196,9 +115,11 @@ let vueData = reactive({
       disabled: false
     }
   ],
-  styles: {}
+  styles: {},
+  entityTitle: '战斗机'
 })
 onMounted(() => {
+  vueData.entityTitle = store.state.sceneModule.currentFlyType.chineseName
   // 获取当前登录角色
   const roleCode = localStorage.getItem('roleCode') || 'shiyan'
 
@@ -217,13 +138,21 @@ onMounted(() => {
 
   vueData.styles.left = props.isShowviewContextMenu.x + 'px'
   vueData.styles.top = props.isShowviewContextMenu.y + 'px'
-  // console.log(vueData.styles)
   moveBtnPanel('viewContextMenu')
   setTimeout(() => {
     changePosNow()
     fireTargetEntity()
   }, 800)
 })
+
+// 深度监听
+watch(
+  () => store.state.sceneModule.currentFlyType,
+  (newValue, oldValue) => {
+    vueData.entityTitle = newValue.chineseName
+  },
+  { deep: true }
+)
 
 onUnmounted(() => {
   removeEventHandler()
@@ -238,7 +167,7 @@ const handleClose = () => {
       command: ''
     }
   }
-  // emitter.emit('setRightClick', false)
+
   emitter.emit('showViewContextMenu', obj)
   emitter.emit('showCommandControl', obj1)
 }
@@ -256,28 +185,28 @@ watch(
 
 <style lang="less" scoped>
 .viewContextMenu {
-  width: 584px;
-  height: 90px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  width: 180px;
+  height: 400px;
+  background: var(--panel-bg);
+  box-shadow: var(--box-shadow-glow);
+  border-top: 2px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   position: fixed;
   right: 30px;
   top: 40%;
-  display: flex;
-  align-items: flex-end;
+  // display: flex;
+  // align-items: flex-end;
   padding: 0;
   margin: 0;
   padding-left: 12px;
   padding-bottom: 10px;
+  padding-top: 40px;
   box-sizing: border-box;
   z-index: 1000;
 
   .closeImg {
     .entityName {
-      color: #00c7fb;
+      color: var(--title-color);
       position: absolute;
       top: 10px;
       left: 12px;
@@ -288,10 +217,11 @@ watch(
         content: '';
         display: inline-block;
         width: 4px;
-        height: 15px;
-        margin-right: 5px;
+        height: 16px;
+        margin-right: 10px;
+        margin-bottom: 4px;
         vertical-align: middle;
-        background: #1092d5;
+        background: var(--border-color);
       }
     }
 

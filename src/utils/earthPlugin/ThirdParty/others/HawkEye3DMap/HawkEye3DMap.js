@@ -119,22 +119,6 @@ export default class HawkEye3DMap {
       bingLayer.hue = 0
       bingLayer.saturation = 1.6
       bingLayer.gamma = 0.7 //0.6 0.7
-      // let baseLayerBZ = new window.MSIMEarth.UrlTemplateImageryProvider({
-      //   url: layersUrlConfig.urlVBlackMap
-      // })
-
-      // baseLayerBZ.name = 'bing底图标注'
-      // window.EarthViewer.imageryLayers.addImageryProvider(baseLayerBZ)
-      // window.cameraListener2 = function () {
-      //   var e = window.EarthViewer.camera.position
-      //   if (window.MSIMEarth.Cartographic.fromCartesian(e).height < 80000) {
-      //     // 显示自定义的天空盒
-      //     bingLayer.show = true
-      //   } else {
-      //     bingLayer.show = false
-      //   }
-      // }
-      // window.EarthViewer.camera.changed.addEventListener(window.cameraListener2)
     }
   }
 

@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: ZX Li
  * @Date: 2026-01-08 15:24:11
- * @LastEditors: xujiajia xujiajia@piesat.cn
- * @LastEditTime: 2026-06-23 10:31:17
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-03 14:04:39
  */
 /*
  * @Author: xujiajia xujiajia@piesat.cn
@@ -82,17 +82,12 @@ export const permissionList = {
     ],
     rightBarList: {
       item: [
-        '标签详标',
-        '作战半径',
-        '火力半径',
-        '侦察半径',
-        '链路信息',
+        '实体标牌',
         '变更位置',
-        '弹药配置',
         '目标距离',
-        '正北方向',
         '路径',
-        '航线'
+        '航线',
+        '传感器显隐'
       ],
       more: true
     }

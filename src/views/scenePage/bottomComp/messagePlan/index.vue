@@ -27,7 +27,7 @@
         :data="state.messagePlanTable"
         style="width: 100%"
         show-overflow-tooltip
-        :header-cell-style="{ color: ' #FFFFFF' }"
+        :header-cell-style="{ color: 'var(--text-primary)' }"
         max-height="230px"
         min-height="80px"
         @selection-change="handleSelectionChange"
@@ -334,14 +334,14 @@ onMounted(() => {
   left: calc(50% - 650px);
   z-index: 999;
   bottom: 32px;
-  color: #ffffff;
+  color: var(--text-primary);
   width: 1300px;
   height: 300px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
+  background-image: var(--img-decoration);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
   .title {
     padding: 10px 20px;
     text-align: left;
@@ -358,7 +358,7 @@ onMounted(() => {
         background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
         width: 65px;
         height: 28px;
-        color: #ffff;
+        color: var(--text-primary);
         border-radius: 5px;
         margin-left: 10px;
         cursor: pointer;
@@ -376,7 +376,7 @@ onMounted(() => {
     ::v-deep .el-table td.el-table__cell,
     ::v-deep .el-table th.el-table__cell.is-leaf,
     ::v-deep .el-table__body-wrapper {
-      background: #2b4559 !important;
+      background: var(--input-bg) !important;
       color: #a3a6ad;
     }
     .el-table {

@@ -70,37 +70,7 @@ class PolylineGeojson extends geojson {
       }
     })
   }
-  addGuojiexian() {
-    const options1 = {
-      url: basicVectorData.guojiexian,
-      color: [186, 105, 102, 0.7],
-      distanceDisplayCondition: [20e5, 350e5],
-      addLabel: false,
-      width: 2,
-      id: 'guojiexian'
-    }
-    this.addPolylineGeojson(options1)
-  }
-  addGuojiexian_O() {
-    const options2 = {
-      url: basicVectorData.guojiexian2,
-      color: [217, 217, 223, 0.7],
-      addLabel: false,
-      distanceDisplayCondition: [20e5, 350e5],
-      width: 0.7,
-      id: 'guojiexian2'
-    }
-    this.addPolylineGeojson(options2)
-    const options3 = {
-      url: basicVectorData.shengjiexian,
-      color: [217, 217, 223, 0.7],
-      addLabel: false,
-      distanceDisplayCondition: [20e5, 350e5],
-      width: 1,
-      id: 'shengjiexian'
-    }
-    this.addPolylineGeojson(options3)
-  }
+
   addDaolian() {
     const daolians = [
       { url: basicVectorData.daolian1, id: 'daolian1' },

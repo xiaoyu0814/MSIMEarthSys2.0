@@ -63,7 +63,7 @@ export default {
   setup(props) {
     let currentContent = reactive({})
     let id = ref(props.id.value)
-    let title = ref(props.title.value)
+    let title = ref(props.title)
     let netColor = ref(
       `rgb(${props.rgb.value[0]},${props.rgb.value[1]},${props.rgb.value[2]}`
     )

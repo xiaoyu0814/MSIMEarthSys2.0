@@ -1,126 +1,58 @@
 <template>
   <div class="realTimeInfo">
-    <Transition
-      name="custom-classes"
-      enter-active-class="animate__animated animate__fadeIn"
-      leave-active-class="animate__animated animate__fadeOut"
-    >
-      <img
-        v-show="!state.rightShow"
-        class="right-shrink"
-        :src="
-          state.rightShow
-            ? require('@/assets/image/panelIcons/telescoping.png')
-            : require('@/assets/image/panelIcons/telescoping_1.png')
-        "
-        @click="rightContentShow"
-      />
+    <Transition name="custom-classes" enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut">
+      <div v-show="!state.rightShow" class="right-shrink" :style="{
+        backgroundImage: state.rightShow ? 'var(--img-telescoping)' : 'var(--img-telescoping_1)'
+      }" @click="rightContentShow"></div>
     </Transition>
-    <Transition
-      name="custom-classes"
-      enter-active-class="animate__animated animate__backInRight"
-      leave-active-class="animate__animated animate__backOutRight"
-    >
+    <Transition name="custom-classes" enter-active-class="animate__animated animate__backInRight"
+      leave-active-class="animate__animated animate__backOutRight">
       <div class="log-information" v-show="state.rightShow">
         <div class="pie-interaction">
-          <img
-            class="content-img"
-            :src="
-              state.rightShow
-                ? require('@/assets/image/panelIcons/telescoping_1.png')
-                : require('@/assets/image/panelIcons/telescoping.png')
-            "
-            @click="rightContentShow"
-          />
+          <div class="content-img" :style="{
+            backgroundImage: state.rightShow ? 'var(--img-telescoping)' : 'var(--img-telescoping_1)'
+          }" @click="rightContentShow"></div>
           <div class="formulate-title">
             <span>作战信息</span>
             <div style="position: absolute; right: 12%">
               <span class="cleanInfo" @click="cleanAllInfo">清空信息</span>
-              <el-tooltip
-                class="box-item"
-                effect="dark"
-                content="关闭面板"
-                placement="top"
-              >
-                <img
-                  src="@/assets/image/panelIcons/关闭icon.png"
-                  alt=""
-                  class="close_sty"
-                  @click="handleClose"
-                />
+              <el-tooltip class="box-item" effect="dark" content="关闭面板" placement="top">
+                <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_sty" @click="handleClose" />
               </el-tooltip>
             </div>
           </div>
           <!-- Tab页 -->
           <div class="tab-container">
-            <div
-              class="tab-item"
-              :class="{ active: state.activeTab === 'white' }"
-              @click="state.activeTab = 'white'"
-            >
-              <img
-                class="tab-point"
-                src="@/assets/image/realTimeInformation/circleWhite.png"
-                alt=""
-              />
+            <div class="tab-item" :class="{ active: state.activeTab === 'white' }" @click="state.activeTab = 'white'">
+              <img class="tab-point" src="@/assets/image/realTimeInformation/circleWhite.png" alt="" />
               <span>白方</span>
               <span class="tab-count">{{
                 getFilteredList('white').length
               }}</span>
             </div>
-            <div
-              class="tab-item"
-              :class="{ active: state.activeTab === 'red' }"
-              @click="state.activeTab = 'red'"
-            >
-              <img
-                class="tab-point"
-                src="@/assets/image/realTimeInformation/circleRed.png"
-                alt=""
-              />
+            <div class="tab-item" :class="{ active: state.activeTab === 'red' }" @click="state.activeTab = 'red'">
+              <img class="tab-point" src="@/assets/image/realTimeInformation/circleRed.png" alt="" />
               <span>红方</span>
               <span class="tab-count">{{ getFilteredList('red').length }}</span>
             </div>
-            <div
-              class="tab-item"
-              :class="{ active: state.activeTab === 'blue' }"
-              @click="state.activeTab = 'blue'"
-            >
-              <img
-                class="tab-point"
-                src="@/assets/image/realTimeInformation/circleBlue.png"
-                alt=""
-              />
+            <div class="tab-item" :class="{ active: state.activeTab === 'blue' }" @click="state.activeTab = 'blue'">
+              <img class="tab-point" src="@/assets/image/realTimeInformation/circleBlue.png" alt="" />
               <span>蓝方</span>
               <span class="tab-count">{{
                 getFilteredList('blue').length
               }}</span>
             </div>
-            <div
-              class="tab-item"
-              :class="{ active: state.activeTab === 'other' }"
-              @click="state.activeTab = 'other'"
-            >
-              <img
-                class="tab-point"
-                src="@/assets/image/realTimeInformation/circleGreen.png"
-                alt=""
-              />
+            <div class="tab-item" :class="{ active: state.activeTab === 'other' }" @click="state.activeTab = 'other'">
+              <img class="tab-point" src="@/assets/image/realTimeInformation/circleGreen.png" alt="" />
               <span>其他</span>
               <span class="tab-count">{{
                 getFilteredList('other').length
               }}</span>
             </div>
-            <div
-              class="tab-item"
-              :class="{ active: state.activeTab === 'environment' }"
-              @click="state.activeTab = 'environment'"
-            >
-              <img
-                class="tab-point"
-                src="@/assets/image/realTimeInformation/circleEnvironment.png"
-                alt=""
-              />
+            <div class="tab-item" :class="{ active: state.activeTab === 'environment' }"
+              @click="state.activeTab = 'environment'">
+              <img class="tab-point" src="@/assets/image/realTimeInformation/circleEnvironment.png" alt="" />
               <span>战场环境</span>
               <span class="tab-count">{{
                 getFilteredList('environment').length
@@ -165,44 +97,19 @@
           </div> -->
           <!-- 日志内容 -->
           <div class="collapse-interaction" id="log_con">
-            <div
-              class="single-log"
-              v-for="(item, index) in currentLogList"
-              :key="`${state.activeTab}-${index}`"
-            >
+            <div class="single-log" v-for="(item, index) in currentLogList" :key="`${state.activeTab}-${index}`">
               <div class="left-point">
                 <div class="line" :class="item.first ? 'line-first' : ''"></div>
                 <div>
-                  <img
-                    class="point"
-                    v-if="item.camp == '0'"
-                    src="@/assets/image/realTimeInformation/circleWhite.png"
-                    alt=""
-                  />
-                  <img
-                    class="point"
-                    v-else-if="item.camp == '1'"
-                    src="@/assets/image/realTimeInformation/circleRed.png"
-                    alt=""
-                  />
-                  <img
-                    class="point"
-                    v-else-if="item.camp == '2'"
-                    src="@/assets/image/realTimeInformation/circleBlue.png"
-                    alt=""
-                  />
-                  <img
-                    class="point"
-                    v-else-if="item.camp == 'environment'"
-                    src="@/assets/image/realTimeInformation/circleEnvironment.png"
-                    alt=""
-                  />
-                  <img
-                    class="point"
-                    v-else
-                    src="@/assets/image/realTimeInformation/circleGreen.png"
-                    alt=""
-                  />
+                  <img class="point" v-if="item.camp == '0'" src="@/assets/image/realTimeInformation/circleWhite.png"
+                    alt="" />
+                  <img class="point" v-else-if="item.camp == '1'" src="@/assets/image/realTimeInformation/circleRed.png"
+                    alt="" />
+                  <img class="point" v-else-if="item.camp == '2'"
+                    src="@/assets/image/realTimeInformation/circleBlue.png" alt="" />
+                  <img class="point" v-else-if="item.camp == 'environment'"
+                    src="@/assets/image/realTimeInformation/circleEnvironment.png" alt="" />
+                  <img class="point" v-else src="@/assets/image/realTimeInformation/circleGreen.png" alt="" />
                 </div>
               </div>
               <div class="log-side animate__animated animate__backInRight">
@@ -217,108 +124,48 @@
                   </div>
                   <div class="msg">
                     <div v-if="item.more" class="more-msg">
-                      <div
-                        :style="{ color: item.color }"
-                        v-for="(subMsg, subIndex) in item.msg"
-                        :key="subIndex"
-                      >
+                      <div :style="{ color: item.color }" v-for="(subMsg, subIndex) in item.msg" :key="subIndex">
                         <span>
-                          <img
-                            class="point"
-                            v-if="item.camp == '0'"
-                            src="@/assets/image/realTimeInformation/circleWhite.png"
-                            alt=""
-                          />
-                          <img
-                            class="point"
-                            v-else-if="item.camp == '1'"
-                            src="@/assets/image/realTimeInformation/circleRed.png"
-                            alt=""
-                          />
-                          <img
-                            class="point"
-                            v-else-if="item.camp == '2'"
-                            src="@/assets/image/realTimeInformation/circleBlue.png"
-                            alt=""
-                          />
-                          <img
-                            class="point"
-                            v-else-if="item.camp == 'environment'"
-                            src="@/assets/image/realTimeInformation/circleEnvironment.png"
-                            alt=""
-                          />
-                          <img
-                            class="point"
-                            v-else
-                            src="@/assets/image/realTimeInformation/circleGreen.png"
-                            alt=""
-                          />
+                          <img class="point" v-if="item.camp == '0'"
+                            src="@/assets/image/realTimeInformation/circleWhite.png" alt="" />
+                          <img class="point" v-else-if="item.camp == '1'"
+                            src="@/assets/image/realTimeInformation/circleRed.png" alt="" />
+                          <img class="point" v-else-if="item.camp == '2'"
+                            src="@/assets/image/realTimeInformation/circleBlue.png" alt="" />
+                          <img class="point" v-else-if="item.camp == 'environment'"
+                            src="@/assets/image/realTimeInformation/circleEnvironment.png" alt="" />
+                          <img class="point" v-else src="@/assets/image/realTimeInformation/circleGreen.png" alt="" />
                         </span>
-                        <span
-                          class="text-content"
-                          v-for="(seg, segIndex) in subMsg.msg.split('${')"
-                          :key="segIndex"
-                        >
+                        <span class="text-content" v-for="(seg, segIndex) in subMsg.msg.split('${')" :key="segIndex">
                           <span v-if="seg.indexOf('}') === -1">{{ seg }}</span>
-                          <span
-                            v-else
-                            v-for="(part, partIndex) in seg.split('}')"
-                            :key="partIndex"
-                            :class="
-                              partIndex === 0 ? 'underLine pointer-cursor' : ''
-                            "
-                            @click="showDia(part, partIndex, subMsg)"
-                          >
+                          <span v-else v-for="(part, partIndex) in seg.split('}')" :key="partIndex" :class="partIndex === 0 ? 'underLine pointer-cursor' : ''
+                            " @click="showDia(part, partIndex, subMsg)">
                             {{ part }}
                           </span>
                         </span>
                       </div>
                     </div>
                     <span v-else :style="{ color: item.color }">
-                      <span
-                        class="text-content"
-                        v-for="(seg, segIndex) in item.msg.split('${')"
-                        :key="segIndex"
-                      >
+                      <span class="text-content" v-for="(seg, segIndex) in item.msg.split('${')" :key="segIndex">
                         <span v-if="item.camp == 'environment'" class="env-msg">
                           <ul class="env-list">
-                            <li
-                              class="env-item"
-                              v-for="(row, idx) in safeParseJson(seg)._fields ||
-                              []"
-                              :key="idx"
-                            >
+                            <li class="env-item" v-for="(row, idx) in safeParseJson(seg)._fields ||
+                              []" :key="idx">
                               <span class="env-key">{{ row.label }}:</span>
-                              <span
-                                v-if="
-                                  row.type === 'severity' || row.type === 'side'
-                                "
-                                class="env-value truncate-value"
-                                :style="{ color: row.color }"
-                                :title="formatValueForTitle(row._fullText)"
-                                >{{ row.value }}</span
-                              >
-                              <span
-                                v-else
-                                class="env-value truncate-value"
-                                :title="formatValueForTitle(row._fullText)"
-                                >{{ row.value }}</span
-                              >
+                              <span v-if="
+                                row.type === 'severity' || row.type === 'side'
+                              " class="env-value truncate-value" :style="{ color: row.color }"
+                                :title="formatValueForTitle(row._fullText)">{{ row.value }}</span>
+                              <span v-else class="env-value truncate-value"
+                                :title="formatValueForTitle(row._fullText)">{{ row.value }}</span>
                             </li>
                           </ul>
                         </span>
                         <span v-else-if="seg.indexOf('}') === -1">{{
                           seg
                         }}</span>
-                        <span
-                          v-else
-                          v-for="(part, partIndex) in seg.split('}')"
-                          :key="partIndex"
-                          :class="
-                            partIndex === 0 ? 'underLine pointer-cursor' : ''
-                          "
-                          @click="showDia(part, partIndex, item)"
-                        >
+                        <span v-else v-for="(part, partIndex) in seg.split('}')" :key="partIndex" :class="partIndex === 0 ? 'underLine pointer-cursor' : ''
+                          " @click="showDia(part, partIndex, item)">
                           {{ part }}
                         </span>
                       </span>
@@ -535,7 +382,7 @@ const onSubjectChange = () => {
 }
 const handleClose = () => {
   emitter.emit('closeBottomControlPanel', 'right')
-  emitter.emit('tagActiveClose', 'battleInfo')
+  emitter.emit('tagNavbarBtnClose', 'battleInfo')
 }
 
 watch(
@@ -728,22 +575,27 @@ const cleanAllInfo = () => {
   right: 0%;
   width: 22vw;
   height: 76vh;
+
   .right-shrink {
     position: absolute;
     // bottom: calc(5% + 17.5vh - 44px);
     top: calc(50% - 31.5px);
     right: 0;
     transform: rotate(180deg);
+    width: 20px;
+    height: 60px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     z-index: 2;
     cursor: pointer;
     width: 20px;
     font-size: 36px !important;
   }
+
   .log-information {
     width: 100%;
     height: 100%;
-
-    background-image: url('~@/assets/image/panelIcons/装饰.png');
+    // background-image: url('~@/assets/image/panelIcons/装饰.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
@@ -754,20 +606,26 @@ const cleanAllInfo = () => {
       position: relative;
       width: 98.8%;
       height: 97.4%;
-      background: rgba(2, 26, 70, 0.88);
-      box-shadow: 0 0 25px #1092d5;
-      color: #fff;
+      background: var(--panel-bg);
+      box-shadow: var(--box-shadow-glow);
+      border-top: 4px solid var(--border-color);
+      border-bottom: 2px solid var(--border-color);
+      color: var(--text-primary);
+
       .content-img {
         position: absolute;
-        //  right: 0;
-        // top: -10px;
-        left: -6%;
+        left: -5%;
         top: calc(50% - 31.5px);
+        width: 20px;
+        height: 60px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         z-index: 2;
         cursor: pointer;
         font-size: 36px !important;
         transform: rotate(180deg);
       }
+
       .collapse-interaction {
         width: 100%;
         height: 77%;
@@ -828,17 +686,12 @@ const cleanAllInfo = () => {
             display: flex;
             flex-direction: column;
             font-size: 15px;
-            // justify-content: space-between;
             flex-wrap: nowrap;
-            // margin-bottom: 14px;
             align-items: start;
-            // box-shadow: 0 0 10px 2px #29baf1;
-            border: 1px solid #38e1ff;
-            // background-color: #0a254f;
-            text-shadow: 1px 2px 2px mediumblue;
+            border: 1px solid rgba(56, 225, 255, 0.3);
+            text-shadow: 1px 2px 2px rgba(11, 11, 179, 0.788);
             padding: 10px;
-
-            background: rgba(0, 29, 66, 0.9);
+            background: var(--panel-bg);
             box-shadow: inset 0px 0px 10px 1px rgba(50, 194, 255, 0.38);
             border-radius: 2px;
 
@@ -853,14 +706,14 @@ const cleanAllInfo = () => {
                 font-size: 10px;
                 border-radius: 2px;
                 background: rgba(56, 225, 255, 0.2);
-                color: #63edff;
+                color: var(--cyan-glow);
                 border: 1px solid rgba(56, 225, 255, 0.3);
               }
 
               .time {
                 font-family: MicrosoftYaHeiSemibold;
                 font-size: 14px;
-                color: #ffffff;
+                color: var(--text-primary);
                 line-height: 17px;
                 text-shadow: 0 0 5px #5fcaff;
                 font-weight: 600;
@@ -921,6 +774,7 @@ const cleanAllInfo = () => {
             }
 
             .text-content {
+
               // margin-left: 10px;
               // text-wrap:nowrap;
               span {
@@ -984,7 +838,7 @@ const cleanAllInfo = () => {
         }
 
         :deep(.el-icon svg) {
-          color: #63edff;
+          color: var(--cyan-glow);
         }
 
         .detail-style {
@@ -1012,7 +866,7 @@ const cleanAllInfo = () => {
         // font-size: 18px;
         font-family: MFLiHei_Noncommercial-Regular;
         font-size: 20px;
-        color: #ffffff;
+        color: var(--text-primary);
         letter-spacing: 1.82px;
         font-weight: 400;
 
@@ -1026,7 +880,7 @@ const cleanAllInfo = () => {
 
         .cleanInfo {
           color: #00ffff;
-          font-size: 10px;
+          font-size: 13px;
           font-family: PingFangSC-Semibold;
         }
 
@@ -1034,6 +888,7 @@ const cleanAllInfo = () => {
           cursor: pointer;
           font-weight: 600px;
         }
+
         .close_sty {
           cursor: pointer;
           position: absolute;
@@ -1053,8 +908,8 @@ const cleanAllInfo = () => {
         align-items: center;
         gap: 8px;
         padding: 8px 10px;
-        background: rgba(0, 50, 100, 0.5);
-        border-bottom: 1px solid rgba(56, 225, 255, 0.3);
+        color: var(--text-primary);
+        border-bottom: 1px solid var(--border-color);
 
         .tab-item {
           display: flex;
@@ -1076,7 +931,7 @@ const cleanAllInfo = () => {
           &.active {
             background: rgba(56, 225, 255, 0.2);
             border: 1px solid rgba(56, 225, 255, 0.5);
-            color: #ffffff;
+            color: var(--text-primary);
           }
 
           .tab-point {
@@ -1093,7 +948,7 @@ const cleanAllInfo = () => {
             border-radius: 50%;
             background: rgba(56, 225, 255, 0.3);
             font-size: clamp(9px, 1.2vw, 11px);
-            color: #ffffff;
+            color: var(--text-primary);
             flex-shrink: 0;
           }
         }
@@ -1119,7 +974,7 @@ const cleanAllInfo = () => {
 
           .filter-label {
             font-size: clamp(10px, 1.2vw, 12px);
-            color: #63edff;
+            color: var(--cyan-glow);
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;

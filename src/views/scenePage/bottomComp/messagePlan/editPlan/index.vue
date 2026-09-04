@@ -159,8 +159,8 @@ onMounted(() => {})
   position: fixed;
   left: calc(50% - 275px);
   top: 13%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
 
   .header {
     display: flex;
@@ -174,7 +174,7 @@ onMounted(() => {})
       font-weight: 700;
       font-style: normal;
       font-size: 19px;
-      color: #c2d7ee;
+      color: var(--text-secondary);
     }
   }
   .creat_plan_content {
@@ -182,43 +182,43 @@ onMounted(() => {})
     height: 480px;
     box-sizing: border-box;
     :deep(.el-form-item__label) {
-      color: #fff !important;
+      color: var(--text-primary) !important;
     }
     :deep(.el-input) {
       .el-input__wrapper {
         border-radius: 5px;
         box-shadow: none;
-        background-color: #2b4559 !important;
-        box-shadow: 0 0 0 1px #075d89 inset !important;
+        background-color: var(--input-bg) !important;
+        box-shadow: 0 0 0 1px var(--input-border) inset !important;
       }
       .el-input__inner {
-        color: #fff !important;
+        color: var(--text-primary) !important;
       }
     }
     .el-select {
       width: 100%;
       :deep(.el-select__wrapper) {
-        background-color: #2b4559 !important;
-        box-shadow: 0 0 0 1px #075d89 inset !important;
+        background-color: var(--input-bg) !important;
+        box-shadow: 0 0 0 1px var(--input-border) inset !important;
       }
     }
     :deep(.el-textarea__inner) {
       height: 90px;
       border-radius: 5px;
       box-shadow: none;
-      color: #ffff;
-      background-color: #2b4559 !important;
-      box-shadow: 0 0 0 1px #075d89 inset !important;
+      color: var(--text-primary);
+      background-color: var(--input-bg) !important;
+      box-shadow: 0 0 0 1px var(--input-border) inset !important;
     }
     :deep(.el-select__placeholder) {
-      color: #fff;
+      color: var(--text-primary);
     }
     .time-box {
       display: flex;
       flex-direction: column;
       padding-left: 20%;
       :deep(.el-checkbox) {
-        color: #fff !important;
+        color: var(--text-primary) !important;
       }
     }
   }

@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: ZX Li
  * @Date: 2025-09-02 14:26:11
- * @LastEditors: ZX Li
- * @LastEditTime: 2025-09-02 15:18:05
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-07-31 15:18:53
  */
 // 基于protobuf协议获取rabbitMQ交换过来的仿真实体路径等信息
 import Stomp from 'stompjs'
@@ -87,7 +87,7 @@ class RedProtoBufController {
           resolve()
         }
       } else {
-        console.log('没有检测到已有MQ连接')
+        //console.log('没有检测到已有MQ连接')
         resolve()
       }
     })
@@ -146,8 +146,8 @@ class RedProtoBufController {
       }
 
       function onFailed(frame) {
-        console.log('Failed: ' + frame)
-        console.log('一秒后重新连接')
+        //console.log('Failed: ' + frame)
+        //console.log('一秒后重新连接')
         globalStompClient = null
         globalSubscribe = null
         isConnected = false

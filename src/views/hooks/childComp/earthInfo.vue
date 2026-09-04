@@ -12,7 +12,7 @@
   position: fixed;
   right: 185px;
   bottom: 0px;
-  color: #fff;
+  color: var(--text-primary);
   z-index: 9999;
   font-weight: 500;
   font-size: 12px;
@@ -22,7 +22,7 @@
   position: fixed;
   right: 120px;
   bottom: 0px;
-  color: #fff;
+  color: var(--text-primary);
   z-index: 9999;
   display: block;
   font-weight: 500;

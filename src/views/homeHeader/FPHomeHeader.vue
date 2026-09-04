@@ -180,10 +180,7 @@ onUnmounted(() => {
   height: 80px;
   position: absolute;
   top: 0;
-
-  // background: url('~@/assets/image/top.png');
   background: url('@/assets/image/homeHeader/顶部背景图.png');
-  // background: url('@/assets/image/dataScreen/切图蓝-2.png');
   background-size: 100% 100%;
   z-index: 21; // 云渲染上要添加系统头,zindex设置比云渲染高
 
@@ -195,8 +192,6 @@ onUnmounted(() => {
 
     .headbox_system {
       height: 60px;
-      // width: calc(50% - 210px);
-      // flex: 1.5;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -233,7 +228,6 @@ onUnmounted(() => {
 
     .header {
       height: 40px;
-      // width: 870px;
       flex: 2;
       font-size: 20px;
       line-height: 24px;
@@ -252,7 +246,7 @@ onUnmounted(() => {
       flex: 1.5;
       display: flex;
       align-items: center;
-      justify-content: center; //space-evenly;
+      justify-content: center;
       margin-top: 2px;
 
       .headbox_system_right {
@@ -367,52 +361,14 @@ onUnmounted(() => {
     }
   }
 
-  // .sceneSelectDIV {
-  //   margin-top: -7px;
-  //   font-size: 20px;
-  //   color: #fff;
-  //   position: relative;
-  //   cursor: pointer;
-
-  //   .scene_input {
-  //     margin-top: 25px;
-  //     border: none !important;
-
-  //     :deep .el-input__inner {
-  //       font-size: 18px;
-  //       font-weight: 500;
-  //       // width: 150px;
-  //       // background-color: transparent;
-  //       color: #06d6f9;
-  //       border: none !important;
-  //       text-align: center;
-  //       height: 30px;
-  //     }
-
-  //     :deep .el-input__wrapper {
-  //       background-color: transparent;
-  //     }
-  //   }
-
-  //   .arrowImg {
-  //     margin: 0 0 3px -10px;
-  //   }
-
-  //   .arrow_img_left {
-  //     margin: 0 0 3px 5px;
-  //   }
-  // }
-
   .sceneSelectDIV {
     position: absolute;
     left: 51%;
     top: 49%;
     transform: translate(-60%, 0);
     overflow: hidden;
-    /* line-height: 30px; */
     width: 350px;
     cursor: pointer;
-    // background-image: url('@/assets/image/dataScreen/补充切图-5.png');
     background-size: 100% 120%;
     display: flex;
     align-items: center;

@@ -1,3 +1,11 @@
+<!--
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-07-31 15:06:33
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-28 14:49:40
+ * @FilePath: \MSIMEarthSystem\src\views\toolbar\index.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!-- 工具条 -->
 <template>
   <div class="left-navbar" id="toolBar">
@@ -7,9 +15,9 @@
         <el-tooltip effect="light" :content="state.navbarBtn[0].name" placement="left">
           <div>
             <img :src="state.navbarBtn[0].sign
-              ? state.navbarBtn[0].img4
-              : state.navbarBtn[0].img3
-              " :alt="state.navbarBtn[0].name" style="padding: 5px; width: 30px; height: 30px" />
+              ? getThemeImg(state.navbarBtn[0].img4)
+              : getThemeImg(state.navbarBtn[0].img3)
+              " :alt="state.navbarBtn[0].name" style="padding: 5px; width: 30px; height: 30px;margin-bottom: 5px;" />
           </div>
         </el-tooltip>
       </div>
@@ -20,9 +28,9 @@
           <el-tooltip effect="light" :content="item.name" placement="left">
             <div>
               <img :src="item.actived || state.activeMenu == item.tag || item.sign
-                ? item.img2
-                : item.img
-                " :alt="item.name" style="padding: 5px; width: 30px; height: 30px" />
+                ? getThemeImg(item.img2)
+                : getThemeImg(item.img)
+                " :alt="item.name" style="padding: 5px; width: 30px; height: 30px;margin-bottom: 5px;" />
             </div>
           </el-tooltip>
         </div>
@@ -126,12 +134,13 @@ import timeControl from '../../components/timeline/timeControl.vue'
 import terrainExagg from '../../components/terrainExagg/index.vue'
 import spaceBoxLegend from '@/views/toolbar/layerList/spaceBoxLegend/index.vue'
 import layerList from '@/views/toolbar/layerList/index.vue'
+import { themeType } from '@/config/theme.js'
 import {
   resetEarth,
   loadAcmiFileParser,
   loadFileParser
 } from '@/utils/mapTools'
-import { Search, Location } from '@element-plus/icons-vue'
+import { Search } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import historyLogInfor from '@/views/toolbar/historyLogInfor.vue'
 import { acmiFileParserFun, analysisACOXML } from '@/service/fileParser'
@@ -142,7 +151,7 @@ import { websocketUrl_message } from '@/service/request/config'
 const emit = defineEmits(['changeModel', 'openLog', 'openMessage']) //定义事件
 const props = defineProps({ foo: String }) // 获取props
 import { permissionList } from '@/components/permission/data.js'
-onMounted(() => {
+onMounted(async () => {
   // 权限
   getPermissionList()
   emitter.on('tagActiveClose', val => {
@@ -153,19 +162,8 @@ onMounted(() => {
       }
     });
     switch (val) {
-      case 'quickDecision':
-        state.showQuickDecision = false
-        break;
-      case 'groupInfo':
-        state.showGroupInfo = false
-        break;
-      case 'battleInfo':
-        state.showBattleInfo = false
-        break;
-      case 'weatherControl':
-        state.showWeatherControl = false
-      case 'scenarioContent':
-        state.showScenarioContent = false
+      case 'measurement':
+        state.isShowMeasurePanel = false
       default:
         break;
     }
@@ -175,8 +173,8 @@ onMounted(() => {
       name: '图层',
       tag: 'showTree',
       actived: false,
-      img: require('@/assets/image/rightNavbar/图层.png'),
-      img2: require('@/assets/image/rightNavbar/图层备份.png')
+      img: '图层.png',
+      img2: '图层备份.png'
     }
     selectMenu(param)
   })
@@ -188,29 +186,11 @@ onMounted(() => {
       actived: false,
       sign: false,
       img: require('@/assets/image/rightNavbar/地球自转.png'),
-      img2: require('@/assets/image/rightNavbar/地球自转-p.png')
+      img2: require('@/assets/image/rightNavbar/地球自转1.png')
     }
     selectMenu(param)
   })
-  // 选择UE场景后可以控制UE全屏
-  emitter.on('viewUE', (val) => {
-    if (val) {
-      state.navbarBtn.push({
-        name: 'UE全屏',
-        tag: 'switchingScreens',
-        actived: false,
-        sign: false,
-        img: require('@/assets/image/rightNavbar/隐藏卫星.png'),
-        img2: require('@/assets/image/rightNavbar/隐藏卫星备份.png')
-      })
-    } else {
-      store.state.sceneModule.currentScreen = 'earthView'
-      let switchingScreensIndex = state.navbarBtn.findIndex((item) => {
-        return item.name == 'UE全屏'
-      })
-      state.navbarBtn.splice(switchingScreensIndex, 1)
-    }
-  })
+
   emitter.on('spaceGrid', (val) => {
     state.showSpaceGrid = val
   })
@@ -268,32 +248,17 @@ onMounted(() => {
     video.muted = !state.systemSoundEnabled
   })
 })
-onMounted(() => {
-  // 添加点击外部区域关闭弹框的事件监听
-  // document.addEventListener('click', handleClickOutside)
-})
 
 onUnmounted(() => {
-  // state.socketApi_msg.closeWebSocket()
   // 清除名称查询定时器
   clearinptNameSearchState()
-  // 移除事件监听
-  // document.removeEventListener('click', handleClickOutside)
 })
 
-// 点击外部区域关闭弹框
-const handleClickOutside = (event) => {
-  const searchContainer = document.querySelector('.search-name-container')
-  if (searchContainer && !searchContainer.contains(event.target)) {
-    state.showNameSearchList = false
-  }
-}
 const store = useStore()
 
 const state = reactive({
   activeMenu: '', //当前选中的左侧列表
   earthswitch: store.state.sceneModule.earthRotate,
-  gridHot: true, //热力图
   constellationVisible: false, //是否星座面板
   legendoffShow: false,
   navbarBtn: [
@@ -302,98 +267,58 @@ const state = reactive({
       tag: 'showoff',
       actived: false,
       sign: false,
-      img: require('@/assets/image/rightNavbar/显.png'),
-      img2: require('@/assets/image/rightNavbar/显-p.png'),
-      img3: require('@/assets/image/rightNavbar/显.png'),
-      img4: require('@/assets/image/rightNavbar/隐-p.png')
+      img: '显.png',
+      img2: '显1.png',
+      img3: '显.png',
+      img4: '隐1.png'
     },
     {
       name: '图层管理',
       tag: 'showTree',
       actived: false,
-      img: require('@/assets/image/rightNavbar/图层.png'),
-      img2: require('@/assets/image/rightNavbar/图层备份.png')
+      img: '图层.png',
+      img2: '图层1.png',
     },
     {
       name: '复位',
       tag: 'reset',
       actived: false,
       sign: false,
-      img: require('@/assets/image/rightNavbar/复位.png'),
-      img2: require('@/assets/image/rightNavbar/复位备份.png')
+      img: '复位.png',
+      img2: '复位1.png'
     },
     {
       name: '二三维切换',
       tag: 'toogleDimension',
       actived: false,
       sign: false,
-      img: require('@/assets/image/rightNavbar/二三维.png'),
-      img2: require('@/assets/image/rightNavbar/二三维备份.png')
+      img: '二三维.png',
+      img2: '二三维1.png'
     },
     {
-      name: '量算',
+      name: '地图分析',
       tag: 'measurement',
       actived: false,
       sign: false,
-      img: require('@/assets/image/rightNavbar/dgx1.png'),
-      img2: require('@/assets/image/rightNavbar/dgx2.png')
+      img: '地图分析.png',
+      img2: '地图分析1.png'
     },
     {
       name: '名称定位',
       tag: 'inputNamePosition',
       actived: false,
       sign: false,
-      img: require('@/assets/image/rightNavbar/地球自转.png'),
-      img2: require('@/assets/image/rightNavbar/地球自转-p.png')
+      img: '地球自转.png',
+      img2: '地球自转1.png'
     },
     {
       name: '正北方向',
       tag: 'dueNorth',
       actived: false,
       sign: false,
-      img: require('@/assets/image/rightNavbar/正北方向+.png'),
-      img2: require('@/assets/image/rightNavbar/正北方向--.png')
+      img: '正北方向.png',
+      img2: '正北方向1.png'
     },
-    {
-      name: '编组信息',
-      tag: 'groupInfo',
-      actived: false,
-      sign: false,
-      img: require('@/assets/image/rightNavbar/编组信息.png'),
-      img2: require('@/assets/image/rightNavbar/编组信息-.png')
-    },
-    {
-      name: '作战信息',
-      tag: 'battleInfo',
-      actived: false,
-      sign: false,
-      img: require('@/assets/image/rightNavbar/图例.png'),
-      img2: require('@/assets/image/rightNavbar/图例-p.png')
-    },
-    {
-      name: '天气导调',
-      tag: 'weatherControl',
-      actived: false,
-      sign: false,
-      img: require('@/assets/image/rightNavbar/天气导调.png'),
-      img2: require('@/assets/image/rightNavbar/天气导调-.png')
-    },
-    {
-      name: '快速裁决',
-      tag: 'quickDecision',
-      actived: false,
-      sign: false,
-      img: require('@/assets/image/rightNavbar/快速裁决.png'),
-      img2: require('@/assets/image/rightNavbar/快速裁决-.png')
-    },
-    {
-      name: '想定面板',
-      tag: 'scenarioContent',
-      actived: false,
-      sign: false,
-      img: require('@/assets/image/rightNavbar/想定面板.png'),
-      img2: require('@/assets/image/rightNavbar/想定面板-.png')
-    }
   ],
   isShowTree: false, //是否展示图层列表
   isScenarioExecution: false, //场景执行按钮
@@ -443,7 +368,27 @@ const state = reactive({
   showGroupInfo: false, // 编组信息显隐
   showScenarioContent: false  // 想定面板显隐
 })
-
+// 根据主题类型动态加载图片资源
+// 注意：Webpack 的 require() 需要静态路径前缀才能在构建时分析依赖
+// 因此每个主题分支使用独立的 require() + 模板字符串，确保路径可被静态分析
+const getThemeImg = (name) => {
+  switch (themeType) {
+    // 蓝色
+    case 1:
+      return require(`@/assets/image/rightNavbar/${name}`)
+    // 黑色
+    case 2:
+      return require(`@/assets/image/rightNavbar/${name}`)
+    // 白色
+    case 3:
+      return require(`@/assets/image/rightNavbar/${name}`)
+    // 绿色
+    case 4:
+      return require(`@/assets/image/rightNavbar/menu_green/${name}`)
+    default:
+      return require(`@/assets/image/rightNavbar/${name}`)
+  }
+}
 // 权限
 const getPermissionList = () => {
   // 获取用户权限列表
@@ -475,9 +420,6 @@ window.pushCallbacl = () => {
 }
 // 按钮移入移出
 const enterItem = (item) => {
-  // if (item.actived == false) {
-  //   return
-  // }
   item.sign = true
 }
 // 关闭
@@ -558,18 +500,6 @@ const selectMenu = (item) => {
       break
     case 'showoff':
       showoff(false)
-      break
-    // 网格热力图
-    case 'gridHot':
-      if (!state.gridHot) {
-        state.activeMenu = item.tag
-      } else {
-        state.activeMenu = ''
-      }
-      item.actived = !item.actived
-      state.gridHot = !state.gridHot
-      // addHeatMap(state.gridHot)
-      reset()
       break
     case 'switchingScreens':
       store.state.sceneModule.currentScreen =
@@ -668,6 +598,9 @@ const selectMenu = (item) => {
       }
       break
     case 'measurement':
+      if (state.isShowMeasurePanel) {
+        emitter.emit('clearMeasurePanel', true)
+      }
       state.isShowMeasurePanel = !state.isShowMeasurePanel
       break
     default:
@@ -1011,12 +944,17 @@ const createPolygonEntities = (id, lon, lat, name, geojson) => {
         stroke: window.MSIMEarth.Color.HOTPINK,
         fill: window.MSIMEarth.Color.PINK.withAlpha(0.5),
         strokeWidth: 3,
-        clampToGround: true,
+        clampToGround: false,
         text: name
       })
     )
     .then((dataSources) => {
       dataSources.name = `TextEntityPolygon_${id}`
+      dataSources.entities.values.forEach((entity) => {
+        if (entity.polygon) {
+          entity.polygon.height = 1000
+        }
+      })
     })
 
   window.EarthViewer.entities.add({
@@ -1133,6 +1071,10 @@ const handleAcoFileSuccess = (param) => {
 
   .navbar-btn {
     display: flex;
+    // padding: 8px 5px 0;
+    // background: var(--panel-bg);
+    // box-shadow: var(--box-shadow-glow);
+    // border-radius: 10px;
 
     .btn-item pointer-cursor {
       display: inline-block;
@@ -1150,15 +1092,15 @@ const handleAcoFileSuccess = (param) => {
     top: 100px;
     height: 300px;
     width: 300px;
-    background-image: url('~@/assets/image/panelIcons/装饰.png');
+    background-image: var(--img-decoration);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-color: rgba(2, 26, 70, 0.58);
-    box-shadow: 0 0 25px #1092d58a;
+    background-color: var(--panel-bg);
+    box-shadow: var(--box-shadow-glow-soft);
     padding: 5px;
 
     h3 {
-      color: #fff;
+      color: var(--text-primary);
       margin: 5px 0;
     }
 
@@ -1202,11 +1144,11 @@ const handleAcoFileSuccess = (param) => {
 
   :deep(.el-input__wrapper) {
     font-size: 14px;
-    background-color: #2b4559 !important;
-    box-shadow: 0 0 0 1px #075d89 inset;
+    background-color: var(--input-bg) !important;
+    box-shadow: 0 0 0 1px var(--input-border) inset;
 
     .el-input__inner {
-      color: #ffffff;
+      color: var(--text-primary);
       font-size: 14px;
     }
   }
@@ -1215,7 +1157,7 @@ const handleAcoFileSuccess = (param) => {
     background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
     width: 80px;
     height: 30px;
-    color: #ffff;
+    color: var(--text-primary);
     border-radius: 5px;
     margin-left: 10px;
     cursor: pointer;
@@ -1233,13 +1175,13 @@ const handleAcoFileSuccess = (param) => {
     cursor: pointer;
 
     span {
-      color: #ffff;
+      color: var(--text-primary);
       padding-left: 5px;
     }
 
     span:hover {
       padding-left: 5px;
-      color: #a5a4b5;
+      color: var(--text-secondary);
       cursor: pointer;
     }
   }
@@ -1254,14 +1196,14 @@ const handleAcoFileSuccess = (param) => {
 // 优化 el-popover 的 UI 样式，与 search_create 风格一致
 .name-search-popover {
   width: 229px;
-  background-color: #2b4559 !important;
-  border: 1px solid #075d89 !important;
-  box-shadow: 0 0 15px rgba(16, 146, 213, 0.5);
+  background-color: var(--input-bg) !important;
+  border: 1px solid var(--input-border) !important;
+  box-shadow: 0 0 15px var(--primary-color-half);
   margin-bottom: 5px;
 
   .popper__arrow {
-    border-top-color: #2b4559 !important;
-    border-bottom-color: #2b4559 !important;
+    border-top-color: var(--input-bg) !important;
+    border-bottom-color: var(--input-bg) !important;
   }
 
   .el-card {
@@ -1275,14 +1217,14 @@ const handleAcoFileSuccess = (param) => {
 
   .list-item {
     padding: 10px 15px;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
 
     &:hover {
-      background-color: #075d89;
-      color: #ffffff;
+      background-color: var(--input-border);
+      color: var(--text-primary);
     }
   }
 

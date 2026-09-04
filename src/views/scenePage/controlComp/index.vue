@@ -1,11 +1,10 @@
 <template>
   <div class="bottomControl">
-    <div class="float-left">
-      <el-tooltip effect="light" :content="state.rightShow ? '隐藏时间控制面板' : '显示时间控制面板'" placement="bottom">
-        <img class="left-shrink" :src="state.rightShow
-            ? require('@/assets/image/panelIcons/telescoping.png')
-            : require('@/assets/image/panelIcons/telescoping_1.png')
-          " @click="changeRight" />
+    <div class="float-left" v-show="!isReviewRoute">
+      <el-tooltip effect="light" :content="state.rightShow ? '隐藏底部工具栏' : '显示底部工具栏'" placement="bottom">
+        <div class="left-shrink" :style="{
+          backgroundImage: state.rightShow ? 'var(--img-telescoping_1)' : 'var(--img-telescoping)'
+        }" @click="changeRight"></div>
       </el-tooltip>
     </div>
     <Transition name="custom-classes" enter-active-class="animate__animated animate__fadeInUp"
@@ -29,23 +28,6 @@
           <el-option v-for="item in state.threeDimensionalList" :key="item.name" :label="item.label"
             :value="item.name" />
         </el-select>
-        <!-- <el-select
-          v-model="state.thematicAnalysis"
-          class="scene_input"
-          placeholder="专题分析"
-          size="small"
-          @change="changeThematicAnalysis"
-          clearable
-          value-key="name"
-          v-show="state.isBottomPermisson5"
-        >
-          <el-option
-            v-for="item in state.thematicAnalysisList"
-            :key="item.name"
-            :label="item.label"
-            :value="item"
-          />
-        </el-select> -->
       </div>
     </Transition>
   </div>
@@ -53,11 +35,16 @@
 
 <script setup>
 import emitter from '@/utils/eventbus'
-import { onMounted, reactive, watch } from 'vue'
+import { computed, onMounted, reactive, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import store from '@/store'
 import { pauseTime } from '@/service/timeline'
 import { StartSceneRunSetData } from '@/service/SSE'
 import { permissionList } from '@/components/permission/data.js'
+
+const route = useRoute()
+// 复盘界面不显示底部控制面板按钮
+const isReviewRoute = computed(() => route.path.includes('review'))
 
 const state = reactive({
   leftCompName: '',
@@ -761,12 +748,15 @@ const changeTopNumber = (name) => {
     height: 50px;
     position: absolute;
     bottom: 0;
-    left: 12px;
+    left: 14px;
 
     .left-shrink {
       z-index: 2;
       cursor: pointer;
-      width: 16px;
+      width: 19px;
+      height: 58px;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
       font-size: 36px !important;
     }
   }
@@ -785,21 +775,21 @@ const changeTopNumber = (name) => {
       :deep(.el-input__inner) {
         font-size: 18px;
         font-weight: 500;
-        color: #06d6f9;
+        color: var(--cyan-color);
         border: none !important;
         text-align: center;
       }
 
       :deep(.el-input__wrapper) {
-        background-color: #172e51 !important;
-        box-shadow: 0 0 25px #1092d5;
+        background-color: var(--input-bg) !important;
+        box-shadow: var(--box-shadow-glow);
       }
 
       :deep(.el-input) {
         --el-input-border-color: #e5e5e500 !important;
         --el-input-hover-border: transparent !important;
         --el-input-focus-border: transparent !important;
-        --el-input-placeholder-color: #06d6f9;
+        --el-input-placeholder-color: var(--cyan-placeholder);
       }
 
       :deep(.el-select) {

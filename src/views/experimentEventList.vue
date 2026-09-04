@@ -1,37 +1,27 @@
+<!--
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-07-07 14:17:07
+ * @LastEditors: xujiajia xujiajia@piesat.cn
+ * @LastEditTime: 2026-08-11 13:39:43
+ * @FilePath: \MSIMEarthSystem\src\views\experimentEventList.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
-  <div
-    class="eventList animate__animated animate__fadeInRightBig animate__delay-0.3s"
-    :class="{ expanded: isExpanded }"
-    v-show="showList"
-  >
+  <div class="eventList animate__animated animate__fadeInRightBig animate__delay-0.3s" :class="{ expanded: isExpanded }"
+    v-show="showList">
     <div class="header">
       <span>演播列表</span>
       <div class="header-icons">
-        <el-tooltip
-          content="场景初始视角和想定信息配置"
-          placement="top"
-          v-if="!isShiyanRole"
-        >
+        <el-tooltip content="场景初始视角和想定信息配置" placement="top" v-if="!isShiyanRole">
           <el-icon class="view-config-btn" @click="showViewConfigPanel">
             <Setting />
           </el-icon>
         </el-tooltip>
-        <el-tooltip
-          :content="flyControl ? '关闭镜头跳转' : '开启镜头跳转'"
-          placement="top"
-        >
-          <el-switch
-            v-model="flyControl"
-            @change="toggleFlyControl"
-            class="fly-control-switch"
-            active-color="#00cbff"
-            inactive-color="#909399"
-          />
+        <el-tooltip :content="flyControl ? '关闭镜头跳转' : '开启镜头跳转'" placement="top">
+          <el-switch v-model="flyControl" @change="toggleFlyControl" class="fly-control-switch"
+            active-color="var(--cyan-bright)" inactive-color="#909399" />
         </el-tooltip>
-        <el-tooltip
-          :content="isExpanded ? '收起面板' : '展开面板'"
-          placement="top"
-        >
+        <el-tooltip :content="isExpanded ? '收起面板' : '展开面板'" placement="top">
           <el-icon class="expand-btn" @click="toggleExpand">
             <ArrowUp v-if="isExpanded" />
             <ArrowDown v-else />
@@ -43,31 +33,13 @@
       </div>
     </div>
     <div class="content">
-      <div
-        class="search_create"
-        style="display: flex; align-items: center; gap: 15px"
-      >
-        <el-input
-          v-model="search"
-          :suffix-icon="Search"
-          placeholder="请输入演播名称"
-          clearable
-          @keyup.enter="filterList"
-        />
+      <div class="search_create" style="display: flex; align-items: center; gap: 15px">
+        <el-input v-model="search" :suffix-icon="Search" placeholder="请输入演播名称" clearable @keyup.enter="filterList" />
         <div class="voice-select-container">
           <!-- <span class="voice-select-label">播报音源:</span> -->
-          <el-select
-            v-model="defaultSpeaker"
-            placeholder="选择播报音源"
-            style="width: 180px"
-            class="voice-select"
-          >
-            <el-option
-              v-for="item in _speakersList"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
+          <el-select v-model="defaultSpeaker" placeholder="选择播报音源" style="width: 180px" class="voice-select">
+            <el-option v-for="item in _speakersList" :key="item.value" :label="item.label"
+              :value="item.value"></el-option>
           </el-select>
         </div>
         <span v-if="!isShiyanRole">
@@ -77,16 +49,12 @@
         </span>
       </div>
       <div class="eventItem_box">
-        <div
-          class="item_box"
-          v-for="(item, key, index) in filteredEvents"
-          :key="item.id || index"
-          :class="selectIndex == index ? 'select_style' : ''"
-        >
+        <div class="item_box" v-for="(item, key, index) in filteredEvents" :key="item.id || index"
+          :class="selectIndex == index ? 'select_style' : ''">
           <div class="item_info">
             <div class="item_header">
               <span class="title">
-                <img src="~@/assets/images/rwty/想定查询.svg" alt="" />
+                <div class="icon" :style="{ backgroundImage: 'var(--img-task-icon)' }"></div>
                 <span class="group-name">{{ item.group || '' }}</span>
                 <span :title="item.title || item.message" class="event-name">{{
                   item.title || item.message || `演播${index + 1}`
@@ -97,17 +65,11 @@
               <li class="time">触发时间: {{ formatTimeFromSeconds(key) }}</li>
               <li class="describe detail">
                 详情:
-                <span
-                  class="detail-content"
-                  :title="item.flyArr?.[0]?.identifyInfo || '无'"
-                >
+                <span class="detail-content" :title="item.flyArr?.[0]?.identifyInfo || '无'">
                   {{ item.flyArr?.[0]?.identifyInfo || '无' }}
                 </span>
                 <div class="tooltip-wrapper" v-if="false">
-                  <el-icon
-                    class="position-icon"
-                    @click.stop="editPosition(item, index, key)"
-                  >
+                  <el-icon class="position-icon" @click.stop="editPosition(item, index, key)">
                     <Location />
                   </el-icon>
                 </div>
@@ -116,29 +78,17 @@
           </div>
           <div class="btn_list">
             <div class="tooltip-wrapper">
-              <el-icon
-                class="list-icon"
-                size="14"
-                @click.stop="audioEvent(item, index)"
-              >
+              <el-icon class="list-icon" size="14" @click.stop="audioEvent(item, index)">
                 <Headset />
               </el-icon>
             </div>
             <div class="tooltip-wrapper" v-if="!isShiyanRole">
-              <el-icon
-                class="list-icon"
-                size="14"
-                @click.stop="editEvent(item, index, key)"
-              >
+              <el-icon class="list-icon" size="14" @click.stop="editEvent(item, index, key)">
                 <EditPen />
               </el-icon>
             </div>
             <div class="tooltip-wrapper" v-if="!isShiyanRole">
-              <el-icon
-                class="list-icon"
-                size="14"
-                @click.stop="deleteEvent(item, index, key)"
-              >
+              <el-icon class="list-icon" size="14" @click.stop="deleteEvent(item, index, key)">
                 <Delete />
               </el-icon>
             </div>
@@ -152,16 +102,10 @@
           <el-button type="primary" @click="triggerImport">
             导入演播
           </el-button>
-          <el-button type="danger" @click="clearAllEvents">
+          <el-button type="danger" @click="clearAllEvents" class="clear-btn">
             清空演播
           </el-button>
-          <input
-            type="file"
-            ref="fileInputRef"
-            style="display: none"
-            accept=".json"
-            @change="importEvents"
-          />
+          <input type="file" ref="fileInputRef" style="display: none" accept=".json" @change="importEvents" />
         </div>
         <!-- <selfPage
           class="page_box"
@@ -191,55 +135,28 @@
                 v-model="currentEditIndex"
                 placeholder="请输入时间节点"
               ></el-input> -->
-              <el-date-picker
-                v-model="inputTime"
-                type="datetime"
-                value-format="YYYY-MM-DD HH:mm:ss"
-                placeholder="选择时间节点"
-                :disabledDate="disabledDateFn"
-                :disabled-hours="disabledHours"
-                :disabled-minutes="disabledMinutes"
-                :disabled-seconds="disabledSeconds"
-                :popper-append-to-body="false"
-                placement="bottom-start"
-                id="table-time-ym"
-              />
+              <el-date-picker v-model="inputTime" type="datetime" value-format="YYYY-MM-DD HH:mm:ss"
+                placeholder="选择时间节点" :disabledDate="disabledDateFn" :disabled-hours="disabledHours"
+                :disabled-minutes="disabledMinutes" :disabled-seconds="disabledSeconds" :popper-append-to-body="false"
+                placement="bottom-start" id="table-time-ym" />
             </el-form-item>
             <el-form-item label="AI播音员">
-              <el-select
-                v-model="currentEvent.speaker"
-                placeholder="请选择播音员"
-                class="voice-select"
-              >
-                <el-option
-                  v-for="item in _speakersList"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                ></el-option>
+              <el-select v-model="currentEvent.speaker" placeholder="请选择播音员" class="voice-select">
+                <el-option v-for="item in _speakersList" :key="item.value" :label="item.label"
+                  :value="item.value"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="演播标题">
-              <el-input
-                v-model="currentEvent.message"
-                :placeholder="
-                  editTitle == '新增演播'
-                    ? '请输入演播标题'
-                    : currentEvent.message
-                    ? '请输入演播标题'
-                    : '演播' + Number(Number(selectIndex) + 1)
-                "
-              ></el-input>
+              <el-input v-model="currentEvent.message" :placeholder="editTitle == '新增演播'
+                ? '请输入演播标题'
+                : currentEvent.message
+                  ? '请输入演播标题'
+                  : '演播' + Number(Number(selectIndex) + 1)
+                "></el-input>
             </el-form-item>
             <el-form-item label="演播内容">
-              <el-input
-                v-model="currentEvent.flyArr[0].identifyInfo"
-                type="textarea"
-                maxlength="50"
-                show-word-limit
-                :rows="2"
-                placeholder="请输入演播详情"
-              ></el-input>
+              <el-input v-model="currentEvent.flyArr[0].identifyInfo" type="textarea" maxlength="50" show-word-limit
+                :rows="2" placeholder="请输入演播详情"></el-input>
             </el-form-item>
             <el-form-item label="多维呈现实体定位">
               <div class="campBox">
@@ -251,79 +168,39 @@
                 >
                   {{ item.label }}
                 </div> -->
-                <el-button
-                  size="small"
-                  :type="index == selectIndex_3D ? 'primary' : ''"
-                  v-for="(item, index) in campList"
-                  :key="item.value"
-                  @click="_getAllPlatByScenarioId(item.value, index)"
-                  >{{ item.label }}</el-button
-                >
+                <el-button size="small" :type="index == selectIndex_3D ? 'primary' : ''"
+                  v-for="(item, index) in campList" :key="item.value"
+                  @click="_getAllPlatByScenarioId(item.value, index)">{{ item.label }}</el-button>
               </div>
-              <el-select
-                v-model="currentEvent.flyArr[0].UEId"
-                placeholder="请选择实体"
-                class="voice-select"
-                filterable
-                style="width: 200px"
-              >
-                <el-option
-                  v-for="item in platAllList"
-                  :key="item.platformEnName"
-                  :label="item.platformCnName"
-                  :value="item.platformEnName"
-                ></el-option>
+              <el-select v-model="currentEvent.flyArr[0].UEId" placeholder="请选择实体" class="voice-select" filterable
+                style="width: 200px">
+                <el-option v-for="item in platAllList" :key="item.platformEnName" :label="item.platformCnName"
+                  :value="item.platformEnName"></el-option>
               </el-select>
               <span class="waning">
                 若实体列表为空，则该想定未关联实体列表
               </span>
             </el-form-item>
             <el-form-item label="镜头位置">
-              <div
-                style="
+              <div style="
                   display: flex;
                   gap: 10px;
                   align-items: flex-start;
                   flex-direction: column;
-                "
-              >
+                ">
                 <span>
-                  <el-input
-                    v-model="currentEvent.flyArr[0].position_show.x"
-                    type="number"
-                    :min="-180"
-                    :max="180"
-                    :step="0.01"
-                    placeholder="经度"
-                    style="width: 180px"
-                  ></el-input
-                  >(经度)
+                  <el-input v-model="currentEvent.flyArr[0].position_show.x" type="number" :min="-180" :max="180"
+                    :step="0.01" placeholder="经度" style="width: 180px"></el-input>(经度)
                 </span>
                 <span>
-                  <el-input
-                    v-model="currentEvent.flyArr[0].position_show.y"
-                    type="number"
-                    :min="-90"
-                    :max="90"
-                    :step="0.01"
-                    placeholder="纬度"
-                    style="width: 180px"
-                  ></el-input
-                  >(纬度)
+                  <el-input v-model="currentEvent.flyArr[0].position_show.y" type="number" :min="-90" :max="90"
+                    :step="0.01" placeholder="纬度" style="width: 180px"></el-input>(纬度)
                 </span>
                 <span>
-                  <el-input
-                    v-model="currentEvent.flyArr[0].position_show.z"
-                    type="number"
-                    :step="1"
-                    placeholder="高度"
-                    style="width: 180px"
-                  ></el-input
-                  >(镜头高度【米】)
+                  <el-input v-model="currentEvent.flyArr[0].position_show.z" type="number" :step="1" placeholder="高度"
+                    style="width: 180px"></el-input>(镜头高度【米】)
                 </span>
-                <el-button type="primary" @click="selectedPoint"
-                  >获取当前位置</el-button
-                >
+                <el-button type="primary" @click="selectedPoint">获取当前位置</el-button>
               </div>
             </el-form-item>
             <!-- <el-form-item label="持续时间(s)">
@@ -349,11 +226,7 @@
     </div>
 
     <!-- 空间位置编辑弹窗 -->
-    <div
-      v-if="isEditPosition"
-      class="dialog-backdrop"
-      @click="closeEditPosition"
-    >
+    <div v-if="isEditPosition" class="dialog-backdrop" @click="closeEditPosition">
       <div class="dialog-container position-dialog" @click.stop>
         <div class="dialog-header">
           <div class="dialog-title">编辑空间位置</div>
@@ -365,43 +238,18 @@
           <el-form :model="currentPosition" label-width="120px">
             <el-form-item label="位置坐标">
               <div style="display: flex; gap: 10px; align-items: center">
-                <el-input
-                  v-model="currentPosition.position.x"
-                  type="number"
-                  :min="-180"
-                  :max="180"
-                  :step="0.01"
-                  placeholder="经度"
-                  style="width: 80px"
-                ></el-input>
-                <el-input
-                  v-model="currentPosition.position.y"
-                  type="number"
-                  :min="-90"
-                  :max="90"
-                  :step="0.01"
-                  placeholder="纬度"
-                  style="width: 80px"
-                ></el-input>
-                <el-input
-                  v-model="currentPosition.position.z"
-                  type="number"
-                  :step="1"
-                  placeholder="高度"
-                  style="width: 80px"
-                ></el-input>
-                <el-button type="primary" @click="selectedPoint"
-                  >选点</el-button
-                >
+                <el-input v-model="currentPosition.position.x" type="number" :min="-180" :max="180" :step="0.01"
+                  placeholder="经度" style="width: 80px"></el-input>
+                <el-input v-model="currentPosition.position.y" type="number" :min="-90" :max="90" :step="0.01"
+                  placeholder="纬度" style="width: 80px"></el-input>
+                <el-input v-model="currentPosition.position.z" type="number" :step="1" placeholder="高度"
+                  style="width: 80px"></el-input>
+                <el-button type="primary" @click="selectedPoint">选点</el-button>
               </div>
             </el-form-item>
             <el-form-item label="持续时间(s)">
-              <el-input-number
-                v-model="currentPosition.duration"
-                :min="0"
-                :step="0.5"
-                style="width: 100%"
-              ></el-input-number>
+              <el-input-number v-model="currentPosition.duration" :min="0" :step="0.5"
+                style="width: 100%"></el-input-number>
             </el-form-item>
 
             <el-form-item>
@@ -414,11 +262,7 @@
     </div>
 
     <!-- 视角配置面板弹窗 -->
-    <div
-      v-if="isViewConfigPanelVisible"
-      class="dialog-backdrop"
-      @click="closeViewConfigPanel"
-    >
+    <div v-if="isViewConfigPanelVisible" class="dialog-backdrop" @click="closeViewConfigPanel">
       <div class="dialog-container view-config-dialog" @click.stop>
         <div class="dialog-header">
           <div class="dialog-title">场景初始视角和想定信息配置</div>
@@ -427,100 +271,52 @@
           </el-icon>
         </div>
         <div class="dialog-body">
-          <el-form
-            :model="viewConfigData"
-            label-width="120px"
-            style="width: 100%"
-          >
+          <el-form :model="viewConfigData" label-width="120px" style="width: 100%">
             <el-form-item label="位置坐标">
-              <div
-                style="
+              <div style="
                   display: flex;
                   gap: 10px;
                   align-items: center;
                   flex-wrap: wrap;
-                "
-              >
-                <el-input
-                  v-model="viewConfigData.position.x"
-                  type="number"
-                  :min="-180"
-                  :max="180"
-                  :step="0.01"
-                  placeholder="经度"
-                  style="width: 100px"
-                ></el-input>
-                <el-input
-                  v-model="viewConfigData.position.y"
-                  type="number"
-                  :min="-90"
-                  :max="90"
-                  :step="0.01"
-                  placeholder="纬度"
-                  style="width: 100px"
-                ></el-input>
-                <el-input
-                  v-model="viewConfigData.position.z"
-                  type="number"
-                  :step="1"
-                  placeholder="高度"
-                  style="width: 100px"
-                ></el-input>
-                <el-button type="primary" @click="getCameraPosition"
-                  >获取摄像机当前位置</el-button
-                >
-                <el-button type="primary" @click="previewView"
-                  >视角预览</el-button
-                >
+                ">
+                <el-input v-model="viewConfigData.position.x" type="number" :min="-180" :max="180" :step="0.01"
+                  placeholder="经度" style="width: 100px"></el-input>
+                <el-input v-model="viewConfigData.position.y" type="number" :min="-90" :max="90" :step="0.01"
+                  placeholder="纬度" style="width: 100px"></el-input>
+                <el-input v-model="viewConfigData.position.z" type="number" :step="1" placeholder="高度"
+                  style="width: 100px"></el-input>
+                <el-button type="primary" @click="getCameraPosition">获取摄像机当前位置</el-button>
+                <el-button type="primary" @click="previewView">视角预览</el-button>
               </div>
             </el-form-item>
 
             <!-- 想定内置部分 -->
             <el-divider>想定内置</el-divider>
             <el-form-item label="想定背景">
-              <el-input
-                v-model="viewConfigData.scenario.scenarioBackground"
-                placeholder="请输入想定背景"
-                type="textarea"
-                :rows="3"
-              ></el-input>
+              <el-input v-model="viewConfigData.scenario.scenarioBackground" placeholder="请输入想定背景" type="textarea"
+                :rows="3"></el-input>
             </el-form-item>
             <el-form-item label="任务简报">
-              <el-input
-                v-model="viewConfigData.scenario.missionBrief"
-                placeholder="请输入任务简报"
-                type="textarea"
-                :rows="3"
-              ></el-input>
+              <el-input v-model="viewConfigData.scenario.missionBrief" placeholder="请输入任务简报" type="textarea"
+                :rows="3"></el-input>
             </el-form-item>
             <el-form-item label="任务目的">
-              <el-input
-                v-model="viewConfigData.scenario.missionObjective"
-                placeholder="请输入任务目的"
-                type="textarea"
-                :rows="3"
-              ></el-input>
+              <el-input v-model="viewConfigData.scenario.missionObjective" placeholder="请输入任务目的" type="textarea"
+                :rows="3"></el-input>
             </el-form-item>
           </el-form>
         </div>
-        <div
-          style="
+        <div style="
             display: flex;
             justify-content: flex-end;
             padding: 10px 20px;
-            background-color: rgba(0, 0, 0, 0.1);
-          "
-        >
-          <el-button
-            type="success"
-            @click="saveViewConfig"
-            style="
+            background-color: rgba(var(--black-rgb), 0.1);
+          ">
+          <el-button type="success" @click="saveViewConfig" style="
               margin-right: 10px;
-              background-color: #67c23a;
-              border-color: #67c23a;
-            "
-            >保存</el-button
-          >
+              background-color: var(--status-running);
+              border-color: var(--status-running);
+            ">保存</el-button>
           <el-button @click="closeViewConfigPanel">取消</el-button>
         </div>
       </div>
@@ -735,7 +531,7 @@ const _speakersList = ref([])
 
 let cameraController = new window.EarthPlugn.CameraControl({})
 
-const saveAll = () => {}
+const saveAll = () => { }
 
 const cartesiantoDegrees = (data) => {
   let cartographic = window.MSIMEarth.Cartographic.fromCartesian(data)
@@ -1658,7 +1454,6 @@ const disabledSeconds = (hour, mins) => {
 <style lang="less" scoped>
 .eventList {
   width: 1300px;
-  /* 宽度大于高度，横版设计 */
   height: 380px;
   background-size: 100% 100%;
   z-index: 25;
@@ -1666,11 +1461,11 @@ const disabledSeconds = (hour, mins) => {
   box-sizing: border-box;
   position: absolute;
   top: 13%;
-  // right: 3px;
   right: 6%;
-  background: rgba(2, 26, 70, 0.58);
-  box-shadow: 0 0 25px #1092d58a;
-  border-radius: 8px;
+  background: var(--panel-bg);
+  box-shadow: var(--box-shadow-glow);
+  border-top: 4px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   transition: height 0.3s ease;
 
   &.expanded {
@@ -1684,13 +1479,14 @@ const disabledSeconds = (hour, mins) => {
   .campBox {
     display: flex;
     margin-bottom: 10px;
+
     .campItem {
       padding: 5px 10px;
     }
   }
 
   .waning {
-    color: #ffd600;
+    color: var(--status-paused);
     font-size: 11px;
     margin-left: 10px;
   }
@@ -1700,13 +1496,13 @@ const disabledSeconds = (hour, mins) => {
     align-items: center;
     justify-content: space-between;
     padding: 8px 15px;
-    border-bottom: 1px solid #0b3855;
+    border-bottom: 1px solid var(--border-color);
     height: 45px;
     font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
     font-weight: 700;
     font-style: normal;
     font-size: 19px;
-    color: #c2d7ee;
+    color: var(--title-color);
 
     .header-icons {
       display: flex;
@@ -1721,7 +1517,7 @@ const disabledSeconds = (hour, mins) => {
     .expand-btn {
       cursor: pointer;
       font-size: 18px;
-      color: #c2d7ee;
+      color: var(--text-placeholder);
       transition: all 0.3s ease;
       flex-shrink: 0;
       width: 32px;
@@ -1731,8 +1527,8 @@ const disabledSeconds = (hour, mins) => {
       justify-content: center;
 
       &:hover {
-        color: #00cbff;
-        background-color: rgba(0, 203, 255, 0.1);
+        color: var(--cyan-bright);
+        background-color: rgba(var(--cyan-bright-rgb), 0.1);
         border-radius: 4px;
       }
     }
@@ -1740,7 +1536,7 @@ const disabledSeconds = (hour, mins) => {
     .view-config-btn {
       cursor: pointer;
       font-size: 18px;
-      color: #c2d7ee;
+      color: var(--text-primary);
       transition: all 0.3s ease;
       flex-shrink: 0;
       width: 32px;
@@ -1749,25 +1545,25 @@ const disabledSeconds = (hour, mins) => {
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background-color: rgba(0, 203, 255, 0.1);
-      border: 1px solid rgba(0, 203, 255, 0.3);
+      background-color: rgba(var(--cyan-bright-rgb), 0.1);
+      border: 1px solid rgba(var(--cyan-bright-rgb), 0.3);
 
       &:hover {
-        color: #00cbff;
-        background-color: rgba(0, 203, 255, 0.2);
-        box-shadow: 0 0 10px rgba(0, 203, 255, 0.3);
+        color: var(--cyan-bright);
+        background-color: rgba(var(--cyan-bright-rgb), 0.2);
+        box-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.3);
       }
     }
 
     .close-btn {
       cursor: pointer;
       font-size: 18px;
-      color: #c2d7ee;
+      color: var(--text-placeholder);
       transition: color 0.3s ease;
       flex-shrink: 0;
 
       &:hover {
-        color: #00cbff;
+        color: var(--cyan-bright);
       }
     }
   }
@@ -1785,8 +1581,8 @@ const disabledSeconds = (hour, mins) => {
       align-items: center;
       justify-content: space-between;
       padding: 8px 10px;
-      border-bottom: 1px solid rgba(0, 203, 255, 0.1);
-      background: rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(var(--cyan-bright-rgb), 0.1);
+      background: rgba(var(--black-rgb), 0.1);
       border-radius: 4px;
       margin: 8px;
 
@@ -1795,28 +1591,28 @@ const disabledSeconds = (hour, mins) => {
         align-items: center;
         gap: 10px;
         padding: 0 10px;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(var(--black-rgb), 0.2);
         border-radius: 4px;
         height: 32px;
       }
 
       .voice-select-label {
-        color: #c2d7ee;
+        color: var(--text-secondary);
         font-size: 14px;
         font-weight: 500;
       }
 
       .voice-select {
         :deep(.el-select__wrapper) {
-          background-color: #2b4559 !important;
-          box-shadow: 0 0 0 1px #075d89 inset;
+          background-color: var(--input-bg) !important;
+          box-shadow: 0 0 0 1px var(--input-border) inset;
           border: none;
           height: 30px;
           min-height: 30px;
           width: 180px;
 
           .el-input__inner {
-            color: #ffffff;
+            color: var(--text-primary);
             font-size: 14px;
             height: 30px;
             line-height: 30px;
@@ -1825,20 +1621,37 @@ const disabledSeconds = (hour, mins) => {
         }
 
         :deep(.el-select__placeholder) {
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(var(--white-rgb), 0.7);
           font-size: 14px;
         }
       }
 
       .el-button {
-        background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
+        background: var(--img-button-bg);
+        background-size: 100% 100%;
         width: 80px;
         height: 30px;
-        color: #ffff;
-        border-radius: 5px;
-        margin-left: 8px;
+        border-radius: 3px;
+        margin: 2px 0;
         cursor: pointer;
-        margin-right: 5px;
+        border: none;
+        padding: 0;
+        font-size: 12px;
+        display: block;
+        text-align: center;
+        line-height: 30px;
+        transition: all 0.3s ease;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        filter: brightness(0.9);
+        box-shadow: 0 0 5px var(--glow-shadow);
+        color: var(--text-primary);
+
+        &:hover:not(:disabled) {
+          box-shadow: 0 0 10px var(--el-button-primary-hover-bg);
+          color: var(--text-primary);
+          filter: brightness(1.05);
+        }
       }
     }
 
@@ -1847,13 +1660,12 @@ const disabledSeconds = (hour, mins) => {
       padding: 0;
       margin: 0 8px;
       height: calc(100% - 110px);
-      /* 扣除搜索栏和分页高度 */
       text-align: left;
       overflow-y: auto;
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(var(--black-rgb), 0.1);
       border-radius: 4px;
-      border: 1px solid rgba(0, 203, 255, 0.1);
-      padding: 5px;
+      border: 1px solid rgba(var(--cyan-bright-rgb), 0.25);
+      padding: 8px;
 
       /* 横向滚动布局，适合横版设计 */
       display: flex;
@@ -1861,7 +1673,7 @@ const disabledSeconds = (hour, mins) => {
       gap: 8px;
 
       .item_box {
-        background-color: #223b5091;
+        background-color: var(--panel-bg-dark);
         border: 1px solid #ffffff00;
         padding: 10px 15px;
         cursor: pointer;
@@ -1875,9 +1687,9 @@ const disabledSeconds = (hour, mins) => {
         min-height: 70px;
 
         &:hover {
-          border-color: #02a7f0;
-          background-color: #02a7f01a;
-          box-shadow: 0 0 10px rgba(0, 203, 255, 0.2);
+          border-color: var(--cyan-bright);
+          // background-color: #02a7f01a;
+          box-shadow: 0 0 10px rgba(var(--cyan-bright-rgb), 0.2);
         }
 
         .item_info {
@@ -1891,7 +1703,7 @@ const disabledSeconds = (hour, mins) => {
         .item_header {
           display: flex;
           align-items: center;
-          color: #81d3f8;
+          color: var(--cyan-bright);
           font-size: 16px;
           min-width: 0;
 
@@ -1900,10 +1712,13 @@ const disabledSeconds = (hour, mins) => {
             align-items: center;
             min-width: 0;
 
-            img {
+            .icon {
+              width: 22px;
+              height: 22px;
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              display: inline-block;
               margin-right: 8px;
-              width: 20px;
-              height: 20px;
               flex-shrink: 0;
             }
 
@@ -1916,7 +1731,7 @@ const disabledSeconds = (hour, mins) => {
 
               &:first-of-type {
                 max-width: 60px;
-                color: #00cbff;
+                color: var(--cyan-bright);
                 margin-right: 5px;
                 font-weight: bold;
               }
@@ -1929,7 +1744,7 @@ const disabledSeconds = (hour, mins) => {
             .event-desc {
               margin-left: 8px;
               font-size: 12px;
-              color: #a3a6ad;
+              color: var(--text-tertiary);
               max-width: 200px;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1952,18 +1767,18 @@ const disabledSeconds = (hour, mins) => {
           .list-icon {
             cursor: pointer;
             font-size: 20px;
-            color: #81d3f8;
+            color: var(--cyan-bright);
             transition: color 0.3s ease;
 
             &:hover {
-              color: #00cbff;
+              color: var(--cyan-bright);
             }
           }
         }
 
         .item_content {
           text-align: left;
-          color: #b1b327;
+          color: var(--status-paused);
           font-size: 12px;
           padding: 0 0 0 28px;
           width: 100%;
@@ -1981,7 +1796,7 @@ const disabledSeconds = (hour, mins) => {
             gap: 5px;
 
             &.describe {
-              color: #a3a6ad;
+              color: var(--text-tertiary);
             }
 
             &.detail {
@@ -2006,11 +1821,11 @@ const disabledSeconds = (hour, mins) => {
             margin-left: 10px;
             cursor: pointer;
             font-size: 18px;
-            color: #00cbff;
+            color: var(--cyan-bright);
             transition: color 0.3s ease;
 
             &:hover {
-              color: #00e5ff;
+              color: var(--cyan-bright);
             }
           }
 
@@ -2028,9 +1843,9 @@ const disabledSeconds = (hour, mins) => {
       }
 
       .select_style {
-        background-color: #02a7f04a;
-        border-color: #02a7f0;
-        box-shadow: 0 0 15px rgba(0, 203, 255, 0.3);
+        // background-color: #02a7f04a;
+        border-color: var(--cyan-bright);
+        box-shadow: 0 0 15px rgba(var(--cyan-bright-rgb), 0.3);
       }
 
       /* 滚动条样式 */
@@ -2039,17 +1854,17 @@ const disabledSeconds = (hour, mins) => {
       }
 
       &::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.1);
+        background: rgba(var(--black-rgb), 0.1);
         border-radius: 4px;
       }
 
       &::-webkit-scrollbar-thumb {
-        background: rgba(0, 203, 255, 0.5);
+        background: rgba(var(--cyan-bright-rgb), 0.5);
         border-radius: 4px;
       }
 
       &::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 203, 255, 0.8);
+        background: rgba(var(--cyan-bright-rgb), 0.8);
       }
     }
 
@@ -2069,12 +1884,40 @@ const disabledSeconds = (hour, mins) => {
         gap: 10px;
 
         .el-button {
-          background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
+          background: var(--img-button-bg);
+          background-size: 100% 100%;
           width: 100px;
           height: 30px;
-          color: #ffff;
+          color: var(--text-primary);
           border-radius: 5px;
+          margin: 2px 0;
           cursor: pointer;
+          border: none;
+          padding: 0;
+          font-size: 14px;
+          display: block;
+          text-align: center;
+          line-height: 30px;
+          transition: all 0.3s ease;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          box-shadow: 0 0 5px var(--glow-shadow);
+          filter: brightness(0.9);
+
+          &:hover:not(:disabled) {
+            box-shadow: 0 0 10px var(--el-button-primary-hover-bg);
+            color: var(--text-primary);
+            filter: brightness(1.05);
+          }
+        }
+
+        .clear-btn {
+          background: linear-gradient(to bottom right,
+              rgba(202, 79, 75, 0.8),
+              rgba(233, 63, 51, 0.8));
+          ;
+
+          box-shadow: 0 0 5px rgb(228, 20, 6);
         }
       }
 
@@ -2084,7 +1927,7 @@ const disabledSeconds = (hour, mins) => {
         align-items: center;
         height: 40px;
         margin: 0;
-        color: #fff;
+        color: var(--text-primary);
 
         :deep(.el-pagination) {
           justify-content: center;
@@ -2102,7 +1945,7 @@ const disabledSeconds = (hour, mins) => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(var(--black-rgb), 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2113,11 +1956,11 @@ const disabledSeconds = (hour, mins) => {
 .dialog-container {
   position: absolute;
   top: 20px;
-  background: #2e4b64;
+  background: var(--border-color-input);
   border-radius: 8px;
-  box-shadow: 0 0 30px rgba(0, 203, 255, 0.3);
+  box-shadow: 0 0 30px rgba(var(--cyan-bright-rgb), 0.3);
   overflow: hidden;
-  border: 1px solid #2e4b64;
+  border: 1px solid var(--border-color-input);
   animation: dialogFadeIn 0.3s ease;
 }
 
@@ -2138,66 +1981,67 @@ const disabledSeconds = (hour, mins) => {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background: rgba(8, 36, 62, 0.7);
-  border-bottom: 1px solid #2e4b64;
+  background: rgba(var(--panel-bg-rgb), 0.55);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .dialog-title {
   font-size: 16px;
   font-weight: bold;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .dialog-close {
-  color: #fff;
+  color: var(--text-primary);
   cursor: pointer;
   font-size: 18px;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #00cbff;
+    color: var(--cyan-bright);
   }
 }
 
 .dialog-body {
   padding: 20px;
-  color: #fff;
+  color: var(--text-primary);
   max-height: 80vh;
   overflow-y: auto;
   text-align: right;
 
   :deep(.el-select__input) {
-    color: #ffffff;
+    color: var(--text-primary);
   }
 }
 
 /* 表单样式 */
 :deep(.el-form-item__label) {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 :deep(.el-select__wrapper),
 :deep(.el-input__wrapper),
 :deep(.el-textarea__wrapper) {
-  background-color: #2b4559 !important;
-  box-shadow: 0 0 0 1px #075d89 inset;
+  background-color: var(--input-bg) !important;
+  box-shadow: 0 0 0 1px var(--input-border) inset;
+
   .el-select__placeholder,
   .el-input__inner,
   .el-textarea__inner {
-    color: #ffffff;
+    color: var(--text-primary);
   }
 }
 
 :deep(.el-textarea__inner) {
-  color: #ffffff;
-  background-color: #2b4559 !important;
+  color: var(--text-primary);
+  background-color: var(--input-bg) !important;
 }
 
 :deep(.el-input-number__decrease),
 :deep(.el-input-number__increase) {
-  background-color: #2b4559 !important;
-  color: #ffffff;
-  border-color: #075d89;
+  background-color: var(--input-bg) !important;
+  color: var(--text-primary);
+  border-color: var(--input-border);
 }
 
 /* 动画 */

@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: ZX Li
  * @Date: 2026-01-10 17:05:52
- * @LastEditors: xujiajia xujiajia@piesat.cn
- * @LastEditTime: 2026-07-15 10:55:09
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-13 14:09:52
  */
 // 显隐配置文件
 import store from '@/store/index'
@@ -36,6 +36,16 @@ import { ElMessage } from 'element-plus'
 let frustumFunObj = {} //缓存飞机的感知半径锥实体对象
 let radarFunObj = {} //缓存飞机的感知半径雷达扫描实体对象
 let radarEllipsoidObj = {} //缓存预警机感知半径雷达半球扫描实体对象
+let linkConfig = [
+  'RE_SDC',
+  'RE_LTrackInit',
+  'RE_WeaponF',
+  'distancelabel',
+  'RE_JamA',
+  'RE_MR',
+  'Task_Aign',
+  'RE_WeaponWH'
+]
 // 详标牌
 export function detailedSignageCheckChange(value) {
   if (value) {
@@ -58,10 +68,6 @@ export function detailedSignageCheckChange(value) {
         fontColorRgb = store.getters.getBubbleFontColor
       }
       let titleName = curEntity ? curEntity.description : ''
-      // let stateObj = getLdrwListArrValue(curEntity.description, EarthAPP.ldrw)
-      // if (stateObj != null) {
-      //   stateStr = stateObj.state
-      // }
       // 速度 m/s 换算为 km/h
       let speedKm = 0
       if (curEntity.properties?.airplaneAction?._value?.speed) {
@@ -75,71 +81,138 @@ export function detailedSignageCheckChange(value) {
         window.localStorage.getItem('currentSceneInfo')
       )
       let params1 = { platform: store.getters.getCurrentNode.code }
-      getPlatformState(params1).then((res) => {
-        if (res.status == 'success') {
-          let param = {
-            platname: store.getters.getCurrentNode.code,
-            scenarioId: currentSceneInfo.scenarioId
+      // 复盘场景不请求数据，根据MU消息进行赋值
+      if (store.state.AFSIMModule.fp) {
+        let muData = store.state.AFSIMModule.muData[params1.platform]
+        // 三维总速度 m/s 
+        const totalSpeed = Math.hypot(muData?.SpeedNED0 || 0, muData?.SpeedNED1 || 0, muData?.SpeedNED2 || 0);
+        // 速度 km/h
+        const totalSpeedKm = totalSpeed * 3.6
+        if (muData) {
+          // 从MU消息中获取速度（m/s转km/h）
+          // let speedMs = muData.SPD || 0
+          // let speedKm = speedMs * 3.6
+          // 如果chineseName不为空并且undefined则使用chineseName
+          if (
+            typeof store.state.sceneModule.currentFlyType.chineseName !=
+              'undefined' &&
+            store.state.sceneModule.currentFlyType.chineseName !== ''
+          ) {
+            titleName = store.state.sceneModule.currentFlyType.chineseName
+          } else {
+            titleName = store.getters.getCurrentNode.code
           }
-          getInfoByPlatName(param).then((res1) => {
-            // debugger
-            if (res1.code == 200) {
-              stateStr = res1.data.taskDescription
-            }
-            // 如果chineseName不为空并且undefined则使用chineseName
-            if (
-              typeof store.state.sceneModule.currentFlyType.chineseName !=
-                'undefined' &&
-              store.state.sceneModule.currentFlyType.chineseName !== ''
-            ) {
-              titleName = store.state.sceneModule.currentFlyType.chineseName
-            } else {
-              titleName = store.getters.getCurrentNode.code
-            }
-            let params = {
-              id: store.getters.getCurrentNode.code,
-              name: curEntity ? curEntity.description : '',
-              //title: store.state.sceneModule.currentFlyType.chineseName,
-              title: titleName,
-              rgb: [],
-              heading: res.data.Heading,
-              pitch: res.data.Pitch,
-              roll: res.data.Roll,
-              speed: speedKm.toFixed(3),
-              mach: 0,
-              fuel: 0,
-              type: res.data.Type,
-              fontColorRgb: fontColorRgb,
-              state: stateStr,
-              sensor: '',
-              radar: '',
-              weapon: '',
-              DamageFactor: res.data.DamageFactor,
-              OpticalReflectivity: res.data.OpticalReflectivity,
-              Members: res.data.Members,
-              InitialMembers: res.data.InitialMembers
-            }
-            if (store.getters.getCurrentNode.side == 'red') {
-              params['rgb'] = [225, 82, 88]
-              createPanelInfor(params)
-            } else if (store.getters.getCurrentNode.side == 'green') {
-              params['rgb'] = [175, 247, 170]
-              createPanelInfor(params)
-            } else if (store.getters.getCurrentNode.side == 'blue') {
-              params['rgb'] = [57, 173, 209]
-              createPanelInfor(params)
-            } else if (store.getters.getCurrentNode.side == 'purple') {
-              params['rgb'] = [128, 8, 235]
-              createPanelInfor(params)
-            } else {
-              params['rgb'] = [255, 255, 235]
-              createPanelInfor(params)
-            }
-          })
-        } else {
-          // ElMessage.error("获取红方装备信息失败")
+          // 从MU消息获取阵营
+          let muSide = muData.Side || store.getters.getCurrentNode.side
+          let params = {
+            id: store.getters.getCurrentNode.code,
+            name: curEntity ? curEntity.description : '',
+            title: titleName,
+            rgb: [],
+            heading: muData.HDG || 0,
+            pitch: muData.Pitch || 0,
+            roll: muData.Roll || 0,
+            speed: totalSpeedKm.toFixed(0) + 'km/h',
+            mach: 0,
+            fuel: 0,
+            type: muData.Type || '',
+            fontColorRgb: fontColorRgb,
+            state: '',
+            sensor: '',
+            radar: '',
+            weapon: '',
+            DamageFactor: 0,
+            OpticalReflectivity: 0,
+            Members: '',
+            InitialMembers: '',
+            Lon: (muData.Lon || 0).toFixed(3) + '°E',
+            Lat: (muData.Lat || 0).toFixed(3) + '°N',
+            Alt: (muData.Alt || 0).toFixed(0) + '米'
+          }
+          if (muSide == 'red') {
+            params['rgb'] = [225, 82, 88]
+            createFuPanPanelInfor(params)
+          } else if (muSide == 'green') {
+            params['rgb'] = [175, 247, 170]
+            createFuPanPanelInfor(params)
+          } else if (muSide == 'blue') {
+            params['rgb'] = [57, 173, 209]
+            createFuPanPanelInfor(params)
+          } else if (muSide == 'purple') {
+            params['rgb'] = [128, 8, 235]
+            createFuPanPanelInfor(params)
+          } else {
+            params['rgb'] = [255, 255, 235]
+            createFuPanPanelInfor(params)
+          }
         }
-      })
+      }else{
+        getPlatformState(params1).then((res) => {
+          if (res.status == 'success') {
+            let param = {
+              platname: store.getters.getCurrentNode.code,
+              scenarioId: currentSceneInfo.scenarioId
+            }
+            getInfoByPlatName(param).then((res1) => {
+              // debugger
+              if (res1.code == 200) {
+                stateStr = res1.data.taskDescription
+              }
+              // 如果chineseName不为空并且undefined则使用chineseName
+              if (
+                typeof store.state.sceneModule.currentFlyType.chineseName !=
+                  'undefined' &&
+                store.state.sceneModule.currentFlyType.chineseName !== ''
+              ) {
+                titleName = store.state.sceneModule.currentFlyType.chineseName
+              } else {
+                titleName = store.getters.getCurrentNode.code
+              }
+              let params = {
+                id: store.getters.getCurrentNode.code,
+                name: curEntity ? curEntity.description : '',
+                //title: store.state.sceneModule.currentFlyType.chineseName,
+                title: titleName,
+                rgb: [],
+                heading: res.data.Heading,
+                pitch: res.data.Pitch,
+                roll: res.data.Roll,
+                speed: speedKm.toFixed(3),
+                mach: 0,
+                fuel: 0,
+                type: res.data.Type,
+                fontColorRgb: fontColorRgb,
+                state: stateStr,
+                sensor: '',
+                radar: '',
+                weapon: '',
+                DamageFactor: res.data.DamageFactor,
+                OpticalReflectivity: res.data.OpticalReflectivity,
+                Members: res.data.Members,
+                InitialMembers: res.data.InitialMembers
+              }
+              if (store.getters.getCurrentNode.side == 'red') {
+                params['rgb'] = [225, 82, 88]
+                createPanelInfor(params)
+              } else if (store.getters.getCurrentNode.side == 'green') {
+                params['rgb'] = [175, 247, 170]
+                createPanelInfor(params)
+              } else if (store.getters.getCurrentNode.side == 'blue') {
+                params['rgb'] = [57, 173, 209]
+                createPanelInfor(params)
+              } else if (store.getters.getCurrentNode.side == 'purple') {
+                params['rgb'] = [128, 8, 235]
+                createPanelInfor(params)
+              } else {
+                params['rgb'] = [255, 255, 235]
+                createPanelInfor(params)
+              }
+            })
+          } else {
+            // ElMessage.error("获取红方装备信息失败")
+          }
+        })
+      }
     }
   } else {
     if (window['curDivPoint' + store.getters.getCurrentNode.code]) {
@@ -251,8 +324,8 @@ const createPanelInfor = (params) => {
       { name: '纬度', value: '' },
       { name: '高度', value: '' },
       { name: '速度', value: params.speed },
-      { name: '航向角', value: params.heading + '°' },
-      { name: '俯仰角', value: params.pitch + '°' },
+      //{ name: '航向角', value: params.heading + '°' }, //数据不对 后期确认
+      //{ name: '俯仰角', value: params.pitch + '°' },
       { name: '任务', value: params.state }
     ]
   } else if (labelType === '11') {
@@ -261,8 +334,8 @@ const createPanelInfor = (params) => {
       { name: '纬度', value: '' },
       { name: '高度', value: '' },
       { name: '速度', value: params.speed },
-      { name: '航向角', value: params.heading + '°' },
-      { name: '俯仰角', value: params.pitch + '°' },
+      //{ name: '航向角', value: params.heading + '°' },
+      //{ name: '俯仰角', value: params.pitch + '°' },
       { name: '传感器', value: params.sensor },
       { name: '武器', value: params.weapon },
       { name: '任务', value: params.state }
@@ -273,8 +346,8 @@ const createPanelInfor = (params) => {
       { name: '纬度', value: '' },
       { name: '高度', value: '' },
       { name: '速度', value: params.speed },
-      { name: '航向角', value: params.heading + '°' },
-      { name: '俯仰角', value: params.pitch + '°' },
+      //{ name: '航向角', value: params.heading + '°' },
+      //{ name: '俯仰角', value: params.pitch + '°' },
       { name: '传感器', value: params.sensor },
       { name: '武器', value: params.weapon },
       { name: '任务', value: params.state }
@@ -308,6 +381,50 @@ const createPanelInfor = (params) => {
     window.bubbleInstances = {}
   }
   window.bubbleInstances[params.id] = bubbleInstance
+}
+
+//显示复盘信息弹框
+const createFuPanPanelInfor = (params) => {
+  
+  let content = [
+    { name: '经度', value: params.Lon },
+    { name: '纬度', value: params.Lat },
+    { name: '高度', value: params.Alt },
+    { name: '速度', value: params.speed },
+    // { name: '航向角', value: params.heading + '°' },
+    // { name: '俯仰角', value: params.pitch + '°' },
+    // { name: '传感器', value: params.sensor },
+    // { name: '武器', value: params.weapon },
+    // { name: '任务', value: params.state }
+  ]
+// 如果params.OpticalReflectivity为空或者NaN则去掉反射率
+if (!params.OpticalReflectivity || isNaN(params.OpticalReflectivity)) {
+  content = content.filter((item) => item.name != '反射率')
+}
+// 增加判断，如果油量为空则去掉油量
+if (params.fuel == 0) {
+  console.log('当前油量为空')
+  content = content.filter((item) => item.name != '油量')
+}
+let bubbleInstance = new Bubble1({
+  content: filterContent(content),
+  viewer: window.EarthViewer,
+  id: params.id,
+  Cesium: window.MSIMEarth,
+  title: params.title,
+  name: 'simple',
+  offsetY: -300, //单位px 以当前目标点为中心+offsetY 负数向上 正数向下
+  offsetX: 150, //单位px 以当前目标点为中心+offsetX 负数向左偏移 正数向右偏移
+  distanceDisplayCondition: [0, 20e5],
+  div: 'planDetail',
+  rgb: params.rgb, //红、蓝
+  fontColorRgb: params.fontColorRgb, // 字体颜色
+  isCloseClick: false
+})
+if (!window.bubbleInstances) {
+  window.bubbleInstances = {}
+}
+window.bubbleInstances[params.id] = bubbleInstance
 }
 
 emitter.on('labelTypeChange', () => {
@@ -535,7 +652,6 @@ export function entityFrustumChange(value) {
     // 根据传感器类型开启对应形态的volumes
     getPlatformSensorVolumes({ platform: params.name })
       .then((res) => {
-        debugger
         console.log(`获取平台渲染图形信息${res.status}`, res.data)
         let volumesDatas = res.data
         // 1.1获取雷达位置并配置雷达属性
@@ -806,12 +922,11 @@ function configPlatformSensorVolumes(volumesDatas, params) {
           }
           let createCCD = sensor.initSensorCCD()
           createCCD(options)
-
           break
         case 'IR': // Infrared	热辐射探测	IRST / EO/IR (IR部分)	红外搜索跟踪(IRST) / 热成像(FLIR)	被动	夜间/恶劣天气探测、导弹告警(MAWS)
           console.log('传感器类型IR', volumesData)
           let createIR = sensor.initSensorIR()
-          createIR(options)
+          //createIR(options)
 
           break
         case 'sar':
@@ -1127,7 +1242,6 @@ export function entityJAMChange(value) {
                 console.log('清除传感器类型acq_radar', volumesData.Name)
                 break
               case 'ccd': // Charge-Coupled Device	可见光成像	EO/IR (EO部分)	高分辨率可见光成像、目标识别	被动	白天侦察、目标识别、激光制导
-                debugger
                 console.log('清除传感器类型ccd', volumesData)
                 options.id = params.name
                 options.heading = volumesData.Yaw
@@ -2229,4 +2343,20 @@ export function showFKFW(value) {
   } else {
     window.EarthViewer.entities.removeById(fkfwEntityId)
   }
+}
+
+//链路信息
+export function linkInfosChange(value){
+  linkConfig.forEach((link) => {
+    window.sceneAction.connectLineManagement.showEntityByTwoKeyword(
+      link,
+      store.getters.getCurrentNode.code,
+      value
+    )
+
+    window.sceneAction.connectLineManagement.showEntityByKeyword(
+      `${link}==${store.getters.getCurrentNode.code}==`,
+      value
+    )
+  })
 }

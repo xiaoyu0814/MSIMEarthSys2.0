@@ -22,6 +22,7 @@ let BASE_URL_FILEControl = `ws://${baseUrl9024}` //文书通信
 let simulationIp = `http://` //仿真端ip   //不确定是否还在使用
 let URL_AFSIMSCRIPT = `http://${baseUrlAFSIMSCRIPT}` //
 let websocketUrl_document = BASE_URL_FILEControl + `/websocket`
+let URL_EVVIROMENT = `http://${baseUrl16014}/`
 const TIME_OUT = 10000
 if (process.env.NODE_ENV === 'development') {
   BASE_URL_GATEWAY = '/gateway' //http://172.16.100.204:8505
@@ -45,5 +46,6 @@ export {
   URL_CJBJ,
   URL_VEDIOCHAT,
   VIDEO_URL,
-  URL_AFSIMSCRIPT
+  URL_AFSIMSCRIPT,
+  URL_EVVIROMENT
 }

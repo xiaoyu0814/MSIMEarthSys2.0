@@ -155,30 +155,9 @@ onMounted(() => {
   justify-content: space-around;
   align-items: center;
   height: 100px;
-  // .float-left {
-  //   // height: 120px;
-  //   margin-right: 30px;
-  //   display: flex;
-  //   align-items: center;
-  //   .left-btn {
-  //     height: 50px;
-  //     width: 50px;
-  //     border-radius: 50%;
-  //     border: 1px solid #0000006e;
-  //     // opacity: 0.5;
-  //     background: linear-gradient(154deg, #fefefe94 25%, #26c7b887 63%);
-  //   }
-  //   .left-btn:hover {
-  //     opacity: 1 !important;
-  //   }
-  // }
   .float-right {
     display: flex;
     align-items: center;
-    // height: 100px;
-    // background-color: #151c2cad;
-    // background: url('@/assets/image/rightBar/新控制面-矩形.png');
-    // background-size: 100% 100%;
     padding: 10px;
     border-radius: 5px;
     background: rgba(2, 26, 70, 0.58);

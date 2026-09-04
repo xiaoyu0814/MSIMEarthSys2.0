@@ -154,7 +154,7 @@ const changeLogState = (active) => {
       item.value = index + 1
     } else if (index + 1 > active || active == 0) {
       item.title.sty = {
-        color: '#63edff'
+        color: 'var(--cyan-glow)'
       }
       item.bg = {
         backgroundImage:

@@ -1733,16 +1733,6 @@ export default {
   transform: translateX(100%);
 }
 
-:deep(.panel_comp .wrap) {
-  background-image: url('@/assets/image/时间轴.png');
-  background-repeat: no-repeat;
-  /* 可选，设定是否重复背景图片 */
-  background-size: 100% 100%;
-  /* 可选，设定背景图片的尺寸和位置 */
-  // border: none;
-  // border: 1px solid rgb(1, 1, 1);
-}
-
 .navbar_box {
   position: fixed;
   right: 10px;

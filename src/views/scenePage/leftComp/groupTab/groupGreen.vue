@@ -1208,6 +1208,9 @@ const distributeGroup = () => {
 // 获取编组列表
 const getTaskGroup = () => {
   let data = JSON.parse(window.localStorage.getItem('currentSceneInfo'))
+  if (!data) {
+    return ElMessage.error('未获取到场景信息，请先选择场景！')
+  }
   let params = {
     side: 'green',
     scenarioId: data.scenarioId
@@ -1828,7 +1831,7 @@ const wxstAbility = (data, checked) => {
   align-items: center;
 
   .leftMenu-item {
-    color: #ffffff;
+    color: var(--text-primary);
     cursor: pointer;
     position: absolute;
     top: 16px;
@@ -1840,7 +1843,7 @@ const wxstAbility = (data, checked) => {
     height: 100% !important;
     width: 100%;
     background: transparent;
-    color: #e9fcfd;
+    color: var(--text-highlight);
     overflow-y: auto;
     box-sizing: border-box;
 
@@ -1868,7 +1871,7 @@ const wxstAbility = (data, checked) => {
     }
 
     div {
-      color: rgba(0, 241, 255, 1);
+      color: var(--text-highlight);
     }
   }
 
@@ -1877,7 +1880,7 @@ const wxstAbility = (data, checked) => {
     text-align: left;
     font-size: 16px;
     font-weight: 500;
-    color: #00c7fb;
+    color: var(--title-color);
   }
 
   .checkedOption {
@@ -1895,8 +1898,8 @@ const wxstAbility = (data, checked) => {
     width: 258px;
     height: 187px;
     z-index: 1;
-    background: rgba(2, 26, 70, 0.88);
-    box-shadow: 0 0 25px #1092d5;
+    background: var(--panel-bg-deep);
+    box-shadow: var(--box-shadow-glow);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -1936,7 +1939,7 @@ const wxstAbility = (data, checked) => {
         background: rgba(0, 0, 0, 0.2);
 
         .el-input__inner {
-          color: #fff;
+          color: var(--text-primary);
         }
       }
     }
@@ -1952,7 +1955,7 @@ const wxstAbility = (data, checked) => {
   ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     box-shadow: inset 0 0 5px rgba(50, 4, 212, 0.2);
-    background: rgba(3, 94, 231, 0.7);
+    background: var(--primary-color);
   }
 
   /*滚动条里面轨道*/
@@ -1980,39 +1983,39 @@ const wxstAbility = (data, checked) => {
 }
 
 :deep .el-radio__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  border: 1px solid #11b5ec;
+  background-color: var(--primary-color-half);
+  border: 1px solid var(--primary-color);
 }
 
 :deep .el-radio {
-  color: #11b5ec;
+  color: var(--primary-color);
 }
 
 :deep .el-checkbox {
-  color: #11b5ec !important;
+  color: var(--primary-color) !important;
 }
 
 :deep .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  border: 1px solid #11b5ec;
+  background-color: var(--primary-color-half);
+  border: 1px solid var(--primary-color);
   // border-radius: 50%;
-  color: #11b5ec;
+  color: var(--primary-color);
 }
 
 :deep .el-checkbox__input.is-checked .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
 }
 
 :deep .el-checkbox__input.is-disabled .el-checkbox__inner {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
-  border-color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
+  border-color: var(--primary-color-full);
 }
 
 :deep .el-checkbox__input.is-disabled {
-  background-color: rgba(17, 181, 236, 0.5);
-  color: rgba(17, 181, 236, 1);
+  background-color: var(--primary-color-half);
+  color: var(--primary-color-full);
 }
 
 :deep .el-tree-node {
@@ -2021,19 +2024,19 @@ const wxstAbility = (data, checked) => {
 
 :deep .el-tree-node__content:hover,
 .el-upload-list__item:hover {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half);
 }
 
 :deep .el-tree-node .is-current>.el-tree-node__content {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half);
 }
 
 :deep .el-tree-node:focus>.el-tree-node__content {
-  background-color: rgba(17, 181, 236, 0.5);
+  background-color: var(--primary-color-half);
 }
 
 :deep el-tree-node__expand-icon el-icon-caret-right:before {
-  color: rgba(17, 181, 236, 1);
+  color: var(--primary-color-full);
 }
 
 :deep .el-checkbox .el-checkbox__inner {

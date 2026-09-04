@@ -166,14 +166,14 @@ const closeDetails = () => {
   width: 280px;
   background: linear-gradient(
     135deg,
-    rgba(2, 26, 70, 0.95) 0%,
+    rgba(var(--panel-bg-rgb), 0.95) 0%,
     rgba(0, 40, 80, 0.95) 100%
   );
   border: 1px solid rgba(6, 214, 249, 0.5);
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(6, 214, 249, 0.3),
     inset 0 0 20px rgba(6, 214, 249, 0.1);
-  color: #fff;
+  color: var(--text-primary);
   font-size: 14px;
   z-index: 9999;
   overflow: hidden;
@@ -281,12 +281,12 @@ const closeDetails = () => {
       }
 
       .item-label {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(var(--white-rgb), 0.7);
         font-size: 12px;
       }
 
       .item-value {
-        color: #fff;
+        color: var(--text-primary);
         font-size: 13px;
         font-weight: 500;
         text-align: right;
@@ -304,7 +304,7 @@ const closeDetails = () => {
             rgba(103, 194, 58, 0.3) 0%,
             rgba(72, 187, 120, 0.3) 100%
           );
-          color: #67c23a;
+          color: var(--status-running);
           border: 1px solid rgba(103, 194, 58, 0.5);
         }
 
@@ -340,7 +340,7 @@ const closeDetails = () => {
             rgba(30, 144, 255, 0.3) 0%,
             rgba(0, 191, 255, 0.3) 100%
           );
-          color: #409eff;
+          color: var(--link-color);
           border: 1px solid rgba(30, 144, 255, 0.5);
         }
 
@@ -382,7 +382,7 @@ const closeDetails = () => {
       justify-content: space-between;
       align-items: center;
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(var(--white-rgb), 0.5);
 
       .tech-label {
         font-family: 'Courier New', monospace;

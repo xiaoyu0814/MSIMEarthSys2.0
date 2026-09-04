@@ -1,0 +1,252 @@
+/*
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-08-06 13:50:42
+ * @LastEditors: xujiajia xujiajia@piesat.cn
+ * @LastEditTime: 2026-08-11 13:38:14
+ * @FilePath: \MSIMEarthSystem\src\assets\css\theme-blue.less
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/**
+ * 蓝色主题变量定义（themeType = 1）
+ * 基于原项目蓝色配色方案，所有面板背景、文字、边框、按钮等颜色均在此处统一定义
+
+ * 切换主题只需修改 src/config/theme.js 中的 themeType
+ */
+
+.theme-blue {
+  // ========== 面板背景 ==========
+  --panel-bg: rgba(2, 26, 70, 0.6);
+  --panel-bg-light: rgba(2, 26, 70, 0.35);
+  --panel-bg-deep: rgba(2, 26, 70, 0.88);
+  --panel-bg-solid: #223b5091;
+  --panel-bg-dark: #223b5091;
+  --layerList-bg: rgba(2, 26, 70, 0.58);
+
+  // ========== 发光阴影 ==========
+  --glow-shadow: #1092d5;
+  --glow-shadow-alpha: #1092d58a;
+  --box-shadow-glow: 0 0 25px #2d7398;
+  --box-shadow-glow-soft: 0 0 25px #1092d58a;
+
+  // ========== 主题色/强调色 ==========
+  --primary-color: #11b5ec;
+  --primary-color-rgb: 17, 181, 236;
+  --primary-color-half: rgba(17, 181, 236, 0.5);
+  --primary-color-full: rgba(17, 181, 236, 1);
+
+  // ========== 文字颜色 ==========
+  --text-primary: #d1f6ff;
+  --text-secondary: #b1b327;
+  --text-tertiary: #cccccc;
+  --text-highlight: #81d3f8;
+  --text-disabled: #a8abb2;
+  --text-placeholder: #c2d7ee;
+
+  // ========== 标题色 ==========
+  --title-color: #00c7fb;
+  --title-color-rgb: 0, 199, 251;
+  --title-color-soft: rgba(118, 228, 255, 0.74);
+
+  // ========== 边框色 ==========
+  --border-color: #0372a6;
+  --border-color-light: none;
+  --border-color-input: #2e4b64;
+  --border-color-table: rgba(0, 125, 190, 0.4);
+  --border-color-table-strong: rgba(0, 125, 190, 0.88);
+
+  // ========== 输入框 ==========
+  --input-bg: #2b4559;
+  --input-bg-transparent: rgba(0, 4, 4, 0.2);
+  --input-border: #075d89;
+
+  // ========== 高亮/选中色 ==========
+  --selected-color: rgba(1, 230, 213, 1);
+  --selected-bg: rgba(17, 181, 236, 0.5);
+  --hover-bg: rgba(17, 181, 236, 0.5);
+
+  // ========== 青色系 ==========
+  --cyan-color: #06d6f9;
+  --cyan-color-rgb: 6, 214, 249;
+  --cyan-bright: #00cbff;
+  --cyan-bright-rgb: 0, 203, 255;
+  --cyan-light: #d1f6ff;
+  --cyan-glow: #63edff;
+  --cyan-placeholder: #06d6f9;
+
+  // ========== 通用 RGB（用于 rgba() 表达式） ==========
+  --glow-shadow-rgb: 16, 146, 213;
+  --panel-bg-rgb: 8, 36, 62;
+  --white-rgb: 255, 255, 255;
+  --black-rgb: 0, 0, 0;
+  --link-color-rgb: 64, 158, 255;
+
+  // ========== 下拉选项 ==========
+  --dropdown-bg: rgba(0, 7, 21, 0.3);
+  --dropdown-item-hover-bg: rgba(0, 7, 21, 0.3);
+  --dropdown-item-color: #fff;
+
+  // ========== 按钮颜色 ==========
+  --btn-blue-bg: transparent;
+  --btn-blue-color: #fff;
+  --btn-white-bg: transparent;
+  --btn-white-color: #fff;
+
+  // ========== 表格 ==========
+  --table-header-bg: linear-gradient(
+    179deg,
+    rgba(1, 220, 255, 0.3) 0%,
+    rgba(61, 106, 194, 0.5) 100%
+  );
+  --table-row-color: #fff;
+  --table-row-bg: transparent;
+
+  // ========== 装饰元素颜色 ==========
+  --accent-orange: #b1b327;
+  --accent-gray: gray;
+  --accent-red: #f00;
+  --link-color: #409eff;
+
+  // ========== Element Plus Checkbox ==========
+  --el-checkbox-bg: rgba(17, 181, 236, 0.3);
+  --el-checkbox-border: #11b5ec;
+  --el-checkbox-checked-bg: #11b5ec;
+  --el-checkbox-checked-color: #fff;
+  --el-checkbox-text-color: #c2d7ee;
+  --el-checkbox-disabled-bg: rgba(17, 181, 236, 0.2);
+  --el-checkbox-disabled-border: rgba(17, 181, 236, 0.5);
+
+  // ========== Element Plus Radio ==========
+  --el-radio-bg: rgba(17, 181, 236, 0.3);
+  --el-radio-border: #11b5ec;
+  --el-radio-checked-bg: #11b5ec;
+  --el-radio-checked-color: #11b5ec;
+  --el-radio-text-color: #c2d7ee;
+
+  // ========== Element Plus Tree ==========
+  --el-tree-text-color: #e9fcfd;
+  --el-tree-hover-bg: rgba(17, 181, 236, 0.3);
+  --el-tree-current-bg: rgba(17, 181, 236, 0.4);
+  --el-tree-expand-icon-color: #11b5ec;
+
+  // ========== Element Plus Pagination ==========
+  --el-pagination-color: #c2d7ee;
+  --el-pagination-bg: transparent;
+  --el-pagination-hover-color: #11b5ec;
+  --el-pagination-hover-bg: rgba(17, 181, 236, 0.2);
+  --el-pagination-active-color: #fff;
+  --el-pagination-active-bg: #11b5ec;
+  --el-pagination-border: rgba(17, 181, 236, 0.3);
+  --el-pagination-button-bg: rgba(17, 181, 236, 0.15);
+  --el-pagination-button-disabled-bg: rgba(17, 181, 236, 0.08);
+  --el-pagination-button-disabled-color: rgba(194, 215, 238, 0.4);
+
+  // ========== Element Plus Button ==========
+  --el-button-bg: transparent;
+  --el-button-color: #fff;
+  --el-button-border: rgba(17, 181, 236, 0.5);
+  --el-button-hover-bg: rgba(17, 181, 236, 0.2);
+  --el-button-hover-color: #11b5ec;
+  --el-button-hover-border: #11b5ec;
+  --el-button-active-bg: rgba(17, 181, 236, 0.3);
+  --el-button-active-color: #fff;
+  --el-button-active-border: #11b5ec;
+  --el-button-disabled-bg: rgba(255, 255, 255, 0.1);
+  --el-button-disabled-color: rgba(255, 255, 255, 0.4);
+  --el-button-disabled-border: rgba(255, 255, 255, 0.2);
+  --el-button-primary-bg: #11b5ec;
+  --el-button-primary-color: #fff;
+  --el-button-primary-hover-bg: rgba(16, 146, 213, 0.8);
+  --el-button-primary-hover-color: #fff;
+  --el-button-primary-active-bg: #0a87b0;
+
+  // ========== Element Plus Input/Select ==========
+  --el-input-bg: #2b4559;
+  --el-input-color: #fff;
+  --el-input-border: #075d89;
+  --el-input-hover-border: #11b5ec;
+  --el-input-focus-border: #11b5ec;
+  --el-input-placeholder: rgba(194, 215, 238, 0.5);
+  --el-input-disabled-bg: rgba(43, 69, 89, 0.5);
+  --el-input-disabled-color: rgba(255, 255, 255, 0.4);
+  --el-select-bg: rgba(0, 0, 0, 0.2);
+  --el-select-border: #075d89;
+  --el-select-hover-border: #11b5ec;
+  --el-select-dropdown-bg: rgba(2, 26, 70, 0.95);
+  --el-select-dropdown-hover-bg: rgba(17, 181, 236, 0.2);
+  --el-select-dropdown-color: #c2d7ee;
+  --el-select-dropdown-hover-color: #11b5ec;
+
+  // ========== Element Plus Switch ==========
+  --el-switch-active-color: #11b5ec;
+  --el-switch-inactive-color: rgba(255, 255, 255, 0.2);
+  --el-switch-active-bg: #11b5ec;
+  --el-switch-inactive-bg: rgba(255, 255, 255, 0.15);
+
+  // ========== Element Plus Tabs ==========
+  --el-tabs-color: #c2d7ee;
+  --el-tabs-active-color: #fff;
+  --el-tabs-hover-color: #11b5ec;
+  --el-tabs-active-border: #11b5ec;
+  --el-tabs-header-bg: transparent;
+  --el-tabs-item-hover-color: #11b5ec;
+
+  // ========== Element Plus Dialog ==========
+  --el-dialog-bg: rgba(2, 26, 70, 0.95);
+  --el-dialog-color: #fff;
+  --el-dialog-title-color: #00c7fb;
+  --el-dialog-border: #0372a6;
+  --el-dialog-header-bg: rgba(2, 26, 70, 0.98);
+
+  // ========== Element Plus Table ==========
+  --el-table-bg: transparent;
+  --el-table-color: #fff;
+  --el-table-header-bg: linear-gradient(
+    179deg,
+    rgba(1, 220, 255, 0.3) 0%,
+    rgba(61, 106, 194, 0.5) 100%
+  );
+  --el-table-header-color: #fff;
+  --el-table-row-hover-bg: rgba(17, 181, 236, 0.15);
+  --el-table-border: #075d89;
+  --el-table-row-bg: transparent;
+
+  // ========== Element Plus Scrollbar ==========
+  --scrollbar-thumb-bg: rgba(17, 181, 236, 0.5);
+  --scrollbar-thumb-hover-bg: rgba(17, 181, 236, 0.7);
+  --scrollbar-track-bg: rgba(0, 0, 0, 0.1);
+
+  // ========== Element Plus Form ==========
+  --el-form-label-color: #c2d7ee;
+
+  // ========== Element Plus Loading ==========
+  --el-loading-bg: rgba(2, 26, 70, 0.7);
+  --el-loading-color: #11b5ec;
+
+  // ========== Element Plus Tooltip ==========
+  --el-tooltip-bg: rgba(2, 26, 70, 0.95);
+  --el-tooltip-color: #c2d7ee;
+  --el-tooltip-border: #0372a6;
+
+  // ========== 菜单/子菜单 ==========
+  --submenu-title-color: #a8d8ea;
+  --menu-item-hover-bg: rgba(17, 181, 236, 0.2);
+  --menu-item-active-bg: rgba(17, 181, 236, 0.3);
+
+  // ========== 运行状态色 ==========
+  --status-running: #00ff00;
+  --status-paused: #ffc51f;
+  --status-stopped: #8c8c8c;
+
+  // ========== 背景图片路径 ==========
+  --img-decoration: url('@/assets/image/panelIcons/装饰.png');
+  --img-panel-bg: url('@/assets/image/panelIcons/背景.png');
+  --img-panel-frame: url('@/assets/image/panelIcons/背景框.png');
+  --img-dropdown: url('@/assets/image/panelIcons/下拉选项背景.png');
+  --img-header: url('@/assets/image/homeHeader/顶部背景图.png');
+  --img-close: url('@/assets/image/panelIcons/关闭icon.png');
+  --img-query: url('@/assets/image/panelIcons/查询.png');
+  --img-telescoping: url('@/assets/image/panelIcons/telescoping.png');
+  --img-telescoping_1: url('@/assets/image/panelIcons/telescoping_1.png');
+  --img-button-bg: url('@/assets/images/rwty/llbc-topBtn.svg');
+  --img-task-icon: url('@/assets/images/rwty/想定查询.svg');
+}

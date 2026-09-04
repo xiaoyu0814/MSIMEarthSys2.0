@@ -6,7 +6,7 @@
         :data="state.keyEventTable"
         style="width: 100%"
         show-overflow-tooltip
-        :header-cell-style="{ color: ' #FFFFFF' }"
+        :header-cell-style="{ color: 'var(--text-primary)' }"
         height="140px"
       >
         <el-table-column prop="name" label="关键事件" align="center" />
@@ -84,14 +84,14 @@ onMounted(() => {})
   position: absolute;
   left: calc(50% - 800px);
   bottom: 32px;
-  color: #ffffff;
+  color: var(--text-primary);
   width: 1600px;
   height: 200px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
+  background-image: var(--img-decoration);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
   .title {
     padding: 8px 20px;
     text-align: left;
@@ -106,7 +106,7 @@ onMounted(() => {})
     ::v-deep .el-table td.el-table__cell,
     ::v-deep .el-table th.el-table__cell.is-leaf,
     ::v-deep .el-table__body-wrapper {
-      background: #2b4559 !important;
+      background: var(--input-bg) !important;
       color: #a3a6ad;
     }
     .el-table {

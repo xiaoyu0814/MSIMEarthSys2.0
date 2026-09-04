@@ -125,7 +125,7 @@ class PolygonGeojson extends geojson {
     }
     this.addPolygonGeojson(options)
   }
-  addDaLangQu(lqName) {
+  addDaLangQu() {
     // const options = {
     //   url: basicVectorData.dalangqu,
     //   outlineColor: window.MSIMEarth.Color.DODGERBLUE.withAlpha(0.5),

@@ -1,8 +1,8 @@
 /*
  * @Author: caoyazhen caoyazhen@piesat.cn
  * @Date: 2024-03-11 17:30:16
- * @LastEditors: caoyazhen caoyazhen@piesat.cn
- * @LastEditTime: 2024-05-08 17:55:35
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-28 18:11:36
  * @FilePath: \MSIMEarthSysN\src\utils\earthPlugin\ThirdParty\eventSource\event\earthActionByEvent\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -19,6 +19,7 @@ import Task_Aign from './Task_Aign'
 import RE_InterferenceRange from './RE_InterferenceRange'
 import RE_JamA from './RE_JamA'
 import RE_Comment from './comment'
+import RE_Radar from './RE_Radar'
 
 export {
   RE_STrack,
@@ -33,5 +34,6 @@ export {
   RE_SDC,
   RE_InterferenceRange,
   RE_JamA,
-  RE_Comment
+  RE_Comment,
+  RE_Radar
 }

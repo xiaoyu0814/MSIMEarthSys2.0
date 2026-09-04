@@ -238,6 +238,7 @@ import {
 import { getScenarioById } from '@/service/experimentalPreparation.js'
 import { eventControllerSSEClose } from '@/utils/mapTools'
 import { FP } from './hooks/index'
+import { autoLoadSensorMasksByTime } from '@/utils/earthPlugin/ThirdParty/eventSource/event/earthEvent/state/ActionByEvent/Opt_FPSensorType'
 import { getTaskClosureTimeDetail } from '@/service/replay/index'
 export default {
   name: 'HomeView',
@@ -512,6 +513,9 @@ export default {
           if (newValue.sensorType == 'WSF_OPTICAL_SENSOR') {
             entityId = newValue.detectorName
             side = newValue.detectorSide
+          } else if (newValue.sensorType == 'Optical') {
+            entityId = newValue.detectorName
+            side = newValue.detectorSide
           } else {
             entityId = newValue.platformName
             side = newValue.side
@@ -525,6 +529,7 @@ export default {
             specificCName: newValue.specificDesc,
             side: side
           }
+          console.log('ReconnaissanceResults变化',options)
           // entityMethod.createRotateEntity(
           //   item.unit_name,
           //   2300.0,
@@ -686,6 +691,28 @@ export default {
       }
 
       // 2.调用实验开始接口启动SSE PROTO
+
+      // 3.自动加载传感器遮罩（复盘场景刷新后或未收到SU消息时，根据当前仿真时间和volumeDataDict匹配实体）
+      // 使用重试机制：等待volumeDataDict加载完成、msgMessionTime设置、场景实体加载完成
+      let sensorLoadRetryCount = 0
+      const maxSensorLoadRetries = 20 // 最多重试20次（约40秒）
+      const tryAutoLoadSensorMasks = () => {
+        sensorLoadRetryCount++
+        const result = autoLoadSensorMasksByTime()
+        if (result.ready && result.loaded > 0) {
+          console.log(`[FP] 传感器遮罩自动加载成功: ${result.loaded} 个平台`)
+          return
+        }
+        if (sensorLoadRetryCount >= maxSensorLoadRetries) {
+          console.warn(`[FP] 传感器遮罩自动加载未完成: ${result.reason || '重试次数达上限'}`)
+          return
+        }
+        const retryTimer = setTimeout(tryAutoLoadSensorMasks, 2000)
+        timers.timeouts.push(retryTimer)
+      }
+      // 延迟5秒后开始尝试，等待volumeDataDict fetch和初始实体加载
+      const sensorLoadStartTimer = setTimeout(tryAutoLoadSensorMasks, 5000)
+      timers.timeouts.push(sensorLoadStartTimer)
     })
     onUnmounted(() => {
       // 清除所有定时器
@@ -1806,16 +1833,6 @@ export default {
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(100%);
-}
-
-:deep(.panel_comp .wrap) {
-  background-image: url('@/assets/image/时间轴.png');
-  background-repeat: no-repeat;
-  /* 可选，设定是否重复背景图片 */
-  background-size: 100% 100%;
-  /* 可选，设定背景图片的尺寸和位置 */
-  // border: none;
-  // border: 1px solid rgb(1, 1, 1);
 }
 
 .navbar_box {

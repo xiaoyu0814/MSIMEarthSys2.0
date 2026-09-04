@@ -91,7 +91,7 @@ const state = reactive({
         bottom: 20px;
         left: 5px;
         right: 0;
-        color: #ffffff;
+        color: var(--text-primary);
         background-color: #549de2;
         text-align: center;
         padding: 20px;
@@ -105,7 +105,7 @@ const state = reactive({
     background-color: transparent;
     box-shadow: 0 0 0 1px #81d3f8 inset;
     .el-input__inner {
-      color: #ffffff;
+      color: var(--text-primary);
     }
   }
 }

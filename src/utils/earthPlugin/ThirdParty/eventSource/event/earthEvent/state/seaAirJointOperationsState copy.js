@@ -23,7 +23,7 @@ import { airplaneSensorON, airplaneSensorONFP, airplaneSensorOFF } from './state
 import { showSysMessage, setSatelliteType } from '@/utils/mapTools'
 import emitter from '@/utils/eventbus'
 export default function () {
-  const { initTrackLine, dropTrackLine } = RE_LTrack()
+  const { initLTrackLine, dropLTrackLine } = RE_LTrack()
   const { sensorSwitch } = SU()
   const { initWeaponFLine } = RE_WeaponF()
   const { initJamLine, dropJamLine, sensorJam } = RE_Jam()
@@ -60,32 +60,8 @@ export default function () {
             onFlag: json.Data.ON,
             orbitType: orbitType
           })
-          // if (json.Data.ON) {
-          //   setSatelliteType({
-          //     satelliteId: json.Data.PName,
-          //     czmlSource: 'MSIMEarthCZMLProcessContainer',
-          //     satelliteType: 'light',
-          //     onFlag: false,
-          //     orbitType: orbitType
-          //   })
-          // }
         }
-        // if (airplanePlateformArr.indexOf(json.Data.PName) > -1) {
-        //   if (json.Data.ON) {
-        //     console.log('雷达开关', json.Data.ON, json.Data.PName);
-        //     emitter.emit('sensorSwitch', {
-        //       onFlag: json.Data.ON,
-        //       platformName: json.Data.PName
-        //     })
-        //   } else {
-        //     emitter.emit('sensorSwitch', {
-        //       onFlag: json.Data.ON,
-        //       platformName: json.Data.PName
-        //     })
-        //   }
-        // } else {
-        //   //处理其他SU
-        // }
+     
         break
       case 'plateMove':
         //添加延迟1s，以免在PA创建之前就执行
@@ -175,7 +151,7 @@ export default function () {
       case 'RE_LTrackInit':
         // 局域追踪
         if (store.state.sceneModule.sceneLinkConfig.localTracking) {
-          initTrackLine(json)
+          initLTrackLine(json)
         }
 
         const climbData = {
@@ -231,7 +207,7 @@ export default function () {
 
         // if (json.Data.SourceTrackID === 'YAOGAN') {
         //   if (store.state.AFSIMModule.ATValue < 35) {
-        //     initTrackLine(json)
+        //     initLTrackLine(json)
         //   }
         // }
 
@@ -240,7 +216,7 @@ export default function () {
         //   (json.Data.OwnPID === 'dmz_1' || json.Data.OwnPID === 'YAOGAN')
         // ) {
         //   // console.log('RE_LTrackInit', json.Type, json)
-        //   initTrackLine(json)
+        //   initLTrackLine(json)
         // }
         break
       case 'RE_LTrackDrop':
@@ -315,13 +291,6 @@ export default function () {
         } else {
           console.log('Comment事件数据可能不合法', json)
         }
-        // if (TTSPlateformArr.includes(PN)) {
-        //   // 使用TTS
-        //   let cameraController = new window.EarthPlugn.CameraControl({})
-        //   let info = TTSVoiceArr[json.Data.Comment.Action].value
-        //   cameraController.identifyInfoCOnfig(info, 1)
-        // }
-
         break
       default:
         break

@@ -156,8 +156,6 @@ const state2 = reactive({
   msgMessionTime: '', // 场景时间
   isShowSys: false,
   navigationShowage: '',
-  title11: require('@/assets/image/homeHeader/顶部背景图.png'),
-  title22: require('@/assets/image/homeHeader/头部.png'),
   showHomePanel: false, // 左右两侧面板显隐
   loginSeat: {
     img: require('@/assets/image/homeHeader/logo_white.png')
@@ -374,10 +372,7 @@ let handleClose = () => {
   height: 80px;
   position: absolute;
   top: 0;
-
-  // background: url('~@/assets/image/top.png');
   background: url('@/assets/image/homeHeader/顶部背景图.png');
-  // background: url('@/assets/image/dataScreen/切图蓝-2.png');
   background-size: 100% 100%;
   z-index: 21; // 云渲染上要添加系统头,zindex设置比云渲染高
 
@@ -388,8 +383,6 @@ let handleClose = () => {
 
     .headbox_system {
       height: 60px;
-      // width: calc(50% - 210px);
-      // flex: 1.5;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -426,7 +419,6 @@ let handleClose = () => {
 
     .header {
       height: 40px;
-      // width: 870px;
       flex: 2;
       font-size: 24px;
       line-height: 24px;
@@ -439,12 +431,6 @@ let handleClose = () => {
       box-sizing: border-box;
       color: #fff;
       letter-spacing: 5px;
-      // background: linear-gradient(180deg, #ffffff 50%, #00e5ff 100%);
-      // -webkit-background-clip: text;
-      // -webkit-text-fill-color: transparent;
-      // text-shadow: 0 0 10px rgba(124, 205, 243, 0.411),
-      //   0 0 20px rgba(0, 212, 255, 0.8), 0 0 30px rgba(0, 212, 255, 0.5),
-      //   0 0 40px rgba(0, 212, 255, 0.3);
     }
 
     .headbox_timetw {
@@ -469,7 +455,6 @@ let handleClose = () => {
       .time1,
       .time2 {
         width: 243px;
-        // padding: 0 10px;
         text-align: left;
       }
 
@@ -512,12 +497,8 @@ let handleClose = () => {
 
     .header_img {
       cursor: pointer;
-      // width: 60px;
-      // height: 60px;
       padding: 10px;
       box-sizing: border-box;
-      // background: #123a5d;
-      // border-radius: 10px;
       position: absolute;
       top: 8px;
       left: 10px;
@@ -531,19 +512,16 @@ let handleClose = () => {
 
       .seat_admin {
         color: white;
-        //text-shadow: 3px 3px 5px #aeb2b3;
         font-weight: bolder;
       }
 
       .seat_blue {
         color: #06d6f9;
-        //text-shadow: 3px 3px 5px #06d6f9;
         font-weight: bolder;
       }
 
       .seat_red {
         color: #f00;
-        //text-shadow: 3px 3px 5px #f00;
         font-weight: bolder;
       }
     }
@@ -566,43 +544,6 @@ let handleClose = () => {
       right: 2px;
     }
   }
-
-  // .sceneSelectDIV {
-  //   margin-top: -7px;
-  //   font-size: 20px;
-  //   color: #fff;
-  //   position: relative;
-  //   cursor: pointer;
-
-  //   .scene_input {
-  //     margin-top: 25px;
-  //     border: none !important;
-
-  //     :deep .el-input__inner {
-  //       font-size: 18px;
-  //       font-weight: 500;
-  //       // width: 150px;
-  //       // background-color: transparent;
-  //       color: #06d6f9;
-  //       border: none !important;
-  //       text-align: center;
-  //       height: 30px;
-  //     }
-
-  //     :deep .el-input__wrapper {
-  //       background-color: transparent;
-  //     }
-  //   }
-
-  //   .arrowImg {
-  //     margin: 0 0 3px -10px;
-  //   }
-
-  //   .arrow_img_left {
-  //     margin: 0 0 3px 5px;
-  //   }
-  // }
-
   .sceneSelectDIV {
     position: absolute;
     left: 51%;
@@ -612,7 +553,6 @@ let handleClose = () => {
     /* line-height: 30px; */
     width: 350px;
     cursor: pointer;
-    // background-image: url('@/assets/image/dataScreen/补充切图-5.png');
     background-size: 100% 120%;
     display: flex;
     align-items: center;
@@ -637,8 +577,6 @@ let handleClose = () => {
       display: flex;
       justify-content: center;
       align-items: center;
-      // height: 50px;
-      // width: 50px;
     }
   }
 

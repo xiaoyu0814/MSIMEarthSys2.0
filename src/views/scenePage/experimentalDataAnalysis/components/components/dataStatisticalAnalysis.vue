@@ -284,7 +284,7 @@ onMounted(() => {
     background-color: transparent;
     box-shadow: 0 0 0 1px #81d3f8 inset;
     .el-input__inner {
-      color: #ffffff;
+      color: var(--text-primary);
     }
   }
 }

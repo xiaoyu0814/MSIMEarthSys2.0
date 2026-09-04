@@ -1,8 +1,8 @@
 /*
  * @Author: caoyazhen caoyazhen@piesat.cn
  * @Date: 2024-04-07 14:02:12
- * @LastEditors: ZX Li
- * @LastEditTime: 2025-09-04 10:56:52
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-07 16:50:42
  * @FilePath: \MSIMEarthSysN\src\utils\earthPlugin\ThirdParty\eventSource\event\earthActionByEvent\RE_LTrack.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -29,21 +29,8 @@ export default function () {
     // 将干扰对象存储到当前场景干扰对象数组中
     configJamPlateform(json.Data.tName)
     changeJamAMaterial(json.Data.tName, true)
-    //let curColor = [0, 0, 0, 1]
     let colorC = new window.MSIMEarth.Color(0, 1, 0, 1)
-    // if (json.Line) {
-    //   curColor = json.Line
-    // }
-    // let curColor = [0, 0, 0, 1]
-    // if (json.Line) {
-    //   curColor = json.Line
-    // }
-    // let colorC = new window.MSIMEarth.Color(
-    //   curColor[0] / 255,
-    //   curColor[1] / 255,
-    //   curColor[2] / 255,
-    //   curColor[3] / 255
-    // )
+   
     let side = getSideBySname(json.Data.sName)
     sceneAction.connectLineManagement.addLine({
       sourId: json.Data.sName,
@@ -110,19 +97,7 @@ export default function () {
       frustumId,
       'MSIMEarthCZMLProcessContainer'
     )
-    // let side = 'white'
-    // if (entityTarget.properties.side) {
-    //   switch (entityTarget.properties.side._value) {
-    //     case 'red':
-
-    //       break;
-    //     case 'blue':
-
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // }
+   
     if (entityTarget && entityTarget.ellipse) {
       if (jamAShow) {
         entityTarget.ellipse.material =

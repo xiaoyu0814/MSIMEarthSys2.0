@@ -1,3 +1,11 @@
+/*
+ * @Author: chenguopeng2 chenguopeng.piesat.cn
+ * @Date: 2026-07-14 13:56:36
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-06 09:30:19
+ * @FilePath: \MSIMEarthSystem\src\views\3D\hooks\comps\hooks\useShowUI.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import store from '@/store'
 import { getEntityInfo, getEntityParts } from '../../initConfig/HUD.js'
 
@@ -28,11 +36,11 @@ export const useShowUI = ({ entityInfo, sensorList }) => {
       const currentNodeCode = store.getters.getCurrentNode.code
       const info = await getEntityInfo(currentNodeCode)
       const parts = await getEntityParts(currentNodeCode)
-
+      console.log('updateEntityInfo', info);
       if (Array.isArray(parts)) {
         sensorList.value = getVisibleSensors(parts)
       }
-
+      
       if (info) {
         Object.keys(info).forEach((key) => {
           if (Object.prototype.hasOwnProperty.call(entityInfo.value, key)) {
@@ -44,9 +52,14 @@ export const useShowUI = ({ entityInfo, sensorList }) => {
       console.error('获取实体信息失败:', error)
     }
   }
-  // 复盘状态更新实体信息包括挂件信息
+  // 复盘状态更新实体信息包括挂件信息 - 第三视角
   const updateEntityInfoFP = async () => {
     try {
+      const currentNodeCode = store.getters.getCurrentNode.code
+      let muData = store.state.AFSIMModule.muData[currentNodeCode]
+      entityInfo.value.Altitude = muData.Alt
+      const totalSpeed = Math.hypot(muData?.SpeedNED0 || 0, muData?.SpeedNED1 || 0, muData?.SpeedNED2 || 0);
+      entityInfo.value.Speed = totalSpeed
     } catch (error) {
       console.error('获取实体信息失败:', error)
     }

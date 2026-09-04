@@ -1,41 +1,13 @@
+<!--
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-08-04 15:20:39
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-17 13:52:23
+ * @FilePath: \MSIMEarthSystem\src\views\HomeView.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="home">
-    <!-- <button
-      style="
-        position: absolute;
-        top: 200px;
-        left: 200px;
-        color: aliceblue;
-        z-index: 999;
-      "
-      @click="test4"
-    >
-      test
-    </button>
-    <button
-      style="
-        position: absolute;
-        top: 200px;
-        left: 300px;
-        color: aliceblue;
-        z-index: 999;
-      "
-      @click="test5"
-    >
-      图层控制
-    </button> -->
-    <!-- <button
-      style="
-        position: absolute;
-        top: 200px;
-        left: 300px;
-        color: aliceblue;
-        z-index: 999;
-      "
-      @click="test5"
-    >
-      test2
-    </button> -->
     <earth-viewer> </earth-viewer>
     <graph-viewer v-show="showGraphDiv"></graph-viewer>
     <!-- 标题 联合作战仿真推演分析系统 防空反导虚数结合训练系统-->
@@ -78,6 +50,8 @@
       </li>
     </ul> -->
     <!-- <AIchat v-if="showAI" /> -->
+    <!-- 导调指令：右下角悬浮图片，点击高亮并弹出聊天界面 -->
+    <DirectiveChat />
     <loading v-if="showLoading" :loading-text="loadingText"></loading>
     <div v-show="plateFormCategoryStatisticShow" style="
         position: absolute;
@@ -129,9 +103,6 @@ import result from '@/views/scenePage/sceneConfigComp/result/index.vue'
 import experimentEventList from './experimentEventList.vue'
 import BLEventList from '@/views/bianzudaotiao/index.vue'
 
-import { getCloudList } from '@/utils/earthPlugin/core/treeManagement/methods/cloud'
-import { getHumidityList } from '@/utils/earthPlugin/core/treeManagement/methods/humidity'
-import { getTurbulenceList } from '@/utils/earthPlugin/core/treeManagement/methods/turbulence'
 // 导入hooks
 import { useStore } from 'vuex'
 import {
@@ -150,13 +121,14 @@ import chat_img_select from '@/assets/images/15_select.png'
 import experimentalDataAnalysis from '@/views/scenePage/experimentalDataAnalysis/index.vue' // 实验数据分析
 import experimentalBasicDatabase from '@/views/scenePage/experimentalResourceManagement/experimentalBasicDatabase/index.vue' // 实验基础数据库
 import AIchat from '@/components/AIchat/index.vue'
+import DirectiveChat from '@/components/directiveChat/index.vue'
 import sceneConstruction from '@/views/experimentalPreparation/sceneConstruction/index.vue'
 import conceptDevelopment from '@/views/experimentalPreparation/conceptDevelopment/index.vue'
 import dataConfig from '@/views/experimentalPreparation/dataConfig/index.vue'
 import { eventControllerSSEClose } from '@/utils/mapTools'
 import { moveCamera } from '@/service/directingAdjusting'
 import { getPlatformParts, getPlatformSensorVolumes } from '@/service/afsim'
-import { sensorInfoDict, updateSensorVolume } from '@/utils/earthPlugin/ThirdParty/eventSource/event/earthEvent/state/stateControlMethods'
+import { sensorInfoDict, updateSensorVolume , updateSensorInfoDict } from '@/utils/earthPlugin/ThirdParty/eventSource/event/earthEvent/state/stateControlMethods'
 
 import * as dat from 'dat.gui'
 export default {
@@ -181,7 +153,8 @@ export default {
     GraphViewer,
     result,
     experimentEventList,
-    BLEventList
+    BLEventList,
+    DirectiveChat
   },
   setup() {
     window.isBack = true
@@ -343,6 +316,7 @@ export default {
       }
       return entity
     }
+    // 作用 重置侦察提示定时器
     const resetReconnaissancePromptRemoveTimer = (platformName, options) => {
       if (!platformName) return
 
@@ -571,17 +545,7 @@ export default {
             maximumClock: window.MSIMEarth.Math.toRadians(7.5),
             minimumCone: window.MSIMEarth.Math.toRadians(75.0),
             maximumCone: window.MSIMEarth.Math.toRadians(105.0),
-            // material: window.MSIMEarth.Color.DARKCYAN.withAlpha(0.1),
             material: window.MSIMEarth.Color.RED.withAlpha(0.2),
-            // material: new window.MSIMEarth.PulseMaterialProperty({
-            //   repeat: new window.MSIMEarth.Cartesian2(1.0, 1.0),
-            //   color: new window.MSIMEarth.Color(1.0, 0.1, 0.1, 1.0), // new window.MSIMEarth.Color(0.8, 0.1, 0.5, 1.0),
-            //   flowSpeed: 35.0,
-            //   transparent: true
-            // }),
-            // material: new window.MSIMEarth.frustumMaterialProperty({
-            //   transparent: true
-            // }),
             outline: true
           }
         })
@@ -598,17 +562,7 @@ export default {
           let sysSoundShow = Number(
             window.localStorage.getItem('systemSoundEnabled')
           )
-          // if (!sysSoundShow) {
-          //   setTimeout(() => {
-          //     // beautyToast.info({
-          //     //   title: 'Info',
-          //     //   message: '情报回传中',
-          //     //   darkTheme: true,
-          //     //   animation: true
-          //     // })
-          //     store.state.sceneModule.showIdentify = false
-          //   }, ((identifyDuration * 3 + 5) * 1000) / window.EarthViewer.clock.multiplier) // (identifyDuration * 3 + 10) * 1000  识别动画总时长
-          // }
+          
         } else {
           state.showIdentify = newValue
         }
@@ -617,20 +571,17 @@ export default {
     watch(
       () => store.state.AFSIMModule.reconnaissanceResults,
       (newValue) => {
-        // 监听到ReconnaissanceResults变化，模拟通过消息平台获取大模型预测结果
-        // console.log(newValue)
-        // 读取newValue中的data,基于threat_assessment获取目标编组信息，威胁等级等信息
+        console.log('newValue',newValue)
         if (newValue && store.getters.getChangeCameraView != '第三视角') {
-          // const entityMethod = new window.EarthPlugn.entity({
-          //   earth: window.MSIMEarth,
-          //   viewer: window.EarthViewer
-          // })
           let entityId = ''
           let side = ''
-          if (newValue.sensorType == 'WSF_OPTICAL_SENSOR') {
+          if (newValue.sensorType == 'Optical') {
             entityId = newValue.detectorName
             side = newValue.detectorSide
-          } else {
+          } else if (newValue.sensorType == 'Optical') {
+            entityId = newValue.detectorName
+            side = newValue.detectorSide
+          }  else {
             entityId = newValue.platformName
             side = newValue.side
           }
@@ -643,60 +594,11 @@ export default {
             specificCName: newValue.specificDesc,
             side: side
           }
-          // entityMethod.createRotateEntity(
-          //   item.unit_name,
-          //   2300.0,
-          //   'static/image/texture/rotate1.png'
-          // )
+          
           window.sceneAction.popUp.setStyleEffectByReconnaissanceResults(
             options
           )
           resetReconnaissancePromptRemoveTimer(newValue.platformName, options)
-          return
-          if (!newValue.data || !newValue.data.threat_assessment) return
-          let threatAssessment = newValue.data.threat_assessment
-          let captainName = threatAssessment[0].unit_name
-          let targetsIdArr = []
-          if (threatAssessment) {
-            threatAssessment.forEach((item) => {
-              // 如果item.unit_name为threatAssessment【0】，则添加菱形图标
-              let name = item.unit_name
-              if (item.unit_name == captainName) {
-                name = item.unit_name + '♦♦♦'
-              }
-              targetsIdArr.push(item.unit_name)
-              let options = {
-                entityId: item.unit_name,
-                name: name,
-                czmlSource: 'MSIMEarthCZMLProcessContainer',
-                type: 'reconnaissance',
-                threatLevel: item.threat_level,
-                confidence: Math.floor(item.confidence * 100) / 100 // 保留两位小数但不四舍五入
-              }
-              // entityMethod.createRotateEntity(
-              //   item.unit_name,
-              //   2300.0,
-              //   'static/image/texture/rotate1.png'
-              // )
-              window.sceneAction.popUp.cancleStyleEffect(options)
-              window.sceneAction.popUp.setStyleEffectByReconnaissanceResults(
-                options
-              )
-            })
-
-            let EF = new window.EarthPlugn.EffectByTurf(
-              window.MSIMEarth,
-              window.EarthViewer
-            )
-            // targetIdArr ['red_3', 'red_4']
-            EF.removeGroupCircleByTurf(targetsIdArr)
-            EF.createGroupCircleByTurf(
-              targetsIdArr,
-              window.MSIMEarth.Color.BLUE,
-              130
-            )
-            // 增加编组目标闪烁，其中targetsIdArr【0】为队长，其他为队员
-          }
         }
       },
       { immediate: true, deep: true }
@@ -735,12 +637,12 @@ export default {
         }
       })
       getCurentEntitiesCount()
-      getCloudList(0)
-      getHumidityList(0)
-      getTurbulenceList(0)
       // 开启全局包络循环
       state.sensorVolumeTimer = setInterval(() => {
+        // 更新传感器包络信息字典
         updateSensorVolume()
+        // 更新传感器包络信息字典
+        // updateSensorInfoDict()
       }, state.volumeUpdateInterval)
     })
     onUnmounted(() => {
@@ -757,15 +659,10 @@ export default {
 
     const getCurentEntitiesCount = () => {
       setInterval(() => {
-        // if (MSIMEarthCZMLProcessContainer) {
-        //   // state.entitiesCount = '当前场景内实体数量：'+MSIMEarthCZMLProcessContainer.entities.values.length
-        //   state.entitiesCount = '当前场景内实体数量：'+window.EarthViewer.entities.values.length
-        //   console.log(state.entitiesCount)
-        // }
         if (window.EarthViewer) {
           state.entitiesCount =
             '当前场景内实体数量：' +
-            window.EarthViewer.scene.primitives._primitives.length //window.EarthViewer.entities.values.length
+            window.EarthViewer.scene.primitives._primitives.length 
         }
       }, 1000)
     }
@@ -814,34 +711,7 @@ export default {
       }
 
       clusterToPoint(clusterArr, clusterId)
-      // 根据传感器类型开启对应形态的volumes
-      // getPAStatic({ side: '' }).then((res) => {
-      //   console.log('获取平台静态信息', res)
-      // })
-      // setSatelliteType({
-      //   satelliteId: 'CH-5',
-      //   czmlSource: 'MSIMEarthCZMLProcessContainer',
-      //   satelliteType: 'light',
-      //   onFlag: true
-      // })
-      // return
-      // getPlatformParts({ platform: 'YAOGAN' })
-      //   .then((res) => {
-      //     console.log(`11111${res.status}`, res, res.data)
-      //   })
-      //   .catch((err) => {
-      //     console.log('获取平台渲染图形信息失败', err)
-      //   })
-      // let resupplyCount = '500'
-      // let weaponNameVal = 'AAGun35mm'
-      // let params = {
-      //   platform: 'AAA-1',
-      //   resupplyAmmunition: `{"weaponName":"${weaponNameVal}","resupplyCount":"${resupplyCount}"}`
-      // }
-      // setPlatformJam(params).then((res) => {
-      //   console.log('attack', res)
-      // })
-      // return
+      
       let infoParams = {
         type: 'modelPreview',
         value: {
@@ -864,175 +734,6 @@ export default {
         .catch((err) => {
           console.log('导调UE定位错误', err)
         })
-    }
-    const switchTexture = async (config) => {
-      if (config.newPath) {
-        //  && window.humidityInstance && window.humidityInstance.primitive && window.humidityInstance.primitive.appearance
-        let humidityPrimitive
-        for (let primitive of window.EarthViewer.scene.primitives._primitives) {
-          if (primitive.id === config.id || 'humidity_Test') {
-            humidityPrimitive = primitive
-          }
-        }
-        if (typeof humidityPrimitive === 'undefined') return
-        const earth = window.MSIMEarth
-        const viewer = window.EarthViewer
-        earth.Resource.createIfNeeded(config.newPath)
-          .fetchImage()
-          .then((res) => {
-            const cubeTex = new earth.Texture({
-              context: viewer.scene.context,
-              source: res
-            })
-            cubeTex.type = 'sampler2D'
-            humidityPrimitive.appearance.uniforms.cubeTex = cubeTex
-          })
-          .catch((error) => {
-            console.error('加载湿度纹理失败：', error)
-          })
-      }
-    }
-
-    const removeCloud = () => {
-      window.EarthViewer.scene.primitives._primitives.forEach((item) => {
-        if (item.id === 'Cloud_Test') {
-          window.EarthViewer.scene.primitives.remove(item)
-        }
-      })
-    }
-    const test4 = (config) => {
-      let DC = new window.EarthPlugn.DCPrimitive({
-        viewer: window.EarthViewer,
-        earth: window.MSIMEarth
-      })
-
-      const humidityTexturePaths = [
-        {
-          name: config.name || 'CloudTest',
-          path:
-            config.path ||
-            '/static/image/texture/CLOUDpicture_120.75-122.75__22-25/TCC_2024-02-05_0100_z_interp_crop_100m_crop_lat_vertical_16x16.png'
-        }
-      ]
-
-      const humidityConfig = {
-        xmin: config.xmin || 120.1,
-        xmax: config.xmax || 121.3,
-        ymin: config.ymin || 24.1,
-        ymax: config.ymax || 25.1,
-        zmin: config.zmin || 100.0,
-        zmax: config.zmax || 15000.0,
-        steps: config.steps || 320.0,
-        alphaCorrection: config.alphaCorrection || 0.9,
-        humidityLowColor: config.humidityLowColor || '#0000ff',
-        humidityMidColor: config.humidityMidColor || '#00ffff',
-        humidityHighColor: config.humidityHighColor || '#84ff84',
-        gamma: config.gamma || 0.6,
-        alphaPower: config.alphaPower || 3.0,
-        minThreshold: config.minThreshold || 0.05,
-        maxThreshold: config.maxThreshold || 1.0,
-        opacityScale: config.opacityScale || 0.48,
-        dataCompression: config.dataCompression || 0.5,
-        texturePath: config.texturePath || humidityTexturePaths[0].path,
-        currentTextureIndex: config.currentTextureIndex || 0,
-        texturePaths: config.texturePaths || humidityTexturePaths,
-        // 剖切参数
-        clipXEnabled: config.clipXEnabled || false,
-        clipXMin: config.clipXMin || 0.0,
-        clipXMax: config.clipXMax || 1.0,
-        clipYEnabled: config.clipYEnabled || false,
-        clipYMin: config.clipYMin || 0.0,
-        clipYMax: config.clipYMax || 1.0,
-        clipZEnabled: config.clipZEnabled || false,
-        clipZMin: config.clipZMin || 0.0,
-        clipZMax: config.clipZMax || 1.0,
-        // 颜色过滤参数
-        colorFilterEnabled: config.colorFilterEnabled || false,
-        targetColor: config.targetColor || '#ffffff',
-        colorTolerance: config.colorTolerance || 0.3,
-        id: config.id || 'Cloud_Test'
-      }
-
-      DC.createCloudTextureAliasOD(humidityConfig)
-      // switchTexture({
-      //   newPath:
-      //     '/static/image/texture/ICEpicture_BLUE_new/RH_2024-02-05_0400_z_interp_crop_100m_lat_vertical_16x16_green.png',
-      //   id: 'humidity_Test'
-      // })
-    }
-
-    function createHumidity(config) {
-      let DC = new window.EarthPlugn.DCPrimitive({
-        viewer: window.EarthViewer,
-        earth: window.MSIMEarth
-      })
-
-      const humidityTexturePaths = [
-        {
-          name: config.name || 'HumidityTest',
-          path:
-            config.path ||
-            '/static/image/texture/WETpicture_GREEN_100m/RH_2024-02-05_0000_z_interp_crop_100m_lat_vertical_16x16_green.png'
-        }
-      ]
-
-      const humidityConfig = {
-        xmin: config.xmin || 121.2,
-        xmax: config.xmax || 121.4,
-        ymin: config.ymin || 24.9,
-        ymax: config.ymax || 25.1,
-        zmin: config.zmin || 100.0,
-        zmax: config.zmax || 15000.0,
-        steps: config.steps || 320.0,
-        alphaCorrection: config.alphaCorrection || 0.9,
-        humidityLowColor: config.humidityLowColor || '#0000ff',
-        humidityMidColor: config.humidityMidColor || '#00ffff',
-        humidityHighColor: config.humidityHighColor || '#84ff84',
-        gamma: config.gamma || 0.6,
-        alphaPower: config.alphaPower || 3.0,
-        minThreshold: config.minThreshold || 0.05,
-        maxThreshold: config.maxThreshold || 1.0,
-        opacityScale: config.opacityScale || 0.48,
-        dataCompression: config.dataCompression || 0.5,
-        texturePath: config.texturePath || humidityTexturePaths[0].path,
-        currentTextureIndex: config.currentTextureIndex || 0,
-        texturePaths: config.texturePaths || humidityTexturePaths,
-        // 剖切参数
-        clipXEnabled: config.clipXEnabled || false,
-        clipXMin: config.clipXMin || 0.0,
-        clipXMax: config.clipXMax || 1.0,
-        clipYEnabled: config.clipYEnabled || false,
-        clipYMin: config.clipYMin || 0.0,
-        clipYMax: config.clipYMax || 1.0,
-        clipZEnabled: config.clipZEnabled || false,
-        clipZMin: config.clipZMin || 0.0,
-        clipZMax: config.clipZMax || 1.0,
-        // 颜色过滤参数
-        colorFilterEnabled: config.colorFilterEnabled || false,
-        targetColor: config.targetColor || '#ffffff',
-        colorTolerance: config.colorTolerance || 0.3,
-        id: config.id || 'humidity_Test'
-      }
-
-      DC.createHumidityTextureAliasOD(humidityConfig)
-    }
-    const test5 = async () => {
-      window.EarthViewer.entities.add({
-        position: window.MSIMEarth.Cartesian3.fromDegrees(
-          121.25412591,
-          25.03663923,
-          1000000
-        ),
-        point: {
-          pixelSize: 10.0,
-          color: window.MSIMEarth.Color.RED.withAlpha(0.5)
-        }
-      })
-      // let config = {
-      //   name: 'HumidityTest',
-      //   path: '/static/image/texture/ICEpicture_BLUE_new/KTICE2025111000.000.grb_lat_vertical_16x16_blue.png'
-      // }
-      // createHumidity(config)
     }
 
     const openLayerControl = () => {
@@ -1326,8 +1027,6 @@ export default {
       showTree,
       changeList,
       test3,
-      test4,
-      test5,
       openLayerControl,
       PAStatisticCount,
       tsydCount,
@@ -1420,7 +1119,7 @@ export default {
   left: 100px;
   top: 30px;
   font-size: 30px;
-  color: rgb(14, 203, 233);
+  color: var(--cyan-bright);
 }
 
 #trailer {
@@ -1510,16 +1209,6 @@ export default {
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(100%);
-}
-
-:deep(.panel_comp .wrap) {
-  background-image: url('@/assets/image/时间轴.png');
-  background-repeat: no-repeat;
-  /* 可选，设定是否重复背景图片 */
-  background-size: 100% 100%;
-  /* 可选，设定背景图片的尺寸和位置 */
-  // border: none;
-  // border: 1px solid rgb(1, 1, 1);
 }
 
 .navbar_box {

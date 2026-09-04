@@ -1,6 +1,10 @@
 <template>
   <div id="measurePanel">
-    <div class="header"><span>量算面板</span></div>
+    <div class="header"><span>地图分析面板</span>
+      <el-tooltip class="box-item" effect="dark" content="关闭面板" placement="top">
+        <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_sty" @click="handleClose" />
+      </el-tooltip>
+    </div>
     <ul class="content_box">
       <li
         v-for="(item, index) in vueData.measureList"
@@ -98,6 +102,7 @@ import Buffer from '@/utils/measurement/Buffer.js'
 import MeasureHeight from '@/utils/measurement/MeasureHeight.js'
 import ViewAreaAnalysis from '@/utils/measurement/viewAreaAnalysis.js'
 import { ElMessage, ElMessageBox, ElLoading } from "element-plus";
+import emitter from '@/utils/eventbus'
 
 const measure = new Measure(window.EarthViewer)
 const measureAngle = new MeasureAngle(window.EarthViewer)
@@ -244,8 +249,14 @@ onMounted(() => {
     sectionChars: document.getElementById('sectionChars'),
     echartsView1: document.getElementById('echartsView1')
   })
+  emitter.on('clearMeasurePanel',val=>{
+    clear()
+  })
 })
-
+const handleClose = () => {
+  clear()
+  emitter.emit('tagActiveClose', 'measurement')
+}
 const getToolItem = (item, index) => {
   if (vueData.select_index != index && vueData.select_index != null) {
     vueData.measureList[vueData.select_index].selectType = false
@@ -539,25 +550,25 @@ let getImage = (position, image) => {
   position: absolute;
   right: 90px;
   top: 20%;
-  width: 270px;
-  // height: 350px;
-  // background-color: #0c192a67;
-  // background-color: rgba(2, 26, 70, 0.88);
-  // box-shadow: 0 0 25px #1092d5;
-  // font-size: 16px;
-  // font-weight: bold;
-  // color: #ffffff;
-  border: 1px solid rgba(53, 177, 253, 0.8);
-  background-color: rgba(0, 11, 26, 0.9);
-  color: #ffffff;
+  width: 300px;
+  height: 420px;
+  background-color: var(--panel-bg);
+  box-shadow: var(--box-shadow-glow);
+  border-top: 3px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
   z-index: 1;
 
   .header {
-    padding: 10px;
-    border-bottom: 1px solid #0b3855;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 19px;
   }
 
   .content_box {
@@ -591,9 +602,9 @@ let getImage = (position, image) => {
     bottom: -260px;
     width: 500px;
     height: 250px;
-    border: 1px solid rgba(53, 177, 253, 0.8);
-    background-color: rgba(0, 11, 26, 0.9);
-    color: #ffffff;
+    border: 1px solid var(--border-color);
+    background-color: var(--panel-bg);
+    color: var(--text-primary);
     z-index: 1;
     padding: 1px 10px 4px 10px;
     display: none;
@@ -605,14 +616,14 @@ let getImage = (position, image) => {
     top: 424px;
     width: 270px;
     // height: 250px;
-    border: 1px solid rgba(53, 177, 253, 0.8);
-    background-color: rgba(0, 11, 26, 0.9);
-    color: #ffffff;
+    border: 1px solid var(--border-color);
+    background-color: var(--panel-bg);
+    color: var(--text-primary);
     z-index: 1;
   }
 
   :deep(.el-tabs__header .el-tabs__item) {
-    color: white;
+    color: var(--text-primary);
     padding: 0 20px;
   }
 }

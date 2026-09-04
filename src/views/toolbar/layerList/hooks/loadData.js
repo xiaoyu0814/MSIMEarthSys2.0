@@ -11,6 +11,7 @@ import store from '@/store/index'
 // import { getSceneList } from '@/service/api/coreApi'
 import emitter from '@/utils/eventbus'
 import LayerManagementSource from './layerManagementSource'
+import { pageQuery } from '@/service/environmentManagement/index'
 import {
   changeCameraView,
   frustumObjectArray,
@@ -18,11 +19,6 @@ import {
 } from '@/utils/earthPlugin/ThirdParty/cameraControl/cameraControl'
 import { getTargetNameByMissileName } from '@/service/SSE.js'
 import axios from 'axios' // 接口封装后导入接口即可
-import { getPlateSWMessageV2 } from '@/service/command'
-import {
-  getMinHangJSON,
-  getSpaceBoxData
-} from '@/service/battlefieldEnvironment'
 import { ElMessage, ElNotification } from 'element-plus'
 import {
   detailedSignageCheckChange,
@@ -30,8 +26,6 @@ import {
   entityWallChange,
   entityWackChange,
   missileLineChange,
-  createEntityCircleFun,
-  removeEntityCircleById,
   rangeByWeather,
   communicationRadiusChange,
   firepowerRadiusChange,
@@ -46,7 +40,8 @@ import {
   showTextByOperationalArea,
   getLDZZInfoChange1,
   planLineChange,
-  showFKFW
+  showFKFW,
+  linkInfosChange
 } from '@/views/toolbar/layerList/hooks/showHideConfig'
 import {
   fireAtPositionChange,
@@ -88,8 +83,6 @@ import {
   airPortWeatherChange,
   oceanChange
 } from '@/views/toolbar/layerList/hooks/simModelGuideCommand' //模拟器相关导调指令
-import { getLayerList } from '@/views/toolbar/layerList/hooks/layerServerData' //获取西安发布的图层服务列表数据
-// const { imageUrl } = path.url
 
 export default function () {
   // const instance = getCurrentInstance()
@@ -153,47 +146,22 @@ export default function () {
     viewer: window.EarthViewer,
     Cesium: window.MSIMEarth
   })
-  let options = {
-    earth: window.MSIMEarth,
-    viewer: window.EarthViewer,
-    type: 'panel'
-  }
+
   let layerList
   // 战场环境数据
-  const getBattlefieldEnvironmentData = () => {
-    getMinHangJSON().then((res) => {
-      state2.minhangData = res
-    })
-    let params = {
-      heightMax: 10000,
-      heightMin: 1000,
-      latMax: 43,
-      latMin: 32,
-      level: 9,
-      lonMax: 123,
-      lonMin: 112,
-      maxNum: 100,
-      minNum: 4
-    }
-    // 功能暂时不用，所以注释掉下面接口
-    // getSpaceBoxData(params).then((res) => {
-    //   state2.spaceBoxData = res.data
-    // })
-  }
+  // const getBattlefieldEnvironmentData = () => {
+  //   getMinHangJSON().then((res) => {
+  //     state2.minhangData = res
+  //   })
+  // }
   onMounted(async () => {
     let options = {
       earth: window.MSIMEarth,
       viewer: window.EarthViewer,
       type: 'panel'
     }
-    // 判断如果是admin席位才默认显示九段线等矢量标注
-    // if(window.localStorage.getItem('side') == 'admin'){
-    //   state.treeDataDefault.
-    // }
-    // 获取西安图层服务列表
-    // await getXiAnLayerServer()
 
-    getBattlefieldEnvironmentData()
+    //getBattlefieldEnvironmentData()
     layerList = new window.EarthPlugn.treeManagement(options)
     state.treeData = layerList.panelManagement.initTreeNodes(
       state.treeDataDefault
@@ -212,7 +180,6 @@ export default function () {
         }
       })
     }
-    console.log('state.treeData', state.treeData)
     store.commit('setLayerManagementData', state.treeData)
     // 初始化时图层树只包含地理数据
     // state.treeData = JSON.parse(JSON.stringify(state.treeDataDefault))
@@ -220,6 +187,15 @@ export default function () {
     let resTree
     if (state.treeData && state.treeData.length > 0) {
       state.treeData[0].childList.forEach((layer) => {
+        if (layer.checked) {
+          resTree = layerList.panelManagement.updateTickStatus(
+            state.treeData,
+            layer,
+            'add'
+          )
+        }
+      })
+      state.treeData[3].childList.forEach((layer) => {
         if (layer.checked) {
           resTree = layerList.panelManagement.updateTickStatus(
             state.treeData,
@@ -236,10 +212,14 @@ export default function () {
         'add'
       )
     })
+    emitter.on('getEnviromentServerList', (val) => {
+      getTreeList()
+    })
     state2.entityMethod = new window.EarthPlugn.entity({
       earth: window.MSIMEarth,
       viewer: window.EarthViewer
     })
+    getTreeList()
   })
   watch(
     () => store.state.sceneModule.sceneBid,
@@ -252,39 +232,26 @@ export default function () {
   )
   watch(
     () => store.state.sceneModule.layerManagementData,
-    (newValue, oldValue) => {
-    },
+    (newValue, oldValue) => {},
     { deep: true }
   )
-  watch(
-    () => store.state.sceneModule.radarRender,
-    (newValue) => {
-      let layerData = store.getters.getLayerManagementData
-      let newModelLayerData = layerData[2].childList
-      const side = window.localStorage.getItem('side')
-      // 雷达探测
-      if (side == 'admin') {
-        if (newModelLayerData[2]) {
-          newModelLayerData[2].checked = newValue
-        }
-      } else {
-        if (newModelLayerData[1]) {
-          newModelLayerData[1].checked = newValue
-        }
-      }
+
+  // 获取气象海洋图层列表
+  const getTreeList = () => {
+    let currentSceneInfo = JSON.parse(
+      window.localStorage.getItem('currentSceneInfo')
+    )
+    let params = {
+      sceneId: currentSceneInfo?.scenarioIdStr
     }
-  )
-  //获取西安服务列表
-  const getXiAnLayerServer = async () => {
-    let paramsList = state.layerParams
-    for (let x = 0; x < paramsList.length; x++) {
-      let params = paramsList[x]
-      let serverDataList = await getLayerList(params)
-      if (serverDataList && serverDataList.length > 0) {
-        state.treeDataDefault[0].childList[x].childList = serverDataList
+    pageQuery(params).then((res) => {
+      if (res.code == 200) {
+        // state.treeData[1].childList.push(...res.data.list)
+        state.treeData[1].childList = res.data
       }
-    }
+    })
   }
+
   // tree动态类名 (先声明再调用)
   const customNodeClass = (data, node) => {
     if (data.isPenultimate) {
@@ -314,11 +281,11 @@ export default function () {
         childList: [
           {
             name: '全球高清影像',
-            code: 'bingLayer',
+            code: 'globalImage',
             checked: true,
             clickable: false,
             geoType: '',
-            callback: 'bingLayer'
+            callback: 'globalImage'
           },
           {
             name: '全球地形',
@@ -338,19 +305,19 @@ export default function () {
           },
           {
             name: '矢量底图（带标注）',
-            code: 'vectorLayer2',
+            code: 'annotationVectorLayer',
             checked: false,
             clickable: false,
             geoType: '',
-            callback: 'vectorLayer2'
+            callback: 'annotationVectorLayer'
           },
           {
             name: '矢量底图（暗色）',
-            code: 'vectorLayer3',
+            code: 'darkVectorLayer',
             checked: false,
             clickable: false,
             geoType: '',
-            callback: 'vectorLayer3'
+            callback: 'darkVectorLayer'
           }
         ]
       },
@@ -360,7 +327,7 @@ export default function () {
         disabled: true,
         isPenultimate: true,
         clickable: false,
-        image: '战场环境.png',
+        image: '气象海洋.png',
         childList: [
           {
             name: '光学探测区域',
@@ -410,6 +377,13 @@ export default function () {
             clickable: false,
             checked: false,
             callback: 'wind'
+          },
+          {
+            name: '雷达探测区域',
+            code: 'radarCoverage',
+            clickable: false,
+            checked: false,
+            callback: 'radarCoverage'
           }
         ]
       },
@@ -419,21 +393,21 @@ export default function () {
         disabled: true,
         isPenultimate: true,
         clickable: false,
-        image: '场景配置.png',
+        image: '场景信息.png',
         childList: [
           {
             name: '传感器追踪',
-            code: 'localTracking',
-            clickable: false,
-            checked: false,
-            callback: 'localTracking'
-          },
-          {
-            name: '局域追踪',
             code: 'sensorTracking',
             clickable: false,
             checked: false,
             callback: 'sensorTracking'
+          },
+          {
+            name: '局域追踪',
+            code: 'localTracking',
+            clickable: false,
+            checked: false,
+            callback: 'localTracking'
           },
           {
             name: '火力打击',
@@ -471,7 +445,7 @@ export default function () {
         disabled: true,
         isPenultimate: true,
         clickable: false,
-        image: '地理数据.png',
+        image: '地理要素.png',
         childList: [
           {
             name: '九段线',
@@ -536,7 +510,7 @@ export default function () {
         disabled: true,
         isPenultimate: true,
         clickable: false,
-        image: '地理数据.png',
+        image: '地图注记.png',
         childList: [
           {
             name: '地名',
@@ -558,32 +532,20 @@ export default function () {
       },
       // {
       //   code: 6,
-      //   name: '作战态势',
+      //   name: '雷达控制',
       //   disabled: true,
       //   isPenultimate: true,
       //   clickable: false,
-      //   image: '地理数据.png',
+      //   image: '地图注记.png',
       //   childList: [
       //     {
-      //       name: '静态标注',
-      //       code: 'addStaticTarget',
-      //       clickable: false,
-      //       checked: true,
-      //       callback: 'addStaticTarget'
-      //     },
-      //     {
-      //       name: '作战区域',
-      //       code: 'addZuoZhanArea',
-      //       clickable: false,
+      //       name: 'HAWK_Radar',
+      //       code: 'RadarSite',
       //       checked: false,
-      //       callback: 'addZuoZhanArea'
-      //     },
-      //     {
-      //       name: '作战态势',
-      //       code: 'campaignSituation',
+      //       geoType: 'radar',
       //       clickable: false,
-      //       checked: false,
-      //       callback: 'campaignSituation'
+      //       addname: true,
+      //       callback: 'RadarSite'
       //     }
       //   ]
       // }
@@ -636,7 +598,7 @@ export default function () {
   const findParentNode = (data, code) => {
     for (let item of data) {
       if (item.childList) {
-        if (item.childList.some(child => child.code === code)) {
+        if (item.childList.some((child) => child.code === code)) {
           return item
         }
         const found = findParentNode(item.childList, code)
@@ -679,12 +641,6 @@ export default function () {
           ''
         )
       } else {
-        if (val.name == '民航航线') {
-          val.data = state2.minhangData
-        }
-        if (val.name == '空间盒') {
-          val.data = state2.spaceBoxData
-        }
         resultTreeData = layerList.panelManagement.updateTickStatus(
           store.state.sceneModule.layerManagementData,
           val,
@@ -770,7 +726,10 @@ export default function () {
         }
       } else if (state.treeClickCount > 1) {
         state.treeClickCount = 0
-        const parent = findParentNode(store.state.sceneModule.layerManagementData, data.code)
+        const parent = findParentNode(
+          store.state.sceneModule.layerManagementData,
+          data.code
+        )
         if (parent && parent.code == '02') {
           if (data.checked) {
             let layerName = data.name
@@ -1088,7 +1047,7 @@ export default function () {
       communicationRadiusChange(value)
     })
     // 火力半径
-    emitter.on('firepowerRadiusChange1', (value) => {
+    emitter.on('fireRadiusChange1', (value) => {
       firepowerRadiusChange(value)
     })
     // 传感器范围
@@ -1119,6 +1078,11 @@ export default function () {
     emitter.on('fkfwChange1', (value) => {
       // 展示防空范围
       showFKFW(value)
+    })
+    //链路信息
+    emitter.on('linkInfosChange1', (value) => {
+      // 展示防空范围
+      linkInfosChange(value)
     })
     // 雷达遮罩
     emitter.on('getLDZZInfoChange1', (value) => {

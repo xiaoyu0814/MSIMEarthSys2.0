@@ -205,10 +205,10 @@ onUnmounted(() => {
   // max-height: 810px;
   // background-image: url(@/assets/images/rwty/background.svg);
   // background-size: 100% 100%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
   font-size: 16px;
-  color: #fff;
+  color: var(--text-primary);
   .title-name {
     height: 50px;
     text-align: left;
@@ -238,18 +238,18 @@ onUnmounted(() => {
   :deep(.el-table__header-wrapper),
   :deep(.el-table tr),
   :deep(.el-table thead) {
-    background-color: rgba(2, 26, 70, 0.88) !important;
+    background-color: var(--panel-bg-deep) !important;
   }
   :deep(.el-table tbody tr:hover > td) {
     background-color: transparent !important;
   }
   :deep(.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf) {
-    background: rgba(2, 26, 70, 0.88) !important;
-    color: #fff;
+    background: var(--panel-bg-deep) !important;
+    color: var(--text-primary);
   }
   :deep(.el-table thead),
   :deep(.el-table th.el-table__cell) {
-    color: white;
+    color: var(--text-primary);
     background-color: rgba(0, 123, 204, 0.15) !important;
   }
   .close_sty {

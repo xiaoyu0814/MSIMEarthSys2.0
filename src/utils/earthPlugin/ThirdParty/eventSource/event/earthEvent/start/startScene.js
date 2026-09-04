@@ -1,8 +1,8 @@
 /*
  * @Author: root root@example.com
  * @Date: 2024-07-05 17:14:01
- * @LastEditors: root root@example.com
- * @LastEditTime: 2024-07-05 18:41:16
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-07 14:41:31
  * @FilePath: \MSIMEarthSysN\src\utils\earthPlugin\ThirdParty\eventSource\event\earthEvent\start\startScene.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AEe
  */
@@ -23,7 +23,6 @@ export default function () {
       })
       dataController.add_bblabel()
       dataController.addImportantHaiXia()
-      dataController.addChina()
 
       let curTime = store.getters.getSceneStartTime
       try {

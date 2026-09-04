@@ -96,7 +96,7 @@ const handleCurrentChange = (number) => {
 ::v-deep(.el-pagination.is-background .btn-next.is-active),
 ::v-deep(.el-pagination.is-background .btn-prev.is-active),
 ::v-deep(.el-pagination.is-background .el-pager li.is-active) {
-  background-color: #409eff !important;
+  background: var(--img-button-bg) !important;
   color: #ffffff;
 }
 </style>

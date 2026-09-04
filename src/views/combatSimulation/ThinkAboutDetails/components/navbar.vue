@@ -48,8 +48,6 @@ const state2 = reactive({
   msgMessionTime: '', // 场景时间
   isShowSys: false,
   navigationShowage: '',
-  title11: require('@/assets/image/homeHeader/顶部背景图.png'),
-  title22: require('@/assets/image/homeHeader/头部.png'),
   showHomePanel: false, // 左右两侧面板显隐
   loginSeat: {
     img: require('@/assets/image/homeHeader/logo_white.png')
@@ -229,19 +227,12 @@ let handleClose = () => {
 <style lang="less" scoped>
 @font-face {
   font-family: 'digital-7';
-  // src: url('../../assets/css/fonts/digital-7.ttf');
 }
 
 .home-header {
   width: 100%;
   height: 75px;
-  // position: absolute;
-  // top: 0;
   color: #000;
-
-  // background: url('~@/assets/image/top.png');
-  // background: url('@/assets/image/homeHeader/顶部背景图.png');
-  // background: url('@/assets/image/dataScreen/切图蓝-2.png');
   background-size: 100% 100%;
   z-index: 21; // 云渲染上要添加系统头,zindex设置比云渲染高
 
@@ -251,7 +242,6 @@ let handleClose = () => {
     height: 68px;
     .headbox_system {
       height: 60px;
-      // width: calc(50% - 210px);
       flex: 1.5;
       display: flex;
       align-items: center;
@@ -353,20 +343,16 @@ let handleClose = () => {
 
       .seat_admin {
         color: #000;
-        // color: white;
-        //text-shadow: 3px 3px 5px #aeb2b3;
         font-weight: bolder;
       }
 
       .seat_blue {
         color: #06d6f9;
-        //text-shadow: 3px 3px 5px #06d6f9;
         font-weight: bolder;
       }
 
       .seat_red {
         color: #f00;
-        //text-shadow: 3px 3px 5px #f00;
         font-weight: bolder;
       }
     }
@@ -389,52 +375,14 @@ let handleClose = () => {
     }
   }
 
-  // .sceneSelectDIV {
-  //   margin-top: -7px;
-  //   font-size: 20px;
-  //   color: #fff;
-  //   position: relative;
-  //   cursor: pointer;
-
-  //   .scene_input {
-  //     margin-top: 25px;
-  //     border: none !important;
-
-  //     :deep .el-input__inner {
-  //       font-size: 18px;
-  //       font-weight: 500;
-  //       // width: 150px;
-  //       // background-color: transparent;
-  //       color: #06d6f9;
-  //       border: none !important;
-  //       text-align: center;
-  //       height: 30px;
-  //     }
-
-  //     :deep .el-input__wrapper {
-  //       background-color: transparent;
-  //     }
-  //   }
-
-  //   .arrowImg {
-  //     margin: 0 0 3px -10px;
-  //   }
-
-  //   .arrow_img_left {
-  //     margin: 0 0 3px 5px;
-  //   }
-  // }
-
   .sceneSelectDIV {
     position: absolute;
     left: 51%;
     top: 49%;
     transform: translate(-60%, 0);
     overflow: hidden;
-    /* line-height: 30px; */
     width: 500px;
     cursor: pointer;
-    // background-image: url('@/assets/image/dataScreen/补充切图-5.png');
     background-size: 100% 120%;
     display: flex;
     align-items: center;
@@ -459,8 +407,6 @@ let handleClose = () => {
       display: flex;
       justify-content: center;
       align-items: center;
-      // height: 50px;
-      // width: 50px;
     }
   }
 
@@ -475,21 +421,10 @@ let handleClose = () => {
     font-family: Roboto;
     letter-spacing: 10px;
     display: flex;
-    // align-items: center;
     justify-content: center;
   }
 }
 
-// .time1 {
-//   position: absolute;
-//   top: 18%;
-//   left: 10%;
-// }
-// .time2 {
-//   position: absolute;
-//   top: 18%;
-//   left: 67%;
-// }
 .ledname1 {
   color: #00cbff;
   font-size: 14px;
@@ -498,7 +433,6 @@ let handleClose = () => {
 
 .ledTime1 {
   color: #d1f6ff;
-  /* font-family: "led regular"; */
   font-size: 16px;
   font-weight: 600;
   margin-left: 10px;
@@ -513,7 +447,6 @@ let handleClose = () => {
 
 .ledTime2 {
   color: #d1f6ff;
-  /* font-family: "led regular"; */
   font-size: 16px;
   font-weight: 600;
   margin-left: 10px;
@@ -579,18 +512,15 @@ let handleClose = () => {
 }
 .ststem-list {
   white-space: nowrap;
-  // background: url('@/assets/images/situationInforRelevance/默认.png');
   background-size: 100% 100%;
   height: 35px;
   padding: 0 15px;
   color: #000;
 }
 .system-item2 {
-  // width: 100px;
   height: 100%;
   background-size: 100% 100%;
   font-size: 17px;
-  // color: white;
   color: #000;
   height: 38px;
   line-height: 32px;
@@ -602,7 +532,6 @@ let handleClose = () => {
 }
 
 .ststem-list:hover {
-  //background: url('@/assets/images/situationInforRelevance/选中.png');
   background-size: 100% 100%;
 }
 .select {

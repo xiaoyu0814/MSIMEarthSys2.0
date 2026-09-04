@@ -316,7 +316,7 @@ async function switchHumidityTexture(index) {
 /**
  * 移除湿度数据
  */
-export function removeHumidity(EarthViewer) {
+export function removeHumidity(id) {
   // 清理播放计时器
   if (humidityPlaybackConfig) {
     if (humidityPlaybackConfig.timer) {
@@ -327,14 +327,11 @@ export function removeHumidity(EarthViewer) {
   }
 
   // 移除图元
-  if (humidityInstance && humidityInstance.primitive) {
-    try {
-      EarthViewer.scene.primitives.remove(humidityInstance.primitive);
-    } catch (e) {
-      console.warn('Error removing humidity primitive:', e);
+  window.EarthViewer.scene.primitives._primitives.forEach((item) => {
+    if (item.id === id) {
+      window.EarthViewer.scene.primitives.remove(item)
     }
-  }
-
+  })
   // 销毁GUI
   if (humidityGuiInstance) {
     try {
@@ -375,11 +372,11 @@ let DC = new window.EarthPlugn.DCPrimitive({
   ]
 
   humidityConfig = {
-    xmin: config.xmin || 121.2,
-    xmax: config.xmax || 121.4,
-    ymin: config.ymin || 24.9,
-    ymax: config.ymax || 25.1,
-    zmin: config.zmin || 100.0,
+    xmin: config.xmin || 121.0,
+    xmax: config.xmax || 121.6,
+    ymin: config.ymin || 24.7,
+    ymax: config.ymax || 25.3,
+    zmin: config.zmin || 800.0,
     zmax: config.zmax || 15000.0,
     steps: config.steps || 320.0,
     alphaCorrection: config.alphaCorrection || 0.3,
@@ -424,44 +421,13 @@ let DC = new window.EarthPlugn.DCPrimitive({
   const maxDiff = Math.max(lonDiff, latDiff);
   const cameraHeight = maxDiff * 111000 * 3;
 
-  EarthViewer.camera.setView({
-    destination: MSIMEarth.Cartesian3.fromDegrees(centerLon, centerLat, cameraHeight),
-  });
+  // EarthViewer.camera.setView({
+  //   destination: MSIMEarth.Cartesian3.fromDegrees(centerLon, centerLat, cameraHeight),
+  // });
 
   // 创建图例
   createHumidityLegend();
 
   // 创建GUI
   //await createHumidityGui();
-}
-
-export const getHumidityList = (hours) => {
-  if(hours > 23){
-    console.log(weatherDataConfig.humidity.texturePaths)
-    return
-  }
-  let time = hours < 10 ? '0' + hours : hours
-  let oldHours = hours
-  if(oldHours == 0){
-    oldHours = 24
-  }
-  let oldtime = oldHours - 1 < 10 ? '0' + (oldHours - 1) : oldHours - 1
-  const params = {
-    "request_type": "texture",
-    "variable": "RH",
-    "datetime": `2024-02-05 ${time}:00:00`
-  }
-  getTextureImage(params).then((res) => {
-    if (res.status == "success") {
-      let temp = {
-        name: `humidity_${time}00`,
-        time: `${oldtime}-${time}`,
-        path: res.texture_data.image_url
-      }
-      weatherDataConfig.humidity.texturePaths[hours] = temp
-    }
-    getHumidityList(hours + 1)
-  }).catch((err) => {
-    console.error('获取湿度纹理图片失败', err)
-  })
 }

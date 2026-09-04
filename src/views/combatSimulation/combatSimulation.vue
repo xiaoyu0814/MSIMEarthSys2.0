@@ -2,39 +2,24 @@
   <!-- 实验列表显示控制按钮 -->
   <div class="float-experiment">
     <el-tooltip effect="light" :content="vueData.isExperimentList ? '隐藏实验列表' : '显示实验列表'" placement="top-start">
-      <img
-        class="left-shrinks"
-        :src="
-          vueData.isLeftEcharts
-            ? require('@/assets/image/panelIcons/telescoping_1.png')
-            : require('@/assets/image/panelIcons/telescoping.png')
-        "
-        @click="changeList"
-      />
+      <div class="left-shrinks" :style="{
+        backgroundImage: vueData.isLeftEcharts ? 'var(--img-telescoping_1)' : 'var(--img-telescoping)'
+      }" @click="changeList"></div>
     </el-tooltip>
   </div>
   <experimentList v-if="vueData.isExperimentList" />
 
   <!-- 实验样本详情 -->
-  <Transition
-    name="custom-classes"
-    enter-active-class="animate__animated animate__backInDown animate__delay-10s"
-    leave-active-class="animate__animated animate__fadeOutUp"
-  >
+  <Transition name="custom-classes" enter-active-class="animate__animated animate__backInDown animate__delay-10s"
+    leave-active-class="animate__animated animate__fadeOutUp">
     <!-- 实验样本 -->
-    <taskCreateBox
-      v-if="vueData.createBox_show"
-      :createOrEdit="vueData.createOrEdit"
-      @closeTaskCreateBox="closeTaskCreateBox"
-    ></taskCreateBox>
+    <taskCreateBox v-if="vueData.createBox_show" :createOrEdit="vueData.createOrEdit"
+      @closeTaskCreateBox="closeTaskCreateBox"></taskCreateBox>
   </Transition>
 
   <!-- 实验样本详情 -->
-  <Transition
-    name="custom-classes"
-    enter-active-class="animate__animated animate__backInDown animate__delay-10s"
-    leave-active-class="animate__animated animate__fadeOutUp"
-  >
+  <Transition name="custom-classes" enter-active-class="animate__animated animate__backInDown animate__delay-10s"
+    leave-active-class="animate__animated animate__fadeOutUp">
     <basicInfo v-if="vueData.isBasicInfo" />
   </Transition>
 
@@ -130,113 +115,22 @@ watch(
 )
 </script>
 <style lang="less" scoped>
-.list-icon {
-  position: absolute;
-  top: 9%;
-  left: 20px;
-  font-size: 30px;
-  z-index: 10;
-  color: #fff;
-}
-// }
-.content-all {
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  padding-left: 10px;
-  padding-size: border-box;
-}
-.title {
-  text-align: left;
-  width: 100%;
-  padding: 0 20px;
-  display: block;
-  box-sizing: border-box;
-  position: relative;
-  color: #fff;
-  font-size: 18px;
-  position: relative;
-  line-height: 30px;
-}
-.title-all {
-  text-align: left;
-  width: 100%;
-  padding: 0 20px;
-  display: block;
-  box-sizing: border-box;
-  position: relative;
-  color: #fff;
-  font-size: 14px;
-  position: relative;
-  line-height: 30px;
-
-  span {
-    position: absolute;
-    top: 6px;
-    right: 10px;
-    width: 60px;
-    color: blue;
-    text-align: center;
-    height: 100%;
-    font-size: 12px;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 6px;
-    width: 10px;
-    height: 10px;
-    background: #00cbff;
-    border-radius: 50%;
-  }
-}
-.img-btn {
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 11%;
-  right: 220px;
-  font-size: 40px;
-  z-index: 10;
-  color: #fff;
-}
-
 .float-experiment {
   display: flex;
   align-items: flex-end;
   width: 50px;
-  height: 50px;
+  height: 54px;
   position: absolute;
   top: 7%;
   left: 0;
 
   .left-shrinks {
-    transform: translate(0, -8%);
     z-index: 2;
     cursor: pointer;
-    width: 16px;
-    font-size: 36px !important;
-  }
-}
-.float-right {
-  display: flex;
-  align-items: flex-end;
-  /* width: 50px; */
-  height: 50px;
-  position: absolute;
-  top: 5%;
-  right: 0;
-
-  .left-shrinks {
-    transform: rotate(180deg);
-    z-index: 2;
-    cursor: pointer;
-    width: 10px;
+    width: 18px;
+    height: 54px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     font-size: 36px !important;
   }
 }

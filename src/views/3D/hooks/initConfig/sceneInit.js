@@ -1,8 +1,8 @@
 /*
  * @Author: caoyazhen caoyazhen@piesat.cn
  * @Date: 2024-04-24 10:43:59
- * @LastEditors: root you@example.com
- * @LastEditTime: 2024-07-23 10:29:19
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-18 16:36:56
  * @FilePath: \MSIMEarthSysN\src\views\3D\hooks\initConfig\sceneInit.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -44,15 +44,6 @@ export async function sceneInit() {
   await getPlatformCHNName().then((res) => {
     if (res.code === 200) {
       console.log('中文名称映射', res.data)
-      // res.data['WZ-9'] = {
-      //   "temp": "FALSE",
-      //   "domain": "空",
-      //   "name": "无侦9_1",
-      //   "kinds": "无人查打机",
-      //   "type": "WZ-9",
-      //   "camp": "red",
-      //   "group": "9"
-      // }
       store.state.sceneModule.modelCHNNameValue = res.data
     } else {
       ElMessage.error(res.message)
@@ -393,6 +384,10 @@ function getPlatformGroupInfo() {
             e.label.text._value = textArr[0] + '编组' + '(' + res.data.Members + '/' + res.data.InitialMembers + ')'
           } else {
             e.label.text._value = e.label.text._value + '编组' + '(' + res.data.Members + '/' + res.data.InitialMembers + ')'
+          }
+          if(store.state.sceneModule.currentFlyType.entityId == e.id)
+          {
+            store.state.sceneModule.currentFlyType.chineseName = e.label.text._value
           }
         }
       })

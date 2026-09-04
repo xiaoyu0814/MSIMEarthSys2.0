@@ -223,8 +223,14 @@ export default function () {
       _getOpticalVisibilityData(fileName)
     }, 60 * 1000)
   }
-
+  // 请求复盘雷达姿态数据
+  const _getVolumeDataDict = async () => {
+    const res = await fetch('./static/js/volumn/volume.json') 
+    const volumeData = await res.json()
+    store.commit('AFSIMModule/setVolumeDataDict', volumeData)
+  }
   onMounted(() => {
+    _getVolumeDataDict()
     let curUrl = window.location.href
     console.log(curUrl)
     if (curUrl.split('?').length > 1) {

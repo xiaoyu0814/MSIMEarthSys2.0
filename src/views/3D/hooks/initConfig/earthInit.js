@@ -10,30 +10,15 @@ export function earthDataInit() {
     earth: window.MSIMEarth,
     viewer: window.EarthViewer
   })
-  // dataController._addHAJX()
-  // dataController._addDHFKSBQ()
-  // dataController.addTWFKSBQ()
-  // dataController.add_twlabel()
-  // dataController.add_bblabel()
-  //dataController.addTWGQYX()
-  // dataController.importantPoint()
-
-  // dataController.addTWTerrian()
-  // dataController.addbingLayer() // 添加bing全球高清影像
+  dataController.addNineLine()
   dataController._addDaoLian()
-  // dataController.addRoadVecMapLayer()
-  // dataController.addVectorLayer() // 添加矢量底图
   // dataController 保存到store内，可以进一步优化为直接绑定
   store.commit('setDataControl', dataController)
   // DD航迹label色调配置
   store.commit('setStateInfoOutLineColor', [0.0, 0.0, 0.0, 1.0])
   //store.commit('setStateInfoColor', [1.0, 1.0, 1.0, 1.0])
   store.commit('setStateInfoColor', [255 / 255, 165 / 255, 0, 1]) //橘色
-  // dataController.addGeojsonWeather({
-  //   url: basicVectorData.tianqiquyu,
-  //   id: '矢量天气'
-  // }) //加载天气区域数据
-  //dataController.addAirports()//加载机场数据
+  
   // 激活拖动目标方法
   if (store.state.sceneModule.systemConfig.isDragPositioning) {
     changePosNowByDragEntity()

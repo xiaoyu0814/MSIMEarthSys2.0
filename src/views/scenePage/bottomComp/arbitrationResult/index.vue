@@ -9,7 +9,7 @@
         :data="state.resultTable"
         style="width: 100%"
         show-overflow-tooltip
-        :header-cell-style="{ color: ' #FFFFFF' }"
+        :header-cell-style="{ color: 'var(--text-primary)' }"
         height="140px"
       >
         <el-table-column label="序号" width="40" type="index" align="center">
@@ -237,14 +237,14 @@ const closePanel = () => {
   position: absolute;
   left: calc(50% - 800px);
   bottom: 32px;
-  color: #ffffff;
+  color: var(--text-primary);
   width: 1600px;
   height: 230px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
+  background-image: var(--img-decoration);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background: rgba(2, 26, 70, 0.88);
-  box-shadow: 0 0 25px #1092d5;
+  background: var(--panel-bg-deep);
+  box-shadow: var(--box-shadow-glow);
   .header {
     .title {
       padding: 8px 20px;
@@ -265,22 +265,22 @@ const closePanel = () => {
     padding: 10px;
     box-sizing: border-box;
     ::v-deep(.el-tabs__item) {
-      color: #ffffff;
+      color: var(--text-primary);
     }
     ::v-deep(.el-tabs__item.is-active) {
-      color: #409eff;
+      color: var(--link-color);
     }
     ::v-deep(.el-tabs__item:hover) {
-      color: #409eff;
+      color: var(--link-color);
     }
 
     ::v-deep(.el-checkbox) {
-      color: #ffffff;
+      color: var(--text-primary);
     }
     ::v-deep .el-table td.el-table__cell,
     ::v-deep .el-table th.el-table__cell.is-leaf,
     ::v-deep .el-table__body-wrapper {
-      background: #2b4559 !important;
+      background: var(--input-bg) !important;
       color: #a3a6ad;
     }
     .el-table {

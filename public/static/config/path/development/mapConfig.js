@@ -11,6 +11,7 @@ let baseUrl9205 = ''    //   消息通信webscoket
 let baseUrlAFSIMSCRIPT = '' //   仿真引擎脚本启动服务
 let afsimUrl = '' //直接从AFSIM获取信息
 let baseUrl16006 = '' // 实时统计类接口
+let baseUrl16014 = ''
 let rbmqUrl = 'ws://192.168.1.100:15674/ws' //rabbitmq 地址
 // 根据配置切换线上线下复盘接口 线上部署改为true
 const onlineReview = false
@@ -18,8 +19,8 @@ const onlineSIM = false
 const online = false
 if (online) {
   // 线上
-  baseUrl9080 = '192.168.1.100:16008'    //   登录、文书通信
-  baseUrl8505 = '192.168.1.100:16001'    //   仿真推演后台服务
+  baseUrl9080 = '34.15.87.10:16008'    //   登录、文书通信
+  baseUrl8505 = '34.15.87.10:16001'    //   仿真推演后台服务
   baseUrl8504 = '172.16.100.74:8504'    //   视频聊天服务
   baseUrl4041 = '172.16.100.74:4041'    //   初始静态场景态势标注图标地址
   baseUrl9001 = '172.16.100.74:9001'    //   场景编辑服务（用于qb席）
@@ -27,12 +28,13 @@ if (online) {
   baseUrl9024 = '172.16.100.74:9204'    //   文书通信websocket服务地址
   baseUrl9205 = '10.15.2.14:9205'    //   消息通信webscoket
   baseUrlAFSIMSCRIPT = '172.16.100.743:9004'   //   仿真引擎脚本启动服务
-  baseUrl16006 = '192.168.1.100:16006/'// 实时统计类接口:油量 油耗等
+  baseUrl16006 = '34.15.87.10:16006/'// 实时统计类接口:油量 油耗等
+  baseUrl16014 = '34.15.87.10:16014'
 
 } else {
   // 线下（开发）
-  baseUrl9080 = '192.168.1.100:16008'//'172.16.100.74:9080'    //   登录、文书通信
-  baseUrl8505 = '192.168.1.100:16001'//'172.16.100.74:8505'    //   仿真推演后台服务
+  baseUrl9080 = '34.15.87.10:16008'//'172.16.100.74:9080'    //   登录、文书通信
+  baseUrl8505 = '34.15.87.10:16001'//'172.16.100.74:8505'    //   仿真推演后台服务
   baseUrl8504 = '172.16.100.74:8504'    //   视频聊天服务
   baseUrl4041 = '172.16.100.74:4041'    //   初始静态场景态势标注图标地址
   baseUrl9001 = '172.16.100.74:9001'    //   场景编辑服务（用于qb席）
@@ -41,51 +43,33 @@ if (online) {
   baseUrl9205 = '10.15.2.14:9205'    //   消息通信webscoket
   baseUrlAFSIMSCRIPT = '10.15.7.2113:9004'   //   仿真引擎脚本启动服务
   baseUrl16006 = 'statistics'// 实时统计类接口:油量 油耗等
+  baseUrl16014 = '34.15.87.10:16014'
 }
 if (onlineSIM) {
-  afsimUrl = 'http://192.168.1.100' //http://192.168.1.100:6060
+  afsimUrl = 'http://34.15.87.49' //http://192.168.1.100:6060
 } else {
   afsimUrl = 'afsim'
 }
 
-const baseUrlLayer = 'http://192.168.1.110'    //  影像  8967端口
-const baseUrlLayer2 = 'http://192.168.1.120'    //  影像  8967端口
+const baseUrlLayer = 'http://34.15.87.52'    //地图服务
+const baseUrlTerrain = 'http://34.15.87.52'    //  地形服务
 const globalVectorMapUrl = 'http://172.16.100.74:10000' //全球矢量底图UrlIp
-const BBUrlLayer = 'http://172.16.100.74:8080/'
-const xiAnMapUrl = 'http://172.16.100.74:30080/'
 const xiAnMapServerUrl = 'http://172.16.100.74:31132/'//西安提供的地图服务集合
+const OSGBUrl = 'http://34.15.87.10/'//OSGB地图服务地址
 // image图层路径配置
 const layersUrlConfig = {
-  // GG底图 192.168.1.100
-  url: `http://10.1.30.102:9000/wmts?tilematrix={z}&layer=wmts_ifile&style=wmts_satellite&tilerow={y}&tilecol={x}&tilematrixset=Global_ifile&format=image%2Fjpeg&service=WMTS&version=1.0.0&request=GetTile`,
-  // bing底图
-  urlB: `${baseUrlLayer}:9000/bingmaps/{z}/{x}/{y}.jpg`,//`${baseUrlLayer}:9010/bingmaps/{z}/{x}/{y}.jpg`,//`http://172.16.100.74:8976/bingmaps/{z}/{x}/{y}.jpg`, //102用8976
-  //urlB:`${BBUrlLayer}v1/rest/services/tile/mtVVauqB2stXsnryVk6ve/ows_0897db72720e1000/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&layer=l0897db72790e1000&format=image/sqlitedb&style=default&TileMatrixSet=WGS84Quad&TILEROW={y}&TILECOL={x}&TILEMATRIX={z}&key=0897db7a174e1001`,
-  urlWindy: `${baseUrlLayer}:9000/windydarkmaps/{z}/{x}/{y}.jpg`, // 矢量底图
-  urlWindy2: `${baseUrlLayer2}:8080/tile-server/v1?Layer=arcgis_lightcolor&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}`, // 矢量底图（带标注）
-  // urlB: `${baseUrlLayer}windydarkmaps/{z}/{x}/{y}.jpg`,
-  // urlB:`${baseUrlLayer}/googleMercatorImagery/{z}/{x}/{y}.jpg`,
-  // 台湾高清影像
-  twHDImage: `${baseUrlLayer}:9000/TWtms/{z}/{x}/{reverseY}.png`,
-  // 全球矢量底图
-  urlGlobalVectorMap: `${globalVectorMapUrl}/service/v1/tile?map=world_web&x={x}&y={y}&z={z}`,// http://10.15.2.13:30080/tile-server/v1?Layer=qian&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}`,
-  urlGlobalVectorMap2: `${globalVectorMapUrl}/service/v1/tile?map=china_web&x={x}&y={y}&z={z}`,
-  urlBaseMapVec: "http://192.168.1.110:9000/basemapvec/{z}/{x}/{y}.jpg",
-  urlLocalMap: "http://172.16.100.74:5041/googleMercatorImagery/{z}/{x}/{y}.jpg",
-  //urlGlobalVectorMap2: `${baseUrlLayer}:9000/terrainmaps/{z}/{x}/{y}.jpg`,//地形晕染底图
-  // urlVBlackMap:`http://10.15.2.14:30080/tile-server/v1?Layer=qian&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}`
-  urlVBlackMap: `${xiAnMapUrl}/v1/rest/services/tile/mtVVauqB2stXsnryVk6ve/ows_09780d47780e1000/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&layer=l09780d47858e1000&format=auto&style=l09780d47858e1000&TileMatrixSet=WorldWebMercatorQuad&TILEROW={y}&TILECOL={x}&TILEMATRIX={z}`,
-  xiAnBlackMapUrl: `${xiAnMapUrl}/v1/rest/services/tile/mtVVauqB2stXsnryVk6ve/ows_09512934f38e1000/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&layer=l09512934f64e1000&format=image/bundle&style=default&TileMatrixSet=WorldWebMercatorQuad&TILEROW={y}&TILECOL={x}&TILEMATRIX={z}`,
-  urlXiAnAreaMap1: `${baseUrlLayer}:30941/tile-server/v1?Layer=LaLin-0d5m&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}`,
-  urlXiAnYunXuanMap: `${baseUrlLayer}:30941/tile-server/v1?Layer=bing-map&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}`,//全球晕眩图
+  urlBingMap: `${baseUrlLayer}:9000/bingmaps/{z}/{x}/{y}.jpg`,  // bing底图
+  urlTianDiMap: `${baseUrlLayer}:9000/tiandimaps/{z}/{x}/{y}.jpg`, // 矢量底图
+  urlAnnotationMap: `${baseUrlLayer}:8080/tile-server/v1?Layer=arcgis_lightcolor&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}`, // 矢量底图（带标注）
+  urldarkVectorMap: `${baseUrlLayer}:8080/tile-server/v1?Layer=arcgis_lightcolor&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}`, // 矢量底图（带标注）
+  twImage: `${baseUrlLayer}:9000/TWtms/{z}/{x}/{reverseY}.png`, // 台湾高清影像
   urlTerrainImageryMap: `${baseUrlLayer}:8976/tacviewmaps/{z}/{x}/{y}.jpg`,//tacview视频里的地形影像图
-  OSGBUrl: 'http://34.15.87.10:4041/3dtiles/tileset.json'
+  OSGBUrl: `${OSGBUrl}:4041/3dtiles/tileset.json`
 }
 // 地形路径配置
 const terrainUrlConfig = {
-  terrainTW: `${baseUrlLayer}:4041/CesiumTerrain`,//'http://172.16.100.74:4041/CesiumWorldTerrain',//'http://172.96.195.15:4041/CesiumTerrain', // `${baseUrlLayer}:4041/CesiumTerrain/`,//http://172.16.100.74:4041/CesiumTerrain/
-  // terrianWorld :`${baseUrlLayer}:4041/GLOBAL-DEM-MESH/`
-  terrianWorld: `${BBUrlLayer}v1/rest/services/tile/mtVVauqB2stXsnryVk6ve/ows_0896e34c24ce1000/http/1.1.0/?layer=l0896e34c32ce1000&key=0896e354104e1001`
+  terrainTW: `${baseUrlTerrain}:8088/OceanTerrain/`,//
+  terrianWorld: `${baseUrlTerrain}:8080/v1/rest/services/tile/mtVVauqB2stXsnryVk6ve/ows_0896e34c24ce1000/http/1.1.0/?layer=l0896e34c32ce1000&key=0896e354104e1001`
 }
 // 基础矢量数据
 const basicVectorData = {
@@ -141,40 +125,34 @@ const UEConfigUrl = {
 }
 
 const serverUrls = {
-  experiment: 'http://192.168.1.100:9101/', // 实验设计
-  serversData: 'http://192.168.1.100:16006',
-  ueServer: 'http://192.168.1.100:16006',
-  serversData2: 'http://192.168.1.44:16006',
+  experiment: 'http://34.15.87.10:9101/', // 实验设计
+  serversData: 'http://34.15.87.10:16006',
+  ueServer: '/ue',
   serversCalculation: 'http://34.15.87.10:16008/',
-  afsimControl: 'http://192.168.1.100:16004',
-  serversCommunication: 'http://192.168.1.100:16005/',
-  serversCommunication1: 'http://192.168.1.100:16005/', //sse链接
-  serversCommunication2: 'http://192.168.1.100:16005/', //sse链接
-  serversCommunication3: 'http://192.168.1.100:16005/', //sse链接
-  serversSimswich: 'http://192.168.1.100:9080/simulation-service-simswich/',
-  serverScene: 'http://192.168.1.100:9080/se-north-scene/',
-  serverSml: 'http://192.168.1.100:9001',
-  wordK3Server: 'http://192.168.1.100:9506/',//wordk3接口
-  simModelServer: 'http://192.168.1.100:8504/',//模拟器导调指令接口
-  qidongMnqSjJsServerUrl: 'http://192.168.1.100:3899',//'http://10.15.2.106:3899',http://10.15.2.12:8509/ // 启动模拟器接收数据
-  qidongMnqSjJsServerUrl2: 'http://192.168.1.100:9080',//'http://10.15.2.106:3899', //模拟器数据统计所需
-  uETrajectoryReplayUrl: 'http://192.168.1.100:6795',  // UE 轨迹回放服务地址
-  serverUrl: 'http://192.168.1.100:9506',//威胁分析
-  serversBigdataGateway: 'http://192.168.1.100:9080/simulation-service-file/',
-  numericalElement: 'http://192.168.1.100:8821/api/meteo/numerical',  // 气象要素服务
-  // numericalElement: 'http://172.16.100.74:4041/WeatherDATA/cloud/20210723/fy4a_trueColor_20210723000000.png',  // 气象要素服务
-  // numericalElement: 'http://172.16.100.74:4041/WeatherDATA/LiDAR/resize_3857_QREF000.20230323.000000.png',  // 气象要素服务
-  cloudAndRadar: 'http://192.168.1.100:4041/WeatherDATA',  // 云图、雷达图要素服务
-  cloudFY4: 'http://192.168.1.100:7029',  // 云图、雷达图要素服务
-  sceneUrl: 'http://192.168.1.100', // 想定编辑地址
+  afsimControl: 'http://34.15.87.10:16004',
+  serversCommunication: 'http://34.15.87.10:16005/',//sse链接
+  serversSimswich: 'http://34.15.87.10:9080/simulation-service-simswich/',
+  serverScene: 'http://34.15.87.10:9080/se-north-scene/',
+  serverSml: 'http://34.15.87.10:9001',
+  wordK3Server: 'http://34.15.87.10:9506/',//wordk3接口
+  simModelServer: 'http://34.15.87.10:8504/',//模拟器导调指令接口
+  qidongMnqSjJsServerUrl: 'http://34.15.87.10:3899',//'http://10.15.2.106:3899',http://10.15.2.12:8509/ // 启动模拟器接收数据
+  qidongMnqSjJsServerUrl2: 'http://34.15.87.10:9080',//'http://10.15.2.106:3899', //模拟器数据统计所需
+  uETrajectoryReplayUrl: 'http://34.15.87.10:6795',  // UE 轨迹回放服务地址
+  serverUrl: 'http://34.15.87.10:9506',//威胁分析
+  serversBigdataGateway: 'http://34.15.87.10:9080/simulation-service-file/',
+  numericalElement: 'http://34.15.87.10:8821/api/meteo/numerical',  // 气象要素服务
+  cloudAndRadar: 'http://34.15.87.10:4041/WeatherDATA',  // 云图、雷达图要素服务
+  cloudFY4: 'http://34.15.87.10:7029',  // 云图、雷达图要素服务
+  sceneUrl: 'http://34.15.87.10', // 想定编辑地址
   AIUrl: 'http://34.15.87.110',// AI聊天服务地址
-  token: 'LKXMg13AbeEZxd7z', // AI聊天token地址
   platformUrl: 'http://34.15.87.110:4041',
-  liveBroadcastUrl: 'http://192.168.1.100:8888/hls/hls',
+  liveBroadcastUrl: 'http://34.15.87.10:8888/hls/hls',
   voiceUrl: 'http://34.15.87.30:5000',
-  reviewService: 'http://34.15.87.49:5000', //复盘回访
-  audioService: 'http://192.168.1.31:8000' ,// 语音播报
-  serverWeather: 'http://34.15.87.10:16004/'
+  reviewService: 'http://34.15.87.49:5000', //复盘回放
+  audioService: 'http://34.15.87.49:8000', // 语音播报
+  daqiService: 'http://34.15.87.49:8888/', // 大气影响范围包络数据
+  weather_image: 'http://34.15.87.49:25000', // 气象影像图片数据
 }
 
 if (onlineReview) {
@@ -190,4 +168,5 @@ const experimentalStatics = "http://localhost:8080/#/infomationStatistics"; //�
 const experimentalSimulation = '/home/combatSimulation' //仿真实验分系统
 const experimentalReview = '/review' //复盘
 const experimentalUE = '' //多维呈现分系统
+const forceMapUrl = 'http://localhost:8081/#/experimentalDataConfiguration' //兵力态势图分系统
 

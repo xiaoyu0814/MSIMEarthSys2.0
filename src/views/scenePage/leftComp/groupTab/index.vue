@@ -1,8 +1,8 @@
 <!--
  * @Author: xujiajia xujiajia@piesat.cn
  * @Date: 2026-07-09 13:27:19
- * @LastEditors: xujiajia xujiajia@piesat.cn
- * @LastEditTime: 2026-07-09 13:27:25
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-08-17 14:06:06
  * @FilePath: \MSIMEarthSystem\src\views\scenePage\leftComp\groupTab\index.vue
  * @Description: 编组信息tab总览
 -->
@@ -54,7 +54,7 @@ const handleClickTab = (tab) => {
 }
 const handleClose = () => {
   emitter.emit('closeBottomControlPanel', 'left')
-  emitter.emit('tagActiveClose', 'groupInfo')
+  emitter.emit('tagNavbarBtnClose', 'groupInfo')
 }
 </script>
 
@@ -66,17 +66,17 @@ const handleClose = () => {
   left: 24px;
   width: 400px;
   height: calc(100vh - 110px);
-  background: rgba(16, 55, 91, .8);
-  box-shadow: 0 0 25px #1092d5;
-  border: 1px solid rgba(9, 110, 180, 1);
+  background: var(--panel-bg);
+  box-shadow: var(--box-shadow-glow);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   backdrop-filter: blur(10px);
 
   .panel-header {
     height: 60px;
     padding: 16px;
-    border-bottom: 2px solid #2671ac66;
-    background: rgba(16, 55, 91, 1);
+    border-bottom: 2px solid var(--border-color);
+    background: var(--panel-bg-solid);
     border-radius: 8px 8px 8px 8px;
     position: relative;
     box-sizing: border-box;
@@ -84,11 +84,13 @@ const handleClose = () => {
     .panel-title {
       margin: 0;
       font-size: 20px;
-      color: #ffffff;
+      color: var(--text-primary);
       font-weight: 800;
-      text-align: center;
+      text-align: left;
+      padding-left: 15px;
       text-shadow: 0 0 10px rgba(64, 158, 255, 0.5);
       letter-spacing: 1.5px;
+      box-sizing: border-box;
     }
 
     .close_sty {
@@ -106,6 +108,7 @@ const handleClose = () => {
     height: calc(100% - 60px);
     padding: 20px 0px 10px;
     box-sizing: border-box;
+    background: var(--panel-bg-solid);
 
     span {
       font-size: 16px;
@@ -116,15 +119,15 @@ const handleClose = () => {
       height: 28px;
       margin: 0 5px;
       letter-spacing: 2px;
-      color: #a0abb8;
+      color: var(--text-primary);
       cursor: pointer;
       box-sizing: border-box;
     }
 
     .tabsActive {
-      color: #ffffff !important;
+      color: var(--text-highlight) !important;
       font-weight: 800;
-      border-bottom: 2px solid #409eff;
+      border-bottom: 2px solid var(--link-color);
     }
 
     .tabContent {

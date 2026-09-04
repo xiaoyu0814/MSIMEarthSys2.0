@@ -161,7 +161,6 @@ export default function () {
       if (state.showVectorAtmosphere) {
         state.showVectorAtmosphere = false
       } else {
-        //dataController.removeGeoJSONWeather('矢量天气')
         state.showVectorAtmosphere = true
       }
       dataController.addGeojsonWeather(

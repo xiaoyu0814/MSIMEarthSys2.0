@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: ZX Li
  * @Date: 2025-09-02 14:26:11
- * @LastEditors: 谢小宇 xiexiaoyu@piesat.cn
- * @LastEditTime: 2026-05-26 13:14:41
+ * @LastEditors: chenguopeng2 chenguopeng.piesat.cn
+ * @LastEditTime: 2026-07-31 15:18:33
  */
 import store from '@/store'
 import {
@@ -116,7 +116,7 @@ class EventMQStatistic {
           resolve()
         }
       } else {
-        console.log('没有检测到已有MQ连接')
+        //console.log('没有检测到已有MQ连接')
         resolve()
       }
     })
@@ -148,8 +148,8 @@ class EventMQStatistic {
       }
 
       function onFailed(frame) {
-        console.log('Failed: ' + frame)
-        console.log('一秒后重新连接')
+        //console.log('Failed: ' + frame)
+        //console.log('一秒后重新连接')
         globalStompClient = null
         globalSubscribe = null
         isConnected = false

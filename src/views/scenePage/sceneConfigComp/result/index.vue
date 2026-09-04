@@ -268,7 +268,7 @@ const handleClose = () => {
   z-index: 0;
   width: 910px;
   color: #eee;
-  background: url('@/assets/image/panelIcons/背景.png') no-repeat;
+  background: var(--img-panel-bg) no-repeat;
   background-size: 100% 100%;
   border: 1px solid rgba(117, 252, 255, 0.8);
   border-radius: 4px;
@@ -281,7 +281,7 @@ const handleClose = () => {
     height: 40px;
     line-height: 48px;
     font-size: 25px;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: 2.4px;
     font-weight: 400;
     text-align: left;
@@ -301,10 +301,10 @@ const handleClose = () => {
   .content-form {
     .form {
       // margin: 0 0 10px;
-      color: white;
+      color: var(--text-primary);
 
       .background-title {
-        color: #fff;
+        color: var(--text-primary);
         font-size: 16px;
         font-weight: 600;
         letter-spacing: 1px;
@@ -325,9 +325,9 @@ const handleClose = () => {
         }
 
         .cicrle {
-          background: #80fbff;
+          background: var(--cyan-light);
           border: 3.5px solid rgba(128, 251, 255, 1);
-          box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 2px 3px 1px rgba(var(--black-rgb), 0.3);
           box-shadow: 0px 0px 6px 1px rgba(0, 255, 245, 0.75);
           margin-right: 12px;
         }
@@ -337,8 +337,8 @@ const handleClose = () => {
         width: calc(97% - 40px);
         padding: 10px;
         margin: 10px auto;
-        background: rgba(0, 231, 255, 0.1);
-        border: 1px solid rgba(0, 231, 255, 0.4);
+        background: rgba(var(--cyan-bright-rgb), 0.1);
+        border: 1px solid rgba(var(--cyan-bright-rgb), 0.4);
         text-align: left;
         font-size: 20px;
         letter-spacing: 3px;
@@ -350,7 +350,7 @@ const handleClose = () => {
           overflow: auto;
 
           .content-text {
-            color: rgba(0, 231, 255, 1);
+            color: rgba(var(--cyan-bright-rgb), 1);
             transition: color ease-out 0.3s, text-shadow ease-out 0.3s;
             text-shadow: 0 0 1rem #0cf;
             text-indent: 2em;
@@ -365,13 +365,13 @@ const handleClose = () => {
           /*滚动条滑块*/
           &::-webkit-scrollbar-thumb {
             border-radius: 3px;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 0 5px rgba(var(--black-rgb), 0.2);
             background: rgba(48, 50, 53, 0.7);
           }
 
           /*滚动条里面轨道*/
           &::-webkit-scrollbar-track {
-            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+            box-shadow: 1px 1px 5px rgba(var(--black-rgb), 0.2) inset;
           }
 
           /*滚动条的小边角*/
@@ -413,7 +413,7 @@ const handleClose = () => {
               }
 
               .time-main {
-                color: rgba(0, 231, 255, 1);
+                color: rgba(var(--cyan-bright-rgb), 1);
               }
             }
           }
@@ -443,7 +443,7 @@ const handleClose = () => {
               }
 
               .area-main {
-                color: rgba(0, 231, 255, 1);
+                color: rgba(var(--cyan-bright-rgb), 1);
               }
             }
           }
@@ -575,20 +575,20 @@ const handleClose = () => {
         text-align: left;
         font-size: 30px;
         letter-spacing: 3px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(var(--white-rgb), 0.1);
         border-radius: 4px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(var(--white-rgb), 0.3);
         color: #eee;
         // padding: 10px;
 
         :deep .el-input__wrapper {
-          background-color: rgba(255, 255, 255, 0.1);
+          background-color: rgba(var(--white-rgb), 0.1);
           border: none !important;
           padding: 10px;
         }
 
         :deep .el-textarea__inner {
-          background-color: rgba(255, 255, 255, 0.1);
+          background-color: rgba(var(--white-rgb), 0.1);
           color: #eee;
         }
 
@@ -605,8 +605,8 @@ const handleClose = () => {
         .button-item {
           width: 60px;
           height: 30px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(var(--white-rgb), 0.1);
+          border: 1px solid rgba(var(--white-rgb), 0.1);
           border-radius: 4px;
           padding: 10px;
           color: #eee;
@@ -627,7 +627,7 @@ const handleClose = () => {
         background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
         width: 100px;
         height: 35px;
-        color: #ffff;
+        color: var(--text-primary);
         border-radius: 5px;
         margin-left: 10px;
         cursor: pointer;
@@ -687,7 +687,7 @@ const handleClose = () => {
 }
 
 :deep .el-form-item__label {
-  color: white;
+  color: var(--text-primary);
   font-size: 30px;
   padding: 10px;
 }

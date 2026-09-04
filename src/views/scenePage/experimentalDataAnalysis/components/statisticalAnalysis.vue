@@ -70,9 +70,9 @@ const closeBox = () => {
   right: 0;
   bottom: 0;
   top: 100px;
-  background-color: rgba(2, 26, 70, 1);
-  box-shadow: 0 0 25px #1092d5;
-  color: #ffffff;
+  background-color: var(--panel-bg-solid);
+  box-shadow: var(--box-shadow-glow);
+  color: var(--text-primary);
   text-align: left;
   z-index: 9;
   padding: 20px;
@@ -96,10 +96,10 @@ const closeBox = () => {
     }
   }
   :deep(.el-tabs__item) {
-    color: #ffffff;
+    color: var(--text-primary);
   }
   :deep(.is-active) {
-    color: #409eff;
+    color: var(--link-color);
   }
 }
 </style>

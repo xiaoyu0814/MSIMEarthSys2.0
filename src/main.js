@@ -1,11 +1,12 @@
 /*
- * @Author: caoyazhen caoyazhen@piesat.cn
- * @Date: 2024-04-24 10:17:44
- * @LastEditors: caoyazhen caoyazhen@piesat.cn
- * @LastEditTime: 2024-04-24 11:23:10
- * @FilePath: \MSIMEarthSysN\src\main.js
+ * @Author: xujiajia xujiajia@piesat.cn
+ * @Date: 2026-07-07 14:17:04
+ * @LastEditors: xujiajia xujiajia@piesat.cn
+ * @LastEditTime: 2026-08-11 13:37:45
+ * @FilePath: \MSIMEarthSystem\src\main.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -18,7 +19,11 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import '@/assets/css/common.less'
 import '@/assets/css/main.less'
+// 主题样式（必须在 common.less 之后引入，便于覆盖默认色）
+import '@/assets/css/theme-index.less'
 import animated from 'animate.css'
+// 主题配置：1=蓝色, 2=黑色, 3=白色
+import { initTheme } from '@/config/theme'
 import '@/assets/iconfont/iconfont.css'
 // 右上角消息提示
 import '@/components/content/messagePrompt/css/beautyToast.css'
@@ -61,6 +66,8 @@ app.component('TinymceVue', TinymceVue)
 app.use(store)
 app.use(router)
 app.use(animated)
+// 初始化主题（读取 localStorage 或使用默认值 1=蓝色）
+initTheme()
 app.mount('#app')
 store.commit('initSystemConfig')
 store.commit('initSceneConfig')

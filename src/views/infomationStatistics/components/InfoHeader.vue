@@ -414,29 +414,7 @@ const st = setInterval(() => {
           天: [],
           空: []
         }
-        // data.forEach((e) => {
-        //   if (statisticArr.indexOf(e.type) > -1) {
-        //     switch (e.side) {
-        //       case 'red':
-        //         console.log('typeCn', e.typeCn)
-        //         redData.push({ count: e.count, type: e.type, typeCn: e.typeCn })
-        //         break
-        //       case 'blue':
-        //         blueData.push({
-        //           count: e.count,
-        //           type: e.type,
-        //           typeCn: e.typeCn
-        //         })
-        //         // state.redPlatformCountByType.push({
-        //         //   count: e.count,
-        //         //   type: e.type
-        //         // })
-        //         break
-        //       default:
-        //         break
-        //     }
-        //   }
-        // })
+        
         data.forEach((e) => {
           if (e.domain == '地') {
             e.data.forEach((item) => {

@@ -2,7 +2,6 @@ import store from '@/store'
 import {
   RE_STrack,
   RE_LTrack,
-  SU,
   RE_WeaponF,
   RE_Jam,
   RE_MissileIntercept,
@@ -14,17 +13,12 @@ import {
   RE_JamA,
   RE_Comment
 } from '@/utils/earthPlugin/ThirdParty/eventSource/event/earthActionByEvent'
-import {
-  createDetectFrustumFun,
-  removeDetectFrustum,
-  createNoManDetectFrustumFun
-} from '@/utils/earthPlugin/ThirdParty/cameraControl/cameraControl'
-import { airplaneSensorON, airplaneSensorONFP, airplaneSensorOFF, initSuSensorOn, updateSensorVolume,initSuSensorOff } from './stateControlMethods'
-import { showSysMessage, setSatelliteType } from '@/utils/mapTools'
+import { airplaneSensorOFF, initSuSensorOn, initSuSensorOff } from './stateControlMethods'
+import { showSysMessage } from '@/utils/mapTools'
 import emitter from '@/utils/eventbus'
+import { airplaneSensorONFPByTime } from './ActionByEvent/Opt_FPSensorType'
 export default function () {
-  const { initTrackLine, dropTrackLine } = RE_LTrack()
-  const { sensorSwitch } = SU()
+  const { initLTrackLine, dropLTrackLine } = RE_LTrack()
   const { initWeaponFLine } = RE_WeaponF()
   const { initJamLine, dropJamLine, sensorJam } = RE_Jam()
   const { initMissileIntercept } = RE_MissileIntercept()
@@ -40,41 +34,30 @@ export default function () {
   const handleState = (json) => {
     switch (json.Type) {
       case 'SU':
-        console.log('SU',json);
-        //可见光卫星开机或关机
-        if (satellitePlateformArr.indexOf(json.Data.PName) > -1 || airplanePlateformArr.indexOf(json.Data.PName) > -1) {
+        console.log('SU',json.Data.PName,json);
+        // getPlatformSensorVolumes({ platform: json.Data.PName }).then((res) => {
+        //   if (res.status == 'success') 
+        //   console.log('successsuccess',res)
+        // })
+        if (sensorPlateformArr.indexOf(json.Data.PName) > -1) {
           if (json.Data.ON) {
             if (store.state.AFSIMModule.fp) {
               // 如果当前运行的是复盘场景则使用复盘对应的方法打开遮罩
-              airplaneSensorONFP({
+              airplaneSensorONFPByTime({
                 platformName: json.Data.PName,
                 targetName: 'M142_1',
                 sensorType: json.Data.Name
               })
             } else {
               initSuSensorOn(json)
-              // airplaneSensorON({
-              //   platformName: json.Data.PName,
-              //   targetName: 'M142_1',
-              //   sensorType: json.Data.Name,
-              // })
             }
           } else {
             if (store.state.AFSIMModule.fp) {
               // 如果当前运行的是复盘场景则使用复盘对应的方法打开遮罩
             airplaneSensorOFF({platformName: json.Data.PName})
-            // airplaneSensorONFP({
-            //     platformName: json.Data.PName,
-            //     targetName: 'M142_1',
-            //     sensorType: json.Data.Name
-            //   })
+            
             } else {
               initSuSensorOff(json)
-              // airplaneSensorON({
-              //   platformName: json.Data.PName,
-              //   targetName: 'M142_1',
-              //   sensorType: json.Data.Name,
-              // })
             }
           }
         }
@@ -83,12 +66,6 @@ export default function () {
         //添加延迟1s，以免在PA创建之前就执行
         setTimeout(() => {
           window.EarthViewer.entities.removeById(json.Data.Name)
-          // for (let i = 0; i < EarthAPP.labelCollection.length; ++i) {
-          //   const l = EarthAPP.labelCollection.get(i)
-          //   if (l.text === json.Data.LabelName) {
-          //     EarthAPP.labelCollection.remove(l)
-          //   }
-          // }
           window.EarthViewer.entities.removeById(`SU==${json.Data.Name}`)
           window.EarthViewer.entities.removeById(`SU==${json.Data.Name}==big`)
           window.EarthViewer.entities.removeById(`SU==${json.Data.Name}==small`)
@@ -102,153 +79,28 @@ export default function () {
           dropSDCLine(json)
         }
         break
-      case 'RE_STrackInit':
-        //传感器追踪目标
-        // console.log('RE_STrackInit', json)
-        if (json.Data.sName === 'wz-10_1') {
-          store.state.AFSIMModule.stracklineData.links.push({
-            source: `wz-10_1`,
-            target: json.Data.tName,
-            value: 1
-          })
-          console.log(store.state.AFSIMModule.stracklineData)
-        }
-        // if (json.Data.sSide === 'red' && store.state.AFSIMModule.showReconnaissanceResults) {
-        //   // 挂载大模型单侧结果效果
-        //   // 随机1到5之间的数字
-        //   const randomNum = Math.floor(Math.random() * 5) + 1
-        //   const url = `/static/config/json/logo/notification_${randomNum}.json`
-        //   // 加载notification_1.json文件并推进到store内保存
-        //   fetch(url)
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //       store.commit('AFSIMModule/setReconnaissanceResults', data)
-        //     })
-        //     .catch((error) => {
-        //       console.error(`Error loading ${url}:`, error)
-        //     })
-        // }
-        
-        if (airplanePlateformArr.indexOf(json.Data.sName) > -1 && airplanePlateformArr.indexOf(json.Data.tName) > -1) {
-          console.log('RE_STrackInit', json)
-          initSTrackLine(json) // 针对目标开启传感器追踪
-          // if (store.state.AFSIMModule.fp) {
-          //   // 如果当前运行的是复盘场景则使用复盘对应的方法打开遮罩
-          //   airplaneSensorONFP({
-          //     platformName: json.Data.sName,
-          //     targetName: json.Data.tName,
-          //     sensorType: 'CCD'
-          //   })
-          // } else {
-          //   airplaneSensorON({
-          //     platformName: json.Data.sName,
-          //     targetName: json.Data.tName,
-          //     sensorType: 'CCD'
-          //   })
-          // }
-
-        }
-        if (satellitePlateformArr.indexOf(json.Data.sName) > -1) {
-          console.log('RE_STrackInit', json)
-          console.log('卫星追踪目标', json)
-          initSTrackLine(json) // 针对卫星开启传感器追踪
+      case 'RE_STrackInit':  //传感器追踪开启
+        if (sensorPlateformArr.indexOf(json.Data.sName) > -1 && json.Data.sSide == 'red') {
+          initSTrackLine(json) 
         }
         break
-      case 'RE_STrackDrop':
-        //传感器追踪删除
+      case 'RE_STrackDrop': //传感器追踪断开
         dropSTrackLine(json)
-        // if (json.Data.sSide === 'red') {
-        //   // 清除大模型单侧结果效果
-        //   store.commit('AFSIMModule/setReconnaissanceResults', {})
-        // }
-        // airplaneSensorOFF({
-        //   platformName: json.Data.sName
-        // })
         break
-      case 'RE_LTrackInit':
-        // 局域追踪
-        if (store.state.sceneModule.sceneLinkConfig.localTracking) {
-          initTrackLine(json)
-        }
-
-        const climbData = {
-          Data: {
-            motion_analysis: {
-              action_type: 'DETECTING' //'ASCENDING', // 行动类型
-              // predicted_heading_deg: 90,
-              // pitch_angle_deg: 15,
-              // horizontal_distance_m: 5000,
-              // vertical_distance_m: 1000,
-              // total_prediction_time_s: 60,
-              // predictedPath: [
-              //   { lat: 25.208709, lon: 121.817667, alt: 1000 },
-              //   { lat: 25.210709, lon: 121.819667, alt: 1500 },
-              //   { lat: 25.212709, lon: 121.821667, alt: 2000 }
-              // ],
-              // estimatedTimeOfArrival: new Date().toISOString(),
-              // fuelRemaining: '85%',
-              // waypoints: [
-              //   {
-              //     lat: 25.208709,
-              //     lon: 121.817667,
-              //     alt: 1000,
-              //     name: 'Waypoint 1'
-              //   },
-              //   {
-              //     lat: 25.212709,
-              //     lon: 121.821667,
-              //     alt: 2000,
-              //     name: 'Waypoint 2'
-              //   }
-              // ],
-              // start_position_geo: {
-              //   lat: 25.208709,
-              //   lon: 121.817667,
-              //   alt: 1000
-              // },
-              // end_position_geo: {
-              //   lat: 25.212709,
-              //   lon: 121.821667,
-              //   alt: 2000
-              // },
-              // weapon_status: [], //武器状况
-              // sensorList_status: [] //传感器状况
-            }
-          },
-          warning_detail: '正在进行侦察行动' // 预警详情
-        }
-        // 需要判断当前第三视角的平台是否和json.Data.sName一致，一致的才触发事件
-        if (store.getters.getCurrentNode.code === json.Data.sName) {
-          // emitter.emit('FLIGHT_TRAJECTORY_PREDICTION_ADVANCED', climbData)
-        }
-
-        // if (json.Data.SourceTrackID === 'YAOGAN') {
-        //   if (store.state.AFSIMModule.ATValue < 35) {
-        //     initTrackLine(json)
-        //   }
-        // }
-
-        // if (
-        //   json.Data.SourceTrackID === 'YAOGAN' &&
-        //   (json.Data.OwnPID === 'dmz_1' || json.Data.OwnPID === 'YAOGAN')
-        // ) {
-        //   // console.log('RE_LTrackInit', json.Type, json)
-        //   initTrackLine(json)
-        // }
+      case 'RE_LTrackInit': //局域追踪开启
+        initLTrackLine(json)
         break
-      case 'RE_LTrackDrop':
-        // 局域追踪断开
-        // dropTrackLine(json)
-        dropSTrackLine(json) //L事件现在是射线方式，所以此处先改用S
+      case 'RE_LTrackDrop': //局域追踪断开
+        //dropLTrackLine(json)  //事件现在是射线方式，无需断开
         break
       case 'Weapon_WH':
         // initWeaponWHLine(json)
         // 体现打击结果 PD里的爆炸效果可以尝试放到这
         break
-      case 'RE_WeaponF':
+      case 'RE_WeaponF': //火力打击
         initWeaponFLine(json)
         break
-      case 'RE_WeaponT':
+      case 'RE_WeaponT': //火力打击断开
         console.log('武器断开', json)
         //武器断开
         break
@@ -261,19 +113,16 @@ export default function () {
         dropJamLine(json)
         dropJamATrackLine(json)
         break
-      case 'RE_JamA':
+      case 'RE_JamA': //电磁干扰开启
         initJamATrackLine(json)
         break
-      case 'RE_JamT':
+      case 'RE_JamT': //电磁干扰关闭
         dropJamATrackLine(json)
-        // 恢复雷达遮罩
-        // resumeRadar(json)
         break
-      case 'Task_Aign':
-        //任务关联
+      case 'Task_Aign':  //任务关联开启
         initTaskAign(json)
         break
-      case 'Task_Cancel':
+      case 'Task_Cancel':   //任务关联断开
       case 'Task_Completed':
         dropTaskAign(json)
         break
@@ -285,11 +134,10 @@ export default function () {
         // 反导
         initMissileIntercept(json)
         break
-      case 'RE_MR':
-        //卫星通信
+      case 'RE_MR': //卫星通信开启
         initMRLine(json)
         break
-      case 'RE_MRE':
+      case 'RE_MRE': //卫星通信断开
         dropMRLine(json)
         break
       case 'Weapon_Warning': //蓝方发射导弹，红方收到导弹来袭的消息
@@ -308,13 +156,6 @@ export default function () {
         } else {
           console.log('Comment事件数据可能不合法', json)
         }
-        // if (TTSPlateformArr.includes(PN)) {
-        //   // 使用TTS
-        //   let cameraController = new window.EarthPlugn.CameraControl({})
-        //   let info = TTSVoiceArr[json.Data.Comment.Action].value
-        //   cameraController.identifyInfoCOnfig(info, 1)
-        // }
-
         break
       default:
         break

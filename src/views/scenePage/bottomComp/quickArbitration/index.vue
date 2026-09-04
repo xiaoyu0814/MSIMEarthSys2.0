@@ -1,18 +1,8 @@
 <template>
   <div class="logSteps-container">
     <div id="statusEcharts"></div>
-    <el-tooltip
-      class="box-item"
-      effect="dark"
-      content="关闭面板"
-      placement="top"
-    >
-      <img
-        src="@/assets/image/panelIcons/关闭icon.png"
-        alt=""
-        class="close_sty"
-        @click="handleClose"
-      />
+    <el-tooltip class="box-item" effect="dark" content="关闭面板" placement="top">
+      <img src="@/assets/image/panelIcons/关闭icon.png" alt="" class="close_sty" @click="handleClose" />
     </el-tooltip>
   </div>
 </template>
@@ -22,6 +12,13 @@ import * as echarts from 'echarts'
 import elementResizeDetectorMaker from 'element-resize-detector'
 import { nextTick, onMounted, reactive, markRaw, watch } from 'vue'
 import store from '@/store'
+
+const getThemeColor = (varName, defaultValue) => {
+  const root = document.documentElement
+  const value = getComputedStyle(root).getPropertyValue(varName).trim()
+  return value || defaultValue
+}
+
 const hashMap = [
   '#75d0e4',
   '#bd6d6c',
@@ -107,7 +104,7 @@ const initEcharts = () => {
 }
 const handleClose = () => {
   emitter.emit('closeBottomControlPanel', 'bottom')
-  emitter.emit('tagActiveClose', 'quickDecision')
+  emitter.emit('tagNavbarBtnClose', 'quickDecision')
 }
 // 日志监听
 watch(
@@ -304,9 +301,17 @@ const timestampToTime = (timestamp) => {
   return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`
 }
 const makeOption = () => {
+  const themeTextColor = getThemeColor('--text-primary', '#fff')
+  const themeSecondaryColor = getThemeColor('--panel-bg', '#c2d7ee')
+  const themePanelBgDeep = getThemeColor('--panel-bg', 'rgba(2, 26, 70, 0.88)')
+  const themePanelBgSolid = getThemeColor('--panel-bg-solid', 'rgba(2, 26, 70, 0.95)')
+  const themeBorderColor = getThemeColor('--border-color', '#0372a6')
+  const themePrimaryColor = getThemeColor('--primary-color', '#11b5ec')
+  const themeGlowShadow = getThemeColor('--glow-shadow', '#1092d5')
+
   return {
-    color: '#0A8BFF',
-    backgroundColor: 'rgba(2, 26, 70, 0.88)',
+    color: themeTextColor,
+    backgroundColor: themePanelBgDeep,
     // title: {
     //   text: "工时统计甘特图",
     //   subtext: "不同日期的当日工时统计",
@@ -315,7 +320,7 @@ const makeOption = () => {
       enterable: true,
       //alwaysShowContent:true,
       hideDelay: 100,
-      backgroundColor: 'rgba(255,255,255,1)', //背景颜色（此时为默认色）
+      backgroundColor: themeSecondaryColor, //背景颜色（此时为默认色）
       borderRadius: 5, //边框圆角
       padding: [5, 0, 5, 0], // [5, 10, 15, 20] 内边距
       color: '#000',
@@ -355,7 +360,7 @@ const makeOption = () => {
       itemHeight: 16,
       selectedMode: false, // 图例设为不可点击
       textStyle: {
-        color: '#eee',
+        color: themeTextColor,
         fontSize: 14
       }
     },
@@ -376,14 +381,14 @@ const makeOption = () => {
         type: 'time',
         position: 'bottom',
         axisLabel: {
-          color: '#eee', //更改坐标轴文字颜色
+          color: themeTextColor, //更改坐标轴文字颜色
           fontSize: 14, //更改坐标轴文字大小
           showMaxLabel: true
         },
         axisLine: {
           show: true,
           lineStyle: {
-            color: '#eee'
+            color: themeTextColor
           }
         }
       }
@@ -391,7 +396,7 @@ const makeOption = () => {
     yAxis: {
       axisLine: {
         lineStyle: {
-          color: '#eee'
+          color: themeTextColor
         }
       },
       data: [
@@ -406,7 +411,7 @@ const makeOption = () => {
         '战场环境'
       ],
       axisLabel: {
-        color: '#eee', //刻度颜色
+        color: themeTextColor, //刻度颜色
         fontSize: 14 //刻度大小
       }
     },
@@ -428,7 +433,7 @@ const makeOption = () => {
             // 设置markLine显示名称
             show: true,
             // backgroundColor: "#fff",
-            color: '#eee',
+            color: themeTextColor,
             formatter: (val) => {
               return '进度'
             }
@@ -559,14 +564,13 @@ const makeOption = () => {
           animation: false,
           tooltip: {
             show: true,
-            backgroundColor: 'rgba(10, 18, 46, 0.8)',
-            borderColor: 'rgba(26, 115, 232, 0.8)',
+            backgroundColor: themePanelBgSolid,
+            borderColor: themeGlowShadow,
             borderWidth: 2,
-            textStyle: { color: '#fff', fontSize: 14 },
+            textStyle: { color: themeTextColor, fontSize: 14 },
             padding: [8, 12],
             formatter: function (params) {
-              console.log('params战场环境', params)
-              return `<strong style="font-size:17px;color:#66b2ff"> 战场环境影响</strong><br/>
+              return `<strong style="font-size:17px;color:${themeTextColor}"> 战场环境影响</strong><br/>
               装备名称：${params.data.temp['装备名称']}<br/>
               影响时间：${params.data.temp['时间']}<br/>
               影响位置：${params.data.temp['位置']}<br/>
@@ -680,27 +684,24 @@ const makeOption = () => {
 .logSteps-container {
   position: absolute;
   left: calc(50% - 600px);
-  bottom: 32px; //1%;
-  // height: 60px;
-  // width: 1050px;
+  bottom: 32px;
   font-family: Georgia, serif;
-
   display: flex;
   justify-content: center;
   align-items: flex-end;
   width: 1100px;
   height: 230px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   z-index: 10;
 
   #statusEcharts {
     width: 100%;
     height: 99%;
-    background: rgba(2, 26, 70, 0.88);
-    box-shadow: 0 0 25px #1092d5;
+    background: var(--panel-bg);
+    box-shadow: var(--box-shadow-glow);
+    border-top: 4px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
   }
+
   .close_sty {
     cursor: pointer;
     position: absolute;

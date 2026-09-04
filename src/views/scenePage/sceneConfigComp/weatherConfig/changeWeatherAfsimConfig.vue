@@ -446,7 +446,7 @@ onMounted(() => {})
   // background: url('@/assets/image/voiceInteraction/zjDiv.png');
   // background-size: 100% 100%;
   // padding: 40px 20px;
-  background-image: url('~@/assets/image/panelIcons/装饰.png');
+  background-image: var(--img-decoration);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -458,8 +458,8 @@ onMounted(() => {})
     padding: 15px;
     height: 97%;
     width: 100%;
-    background: rgba(2, 26, 70, 0.88);
-    box-shadow: 0 0 25px #1092d5;
+    background: var(--panel-bg-deep);
+    box-shadow: var(--box-shadow-glow);
     display: flex;
     flex-direction: column;
 
@@ -468,7 +468,7 @@ onMounted(() => {})
       text-align: left;
       font-size: 20px;
       font-weight: 500;
-      color: #00c7fb;
+      color: var(--title-color);
       display: flex;
       align-items: center;
 
@@ -478,7 +478,7 @@ onMounted(() => {})
         width: 4px;
         height: 20px;
         margin-right: 5px;
-        background: #1092d5;
+        background: var(--glow-shadow);
       }
     }
     .close_sty {
@@ -493,7 +493,7 @@ onMounted(() => {})
       padding: 10px;
 
       :deep(.el-form-item__label) {
-        color: white;
+        color: var(--text-primary);
       }
 
       :deep .el-input__wrapper {
@@ -502,7 +502,7 @@ onMounted(() => {})
         border-radius: 4px;
 
         .el-input__inner {
-          color: white;
+          color: var(--text-primary);
         }
       }
     }
@@ -513,21 +513,21 @@ onMounted(() => {})
       :deep(.el-input__inner) {
         font-size: 18px;
         font-weight: 500;
-        color: #06d6f9;
+        color: var(--cyan-color);
         border: none !important;
         text-align: center;
       }
 
       :deep(.el-input__wrapper) {
-        background-color: #172e51 !important;
-        box-shadow: 0 0 25px #1092d5;
+        background-color: var(--input-bg) !important;
+        box-shadow: var(--box-shadow-glow);
       }
 
       :deep(.el-input) {
         --el-input-border-color: #e5e5e500 !important;
         --el-input-hover-border: transparent !important;
         --el-input-focus-border: transparent !important;
-        --el-input-placeholder-color: #06d6f9;
+        --el-input-placeholder-color: var(--cyan-color);
       }
 
       :deep(.el-select) {
@@ -548,20 +548,20 @@ onMounted(() => {})
         background: url(@/assets/images/rwty/llbc-topBtn.svg) 100% 100%;
         width: 50px;
         height: 25px;
-        color: #ffff;
+        color: var(--text-primary);
         border-radius: 5px;
         margin-left: 10px;
         cursor: pointer;
       }
       .el-button:disabled {
-        color: #cccccc;
+        color: var(--text-tertiary);
         border: none;
         cursor: auto;
       }
     }
 
     :deep(.el-radio) {
-      color: white;
+      color: var(--text-primary);
       margin: 10px 0;
     }
   }
@@ -581,14 +581,14 @@ onMounted(() => {})
     left: 10px;
     font-size: 18px;
     padding: 0 10px;
-    color: #ffffff;
+    color: var(--text-primary);
     background: #12415f;
   }
 
   .block_msg {
     padding: 0 0px 0 5px;
     text-align: center;
-    color: #ffffff;
+    color: var(--text-primary);
 
     .content_info {
       padding: 5px 0;
